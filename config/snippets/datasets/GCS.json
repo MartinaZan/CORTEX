@@ -1,0 +1,13 @@
+{
+    "class": "src.dataset.dataset_base.Dataset",
+    "parameters": {
+        "generator": {
+            "class": "src.dataset.generators.gcs.GCS",
+            "parameters": {
+                "data_dir": "data/datasets/gcs/",
+                "data_file_name": "grafo_corr_sliding.json",
+                "data_label_name": "y"
+            }
+        }
+    }
+}
