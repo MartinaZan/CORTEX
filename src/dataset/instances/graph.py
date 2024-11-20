@@ -18,9 +18,9 @@ class GraphInstance(DataInstance):
         self._nx_repr = None
         self.directed = directed
 
-
         num_nodes = self.data.shape[0]
         num_edges = np.count_nonzero(self.data)
+
         assert len(self.node_features) == num_nodes
         assert len(self.edge_features) == num_edges
         assert len(self.edge_weights) == num_edges

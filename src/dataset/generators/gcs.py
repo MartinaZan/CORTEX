@@ -17,7 +17,6 @@ class GCS(Generator):
         self.dataset.edge_features_map = None#rdk_edge_features_map()
         self.generate_dataset()
 
-
     def check_configuration(self):
         super().check_configuration()
         local_config=self.local_config
@@ -34,40 +33,44 @@ class GCS(Generator):
 
     def _read(self, path):
         data = json.load(open(path))
-        # data.keys() = { 'node_ids', 'edge_mapping', 'time_periods', 'y' }
-        data_labels = data[self._data_label_name]
+        # data.keys() --> dict_keys(['edge_mapping', 'node_ids', 'time_periods', 'target', 'series'])
+        #   In 'target' ho la label della classificazione
+        #   In 'series' ho i valori della serie (da mettere come feature dei nodi
+
         self.dataset.node_features_map = data['node_ids']
         # self.dataset.edge_features_map =  # change me
-
+        
         for t in data['time_periods']:
-            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data_labels[t-49], self.dataset)
+            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t-49], self.dataset)
+            y = data["target"][t-49]
+
             g = GraphInstance(
-                id=t,
-                label=1, # change me
-                data=A,
-                node_features=X,
-                edge_features=W,
-                graph_features={}
+                id = t,
+                label = y,          # crisi/no crisi
+                data = A,           # data: n × n matrix where n is the number of nodes (i.e., it is the binary adjacency matrix)
+                node_features = X,  # node_features: n × d matrix where d is the number of node features (per ora considero d = 1)
+                edge_weights = W,   # edge_weights: n × n matrix containing the weight of each edge (i.e., it is the weighted adjacency matrix)
+                graph_features = {}
             )
             self.dataset.instances.append(g)
-
-
     
-def corr2graph(id, data, weight, label, dataset):
-    n_map = dataset.node_features_map
-    e_map = dataset.edge_features_map = {k:1 for k in range(376)}
-    n1, n2 = np.array(data).max(0)
-    A = np.zeros((n1+1, n2+1))
-    X = np.zeros((n1+1, len(n_map)))
-    W = np.zeros((n1+1, len(e_map)))
+def corr2graph(id, data, weight, series, dataset):
+    # n_map = dataset.node_features_map
+    # e_map = dataset.edge_features_map = {k:1 for k in range(376)}
+    
+    n = 24
 
-    for i, n in enumerate(n_map):
-        X[i, n_map[n]-1] = label[i]
+    A = np.zeros((n, n))
+    #W = np.zeros((n, n))
+
+    X = np.array(series).reshape(24, 1)
 
     for p, edge in enumerate(data):
-        A[edge[0], edge[1]] = 1
-
-        W[edge[0], edge[1]] = weight[p]
+        #W[edge[0], edge[1]] = weight[p]
+        A[edge[0], edge[1]] = 1 if weight[p] != 0 else 0   
     
-    return A,X,W
+    # Nota1: controllare che voglia effettivamente un vettore e non una matrice
+    # Nota2: in tal caso, controllare che i pesi siano effettivamente assegnati nell'ordine giusto
+    W = np.array(weight)
 
+    return A,X,W

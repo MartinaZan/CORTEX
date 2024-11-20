@@ -40,6 +40,10 @@ class DownstreamGCN(GCN):
                 if m.bias is not None:
                     nn.init.constant_(m.bias, 0)
         
+        # Controllo delle dimensioni dei parametri
+        # for p in self.parameters():
+        #     print(p.size())
+        
     def forward(self, node_features, edge_index, edge_weight, batch):
         node_features = super().forward(node_features, edge_index, edge_weight, batch)
         return self.downstream_layers(node_features)
