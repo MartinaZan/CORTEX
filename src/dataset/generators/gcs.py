@@ -61,16 +61,12 @@ def corr2graph(id, data, weight, series, dataset):
     n = 24
 
     A = np.zeros((n, n))
-    #W = np.zeros((n, n))
+    W = np.zeros((n, n))
 
     X = np.array(series).reshape(24, 1)
 
     for p, edge in enumerate(data):
-        #W[edge[0], edge[1]] = weight[p]
-        A[edge[0], edge[1]] = 1 if weight[p] != 0 else 0   
-    
-    # Nota1: controllare che voglia effettivamente un vettore e non una matrice
-    # Nota2: in tal caso, controllare che i pesi siano effettivamente assegnati nell'ordine giusto
-    W = np.array(weight)
+        W[edge[0], edge[1]] = weight[p]
+        A[edge[0], edge[1]] = 1 if weight[p] != 0 else 0
 
     return A,X,W
