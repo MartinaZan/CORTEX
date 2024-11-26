@@ -39,21 +39,22 @@ class GCS(Generator):
         #   In 'target' ho la label della classificazione
         #   In 'series' ho i valori della serie (da mettere come feature dei nodi)
 
-        self.dataset.node_features_map = {'attribute_0': 0} #data['node_ids']
+        self.dataset.node_features_map = {'attribute_0': 0}
         # self.dataset.edge_features_map =  # change me
 
-        random.shuffle(data['time_periods']) #####
+        # NEW:
+        #random.shuffle(data['time_periods']) #####
         
         for t in data['time_periods']:
             # OLD
-            #A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t-49], self.dataset)
-            #y = data["target"][t-49]
-            #if (t-49) % 3 == 0:
-            #    y = 1 
+            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t-49], self.dataset)
+            y = data["target"][t-49]
+            if (t-49) % 3 == 0:
+                y = 1 
 
             # NEW
-            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], self.dataset)
-            y = data["target"][t]
+            #A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], self.dataset)
+            #y = data["target"][t]
 
             g = GraphInstance(
                 id = t,

@@ -13,7 +13,7 @@ from torch_geometric.loader import DataLoader
 class TorchBase(Trainable):
        
     def init(self):
-        self.epochs = 1 #self.local_config['parameters']['epochs']
+        self.epochs = self.local_config['parameters']['epochs']
         self.batch_size = self.local_config['parameters']['batch_size']
         
         self.model = get_instance_kvargs(self.local_config['parameters']['model']['class'],
@@ -80,13 +80,13 @@ class TorchBase(Trainable):
 
                 labels = batch.y.to(self.device).long()
                 
-                print(labels)
+                #print(labels)
 
                 self.optimizer.zero_grad()
                 
                 pred = self.model(node_features, edge_index, edge_weights, batch.batch)
 
-                print(pred)
+                #print(pred)
 
                 loss = self.loss_fn(pred, labels)
                 losses.append(loss.to('cpu').detach().numpy())
