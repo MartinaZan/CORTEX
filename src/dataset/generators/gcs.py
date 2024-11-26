@@ -16,7 +16,7 @@ class GCS(Generator):
         self._data_label_name = self.local_config['parameters']['data_label_name']
 
         self.dataset.node_features_map = None
-        self.dataset.edge_features_map = None#rdk_edge_features_map()
+        self.dataset.edge_features_map = None # rdk_edge_features_map()
         self.generate_dataset()
 
     def check_configuration(self):
@@ -35,26 +35,23 @@ class GCS(Generator):
 
     def _read(self, path):
         data = json.load(open(path))
-        # data.keys() --> dict_keys(['edge_mapping', 'node_ids', 'time_periods', 'target', 'series'])
-        #   In 'target' ho la label della classificazione
-        #   In 'series' ho i valori della serie (da mettere come feature dei nodi)
+        ### data.keys() --> dict_keys(['edge_mapping', 'node_ids', 'time_periods', 'target', 'series'])
+        ###   In 'target' ho la label della classificazione
+        ###   In 'series' ho i valori della serie (da mettere come feature dei nodi)
 
         self.dataset.node_features_map = {'attribute_0': 0}
         # self.dataset.edge_features_map =  # change me
 
-        # NEW:
-        #random.shuffle(data['time_periods']) #####
-        
         for t in data['time_periods']:
-            # OLD
-            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t-49], self.dataset)
-            y = data["target"][t-49]
-            if (t-49) % 3 == 0:
-                y = 1 
+            # OLD (da eliminare)
+            #A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t-49], self.dataset)
+            #y = data["target"][t-49]
+            #if (t-49) % 3 == 0:
+            #    y = 1
 
             # NEW
-            #A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], self.dataset)
-            #y = data["target"][t]
+            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], self.dataset)
+            y = data["target"][t]
 
             g = GraphInstance(
                 id = t,
@@ -68,7 +65,7 @@ class GCS(Generator):
     
 def corr2graph(id, data, weight, series, dataset):
     # n_map = dataset.node_features_map
-    # e_map = dataset.edge_features_map = {k:1 for k in range(376)}
+    # e_map = dataset.edge_features_map
     
     n = 24
 
