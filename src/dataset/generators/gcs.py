@@ -35,14 +35,20 @@ class GCS(Generator):
         data = json.load(open(path))
         # data.keys() --> dict_keys(['edge_mapping', 'node_ids', 'time_periods', 'target', 'series'])
         #   In 'target' ho la label della classificazione
-        #   In 'series' ho i valori della serie (da mettere come feature dei nodi
+        #   In 'series' ho i valori della serie (da mettere come feature dei nodi)
 
-        self.dataset.node_features_map = data['node_ids']
+        self.dataset.node_features_map = {'attribute_0': 0} #data['node_ids']
+
+        # print(data['node_ids'])
+
         # self.dataset.edge_features_map =  # change me
         
         for t in data['time_periods']:
             A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t-49], self.dataset)
             y = data["target"][t-49]
+
+            #A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], self.dataset)
+            #y = data["target"][t]
 
             g = GraphInstance(
                 id = t,
@@ -66,7 +72,10 @@ def corr2graph(id, data, weight, series, dataset):
     X = np.array(series).reshape(24, 1)
 
     for p, edge in enumerate(data):
-        W[edge[0], edge[1]] = weight[p]
+        #if np.abs(weight[p]) > 0.3:
+        W[edge[0], edge[1]] = np.abs(weight[p])
         A[edge[0], edge[1]] = 1 if weight[p] != 0 else 0
+
+    W = W[W != 0].flatten()
 
     return A,X,W

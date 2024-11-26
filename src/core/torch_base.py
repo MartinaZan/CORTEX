@@ -71,12 +71,23 @@ class TorchBase(Trainable):
                 batch.batch = batch.batch.to(self.device)
                 node_features = batch.x.to(self.device)
                 edge_index = batch.edge_index.to(self.device)
+
+                print(node_features)
+                print(edge_index)
+
                 edge_weights = batch.edge_attr.to(self.device)
+                
+                print(edge_weights)
+                print('---')
+
                 labels = batch.y.to(self.device).long()
                 
                 self.optimizer.zero_grad()
                 
                 pred = self.model(node_features, edge_index, edge_weights, batch.batch)
+
+                print(pred)
+
                 loss = self.loss_fn(pred, labels)
                 losses.append(loss.to('cpu').detach().numpy())
                 loss.backward()
@@ -136,6 +147,9 @@ class TorchBase(Trainable):
         init_dflts_to_of(local_config, 'loss_fn', 'torch.nn.BCELoss')
         
     def accuracy(self, testy, probs):
+        print(probs)
+        print('...')
+        print(testy)
         acc = accuracy_score(testy, np.argmax(probs, axis=1))
         return acc
 
