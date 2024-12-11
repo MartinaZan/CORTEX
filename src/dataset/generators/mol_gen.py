@@ -67,6 +67,12 @@ def smile2graph(id, smile, label, dataset):
     g = None
     if sanitized:
         A,X,W = mol_to_matrices(mol, dataset)
+
+        print(np.shape(X))
+        print(np.shape(W))
+        print(np.shape(A))
+        3/0
+
         g = MolecularInstance(id=id, 
                         label=int(label), 
                         data=A, 

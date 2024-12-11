@@ -5,7 +5,7 @@ import torch
 from src.core.trainable_base import Trainable
 from src.utils.cfg_utils import init_dflts_to_of
 from src.core.factory_base import get_instance_kvargs
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score # f1_score
 import torch.optim.lr_scheduler as lr_scheduler
 from torch.utils.data import Subset
 from torch_geometric.loader import DataLoader
@@ -13,7 +13,7 @@ from torch_geometric.loader import DataLoader
 class TorchBase(Trainable):
        
     def init(self):
-        self.epochs = self.local_config['parameters']['epochs']
+        self.epochs = 15 # self.local_config['parameters']['epochs']
         self.batch_size = self.local_config['parameters']['batch_size']
         
         self.model = get_instance_kvargs(self.local_config['parameters']['model']['class'],
@@ -152,7 +152,7 @@ class TorchBase(Trainable):
         #print("Test y:")
         #print(testy)
         #print('---')
-        acc = accuracy_score(testy, np.argmax(probs, axis=1))
+        acc = accuracy_score(testy, np.argmax(probs, axis=1)) # f1_score(testy, np.argmax(probs, axis=1))
         return acc
 
     def read(self):

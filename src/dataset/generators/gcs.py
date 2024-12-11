@@ -53,8 +53,7 @@ class GCS(Generator):
             #   - le informazioni sui pesi al tempo t: data['edge_mapping']['edge_weight'][str(t)]
             #   - i valori della serie temporale al tempo t: data["series"][t]
             #   - self.dataset (per accedere a self.dataset.node_features_map e self.dataset.edge_features_map)
-            # Nota: per poter usare il primo json creato, occorre mettere t-49 in data["series"][t-49] e y = data["target"][t-49]
-            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], self.dataset)
+            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], data["target"][t], self.dataset)
             
             # Lettura della true label al tempo t (crisi/no crisi)
             y = data["target"][t]
@@ -69,25 +68,45 @@ class GCS(Generator):
             )
             self.dataset.instances.append(g)
     
-def corr2graph(id, data, weight, series, dataset):
+def corr2graph(id, data, weight, series, target, dataset):
     # n_map = dataset.node_features_map
     # e_map = dataset.edge_features_map
     
     # Numero di nodi
-    n = 24
+    n = len(series) # 24
 
     A = np.zeros((n, n))
     W = np.zeros((n, n))
 
     X = np.array(series).reshape(n, 1)
 
+    # Da cancellare:
+    # X = np.hstack((X, np.random.rand(n, 1), np.random.rand(n, 1)))
+
     # Scorre tutti gli archi e imposta matrice di adiacenza pesata (W) e binaria (A)
     for p, edge in enumerate(data):
-        #if np.abs(weight[p]) > 0.3: # (eventuale condizione per impostare un threshold)
-        W[edge[0], edge[1]] = np.abs(weight[p])
-        A[edge[0], edge[1]] = 1 if weight[p] != 0 else 0
+        if np.abs(weight[p]) > 0.3: # (eventuale condizione per impostare un threshold)
+            W[edge[0], edge[1]] = np.abs(weight[p])
+            A[edge[0], edge[1]] = 1 if weight[p] != 0 else 0
+
+    #####################################
+    # DA CANCELLARE
+    k = 6
+    if target == 0:
+        X[0:k] = X[0:k] * 0
+        W[0:k,0:k] = W[0:k,0:k] * 0
+        A[0:k,0:k] = A[0:k,0:k] * 0
+    else:
+        X[0:k] = X[0:k] * 0 + 1
+        W[0:k,0:k] = W[0:k,0:k] * 0 + 1
+        A[0:k,0:k] = A[0:k,0:k] * 0 + 1
+    #####################################
 
     # W deve essere un vettore, quindi lo flatteniamo
     W = W[W != 0].flatten()
+
+    # print(X)
+    # print(A)
+    # print('---')
 
     return A,X,W

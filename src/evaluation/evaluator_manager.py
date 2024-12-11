@@ -46,7 +46,6 @@ class EvaluatorManager:
         # Instantiate the evaluation metrics that will be used for the evaluation;
         for metric_dict in metrics_list:
             evaluation_metrics.append(self.context.factories['metrics'].get_evaluation_metric_by_name(metric_dict))
-
      
         for dataset_snippet in datasets_list:
             # The get_dataset method return an already builded/loaded/generated dataset with all its features already in place;
