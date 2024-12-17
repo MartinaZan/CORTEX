@@ -100,7 +100,8 @@ class Evaluator(ABC):
             self._oracle._call_counter -= 2 
 
             result.append({'instance_id': self.dataset.instances[i].id,
-                             'ground_truth_label': self.dataset.instances[i].graph_label,
+                             #'ground_truth_label': self.dataset.instances[i].graph_label,
+                             'ground_truth_label': self.dataset.instances[i].label,
                              'instance_label': label_inst,
                              'counterfactual_label': label_cf})
 
