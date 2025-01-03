@@ -16,6 +16,6 @@
     "explainers": [{"class": "src.explainer.search.dces.DCESExplainer"}]
     // "explainers": [{"class": "src.explainer.heuristic.obs.ObliviousBidirectionalSearchExplainer"}]
     // "explainers": [{"class": "src.explainer.heuristic.ddbs.DataDrivenBidirectionalSearchExplainer"}]
-    // ERRORE: "explainers": [{"class": "src.explainer.generative.cf2.CF2Explainer"}]
+    // "explainers": [{"class": "src.explainer.generative.cf2.CF2Explainer"}]
     // ERRORE: "explainers": [{"class": "src.explainer.generative.clear.CLEARExplainer"}]
 }
