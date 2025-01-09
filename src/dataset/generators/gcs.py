@@ -107,8 +107,8 @@ def corr2graph(id, data, weight, series, target, dataset):
     # W deve essere un vettore, quindi lo flatteniamo
     W = W[W != 0].flatten()
 
-    # print(X)
-    # print(A)
-    # print('---')
+    print(X)
+    print(A)
+    print('---')
 
     return A,X,W

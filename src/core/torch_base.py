@@ -73,20 +73,20 @@ class TorchBase(Trainable):
                 edge_index = batch.edge_index.to(self.device)
                 edge_weights = batch.edge_attr.to(self.device)
 
-                #print(node_features)
-                #print(edge_index)
-                #print(edge_weights)
-                #print('---')
+                # print(node_features)
+                # print(edge_index)
+                # print(edge_weights)
+                # print('---')
 
                 labels = batch.y.to(self.device).long()
                 
-                #print(labels)
+                # print(labels)
 
                 self.optimizer.zero_grad()
                 
                 pred = self.model(node_features, edge_index, edge_weights, batch.batch)
 
-                #print(pred)
+                # print(pred)
 
                 loss = self.loss_fn(pred, labels)
                 losses.append(loss.to('cpu').detach().numpy())
