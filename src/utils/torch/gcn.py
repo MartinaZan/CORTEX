@@ -26,10 +26,11 @@ class GCN(nn.Module):
         for conv_layer in self.graph_convs[:-1]:
             node_features = conv_layer(node_features, edge_index, edge_weight)
             node_features = nn.functional.relu(node_features)
-
+        
         # global pooling
         if isinstance(self.graph_convs[-1],nn.Identity):
             return self.graph_convs[-1](node_features)
+
         return self.graph_convs[-1](node_features, batch)
     
     def __init__conv_layers(self):

@@ -45,7 +45,29 @@ class DownstreamGCN(GCN):
         #     print(p.size())
         
     def forward(self, node_features, edge_index, edge_weight, batch):
+
+        ###################################################################################
+        # print(f"    - Inizio")
+        # print(f"      node_features.shape (pre-forward): {node_features.shape}")
+        # print(f"      node_features (pre-forward):       {node_features}")        # Questi coincidono esattamente con gli input
+        # print("")
+        ###################################################################################
+
+        # Gli input vengono dati in pasto alla GCN
         node_features = super().forward(node_features, edge_index, edge_weight, batch)
+
+        ###################################################################################
+        # print(f"    - super().forward (GCN)")
+        # print(f"      node_features.shape (post-forward): {node_features.shape}") # Corrisponde a ( return self.graph_convs[-1](node_features, batch) ) in src/utils/torch/gcn.py
+        print(f"      node_features (post-forward):       {node_features}")
+        # print("")
+
+        # print(f"    - self.downstream_layers (layer lineari finali)")             # Finisce con downstream_layers.append(nn.Linear(in_linear, self.n_classes))
+        # print(f"      self.downstream_layers(node_features).shape: {self.downstream_layers(node_features).shape}")
+        # print(f"      self.downstream_layers(node_features):       {self.downstream_layers(node_features)}")
+        # print("")
+        ###################################################################################
+
         return self.downstream_layers(node_features)
     
     def __init__downstream_layers(self):

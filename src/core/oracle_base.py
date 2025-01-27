@@ -23,7 +23,33 @@ class Oracle(Trainable,metaclass=ABCMeta):
         """
         self._call_counter += 1
 
-        return self._real_predict(data_instance)
+        ###################################################################################
+
+        print("\n----------------------------------------------")
+
+        # print("\n>> DATA INSTANCE <<")
+        print(f"data_instance.id: {data_instance.id}")
+        # # print(f"data_instance.edge_features: {data_instance.edge_features}")
+        # # print(f"data_instance.edge_weights: {data_instance.edge_weights}")
+        # print(f"data_instance.node_features: {data_instance.node_features}")    # Queste sono le node features del grafo in input
+        # # print(f"data_instance.label: {data_instance.label}")
+        # # print(f"data_instance.num_nodes: {data_instance.num_nodes}")
+
+        # print("\n>> PREVISIONE <<")
+
+        output = self._real_predict(data_instance)
+        print(f"Prediction: {output}")
+
+        print
+
+        if data_instance.id == 2000: # Togli!
+            3/0
+
+        return output
+
+        ###################################################################################
+    
+        # return self._real_predict(data_instance)
 
     @final
     def predict_proba(self, data_instance):
@@ -51,6 +77,7 @@ class Oracle(Trainable,metaclass=ABCMeta):
     def predict_list(self, dataset: Dataset, fold_id=0):
         sptest = dataset.get_split_indices()[fold_id]['test']
         result = [self.predict(dataset.get_instance(i)) for i in sptest]
+        
         return result
    
     '''@abstractmethod'''#TODO: need to be reactivated and implemented. May can be removed accordingly to Mario and GRETEL philosphy
