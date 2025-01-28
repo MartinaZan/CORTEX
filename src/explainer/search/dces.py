@@ -37,7 +37,7 @@ class DCESExplainer(Explainer):
         min_ctf_dist = sys.float_info.max
         for ctf_candidate in self.dataset.instances:
             candidate_label, node_embeddings = self.oracle.predict(ctf_candidate, return_embeddings=True) ## Chiama oracle_base.predict
-            print(f"node embeddings: {node_embeddings}")
+            # print(f"node embeddings: {node_embeddings}")
 
             if input_label != candidate_label:
                 ctf_distance = self.distance_metric.evaluate(instance, ctf_candidate, self.oracle)

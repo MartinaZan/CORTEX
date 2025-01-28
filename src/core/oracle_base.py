@@ -25,14 +25,14 @@ class Oracle(Trainable,metaclass=ABCMeta):
 
         ###################################################################################
 
-        print("----------------------------------------------------------------")
+        # print("----------------------------------------------------------------")
 
         # print("\n>> DATA INSTANCE <<")
-        print(f"data_instance.id: {data_instance.id}")
+        # print(f"data_instance.id: {data_instance.id}")
         # # print(f"data_instance.edge_features: {data_instance.edge_features}")
         # # print(f"data_instance.edge_weights: {data_instance.edge_weights}")
         # print(f"data_instance.node_features: {data_instance.node_features}")    # Queste sono le node features del grafo in input
-        print(f"data_instance.label: {data_instance.label}")
+        # print(f"data_instance.label: {data_instance.label}")
         # # print(f"data_instance.num_nodes: {data_instance.num_nodes}")
 
         # print("\n>> PREVISIONE <<")
@@ -40,23 +40,34 @@ class Oracle(Trainable,metaclass=ABCMeta):
         # output = self._real_predict(data_instance)
         # print(f"Prediction: {output}")
 
-        if data_instance.id == 2000: # Togli!
-            3/0
-
-
         if return_embeddings:
             output, embeddings = self._real_predict(data_instance,return_embeddings=True)
-            print(f"Prediction: {output}")
+            # print(f"Prediction: {output}")
             return output, embeddings
         
         output = self._real_predict(data_instance)
-        print(f"Prediction: {output}")
+        # print(f"Prediction: {output}")
 
         return output
-
-        ###################################################################################
     
-        # return self._real_predict(data_instance)
+    ###################################################################################
+
+    @final
+    def prova_marti(self, data_instance):
+        # self._call_counter += 1
+
+        print("----------------------------------------------------------------")
+
+        print(f"data_instance.id: {data_instance.id}")
+        print(f"data_instance.label: {data_instance.label}")
+
+        output, embeddings = self._real_predict(data_instance,return_embeddings=True)
+        print(f"Prediction: {output}")
+        print(f"node embeddings: {embeddings}")
+        
+        return
+
+    ###################################################################################
 
     @final
     def predict_proba(self, data_instance):
