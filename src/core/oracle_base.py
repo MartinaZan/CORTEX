@@ -12,7 +12,7 @@ class Oracle(Trainable,metaclass=ABCMeta):
         self._call_counter = 0
         
     @final
-    def predict(self, data_instance):
+    def predict(self, data_instance, return_embeddings=False):
         """predicts the label of a given data instance
         -------------
         INPUT:
@@ -25,25 +25,32 @@ class Oracle(Trainable,metaclass=ABCMeta):
 
         ###################################################################################
 
-        print("\n----------------------------------------------")
+        print("----------------------------------------------------------------")
 
         # print("\n>> DATA INSTANCE <<")
         print(f"data_instance.id: {data_instance.id}")
         # # print(f"data_instance.edge_features: {data_instance.edge_features}")
         # # print(f"data_instance.edge_weights: {data_instance.edge_weights}")
         # print(f"data_instance.node_features: {data_instance.node_features}")    # Queste sono le node features del grafo in input
-        # # print(f"data_instance.label: {data_instance.label}")
+        print(f"data_instance.label: {data_instance.label}")
         # # print(f"data_instance.num_nodes: {data_instance.num_nodes}")
 
         # print("\n>> PREVISIONE <<")
 
-        output = self._real_predict(data_instance)
-        print(f"Prediction: {output}")
-
-        print
+        # output = self._real_predict(data_instance)
+        # print(f"Prediction: {output}")
 
         if data_instance.id == 2000: # Togli!
             3/0
+
+
+        if return_embeddings:
+            output, embeddings = self._real_predict(data_instance,return_embeddings=True)
+            print(f"Prediction: {output}")
+            return output, embeddings
+        
+        output = self._real_predict(data_instance)
+        print(f"Prediction: {output}")
 
         return output
 

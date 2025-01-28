@@ -37,15 +37,26 @@ class OracleTorch(TorchBase, Oracle):
         self.context.logger.info(f'Test accuracy = {np.mean(accuracy):.4f}')
 
 
-    def _real_predict(self, data_instance):
-        return torch.argmax(self._real_predict_proba(data_instance)).item()
+    def _real_predict(self, data_instance, return_embeddings=False):
+
+        if return_embeddings:
+            output, embeddings = self._real_predict_proba(data_instance,return_embeddings)
+            output = torch.argmax(output).item()
+            return output, embeddings
+
+        return torch.argmax(self._real_predict_proba(data_instance,return_embeddings)).item()
 
     @torch.no_grad()
-    def _real_predict_proba(self, data_inst):
+    def _real_predict_proba(self, data_inst, return_embeddings=False):
         data_inst = TorchGeometricDataset.to_geometric(data_inst)
         node_features = data_inst.x.to(self.device)
         edge_index = data_inst.edge_index.to(self.device)
         edge_weights = data_inst.edge_attr.to(self.device)
+
+        if return_embeddings:
+            output, embeddings = self.model(node_features,edge_index,edge_weights, None, return_embeddings=True)
+            output = output.cpu().squeeze()
+            return output, embeddings
         
         return self.model(node_features,edge_index,edge_weights, None).cpu().squeeze()
                      

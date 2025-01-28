@@ -44,7 +44,7 @@ class DownstreamGCN(GCN):
         # for p in self.parameters():
         #     print(p.size())
         
-    def forward(self, node_features, edge_index, edge_weight, batch):
+    def forward(self, node_features, edge_index, edge_weight, batch, return_embeddings=False):
 
         ###################################################################################
         # print(f"    - Inizio")
@@ -59,7 +59,7 @@ class DownstreamGCN(GCN):
         ###################################################################################
         # print(f"    - super().forward (GCN)")
         # print(f"      node_features.shape (post-forward): {node_features.shape}") # Corrisponde a ( return self.graph_convs[-1](node_features, batch) ) in src/utils/torch/gcn.py
-        print(f"      node_features (post-forward):       {node_features}")
+        # print(f"      node_features (post-forward):       {node_features}")
         # print("")
 
         # print(f"    - self.downstream_layers (layer lineari finali)")             # Finisce con downstream_layers.append(nn.Linear(in_linear, self.n_classes))
@@ -68,20 +68,27 @@ class DownstreamGCN(GCN):
         # print("")
         ###################################################################################
 
+        if return_embeddings:
+            embeddings = node_features
+            return self.downstream_layers(node_features), embeddings
+
         return self.downstream_layers(node_features)
     
     def __init__downstream_layers(self):
-        ############################################
+        
         # initialize the linear layers interleaved with activation functions
         downstream_layers = []
         in_linear = self.out_channels
+
         for _ in range(self.num_dense_layers-1):
             downstream_layers.append(nn.Linear(in_linear, int(in_linear // self.linear_decay)))
             downstream_layers.append(nn.ReLU())
             in_linear = int(in_linear // self.linear_decay)
+
         # add the output layer
         downstream_layers.append(nn.Linear(in_linear, self.n_classes))
         #downstream_layers.append(nn.Sigmoid())
         #downstream_layers.append(nn.Softmax())
+        
         # put the linear layers in sequential
         return nn.Sequential(*downstream_layers).double()
