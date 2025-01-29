@@ -3,13 +3,13 @@ from src.core.oracle_base import Oracle
 from src.core.explainer_base import Explainer
 
 
-class ProvaMartinaMetric(EvaluationMetric):
+class EmbeddingMetric(EvaluationMetric):
     """Classe di prova per definizione distanza embeddings
     """
 
     def __init__(self, config_dict=None) -> None:
         super().__init__(config_dict)
-        self._name = 'ProvaMartina'
+        self._name = 'embedding_metrics'
 
     def evaluate(self, instance_1 , instance_2 , oracle : Oracle=None, explainer : Explainer=None, dataset = None):
         # instance_1 è il grafo originale

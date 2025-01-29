@@ -15,7 +15,9 @@ class DCESExplainer(Explainer):
     def check_configuration(self):
         super().check_configuration()
 
-        dst_metric='src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric'  
+        # dst_metric='src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric'  ### PRIMA
+        dst_metric='src.evaluation.embedding_metrics.EmbeddingMetric'  ### DOPO
+
 
         #Check if the distance metric exist or build with its defaults:
         init_dflts_to_of(self.local_config, 'distance_metric', dst_metric)
