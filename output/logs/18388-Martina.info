@@ -1,0 +1,39 @@
+2025-01-27 20:20:01,-1456153141 | INFO | 18388 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-01-27 20:20:01,-1456153088 | INFO | 18388 - Creating the evaluation manager.......................................................
+2025-01-27 20:20:01,-1456153041 | INFO | 18388 - Creating the PAIRED evaluators...............................................................
+2025-01-27 20:20:01,-1456152921 | INFO | 18388 - Creating: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 20:20:01,-1456152909 | INFO | 18388 - Instantiating: src.dataset.generators.gcs.GCS
+2025-01-27 20:20:05,-1456149152 | INFO | 18388 - Saved: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 20:20:05,-1456149071 | INFO | 18388 - Created: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 20:20:05,-1456149055 | INFO | 18388 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-01-27 20:20:05,-1456149040 | INFO | 18388 - Instantiating: torch.optim.RMSprop
+2025-01-27 20:20:05,-1456149040 | INFO | 18388 - Instantiating: torch.nn.CrossEntropyLoss
+2025-01-27 20:20:05,-1456148959 | INFO | 18388 - Creating: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 20:20:06,-1456148177 | INFO | 18388 - epoch = 0 ---> loss = 0.6934	 accuracy = 0.5062
+2025-01-27 20:20:07,-1456147547 | INFO | 18388 - epoch = 1 ---> loss = 0.6931	 accuracy = 0.5071
+2025-01-27 20:20:07,-1456146952 | INFO | 18388 - epoch = 2 ---> loss = 0.6932	 accuracy = 0.5066
+2025-01-27 20:20:08,-1456146403 | INFO | 18388 - epoch = 3 ---> loss = 0.6932	 accuracy = 0.5047
+2025-01-27 20:20:09,-1456145870 | INFO | 18388 - epoch = 4 ---> loss = 0.6932	 accuracy = 0.5043
+2025-01-27 20:20:09,-1456145309 | INFO | 18388 - epoch = 5 ---> loss = 0.6931	 accuracy = 0.5052
+2025-01-27 20:20:10,-1456144794 | INFO | 18388 - epoch = 6 ---> loss = 0.6932	 accuracy = 0.5062
+2025-01-27 20:20:10,-1456144160 | INFO | 18388 - epoch = 7 ---> loss = 0.6931	 accuracy = 0.5052
+2025-01-27 20:20:11,-1456143593 | INFO | 18388 - epoch = 8 ---> loss = 0.6932	 accuracy = 0.5052
+2025-01-27 20:20:11,-1456143095 | INFO | 18388 - epoch = 9 ---> loss = 0.6932	 accuracy = 0.5047
+2025-01-27 20:20:12,-1456142551 | INFO | 18388 - epoch = 10 ---> loss = 0.6931	 accuracy = 0.5057
+2025-01-27 20:20:12,-1456141985 | INFO | 18388 - epoch = 11 ---> loss = 0.6931	 accuracy = 0.5071
+2025-01-27 20:20:13,-1456141446 | INFO | 18388 - epoch = 12 ---> loss = 0.6931	 accuracy = 0.5052
+2025-01-27 20:20:13,-1456140889 | INFO | 18388 - epoch = 13 ---> loss = 0.6932	 accuracy = 0.5038
+2025-01-27 20:20:14,-1456140323 | INFO | 18388 - epoch = 14 ---> loss = 0.6931	 accuracy = 0.5057
+2025-01-27 20:20:15,-1456139754 | INFO | 18388 - epoch = 15 ---> loss = 0.6931	 accuracy = 0.5062
+2025-01-27 20:20:15,-1456139173 | INFO | 18388 - epoch = 16 ---> loss = 0.6931	 accuracy = 0.5052
+2025-01-27 20:20:16,-1456138610 | INFO | 18388 - epoch = 17 ---> loss = 0.6931	 accuracy = 0.5076
+2025-01-27 20:20:16,-1456138087 | INFO | 18388 - epoch = 18 ---> loss = 0.6931	 accuracy = 0.5076
+2025-01-27 20:20:17,-1456137610 | INFO | 18388 - epoch = 19 ---> loss = 0.6931	 accuracy = 0.5080
+2025-01-27 20:20:17,-1456136993 | INFO | 18388 - Test accuracy = 0.5062
+2025-01-27 20:20:17,-1456136945 | INFO | 18388 - OracleTorch trained on cpu in: 11.96567678451538 secs
+2025-01-27 20:20:17,-1456136880 | INFO | 18388 - Saved: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 20:20:18,-1456136830 | INFO | 18388 - Created: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 20:20:18,-1456136821 | INFO | 18388 - Instantiating: src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric
+2025-01-27 20:20:18,-1456136774 | INFO | 18388 - Created: DCESExplainer-1bc3bcc16827475dc8d2312ac0f6154d
+2025-01-27 20:20:18,-1456136716 | INFO | 18388 - Evaluating the explainers.............................................................
+2025-01-27 20:20:18,-1456136707 | INFO | 18388 - Evaluating instance with id 1

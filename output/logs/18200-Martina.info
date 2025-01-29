@@ -1,0 +1,601 @@
+2025-01-28 17:23:13,-1380361585 | INFO | 18200 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-01-28 17:23:13,-1380361552 | INFO | 18200 - Creating the evaluation manager.......................................................
+2025-01-28 17:23:13,-1380361526 | INFO | 18200 - Creating the PAIRED evaluators...............................................................
+2025-01-28 17:23:13,-1380361433 | INFO | 18200 - Creating: GCS-189d68770f99189694c24d6a27f87039
+2025-01-28 17:23:13,-1380361433 | INFO | 18200 - Instantiating: src.dataset.generators.gcs.GCS
+2025-01-28 17:23:17,-1380357187 | INFO | 18200 - Saved: GCS-189d68770f99189694c24d6a27f87039
+2025-01-28 17:23:17,-1380357139 | INFO | 18200 - Created: GCS-189d68770f99189694c24d6a27f87039
+2025-01-28 17:23:17,-1380357123 | INFO | 18200 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-01-28 17:23:17,-1380357114 | INFO | 18200 - Instantiating: torch.optim.RMSprop
+2025-01-28 17:23:17,-1380357114 | INFO | 18200 - Instantiating: torch.nn.CrossEntropyLoss
+2025-01-28 17:23:17,-1380357066 | INFO | 18200 - Creating: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-28 17:23:18,-1380356258 | INFO | 18200 - epoch = 0 ---> loss = 0.6928	 accuracy = 0.5350
+2025-01-28 17:23:19,-1380355756 | INFO | 18200 - epoch = 1 ---> loss = 0.6906	 accuracy = 0.6094
+2025-01-28 17:23:19,-1380355096 | INFO | 18200 - epoch = 2 ---> loss = 0.6887	 accuracy = 0.6813
+2025-01-28 17:23:20,-1380354403 | INFO | 18200 - epoch = 3 ---> loss = 0.6866	 accuracy = 0.6946
+2025-01-28 17:23:21,-1380353869 | INFO | 18200 - epoch = 4 ---> loss = 0.6843	 accuracy = 0.7188
+2025-01-28 17:23:21,-1380353293 | INFO | 18200 - epoch = 5 ---> loss = 0.6820	 accuracy = 0.7230
+2025-01-28 17:23:22,-1380352690 | INFO | 18200 - epoch = 6 ---> loss = 0.6795	 accuracy = 0.7675
+2025-01-28 17:23:22,-1380352149 | INFO | 18200 - epoch = 7 ---> loss = 0.6768	 accuracy = 0.7476
+2025-01-28 17:23:23,-1380351602 | INFO | 18200 - epoch = 8 ---> loss = 0.6740	 accuracy = 0.7685
+2025-01-28 17:23:23,-1380351099 | INFO | 18200 - epoch = 9 ---> loss = 0.6711	 accuracy = 0.7647
+2025-01-28 17:23:24,-1380350637 | INFO | 18200 - epoch = 10 ---> loss = 0.6675	 accuracy = 0.7595
+2025-01-28 17:23:25,-1380349518 | INFO | 18200 - epoch = 11 ---> loss = 0.6644	 accuracy = 0.7718
+2025-01-28 17:23:26,-1380348467 | INFO | 18200 - epoch = 12 ---> loss = 0.6609	 accuracy = 0.7760
+2025-01-28 17:23:27,-1380347199 | INFO | 18200 - epoch = 13 ---> loss = 0.6571	 accuracy = 0.7808
+2025-01-28 17:23:28,-1380346049 | INFO | 18200 - epoch = 14 ---> loss = 0.6536	 accuracy = 0.7699
+2025-01-28 17:23:30,-1380344781 | INFO | 18200 - epoch = 15 ---> loss = 0.6498	 accuracy = 0.7689
+2025-01-28 17:23:31,-1380343473 | INFO | 18200 - epoch = 16 ---> loss = 0.6467	 accuracy = 0.7689
+2025-01-28 17:23:32,-1380342385 | INFO | 18200 - epoch = 17 ---> loss = 0.6418	 accuracy = 0.7869
+2025-01-28 17:23:33,-1380341236 | INFO | 18200 - epoch = 18 ---> loss = 0.6382	 accuracy = 0.7741
+2025-01-28 17:23:34,-1380339904 | INFO | 18200 - epoch = 19 ---> loss = 0.6341	 accuracy = 0.7756
+2025-01-28 17:23:36,-1380338663 | INFO | 18200 - epoch = 20 ---> loss = 0.6293	 accuracy = 0.7803
+2025-01-28 17:23:37,-1380337589 | INFO | 18200 - epoch = 21 ---> loss = 0.6249	 accuracy = 0.7741
+2025-01-28 17:23:38,-1380336551 | INFO | 18200 - epoch = 22 ---> loss = 0.6208	 accuracy = 0.7751
+2025-01-28 17:23:39,-1380335489 | INFO | 18200 - epoch = 23 ---> loss = 0.6167	 accuracy = 0.7746
+2025-01-28 17:23:39,-1380334922 | INFO | 18200 - epoch = 24 ---> loss = 0.6117	 accuracy = 0.7808
+2025-01-28 17:23:40,-1380334315 | INFO | 18200 - epoch = 25 ---> loss = 0.6085	 accuracy = 0.7765
+2025-01-28 17:23:41,-1380333844 | INFO | 18200 - epoch = 26 ---> loss = 0.6037	 accuracy = 0.7779
+2025-01-28 17:23:41,-1380333286 | INFO | 18200 - epoch = 27 ---> loss = 0.5979	 accuracy = 0.7860
+2025-01-28 17:23:42,-1380332825 | INFO | 18200 - epoch = 28 ---> loss = 0.5932	 accuracy = 0.7827
+2025-01-28 17:23:42,-1380332312 | INFO | 18200 - epoch = 29 ---> loss = 0.5889	 accuracy = 0.7836
+2025-01-28 17:23:43,-1380331746 | INFO | 18200 - epoch = 30 ---> loss = 0.5845	 accuracy = 0.7850
+2025-01-28 17:23:43,-1380331319 | INFO | 18200 - epoch = 31 ---> loss = 0.5806	 accuracy = 0.7817
+2025-01-28 17:23:44,-1380330762 | INFO | 18200 - epoch = 32 ---> loss = 0.5762	 accuracy = 0.7794
+2025-01-28 17:23:44,-1380330353 | INFO | 18200 - epoch = 33 ---> loss = 0.5715	 accuracy = 0.7860
+2025-01-28 17:23:44,-1380329932 | INFO | 18200 - epoch = 34 ---> loss = 0.5674	 accuracy = 0.7808
+2025-01-28 17:23:45,-1380329417 | INFO | 18200 - epoch = 35 ---> loss = 0.5621	 accuracy = 0.7888
+2025-01-28 17:23:45,-1380328963 | INFO | 18200 - epoch = 36 ---> loss = 0.5571	 accuracy = 0.7860
+2025-01-28 17:23:46,-1380328544 | INFO | 18200 - epoch = 37 ---> loss = 0.5535	 accuracy = 0.7869
+2025-01-28 17:23:46,-1380328106 | INFO | 18200 - epoch = 38 ---> loss = 0.5483	 accuracy = 0.7884
+2025-01-28 17:23:47,-1380327664 | INFO | 18200 - epoch = 39 ---> loss = 0.5455	 accuracy = 0.7912
+2025-01-28 17:23:47,-1380327181 | INFO | 18200 - epoch = 40 ---> loss = 0.5418	 accuracy = 0.7836
+2025-01-28 17:23:48,-1380326781 | INFO | 18200 - epoch = 41 ---> loss = 0.5380	 accuracy = 0.7893
+2025-01-28 17:23:48,-1380326295 | INFO | 18200 - epoch = 42 ---> loss = 0.5347	 accuracy = 0.7879
+2025-01-28 17:23:49,-1380325808 | INFO | 18200 - epoch = 43 ---> loss = 0.5310	 accuracy = 0.7898
+2025-01-28 17:23:49,-1380325332 | INFO | 18200 - epoch = 44 ---> loss = 0.5263	 accuracy = 0.7893
+2025-01-28 17:23:49,-1380324908 | INFO | 18200 - epoch = 45 ---> loss = 0.5235	 accuracy = 0.7874
+2025-01-28 17:23:50,-1380324522 | INFO | 18200 - epoch = 46 ---> loss = 0.5176	 accuracy = 0.7884
+2025-01-28 17:23:50,-1380324052 | INFO | 18200 - epoch = 47 ---> loss = 0.5147	 accuracy = 0.7917
+2025-01-28 17:23:51,-1380323665 | INFO | 18200 - epoch = 48 ---> loss = 0.5129	 accuracy = 0.7888
+2025-01-28 17:23:51,-1380323288 | INFO | 18200 - epoch = 49 ---> loss = 0.5092	 accuracy = 0.7898
+2025-01-28 17:23:52,-1380322781 | INFO | 18200 - epoch = 50 ---> loss = 0.5054	 accuracy = 0.7931
+2025-01-28 17:23:52,-1380322400 | INFO | 18200 - epoch = 51 ---> loss = 0.5029	 accuracy = 0.7936
+2025-01-28 17:23:52,-1380321946 | INFO | 18200 - epoch = 52 ---> loss = 0.4986	 accuracy = 0.7926
+2025-01-28 17:23:53,-1380321478 | INFO | 18200 - epoch = 53 ---> loss = 0.4962	 accuracy = 0.7940
+2025-01-28 17:23:53,-1380321013 | INFO | 18200 - epoch = 54 ---> loss = 0.4932	 accuracy = 0.7902
+2025-01-28 17:23:54,-1380320559 | INFO | 18200 - epoch = 55 ---> loss = 0.4909	 accuracy = 0.7940
+2025-01-28 17:23:54,-1380320018 | INFO | 18200 - epoch = 56 ---> loss = 0.4869	 accuracy = 0.7964
+2025-01-28 17:23:55,-1380319585 | INFO | 18200 - epoch = 57 ---> loss = 0.4846	 accuracy = 0.7945
+2025-01-28 17:23:55,-1380319077 | INFO | 18200 - epoch = 58 ---> loss = 0.4811	 accuracy = 0.7988
+2025-01-28 17:23:56,-1380318673 | INFO | 18200 - epoch = 59 ---> loss = 0.4780	 accuracy = 0.8035
+2025-01-28 17:23:56,-1380318244 | INFO | 18200 - epoch = 60 ---> loss = 0.4788	 accuracy = 0.7940
+2025-01-28 17:23:57,-1380317752 | INFO | 18200 - epoch = 61 ---> loss = 0.4755	 accuracy = 0.7959
+2025-01-28 17:23:57,-1380317280 | INFO | 18200 - epoch = 62 ---> loss = 0.4722	 accuracy = 0.7983
+2025-01-28 17:23:58,-1380316835 | INFO | 18200 - epoch = 63 ---> loss = 0.4697	 accuracy = 0.7988
+2025-01-28 17:23:58,-1380316377 | INFO | 18200 - epoch = 64 ---> loss = 0.4687	 accuracy = 0.8002
+2025-01-28 17:23:58,-1380315937 | INFO | 18200 - epoch = 65 ---> loss = 0.4649	 accuracy = 0.8011
+2025-01-28 17:23:59,-1380315535 | INFO | 18200 - epoch = 66 ---> loss = 0.4637	 accuracy = 0.8026
+2025-01-28 17:23:59,-1380315144 | INFO | 18200 - epoch = 67 ---> loss = 0.4613	 accuracy = 0.8016
+2025-01-28 17:24:00,-1380314761 | INFO | 18200 - epoch = 68 ---> loss = 0.4600	 accuracy = 0.8040
+2025-01-28 17:24:00,-1380314138 | INFO | 18200 - epoch = 69 ---> loss = 0.4580	 accuracy = 0.7978
+2025-01-28 17:24:01,-1380313524 | INFO | 18200 - epoch = 70 ---> loss = 0.4575	 accuracy = 0.8040
+2025-01-28 17:24:01,-1380312963 | INFO | 18200 - epoch = 71 ---> loss = 0.4539	 accuracy = 0.8040
+2025-01-28 17:24:02,-1380312391 | INFO | 18200 - epoch = 72 ---> loss = 0.4555	 accuracy = 0.8021
+2025-01-28 17:24:03,-1380311741 | INFO | 18200 - epoch = 73 ---> loss = 0.4514	 accuracy = 0.8026
+2025-01-28 17:24:03,-1380310989 | INFO | 18200 - epoch = 74 ---> loss = 0.4497	 accuracy = 0.8040
+2025-01-28 17:24:04,-1380310242 | INFO | 18200 - epoch = 75 ---> loss = 0.4456	 accuracy = 0.8059
+2025-01-28 17:24:05,-1380309527 | INFO | 18200 - epoch = 76 ---> loss = 0.4463	 accuracy = 0.8063
+2025-01-28 17:24:06,-1380308832 | INFO | 18200 - epoch = 77 ---> loss = 0.4456	 accuracy = 0.8073
+2025-01-28 17:24:06,-1380308123 | INFO | 18200 - epoch = 78 ---> loss = 0.4427	 accuracy = 0.8073
+2025-01-28 17:24:07,-1380307389 | INFO | 18200 - epoch = 79 ---> loss = 0.4420	 accuracy = 0.8082
+2025-01-28 17:24:08,-1380306514 | INFO | 18200 - epoch = 80 ---> loss = 0.4424	 accuracy = 0.8106
+2025-01-28 17:24:09,-1380305725 | INFO | 18200 - epoch = 81 ---> loss = 0.4375	 accuracy = 0.8106
+2025-01-28 17:24:09,-1380305041 | INFO | 18200 - epoch = 82 ---> loss = 0.4355	 accuracy = 0.8153
+2025-01-28 17:24:10,-1380304407 | INFO | 18200 - epoch = 83 ---> loss = 0.4356	 accuracy = 0.8111
+2025-01-28 17:24:10,-1380303959 | INFO | 18200 - epoch = 84 ---> loss = 0.4358	 accuracy = 0.8116
+2025-01-28 17:24:11,-1380303509 | INFO | 18200 - epoch = 85 ---> loss = 0.4352	 accuracy = 0.8097
+2025-01-28 17:24:11,-1380302921 | INFO | 18200 - epoch = 86 ---> loss = 0.4344	 accuracy = 0.8130
+2025-01-28 17:24:12,-1380302385 | INFO | 18200 - epoch = 87 ---> loss = 0.4325	 accuracy = 0.8134
+2025-01-28 17:24:12,-1380302020 | INFO | 18200 - epoch = 88 ---> loss = 0.4307	 accuracy = 0.8130
+2025-01-28 17:24:13,-1380301570 | INFO | 18200 - epoch = 89 ---> loss = 0.4313	 accuracy = 0.8125
+2025-01-28 17:24:13,-1380301098 | INFO | 18200 - epoch = 90 ---> loss = 0.4324	 accuracy = 0.8111
+2025-01-28 17:24:14,-1380300638 | INFO | 18200 - epoch = 91 ---> loss = 0.4300	 accuracy = 0.8144
+2025-01-28 17:24:14,-1380300249 | INFO | 18200 - epoch = 92 ---> loss = 0.4279	 accuracy = 0.8144
+2025-01-28 17:24:15,-1380299803 | INFO | 18200 - epoch = 93 ---> loss = 0.4278	 accuracy = 0.8149
+2025-01-28 17:24:15,-1380299449 | INFO | 18200 - epoch = 94 ---> loss = 0.4255	 accuracy = 0.8144
+2025-01-28 17:24:15,-1380299017 | INFO | 18200 - epoch = 95 ---> loss = 0.4272	 accuracy = 0.8125
+2025-01-28 17:24:16,-1380298574 | INFO | 18200 - epoch = 96 ---> loss = 0.4287	 accuracy = 0.8130
+2025-01-28 17:24:16,-1380297999 | INFO | 18200 - epoch = 97 ---> loss = 0.4256	 accuracy = 0.8134
+2025-01-28 17:24:17,-1380297349 | INFO | 18200 - epoch = 98 ---> loss = 0.4256	 accuracy = 0.8168
+2025-01-28 17:24:18,-1380296687 | INFO | 18200 - epoch = 99 ---> loss = 0.4267	 accuracy = 0.8130
+2025-01-28 17:24:18,-1380296025 | INFO | 18200 - epoch = 100 ---> loss = 0.4237	 accuracy = 0.8158
+2025-01-28 17:24:19,-1380295294 | INFO | 18200 - epoch = 101 ---> loss = 0.4245	 accuracy = 0.8191
+2025-01-28 17:24:20,-1380294581 | INFO | 18200 - epoch = 102 ---> loss = 0.4207	 accuracy = 0.8187
+2025-01-28 17:24:21,-1380293809 | INFO | 18200 - epoch = 103 ---> loss = 0.4244	 accuracy = 0.8149
+2025-01-28 17:24:21,-1380293113 | INFO | 18200 - epoch = 104 ---> loss = 0.4233	 accuracy = 0.8182
+2025-01-28 17:24:22,-1380292359 | INFO | 18200 - epoch = 105 ---> loss = 0.4229	 accuracy = 0.8144
+2025-01-28 17:24:23,-1380291692 | INFO | 18200 - epoch = 106 ---> loss = 0.4209	 accuracy = 0.8172
+2025-01-28 17:24:23,-1380291076 | INFO | 18200 - epoch = 107 ---> loss = 0.4225	 accuracy = 0.8153
+2025-01-28 17:24:24,-1380290490 | INFO | 18200 - epoch = 108 ---> loss = 0.4220	 accuracy = 0.8139
+2025-01-28 17:24:24,-1380289882 | INFO | 18200 - epoch = 109 ---> loss = 0.4189	 accuracy = 0.8210
+2025-01-28 17:24:25,-1380289209 | INFO | 18200 - epoch = 110 ---> loss = 0.4209	 accuracy = 0.8168
+2025-01-28 17:24:26,-1380288638 | INFO | 18200 - epoch = 111 ---> loss = 0.4207	 accuracy = 0.8177
+2025-01-28 17:24:26,-1380288107 | INFO | 18200 - epoch = 112 ---> loss = 0.4201	 accuracy = 0.8163
+2025-01-28 17:24:27,-1380287544 | INFO | 18200 - epoch = 113 ---> loss = 0.4187	 accuracy = 0.8153
+2025-01-28 17:24:27,-1380287029 | INFO | 18200 - epoch = 114 ---> loss = 0.4178	 accuracy = 0.8201
+2025-01-28 17:24:28,-1380286483 | INFO | 18200 - epoch = 115 ---> loss = 0.4188	 accuracy = 0.8182
+2025-01-28 17:24:28,-1380285918 | INFO | 18200 - epoch = 116 ---> loss = 0.4175	 accuracy = 0.8177
+2025-01-28 17:24:29,-1380285451 | INFO | 18200 - epoch = 117 ---> loss = 0.4195	 accuracy = 0.8168
+2025-01-28 17:24:29,-1380284956 | INFO | 18200 - epoch = 118 ---> loss = 0.4168	 accuracy = 0.8182
+2025-01-28 17:24:30,-1380284513 | INFO | 18200 - epoch = 119 ---> loss = 0.4173	 accuracy = 0.8205
+2025-01-28 17:24:30,-1380284044 | INFO | 18200 - epoch = 120 ---> loss = 0.4169	 accuracy = 0.8201
+2025-01-28 17:24:31,-1380283674 | INFO | 18200 - epoch = 121 ---> loss = 0.4133	 accuracy = 0.8229
+2025-01-28 17:24:31,-1380283342 | INFO | 18200 - epoch = 122 ---> loss = 0.4179	 accuracy = 0.8158
+2025-01-28 17:24:31,-1380282922 | INFO | 18200 - epoch = 123 ---> loss = 0.4178	 accuracy = 0.8177
+2025-01-28 17:24:32,-1380282431 | INFO | 18200 - epoch = 124 ---> loss = 0.4169	 accuracy = 0.8177
+2025-01-28 17:24:32,-1380282007 | INFO | 18200 - epoch = 125 ---> loss = 0.4184	 accuracy = 0.8201
+2025-01-28 17:24:33,-1380281600 | INFO | 18200 - epoch = 126 ---> loss = 0.4162	 accuracy = 0.8220
+2025-01-28 17:24:33,-1380281101 | INFO | 18200 - epoch = 127 ---> loss = 0.4163	 accuracy = 0.8187
+2025-01-28 17:24:34,-1380280711 | INFO | 18200 - epoch = 128 ---> loss = 0.4148	 accuracy = 0.8191
+2025-01-28 17:24:34,-1380280356 | INFO | 18200 - epoch = 129 ---> loss = 0.4170	 accuracy = 0.8201
+2025-01-28 17:24:35,-1380279814 | INFO | 18200 - epoch = 130 ---> loss = 0.4127	 accuracy = 0.8239
+2025-01-28 17:24:35,-1380279421 | INFO | 18200 - epoch = 131 ---> loss = 0.4132	 accuracy = 0.8234
+2025-01-28 17:24:35,-1380278988 | INFO | 18200 - epoch = 132 ---> loss = 0.4131	 accuracy = 0.8220
+2025-01-28 17:24:36,-1380278546 | INFO | 18200 - epoch = 133 ---> loss = 0.4159	 accuracy = 0.8201
+2025-01-28 17:24:36,-1380278016 | INFO | 18200 - epoch = 134 ---> loss = 0.4124	 accuracy = 0.8215
+2025-01-28 17:24:37,-1380277497 | INFO | 18200 - epoch = 135 ---> loss = 0.4158	 accuracy = 0.8196
+2025-01-28 17:24:37,-1380276954 | INFO | 18200 - epoch = 136 ---> loss = 0.4142	 accuracy = 0.8210
+2025-01-28 17:24:38,-1380276463 | INFO | 18200 - epoch = 137 ---> loss = 0.4140	 accuracy = 0.8205
+2025-01-28 17:24:38,-1380276128 | INFO | 18200 - epoch = 138 ---> loss = 0.4134	 accuracy = 0.8205
+2025-01-28 17:24:39,-1380275643 | INFO | 18200 - epoch = 139 ---> loss = 0.4133	 accuracy = 0.8234
+2025-01-28 17:24:39,-1380275137 | INFO | 18200 - epoch = 140 ---> loss = 0.4165	 accuracy = 0.8196
+2025-01-28 17:24:40,-1380274627 | INFO | 18200 - epoch = 141 ---> loss = 0.4142	 accuracy = 0.8196
+2025-01-28 17:24:40,-1380274182 | INFO | 18200 - epoch = 142 ---> loss = 0.4120	 accuracy = 0.8220
+2025-01-28 17:24:41,-1380273673 | INFO | 18200 - epoch = 143 ---> loss = 0.4146	 accuracy = 0.8201
+2025-01-28 17:24:41,-1380273194 | INFO | 18200 - epoch = 144 ---> loss = 0.4149	 accuracy = 0.8205
+2025-01-28 17:24:42,-1380272720 | INFO | 18200 - epoch = 145 ---> loss = 0.4147	 accuracy = 0.8210
+2025-01-28 17:24:42,-1380272291 | INFO | 18200 - epoch = 146 ---> loss = 0.4143	 accuracy = 0.8196
+2025-01-28 17:24:43,-1380271747 | INFO | 18200 - epoch = 147 ---> loss = 0.4143	 accuracy = 0.8205
+2025-01-28 17:24:43,-1380271235 | INFO | 18200 - epoch = 148 ---> loss = 0.4148	 accuracy = 0.8191
+2025-01-28 17:24:44,-1380270777 | INFO | 18200 - epoch = 149 ---> loss = 0.4127	 accuracy = 0.8210
+2025-01-28 17:24:44,-1380270246 | INFO | 18200 - Test accuracy = 0.8234
+2025-01-28 17:24:44,-1380270222 | INFO | 18200 - OracleTorch trained on cpu in: 86.81994676589966 secs
+2025-01-28 17:24:44,-1380270181 | INFO | 18200 - Saved: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-28 17:24:44,-1380270156 | INFO | 18200 - Created: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-28 17:24:44,-1380270149 | INFO | 18200 - Instantiating: src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric
+2025-01-28 17:24:44,-1380270116 | INFO | 18200 - Created: DCESExplainer-1bc3bcc16827475dc8d2312ac0f6154d
+2025-01-28 17:24:44,-1380270087 | INFO | 18200 - Evaluating the explainers.............................................................
+2025-01-28 17:24:44,-1380270083 | INFO | 18200 - Evaluating instance with id 17
+2025-01-28 17:24:47,-1380267460 | INFO | 18200 - evaluated instance with id 17
+2025-01-28 17:24:47,-1380267460 | INFO | 18200 - Evaluating instance with id 20
+2025-01-28 17:24:50,-1380264783 | INFO | 18200 - evaluated instance with id 20
+2025-01-28 17:24:50,-1380264783 | INFO | 18200 - Evaluating instance with id 28
+2025-01-28 17:24:52,-1380261978 | INFO | 18200 - evaluated instance with id 28
+2025-01-28 17:24:52,-1380261978 | INFO | 18200 - Evaluating instance with id 29
+2025-01-28 17:24:55,-1380259098 | INFO | 18200 - evaluated instance with id 29
+2025-01-28 17:24:55,-1380259098 | INFO | 18200 - Evaluating instance with id 33
+2025-01-28 17:24:58,-1380256349 | INFO | 18200 - evaluated instance with id 33
+2025-01-28 17:24:58,-1380256343 | INFO | 18200 - Evaluating instance with id 41
+2025-01-28 17:25:01,-1380253698 | INFO | 18200 - evaluated instance with id 41
+2025-01-28 17:25:01,-1380253697 | INFO | 18200 - Evaluating instance with id 49
+2025-01-28 17:25:03,-1380250883 | INFO | 18200 - evaluated instance with id 49
+2025-01-28 17:25:03,-1380250883 | INFO | 18200 - Evaluating instance with id 52
+2025-01-28 17:25:06,-1380248415 | INFO | 18200 - evaluated instance with id 52
+2025-01-28 17:25:06,-1380248407 | INFO | 18200 - Evaluating instance with id 61
+2025-01-28 17:25:09,-1380245629 | INFO | 18200 - evaluated instance with id 61
+2025-01-28 17:25:09,-1380245627 | INFO | 18200 - Evaluating instance with id 73
+2025-01-28 17:25:11,-1380243082 | INFO | 18200 - evaluated instance with id 73
+2025-01-28 17:25:11,-1380243082 | INFO | 18200 - Evaluating instance with id 76
+2025-01-28 17:25:14,-1380240446 | INFO | 18200 - evaluated instance with id 76
+2025-01-28 17:25:14,-1380240446 | INFO | 18200 - Evaluating instance with id 77
+2025-01-28 17:25:16,-1380238023 | INFO | 18200 - evaluated instance with id 77
+2025-01-28 17:25:16,-1380238023 | INFO | 18200 - Evaluating instance with id 86
+2025-01-28 17:25:20,-1380234377 | INFO | 18200 - evaluated instance with id 86
+2025-01-28 17:25:20,-1380234377 | INFO | 18200 - Evaluating instance with id 108
+2025-01-28 17:25:24,-1380230010 | INFO | 18200 - evaluated instance with id 108
+2025-01-28 17:25:24,-1380230010 | INFO | 18200 - Evaluating instance with id 112
+2025-01-28 17:25:29,-1380225638 | INFO | 18200 - evaluated instance with id 112
+2025-01-28 17:25:29,-1380225638 | INFO | 18200 - Evaluating instance with id 128
+2025-01-28 17:25:33,-1380221046 | INFO | 18200 - evaluated instance with id 128
+2025-01-28 17:25:33,-1380221046 | INFO | 18200 - Evaluating instance with id 130
+2025-01-28 17:25:38,-1380216769 | INFO | 18200 - evaluated instance with id 130
+2025-01-28 17:25:38,-1380216769 | INFO | 18200 - Evaluating instance with id 141
+2025-01-28 17:25:40,-1380214156 | INFO | 18200 - evaluated instance with id 141
+2025-01-28 17:25:40,-1380214153 | INFO | 18200 - Evaluating instance with id 142
+2025-01-28 17:25:43,-1380211458 | INFO | 18200 - evaluated instance with id 142
+2025-01-28 17:25:43,-1380211450 | INFO | 18200 - Evaluating instance with id 146
+2025-01-28 17:25:46,-1380208808 | INFO | 18200 - evaluated instance with id 146
+2025-01-28 17:25:46,-1380208806 | INFO | 18200 - Evaluating instance with id 152
+2025-01-28 17:25:48,-1380206122 | INFO | 18200 - evaluated instance with id 152
+2025-01-28 17:25:48,-1380206115 | INFO | 18200 - Evaluating instance with id 159
+2025-01-28 17:25:51,-1380203440 | INFO | 18200 - evaluated instance with id 159
+2025-01-28 17:25:51,-1380203440 | INFO | 18200 - Evaluating instance with id 168
+2025-01-28 17:25:54,-1380200718 | INFO | 18200 - evaluated instance with id 168
+2025-01-28 17:25:54,-1380200717 | INFO | 18200 - Evaluating instance with id 180
+2025-01-28 17:25:56,-1380198121 | INFO | 18200 - evaluated instance with id 180
+2025-01-28 17:25:56,-1380198121 | INFO | 18200 - Evaluating instance with id 197
+2025-01-28 17:25:59,-1380195618 | INFO | 18200 - evaluated instance with id 197
+2025-01-28 17:25:59,-1380195618 | INFO | 18200 - Evaluating instance with id 198
+2025-01-28 17:26:02,-1380192456 | INFO | 18200 - evaluated instance with id 198
+2025-01-28 17:26:02,-1380192456 | INFO | 18200 - Evaluating instance with id 206
+2025-01-28 17:26:07,-1380187779 | INFO | 18200 - evaluated instance with id 206
+2025-01-28 17:26:07,-1380187779 | INFO | 18200 - Evaluating instance with id 213
+2025-01-28 17:26:13,-1380180888 | INFO | 18200 - evaluated instance with id 213
+2025-01-28 17:26:13,-1380180888 | INFO | 18200 - Evaluating instance with id 221
+2025-01-28 17:26:20,-1380174009 | INFO | 18200 - evaluated instance with id 221
+2025-01-28 17:26:20,-1380174009 | INFO | 18200 - Evaluating instance with id 275
+2025-01-28 17:26:27,-1380167021 | INFO | 18200 - evaluated instance with id 275
+2025-01-28 17:26:27,-1380167021 | INFO | 18200 - Evaluating instance with id 287
+2025-01-28 17:26:34,-1380160029 | INFO | 18200 - evaluated instance with id 287
+2025-01-28 17:26:34,-1380160029 | INFO | 18200 - Evaluating instance with id 292
+2025-01-28 17:26:41,-1380152961 | INFO | 18200 - evaluated instance with id 292
+2025-01-28 17:26:41,-1380152946 | INFO | 18200 - Evaluating instance with id 299
+2025-01-28 17:26:48,-1380146303 | INFO | 18200 - evaluated instance with id 299
+2025-01-28 17:26:48,-1380146303 | INFO | 18200 - Evaluating instance with id 309
+2025-01-28 17:26:51,-1380143433 | INFO | 18200 - evaluated instance with id 309
+2025-01-28 17:26:51,-1380143433 | INFO | 18200 - Evaluating instance with id 311
+2025-01-28 17:26:54,-1380140238 | INFO | 18200 - evaluated instance with id 311
+2025-01-28 17:26:54,-1380140238 | INFO | 18200 - Evaluating instance with id 313
+2025-01-28 17:26:57,-1380137575 | INFO | 18200 - evaluated instance with id 313
+2025-01-28 17:26:57,-1380137575 | INFO | 18200 - Evaluating instance with id 315
+2025-01-28 17:27:02,-1380132352 | INFO | 18200 - evaluated instance with id 315
+2025-01-28 17:27:02,-1380132352 | INFO | 18200 - Evaluating instance with id 341
+2025-01-28 17:27:09,-1380125278 | INFO | 18200 - evaluated instance with id 341
+2025-01-28 17:27:09,-1380125262 | INFO | 18200 - Evaluating instance with id 345
+2025-01-28 17:27:16,-1380118237 | INFO | 18200 - evaluated instance with id 345
+2025-01-28 17:27:16,-1380118237 | INFO | 18200 - Evaluating instance with id 347
+2025-01-28 17:27:23,-1380111354 | INFO | 18200 - evaluated instance with id 347
+2025-01-28 17:27:23,-1380111354 | INFO | 18200 - Evaluating instance with id 354
+2025-01-28 17:27:30,-1380104380 | INFO | 18200 - evaluated instance with id 354
+2025-01-28 17:27:30,-1380104380 | INFO | 18200 - Evaluating instance with id 376
+2025-01-28 17:27:36,-1380098703 | INFO | 18200 - evaluated instance with id 376
+2025-01-28 17:27:36,-1380098703 | INFO | 18200 - Evaluating instance with id 377
+2025-01-28 17:27:40,-1380094534 | INFO | 18200 - evaluated instance with id 377
+2025-01-28 17:27:40,-1380094534 | INFO | 18200 - Evaluating instance with id 384
+2025-01-28 17:27:44,-1380090132 | INFO | 18200 - evaluated instance with id 384
+2025-01-28 17:27:44,-1380090130 | INFO | 18200 - Evaluating instance with id 386
+2025-01-28 17:27:49,-1380085875 | INFO | 18200 - evaluated instance with id 386
+2025-01-28 17:27:49,-1380085875 | INFO | 18200 - Evaluating instance with id 402
+2025-01-28 17:27:53,-1380081493 | INFO | 18200 - evaluated instance with id 402
+2025-01-28 17:27:53,-1380081493 | INFO | 18200 - Evaluating instance with id 407
+2025-01-28 17:27:57,-1380077188 | INFO | 18200 - evaluated instance with id 407
+2025-01-28 17:27:57,-1380077186 | INFO | 18200 - Evaluating instance with id 408
+2025-01-28 17:28:01,-1380072950 | INFO | 18200 - evaluated instance with id 408
+2025-01-28 17:28:01,-1380072950 | INFO | 18200 - Evaluating instance with id 412
+2025-01-28 17:28:06,-1380068666 | INFO | 18200 - evaluated instance with id 412
+2025-01-28 17:28:06,-1380068666 | INFO | 18200 - Evaluating instance with id 425
+2025-01-28 17:28:10,-1380064216 | INFO | 18200 - evaluated instance with id 425
+2025-01-28 17:28:10,-1380064211 | INFO | 18200 - Evaluating instance with id 428
+2025-01-28 17:28:14,-1380059913 | INFO | 18200 - evaluated instance with id 428
+2025-01-28 17:28:14,-1380059913 | INFO | 18200 - Evaluating instance with id 440
+2025-01-28 17:28:19,-1380055690 | INFO | 18200 - evaluated instance with id 440
+2025-01-28 17:28:19,-1380055690 | INFO | 18200 - Evaluating instance with id 442
+2025-01-28 17:28:23,-1380051527 | INFO | 18200 - evaluated instance with id 442
+2025-01-28 17:28:23,-1380051527 | INFO | 18200 - Evaluating instance with id 443
+2025-01-28 17:28:28,-1380046333 | INFO | 18200 - evaluated instance with id 443
+2025-01-28 17:28:28,-1380046333 | INFO | 18200 - Evaluating instance with id 473
+2025-01-28 17:28:32,-1380042855 | INFO | 18200 - evaluated instance with id 473
+2025-01-28 17:28:32,-1380042843 | INFO | 18200 - Evaluating instance with id 505
+2025-01-28 17:28:34,-1380040023 | INFO | 18200 - evaluated instance with id 505
+2025-01-28 17:28:34,-1380040023 | INFO | 18200 - Evaluating instance with id 509
+2025-01-28 17:28:37,-1380037541 | INFO | 18200 - evaluated instance with id 509
+2025-01-28 17:28:37,-1380037541 | INFO | 18200 - Evaluating instance with id 510
+2025-01-28 17:28:40,-1380034476 | INFO | 18200 - evaluated instance with id 510
+2025-01-28 17:28:40,-1380034476 | INFO | 18200 - Evaluating instance with id 531
+2025-01-28 17:28:45,-1380029854 | INFO | 18200 - evaluated instance with id 531
+2025-01-28 17:28:45,-1380029845 | INFO | 18200 - Evaluating instance with id 572
+2025-01-28 17:28:54,-1380020013 | INFO | 18200 - evaluated instance with id 572
+2025-01-28 17:28:54,-1380020002 | INFO | 18200 - Evaluating instance with id 577
+2025-01-28 17:29:03,-1380011855 | INFO | 18200 - evaluated instance with id 577
+2025-01-28 17:29:03,-1380011855 | INFO | 18200 - Evaluating instance with id 590
+2025-01-28 17:29:11,-1380003583 | INFO | 18200 - evaluated instance with id 590
+2025-01-28 17:29:11,-1380003583 | INFO | 18200 - Evaluating instance with id 599
+2025-01-28 17:29:16,-1379998550 | INFO | 18200 - evaluated instance with id 599
+2025-01-28 17:29:16,-1379998534 | INFO | 18200 - Evaluating instance with id 611
+2025-01-28 17:29:19,-1379995821 | INFO | 18200 - evaluated instance with id 611
+2025-01-28 17:29:19,-1379995821 | INFO | 18200 - Evaluating instance with id 639
+2025-01-28 17:29:21,-1379993208 | INFO | 18200 - evaluated instance with id 639
+2025-01-28 17:29:21,-1379993208 | INFO | 18200 - Evaluating instance with id 640
+2025-01-28 17:29:27,-1379987294 | INFO | 18200 - evaluated instance with id 640
+2025-01-28 17:29:27,-1379987286 | INFO | 18200 - Evaluating instance with id 643
+2025-01-28 17:29:34,-1379979946 | INFO | 18200 - evaluated instance with id 643
+2025-01-28 17:29:34,-1379979944 | INFO | 18200 - Evaluating instance with id 649
+2025-01-28 17:29:41,-1379973089 | INFO | 18200 - evaluated instance with id 649
+2025-01-28 17:29:41,-1379973089 | INFO | 18200 - Evaluating instance with id 651
+2025-01-28 17:29:48,-1379966210 | INFO | 18200 - evaluated instance with id 651
+2025-01-28 17:29:48,-1379966210 | INFO | 18200 - Evaluating instance with id 662
+2025-01-28 17:29:55,-1379959243 | INFO | 18200 - evaluated instance with id 662
+2025-01-28 17:29:55,-1379959235 | INFO | 18200 - Evaluating instance with id 675
+2025-01-28 17:30:02,-1379952164 | INFO | 18200 - evaluated instance with id 675
+2025-01-28 17:30:02,-1379952164 | INFO | 18200 - Evaluating instance with id 682
+2025-01-28 17:30:09,-1379945125 | INFO | 18200 - evaluated instance with id 682
+2025-01-28 17:30:09,-1379945125 | INFO | 18200 - Evaluating instance with id 686
+2025-01-28 17:30:16,-1379938262 | INFO | 18200 - evaluated instance with id 686
+2025-01-28 17:30:16,-1379938246 | INFO | 18200 - Evaluating instance with id 689
+2025-01-28 17:30:23,-1379931574 | INFO | 18200 - evaluated instance with id 689
+2025-01-28 17:30:23,-1379931574 | INFO | 18200 - Evaluating instance with id 690
+2025-01-28 17:30:30,-1379924853 | INFO | 18200 - evaluated instance with id 690
+2025-01-28 17:30:30,-1379924853 | INFO | 18200 - Evaluating instance with id 701
+2025-01-28 17:30:36,-1379918108 | INFO | 18200 - evaluated instance with id 701
+2025-01-28 17:30:36,-1379918108 | INFO | 18200 - Evaluating instance with id 705
+2025-01-28 17:30:43,-1379911380 | INFO | 18200 - evaluated instance with id 705
+2025-01-28 17:30:43,-1379911380 | INFO | 18200 - Evaluating instance with id 760
+2025-01-28 17:30:50,-1379904630 | INFO | 18200 - evaluated instance with id 760
+2025-01-28 17:30:50,-1379904630 | INFO | 18200 - Evaluating instance with id 761
+2025-01-28 17:30:57,-1379897672 | INFO | 18200 - evaluated instance with id 761
+2025-01-28 17:30:57,-1379897670 | INFO | 18200 - Evaluating instance with id 774
+2025-01-28 17:31:03,-1379890980 | INFO | 18200 - evaluated instance with id 774
+2025-01-28 17:31:03,-1379890980 | INFO | 18200 - Evaluating instance with id 778
+2025-01-28 17:31:10,-1379884261 | INFO | 18200 - evaluated instance with id 778
+2025-01-28 17:31:10,-1379884261 | INFO | 18200 - Evaluating instance with id 781
+2025-01-28 17:31:17,-1379877605 | INFO | 18200 - evaluated instance with id 781
+2025-01-28 17:31:17,-1379877605 | INFO | 18200 - Evaluating instance with id 788
+2025-01-28 17:31:23,-1379870896 | INFO | 18200 - evaluated instance with id 788
+2025-01-28 17:31:23,-1379870896 | INFO | 18200 - Evaluating instance with id 805
+2025-01-28 17:31:30,-1379864146 | INFO | 18200 - evaluated instance with id 805
+2025-01-28 17:31:30,-1379864146 | INFO | 18200 - Evaluating instance with id 817
+2025-01-28 17:31:37,-1379857436 | INFO | 18200 - evaluated instance with id 817
+2025-01-28 17:31:37,-1379857436 | INFO | 18200 - Evaluating instance with id 823
+2025-01-28 17:31:44,-1379850728 | INFO | 18200 - evaluated instance with id 823
+2025-01-28 17:31:44,-1379850728 | INFO | 18200 - Evaluating instance with id 833
+2025-01-28 17:31:51,-1379843784 | INFO | 18200 - evaluated instance with id 833
+2025-01-28 17:31:51,-1379843784 | INFO | 18200 - Evaluating instance with id 848
+2025-01-28 17:31:57,-1379837045 | INFO | 18200 - evaluated instance with id 848
+2025-01-28 17:31:57,-1379837045 | INFO | 18200 - Evaluating instance with id 849
+2025-01-28 17:32:04,-1379830198 | INFO | 18200 - evaluated instance with id 849
+2025-01-28 17:32:04,-1379830198 | INFO | 18200 - Evaluating instance with id 878
+2025-01-28 17:32:11,-1379823491 | INFO | 18200 - evaluated instance with id 878
+2025-01-28 17:32:11,-1379823491 | INFO | 18200 - Evaluating instance with id 880
+2025-01-28 17:32:18,-1379816722 | INFO | 18200 - evaluated instance with id 880
+2025-01-28 17:32:18,-1379816722 | INFO | 18200 - Evaluating instance with id 889
+2025-01-28 17:32:24,-1379809999 | INFO | 18200 - evaluated instance with id 889
+2025-01-28 17:32:24,-1379809999 | INFO | 18200 - Evaluating instance with id 905
+2025-01-28 17:32:32,-1379801929 | INFO | 18200 - evaluated instance with id 905
+2025-01-28 17:32:32,-1379801929 | INFO | 18200 - Evaluating instance with id 921
+2025-01-28 17:32:36,-1379798335 | INFO | 18200 - evaluated instance with id 921
+2025-01-28 17:32:36,-1379798335 | INFO | 18200 - Evaluating instance with id 925
+2025-01-28 17:32:39,-1379795723 | INFO | 18200 - evaluated instance with id 925
+2025-01-28 17:32:39,-1379795723 | INFO | 18200 - Evaluating instance with id 935
+2025-01-28 17:32:41,-1379793151 | INFO | 18200 - evaluated instance with id 935
+2025-01-28 17:32:41,-1379793151 | INFO | 18200 - Evaluating instance with id 938
+2025-01-28 17:32:44,-1379790653 | INFO | 18200 - evaluated instance with id 938
+2025-01-28 17:32:44,-1379790653 | INFO | 18200 - Evaluating instance with id 943
+2025-01-28 17:32:47,-1379787849 | INFO | 18200 - evaluated instance with id 943
+2025-01-28 17:32:47,-1379787849 | INFO | 18200 - Evaluating instance with id 961
+2025-01-28 17:32:49,-1379785076 | INFO | 18200 - evaluated instance with id 961
+2025-01-28 17:32:49,-1379785076 | INFO | 18200 - Evaluating instance with id 970
+2025-01-28 17:32:52,-1379782485 | INFO | 18200 - evaluated instance with id 970
+2025-01-28 17:32:52,-1379782477 | INFO | 18200 - Evaluating instance with id 1004
+2025-01-28 17:33:00,-1379774860 | INFO | 18200 - evaluated instance with id 1004
+2025-01-28 17:33:00,-1379774856 | INFO | 18200 - Evaluating instance with id 1006
+2025-01-28 17:33:07,-1379767604 | INFO | 18200 - evaluated instance with id 1006
+2025-01-28 17:33:07,-1379767604 | INFO | 18200 - Evaluating instance with id 1008
+2025-01-28 17:33:14,-1379760393 | INFO | 18200 - evaluated instance with id 1008
+2025-01-28 17:33:14,-1379760393 | INFO | 18200 - Evaluating instance with id 1010
+2025-01-28 17:33:21,-1379753055 | INFO | 18200 - evaluated instance with id 1010
+2025-01-28 17:33:21,-1379753039 | INFO | 18200 - Evaluating instance with id 1018
+2025-01-28 17:33:28,-1379745894 | INFO | 18200 - evaluated instance with id 1018
+2025-01-28 17:33:28,-1379745894 | INFO | 18200 - Evaluating instance with id 1045
+2025-01-28 17:33:36,-1379738839 | INFO | 18200 - evaluated instance with id 1045
+2025-01-28 17:33:36,-1379738839 | INFO | 18200 - Evaluating instance with id 1051
+2025-01-28 17:33:43,-1379731668 | INFO | 18200 - evaluated instance with id 1051
+2025-01-28 17:33:43,-1379731668 | INFO | 18200 - Evaluating instance with id 1068
+2025-01-28 17:33:49,-1379724913 | INFO | 18200 - evaluated instance with id 1068
+2025-01-28 17:33:49,-1379724913 | INFO | 18200 - Evaluating instance with id 1071
+2025-01-28 17:33:56,-1379718080 | INFO | 18200 - evaluated instance with id 1071
+2025-01-28 17:33:56,-1379718080 | INFO | 18200 - Evaluating instance with id 1083
+2025-01-28 17:34:03,-1379711128 | INFO | 18200 - evaluated instance with id 1083
+2025-01-28 17:34:03,-1379711121 | INFO | 18200 - Evaluating instance with id 1088
+2025-01-28 17:34:10,-1379704180 | INFO | 18200 - evaluated instance with id 1088
+2025-01-28 17:34:10,-1379704173 | INFO | 18200 - Evaluating instance with id 1096
+2025-01-28 17:34:17,-1379697207 | INFO | 18200 - evaluated instance with id 1096
+2025-01-28 17:34:17,-1379697199 | INFO | 18200 - Evaluating instance with id 1101
+2025-01-28 17:34:24,-1379690310 | INFO | 18200 - evaluated instance with id 1101
+2025-01-28 17:34:24,-1379690310 | INFO | 18200 - Evaluating instance with id 1102
+2025-01-28 17:34:31,-1379683494 | INFO | 18200 - evaluated instance with id 1102
+2025-01-28 17:34:31,-1379683494 | INFO | 18200 - Evaluating instance with id 1104
+2025-01-28 17:34:38,-1379676135 | INFO | 18200 - evaluated instance with id 1104
+2025-01-28 17:34:38,-1379676135 | INFO | 18200 - Evaluating instance with id 1106
+2025-01-28 17:34:45,-1379669859 | INFO | 18200 - evaluated instance with id 1106
+2025-01-28 17:34:45,-1379669859 | INFO | 18200 - Evaluating instance with id 1114
+2025-01-28 17:34:47,-1379667715 | INFO | 18200 - evaluated instance with id 1114
+2025-01-28 17:34:47,-1379667699 | INFO | 18200 - Evaluating instance with id 1121
+2025-01-28 17:34:49,-1379665526 | INFO | 18200 - evaluated instance with id 1121
+2025-01-28 17:34:49,-1379665526 | INFO | 18200 - Evaluating instance with id 1134
+2025-01-28 17:34:51,-1379663350 | INFO | 18200 - evaluated instance with id 1134
+2025-01-28 17:34:51,-1379663350 | INFO | 18200 - Evaluating instance with id 1153
+2025-01-28 17:34:53,-1379661029 | INFO | 18200 - evaluated instance with id 1153
+2025-01-28 17:34:53,-1379661029 | INFO | 18200 - Evaluating instance with id 1171
+2025-01-28 17:34:56,-1379658130 | INFO | 18200 - evaluated instance with id 1171
+2025-01-28 17:34:56,-1379658130 | INFO | 18200 - Evaluating instance with id 1183
+2025-01-28 17:34:59,-1379655614 | INFO | 18200 - evaluated instance with id 1183
+2025-01-28 17:34:59,-1379655607 | INFO | 18200 - Evaluating instance with id 1185
+2025-01-28 17:35:04,-1379650479 | INFO | 18200 - evaluated instance with id 1185
+2025-01-28 17:35:04,-1379650479 | INFO | 18200 - Evaluating instance with id 1195
+2025-01-28 17:35:11,-1379643637 | INFO | 18200 - evaluated instance with id 1195
+2025-01-28 17:35:11,-1379643637 | INFO | 18200 - Evaluating instance with id 1197
+2025-01-28 17:35:18,-1379636524 | INFO | 18200 - evaluated instance with id 1197
+2025-01-28 17:35:18,-1379636524 | INFO | 18200 - Evaluating instance with id 1202
+2025-01-28 17:35:24,-1379630527 | INFO | 18200 - evaluated instance with id 1202
+2025-01-28 17:35:24,-1379630527 | INFO | 18200 - Evaluating instance with id 1227
+2025-01-28 17:35:27,-1379627865 | INFO | 18200 - evaluated instance with id 1227
+2025-01-28 17:35:27,-1379627857 | INFO | 18200 - Evaluating instance with id 1238
+2025-01-28 17:35:29,-1379625482 | INFO | 18200 - evaluated instance with id 1238
+2025-01-28 17:35:29,-1379625482 | INFO | 18200 - Evaluating instance with id 1246
+2025-01-28 17:35:31,-1379623247 | INFO | 18200 - evaluated instance with id 1246
+2025-01-28 17:35:31,-1379623247 | INFO | 18200 - Evaluating instance with id 1271
+2025-01-28 17:35:33,-1379621115 | INFO | 18200 - evaluated instance with id 1271
+2025-01-28 17:35:33,-1379621115 | INFO | 18200 - Evaluating instance with id 1293
+2025-01-28 17:35:35,-1379618940 | INFO | 18200 - evaluated instance with id 1293
+2025-01-28 17:35:35,-1379618925 | INFO | 18200 - Evaluating instance with id 1322
+2025-01-28 17:35:38,-1379616706 | INFO | 18200 - evaluated instance with id 1322
+2025-01-28 17:35:38,-1379616706 | INFO | 18200 - Evaluating instance with id 1324
+2025-01-28 17:35:40,-1379614543 | INFO | 18200 - evaluated instance with id 1324
+2025-01-28 17:35:40,-1379614543 | INFO | 18200 - Evaluating instance with id 1330
+2025-01-28 17:35:42,-1379612020 | INFO | 18200 - evaluated instance with id 1330
+2025-01-28 17:35:42,-1379612009 | INFO | 18200 - Evaluating instance with id 1336
+2025-01-28 17:35:45,-1379609559 | INFO | 18200 - evaluated instance with id 1336
+2025-01-28 17:35:45,-1379609559 | INFO | 18200 - Evaluating instance with id 1340
+2025-01-28 17:35:47,-1379607408 | INFO | 18200 - evaluated instance with id 1340
+2025-01-28 17:35:47,-1379607408 | INFO | 18200 - Evaluating instance with id 1341
+2025-01-28 17:35:49,-1379605206 | INFO | 18200 - evaluated instance with id 1341
+2025-01-28 17:35:49,-1379605206 | INFO | 18200 - Evaluating instance with id 1342
+2025-01-28 17:35:52,-1379602872 | INFO | 18200 - evaluated instance with id 1342
+2025-01-28 17:35:52,-1379602872 | INFO | 18200 - Evaluating instance with id 1350
+2025-01-28 17:35:54,-1379600236 | INFO | 18200 - evaluated instance with id 1350
+2025-01-28 17:35:54,-1379600236 | INFO | 18200 - Evaluating instance with id 1358
+2025-01-28 17:35:56,-1379598033 | INFO | 18200 - evaluated instance with id 1358
+2025-01-28 17:35:56,-1379598033 | INFO | 18200 - Evaluating instance with id 1359
+2025-01-28 17:36:02,-1379591982 | INFO | 18200 - evaluated instance with id 1359
+2025-01-28 17:36:02,-1379591982 | INFO | 18200 - Evaluating instance with id 1374
+2025-01-28 17:36:09,-1379585182 | INFO | 18200 - evaluated instance with id 1374
+2025-01-28 17:36:09,-1379585182 | INFO | 18200 - Evaluating instance with id 1386
+2025-01-28 17:36:16,-1379578259 | INFO | 18200 - evaluated instance with id 1386
+2025-01-28 17:36:16,-1379578259 | INFO | 18200 - Evaluating instance with id 1400
+2025-01-28 17:36:23,-1379571454 | INFO | 18200 - evaluated instance with id 1400
+2025-01-28 17:36:23,-1379571454 | INFO | 18200 - Evaluating instance with id 1415
+2025-01-28 17:36:30,-1379564509 | INFO | 18200 - evaluated instance with id 1415
+2025-01-28 17:36:30,-1379564509 | INFO | 18200 - Evaluating instance with id 1420
+2025-01-28 17:36:37,-1379557707 | INFO | 18200 - evaluated instance with id 1420
+2025-01-28 17:36:37,-1379557707 | INFO | 18200 - Evaluating instance with id 1423
+2025-01-28 17:36:44,-1379550826 | INFO | 18200 - evaluated instance with id 1423
+2025-01-28 17:36:44,-1379550826 | INFO | 18200 - Evaluating instance with id 1424
+2025-01-28 17:36:50,-1379544000 | INFO | 18200 - evaluated instance with id 1424
+2025-01-28 17:36:50,-1379544000 | INFO | 18200 - Evaluating instance with id 1427
+2025-01-28 17:36:57,-1379537293 | INFO | 18200 - evaluated instance with id 1427
+2025-01-28 17:36:57,-1379537293 | INFO | 18200 - Evaluating instance with id 1436
+2025-01-28 17:36:59,-1379535052 | INFO | 18200 - evaluated instance with id 1436
+2025-01-28 17:36:59,-1379535052 | INFO | 18200 - Evaluating instance with id 1463
+2025-01-28 17:37:02,-1379532633 | INFO | 18200 - evaluated instance with id 1463
+2025-01-28 17:37:02,-1379532633 | INFO | 18200 - Evaluating instance with id 1465
+2025-01-28 17:37:04,-1379530289 | INFO | 18200 - evaluated instance with id 1465
+2025-01-28 17:37:04,-1379530289 | INFO | 18200 - Evaluating instance with id 1474
+2025-01-28 17:37:06,-1379527907 | INFO | 18200 - evaluated instance with id 1474
+2025-01-28 17:37:06,-1379527907 | INFO | 18200 - Evaluating instance with id 1501
+2025-01-28 17:37:09,-1379525556 | INFO | 18200 - evaluated instance with id 1501
+2025-01-28 17:37:09,-1379525556 | INFO | 18200 - Evaluating instance with id 1506
+2025-01-28 17:37:12,-1379522540 | INFO | 18200 - evaluated instance with id 1506
+2025-01-28 17:37:12,-1379522532 | INFO | 18200 - Evaluating instance with id 1507
+2025-01-28 17:37:14,-1379519882 | INFO | 18200 - evaluated instance with id 1507
+2025-01-28 17:37:14,-1379519882 | INFO | 18200 - Evaluating instance with id 1512
+2025-01-28 17:37:21,-1379513282 | INFO | 18200 - evaluated instance with id 1512
+2025-01-28 17:37:21,-1379513266 | INFO | 18200 - Evaluating instance with id 1515
+2025-01-28 17:37:28,-1379506230 | INFO | 18200 - evaluated instance with id 1515
+2025-01-28 17:37:28,-1379506230 | INFO | 18200 - Evaluating instance with id 1517
+2025-01-28 17:37:35,-1379499039 | INFO | 18200 - evaluated instance with id 1517
+2025-01-28 17:37:35,-1379499039 | INFO | 18200 - Evaluating instance with id 1520
+2025-01-28 17:37:43,-1379491671 | INFO | 18200 - evaluated instance with id 1520
+2025-01-28 17:37:43,-1379491656 | INFO | 18200 - Evaluating instance with id 1522
+2025-01-28 17:37:49,-1379485680 | INFO | 18200 - evaluated instance with id 1522
+2025-01-28 17:37:49,-1379485680 | INFO | 18200 - Evaluating instance with id 1523
+2025-01-28 17:37:52,-1379482771 | INFO | 18200 - evaluated instance with id 1523
+2025-01-28 17:37:52,-1379482767 | INFO | 18200 - Evaluating instance with id 1530
+2025-01-28 17:37:54,-1379480421 | INFO | 18200 - evaluated instance with id 1530
+2025-01-28 17:37:54,-1379480421 | INFO | 18200 - Evaluating instance with id 1535
+2025-01-28 17:37:57,-1379477495 | INFO | 18200 - evaluated instance with id 1535
+2025-01-28 17:37:57,-1379477495 | INFO | 18200 - Evaluating instance with id 1553
+2025-01-28 17:38:00,-1379474693 | INFO | 18200 - evaluated instance with id 1553
+2025-01-28 17:38:00,-1379474693 | INFO | 18200 - Evaluating instance with id 1564
+2025-01-28 17:38:06,-1379468215 | INFO | 18200 - evaluated instance with id 1564
+2025-01-28 17:38:06,-1379468207 | INFO | 18200 - Evaluating instance with id 1566
+2025-01-28 17:38:14,-1379460832 | INFO | 18200 - evaluated instance with id 1566
+2025-01-28 17:38:14,-1379460832 | INFO | 18200 - Evaluating instance with id 1568
+2025-01-28 17:38:21,-1379453788 | INFO | 18200 - evaluated instance with id 1568
+2025-01-28 17:38:21,-1379453788 | INFO | 18200 - Evaluating instance with id 1588
+2025-01-28 17:38:28,-1379446391 | INFO | 18200 - evaluated instance with id 1588
+2025-01-28 17:38:28,-1379446391 | INFO | 18200 - Evaluating instance with id 1609
+2025-01-28 17:38:35,-1379439062 | INFO | 18200 - evaluated instance with id 1609
+2025-01-28 17:38:35,-1379439053 | INFO | 18200 - Evaluating instance with id 1614
+2025-01-28 17:38:42,-1379432162 | INFO | 18200 - evaluated instance with id 1614
+2025-01-28 17:38:42,-1379432160 | INFO | 18200 - Evaluating instance with id 1640
+2025-01-28 17:38:49,-1379424915 | INFO | 18200 - evaluated instance with id 1640
+2025-01-28 17:38:49,-1379424899 | INFO | 18200 - Evaluating instance with id 1654
+2025-01-28 17:38:56,-1379417953 | INFO | 18200 - evaluated instance with id 1654
+2025-01-28 17:38:56,-1379417953 | INFO | 18200 - Evaluating instance with id 1657
+2025-01-28 17:39:03,-1379411136 | INFO | 18200 - evaluated instance with id 1657
+2025-01-28 17:39:03,-1379411134 | INFO | 18200 - Evaluating instance with id 1669
+2025-01-28 17:39:11,-1379403806 | INFO | 18200 - evaluated instance with id 1669
+2025-01-28 17:39:11,-1379403806 | INFO | 18200 - Evaluating instance with id 1672
+2025-01-28 17:39:18,-1379396317 | INFO | 18200 - evaluated instance with id 1672
+2025-01-28 17:39:18,-1379396312 | INFO | 18200 - Evaluating instance with id 1675
+2025-01-28 17:39:26,-1379388061 | INFO | 18200 - evaluated instance with id 1675
+2025-01-28 17:39:26,-1379388061 | INFO | 18200 - Evaluating instance with id 1677
+2025-01-28 17:39:35,-1379379302 | INFO | 18200 - evaluated instance with id 1677
+2025-01-28 17:39:35,-1379379302 | INFO | 18200 - Evaluating instance with id 1702
+2025-01-28 17:39:43,-1379371616 | INFO | 18200 - evaluated instance with id 1702
+2025-01-28 17:39:43,-1379371616 | INFO | 18200 - Evaluating instance with id 1705
+2025-01-28 17:39:50,-1379364188 | INFO | 18200 - evaluated instance with id 1705
+2025-01-28 17:39:50,-1379364188 | INFO | 18200 - Evaluating instance with id 1717
+2025-01-28 17:39:58,-1379356253 | INFO | 18200 - evaluated instance with id 1717
+2025-01-28 17:39:58,-1379356245 | INFO | 18200 - Evaluating instance with id 1725
+2025-01-28 17:40:06,-1379348427 | INFO | 18200 - evaluated instance with id 1725
+2025-01-28 17:40:06,-1379348427 | INFO | 18200 - Evaluating instance with id 1743
+2025-01-28 17:40:14,-1379340773 | INFO | 18200 - evaluated instance with id 1743
+2025-01-28 17:40:14,-1379340773 | INFO | 18200 - Evaluating instance with id 1744
+2025-01-28 17:40:21,-1379333273 | INFO | 18200 - evaluated instance with id 1744
+2025-01-28 17:40:21,-1379333273 | INFO | 18200 - Evaluating instance with id 1751
+2025-01-28 17:40:28,-1379326000 | INFO | 18200 - evaluated instance with id 1751
+2025-01-28 17:40:28,-1379326000 | INFO | 18200 - Evaluating instance with id 1760
+2025-01-28 17:40:37,-1379317430 | INFO | 18200 - evaluated instance with id 1760
+2025-01-28 17:40:37,-1379317430 | INFO | 18200 - Evaluating instance with id 1779
+2025-01-28 17:40:40,-1379314629 | INFO | 18200 - evaluated instance with id 1779
+2025-01-28 17:40:40,-1379314629 | INFO | 18200 - Evaluating instance with id 1792
+2025-01-28 17:40:42,-1379311982 | INFO | 18200 - evaluated instance with id 1792
+2025-01-28 17:40:42,-1379311979 | INFO | 18200 - Evaluating instance with id 1793
+2025-01-28 17:40:45,-1379309098 | INFO | 18200 - evaluated instance with id 1793
+2025-01-28 17:40:45,-1379309098 | INFO | 18200 - Evaluating instance with id 1794
+2025-01-28 17:40:48,-1379306414 | INFO | 18200 - evaluated instance with id 1794
+2025-01-28 17:40:48,-1379306413 | INFO | 18200 - Evaluating instance with id 1803
+2025-01-28 17:40:51,-1379303872 | INFO | 18200 - evaluated instance with id 1803
+2025-01-28 17:40:51,-1379303872 | INFO | 18200 - Evaluating instance with id 1817
+2025-01-28 17:40:53,-1379301515 | INFO | 18200 - evaluated instance with id 1817
+2025-01-28 17:40:53,-1379301515 | INFO | 18200 - Evaluating instance with id 1821
+2025-01-28 17:40:55,-1379299197 | INFO | 18200 - evaluated instance with id 1821
+2025-01-28 17:40:55,-1379299197 | INFO | 18200 - Evaluating instance with id 1850
+2025-01-28 17:40:57,-1379296922 | INFO | 18200 - evaluated instance with id 1850
+2025-01-28 17:40:57,-1379296915 | INFO | 18200 - Evaluating instance with id 1914
+2025-01-28 17:41:00,-1379294649 | INFO | 18200 - evaluated instance with id 1914
+2025-01-28 17:41:00,-1379294649 | INFO | 18200 - Evaluating instance with id 1915
+2025-01-28 17:41:02,-1379292384 | INFO | 18200 - evaluated instance with id 1915
+2025-01-28 17:41:02,-1379292384 | INFO | 18200 - Evaluating instance with id 1919
+2025-01-28 17:41:04,-1379290164 | INFO | 18200 - evaluated instance with id 1919
+2025-01-28 17:41:04,-1379290163 | INFO | 18200 - Evaluating instance with id 1927
+2025-01-28 17:41:07,-1379287612 | INFO | 18200 - evaluated instance with id 1927
+2025-01-28 17:41:07,-1379287606 | INFO | 18200 - Evaluating instance with id 1938
+2025-01-28 17:41:10,-1379284876 | INFO | 18200 - evaluated instance with id 1938
+2025-01-28 17:41:10,-1379284876 | INFO | 18200 - Evaluating instance with id 1943
+2025-01-28 17:41:12,-1379282380 | INFO | 18200 - evaluated instance with id 1943
+2025-01-28 17:41:12,-1379282374 | INFO | 18200 - Evaluating instance with id 1950
+2025-01-28 17:41:15,-1379279734 | INFO | 18200 - evaluated instance with id 1950
+2025-01-28 17:41:15,-1379279734 | INFO | 18200 - Evaluating instance with id 1951
+2025-01-28 17:41:17,-1379277172 | INFO | 18200 - evaluated instance with id 1951
+2025-01-28 17:41:17,-1379277172 | INFO | 18200 - Evaluating instance with id 1966
+2025-01-28 17:41:20,-1379274835 | INFO | 18200 - evaluated instance with id 1966
+2025-01-28 17:41:20,-1379274835 | INFO | 18200 - Evaluating instance with id 1988
+2025-01-28 17:41:22,-1379272541 | INFO | 18200 - evaluated instance with id 1988
+2025-01-28 17:41:22,-1379272541 | INFO | 18200 - Evaluating instance with id 2016
+2025-01-28 17:41:24,-1379270182 | INFO | 18200 - evaluated instance with id 2016
+2025-01-28 17:41:24,-1379270175 | INFO | 18200 - Evaluating instance with id 2023
+2025-01-28 17:41:27,-1379267773 | INFO | 18200 - evaluated instance with id 2023
+2025-01-28 17:41:27,-1379267764 | INFO | 18200 - Evaluating instance with id 2028
+2025-01-28 17:41:29,-1379265192 | INFO | 18200 - evaluated instance with id 2028
+2025-01-28 17:41:29,-1379265187 | INFO | 18200 - Evaluating instance with id 2082
+2025-01-28 17:41:32,-1379262715 | INFO | 18200 - evaluated instance with id 2082
+2025-01-28 17:41:32,-1379262715 | INFO | 18200 - Evaluating instance with id 2086
+2025-01-28 17:41:34,-1379260211 | INFO | 18200 - evaluated instance with id 2086
+2025-01-28 17:41:34,-1379260211 | INFO | 18200 - Evaluating instance with id 2105
+2025-01-28 17:41:37,-1379257668 | INFO | 18200 - evaluated instance with id 2105
+2025-01-28 17:41:37,-1379257668 | INFO | 18200 - Evaluating instance with id 2106
+2025-01-28 17:41:39,-1379255286 | INFO | 18200 - evaluated instance with id 2106
+2025-01-28 17:41:39,-1379255270 | INFO | 18200 - Evaluating instance with id 2111
+2025-01-28 17:41:41,-1379253072 | INFO | 18200 - evaluated instance with id 2111
+2025-01-28 17:41:41,-1379253072 | INFO | 18200 - Evaluating instance with id 2127
+2025-01-28 17:41:43,-1379250882 | INFO | 18200 - evaluated instance with id 2127
+2025-01-28 17:41:43,-1379250882 | INFO | 18200 - Evaluating instance with id 2129
+2025-01-28 17:41:46,-1379248528 | INFO | 18200 - evaluated instance with id 2129
+2025-01-28 17:41:46,-1379248526 | INFO | 18200 - Evaluating instance with id 2138
+2025-01-28 17:41:48,-1379245970 | INFO | 18200 - evaluated instance with id 2138
+2025-01-28 17:41:48,-1379245969 | INFO | 18200 - Evaluating instance with id 2140
+2025-01-28 17:41:51,-1379243469 | INFO | 18200 - evaluated instance with id 2140
+2025-01-28 17:41:51,-1379243469 | INFO | 18200 - {'src.evaluation.evaluation_metric_runtime.RuntimeMetric': [{'id': '17', 'value': 2.611973762512207}, {'id': '20', 'value': 2.6661901473999023}, {'id': '28', 'value': 2.8005082607269287}, {'id': '29', 'value': 2.868861436843872}, {'id': '33', 'value': 2.7324790954589844}, {'id': '41', 'value': 2.6256823539733887}, {'id': '49', 'value': 2.8036885261535645}, {'id': '52', 'value': 2.460017681121826}, {'id': '61', 'value': 2.7686374187469482}, {'id': '73', 'value': 2.544496774673462}, {'id': '76', 'value': 2.624843120574951}, {'id': '77', 'value': 2.399423837661743}, {'id': '86', 'value': 3.6307339668273926}, {'id': '108', 'value': 4.336267948150635}, {'id': '112', 'value': 4.351825952529907}, {'id': '128', 'value': 4.575796365737915}, {'id': '130', 'value': 4.276293754577637}, {'id': '141', 'value': 2.5950050354003906}, {'id': '142', 'value': 2.6851518154144287}, {'id': '146', 'value': 2.6258811950683594}, {'id': '152', 'value': 2.6746838092803955}, {'id': '159', 'value': 2.667158365249634}, {'id': '168', 'value': 2.7119879722595215}, {'id': '180', 'value': 2.5901641845703125}, {'id': '197', 'value': 2.502863883972168}, {'id': '198', 'value': 3.1455090045928955}, {'id': '206', 'value': 4.64768123626709}, {'id': '213', 'value': 6.85981559753418}, {'id': '221', 'value': 6.847119569778442}, {'id': '275', 'value': 6.971934080123901}, {'id': '287', 'value': 6.960850238800049}, {'id': '292', 'value': 7.052011489868164}, {'id': '299', 'value': 6.625643491744995}, {'id': '309', 'value': 2.8548858165740967}, {'id': '311', 'value': 3.1868464946746826}, {'id': '313', 'value': 2.6530213356018066}, {'id': '315', 'value': 5.1916985511779785}, {'id': '341', 'value': 7.05881929397583}, {'id': '345', 'value': 7.008974313735962}, {'id': '347', 'value': 6.874469995498657}, {'id': '354', 'value': 6.926862955093384}, {'id': '376', 'value': 5.668603897094727}, {'id': '377', 'value': 4.144577264785767}, {'id': '384', 'value': 4.381304979324341}, {'id': '386', 'value': 4.2394163608551025}, {'id': '402', 'value': 4.3665032386779785}, {'id': '407', 'value': 4.28363037109375}, {'id': '408', 'value': 4.220130681991577}, {'id': '412', 'value': 4.267657279968262}, {'id': '425', 'value': 4.4376983642578125}, {'id': '428', 'value': 4.272534370422363}, {'id': '440', 'value': 4.2232582569122314}, {'id': '442', 'value': 4.131699323654175}, {'id': '443', 'value': 5.173743486404419}, {'id': '473', 'value': 3.4781620502471924}, {'id': '505', 'value': 2.8203516006469727}, {'id': '509', 'value': 2.469263792037964}, {'id': '510', 'value': 3.052591562271118}, {'id': '531', 'value': 4.606455564498901}, {'id': '572', 'value': 9.808788537979126}, {'id': '577', 'value': 8.12272572517395}, {'id': '590', 'value': 8.225021362304688}, {'id': '599', 'value': 5.0335259437561035}, {'id': '611', 'value': 2.704896926879883}, {'id': '639', 'value': 2.6081225872039795}, {'id': '640', 'value': 5.898719787597656}, {'id': '643', 'value': 7.313438892364502}, {'id': '649', 'value': 6.821491003036499}, {'id': '651', 'value': 6.856879234313965}, {'id': '662', 'value': 6.955234050750732}, {'id': '675', 'value': 7.055810928344727}, {'id': '682', 'value': 7.022752046585083}, {'id': '686', 'value': 6.856638193130493}, {'id': '689', 'value': 6.656607151031494}, {'id': '690', 'value': 6.673624753952026}, {'id': '701', 'value': 6.723865032196045}, {'id': '705', 'value': 6.6964476108551025}, {'id': '760', 'value': 6.718306541442871}, {'id': '761', 'value': 6.928705930709839}, {'id': '774', 'value': 6.6725170612335205}, {'id': '778', 'value': 6.703570365905762}, {'id': '781', 'value': 6.639844655990601}, {'id': '788', 'value': 6.674301862716675}, {'id': '805', 'value': 6.722261428833008}, {'id': '817', 'value': 6.678032875061035}, {'id': '823', 'value': 6.692590236663818}, {'id': '833', 'value': 6.913773059844971}, {'id': '848', 'value': 6.707122087478638}, {'id': '849', 'value': 6.816356897354126}, {'id': '878', 'value': 6.691557168960571}, {'id': '880', 'value': 6.752816915512085}, {'id': '889', 'value': 6.69057035446167}, {'id': '905', 'value': 8.038880586624146}, {'id': '921', 'value': 3.574828624725342}, {'id': '925', 'value': 2.602513313293457}, {'id': '935', 'value': 2.571784257888794}, {'id': '938', 'value': 2.4736862182617188}, {'id': '943', 'value': 2.7879979610443115}, {'id': '961', 'value': 2.7645137310028076}, {'id': '970', 'value': 2.57267165184021}, {'id': '1004', 'value': 7.59273624420166}, {'id': '1006', 'value': 7.225803375244141}, {'id': '1008', 'value': 7.1870176792144775}, {'id': '1010', 'value': 7.322187900543213}, {'id': '1018', 'value': 7.119832992553711}, {'id': '1045', 'value': 7.033473491668701}, {'id': '1051', 'value': 7.139786005020142}, {'id': '1068', 'value': 6.723123073577881}, {'id': '1071', 'value': 6.815216541290283}, {'id': '1083', 'value': 6.935842514038086}, {'id': '1088', 'value': 6.916603088378906}, {'id': '1096', 'value': 6.948623895645142}, {'id': '1101', 'value': 6.862563610076904}, {'id': '1102', 'value': 6.800184011459351}, {'id': '1104', 'value': 7.296382904052734}, {'id': '1106', 'value': 6.260285377502441}, {'id': '1114', 'value': 2.144831895828247}, {'id': '1121', 'value': 2.1697990894317627}, {'id': '1134', 'value': 2.1683599948883057}, {'id': '1153', 'value': 2.305924654006958}, {'id': '1171', 'value': 2.883953809738159}, {'id': '1183', 'value': 2.5060415267944336}, {'id': '1185', 'value': 5.102481842041016}, {'id': '1195', 'value': 6.815626859664917}, {'id': '1197', 'value': 7.081840753555298}, {'id': '1202', 'value': 5.986876487731934}, {'id': '1227', 'value': 2.6536712646484375}, {'id': '1238', 'value': 2.3743982315063477}, {'id': '1246', 'value': 2.2196075916290283}, {'id': '1271', 'value': 2.1226935386657715}, {'id': '1293', 'value': 2.175143003463745}, {'id': '1322', 'value': 2.203035831451416}, {'id': '1324', 'value': 2.1576716899871826}, {'id': '1330', 'value': 2.5232627391815186}, {'id': '1336', 'value': 2.440882921218872}, {'id': '1340', 'value': 2.1292176246643066}, {'id': '1341', 'value': 2.2016100883483887}, {'id': '1342', 'value': 2.328376054763794}, {'id': '1350', 'value': 2.6185946464538574}, {'id': '1358', 'value': 2.187458038330078}, {'id': '1359', 'value': 6.035999774932861}, {'id': '1374', 'value': 6.7837889194488525}, {'id': '1386', 'value': 6.876039505004883}, {'id': '1400', 'value': 6.78756308555603}, {'id': '1415', 'value': 6.929984092712402}, {'id': '1420', 'value': 6.7861223220825195}, {'id': '1423', 'value': 6.858119964599609}, {'id': '1424', 'value': 6.794650554656982}, {'id': '1427', 'value': 6.691115617752075}, {'id': '1436', 'value': 2.2412328720092773}, {'id': '1463', 'value': 2.418297529220581}, {'id': '1465', 'value': 2.333458185195923}, {'id': '1474', 'value': 2.366905689239502}, {'id': '1501', 'value': 2.3443729877471924}, {'id': '1506', 'value': 2.9996895790100098}, {'id': '1507', 'value': 2.6347270011901855}, {'id': '1512', 'value': 6.584531784057617}, {'id': '1515', 'value': 7.02046537399292}, {'id': '1517', 'value': 7.150020599365234}, {'id': '1520', 'value': 7.2407684326171875}, {'id': '1522', 'value': 5.968590259552002}, {'id': '1523', 'value': 2.9007465839385986}, {'id': '1530', 'value': 2.332066774368286}, {'id': '1535', 'value': 2.903795003890991}, {'id': '1553', 'value': 2.7935867309570312}, {'id': '1564', 'value': 6.457237720489502}, {'id': '1566', 'value': 7.360027074813843}, {'id': '1568', 'value': 7.012311697006226}, {'id': '1588', 'value': 7.3631203174591064}, {'id': '1609', 'value': 7.309024810791016}, {'id': '1614', 'value': 6.865300416946411}, {'id': '1640', 'value': 7.2265098094940186}, {'id': '1654', 'value': 6.914125680923462}, {'id': '1657', 'value': 6.792788743972778}, {'id': '1669', 'value': 7.31157112121582}, {'id': '1672', 'value': 7.465256929397583}, {'id': '1675', 'value': 8.210895538330078}, {'id': '1677', 'value': 8.734386205673218}, {'id': '1702', 'value': 7.6674418449401855}, {'id': '1705', 'value': 7.402801990509033}, {'id': '1717', 'value': 7.908026456832886}, {'id': '1725', 'value': 7.8003716468811035}, {'id': '1743', 'value': 7.631490230560303}, {'id': '1744', 'value': 7.484346151351929}, {'id': '1751', 'value': 7.256877183914185}, {'id': '1760', 'value': 8.561853647232056}, {'id': '1779', 'value': 2.785881280899048}, {'id': '1792', 'value': 2.637408971786499}, {'id': '1793', 'value': 2.8732688426971436}, {'id': '1794', 'value': 2.671964645385742}, {'id': '1803', 'value': 2.534822463989258}, {'id': '1817', 'value': 2.3436830043792725}, {'id': '1821', 'value': 2.3174359798431396}, {'id': '1850', 'value': 2.2718729972839355}, {'id': '1914', 'value': 2.2544867992401123}, {'id': '1915', 'value': 2.264286518096924}, {'id': '1919', 'value': 2.212890625}, {'id': '1927', 'value': 2.5397493839263916}, {'id': '1938', 'value': 2.724480390548706}, {'id': '1943', 'value': 2.4855921268463135}, {'id': '1950', 'value': 2.6402125358581543}, {'id': '1951', 'value': 2.5396456718444824}, {'id': '1966', 'value': 2.326512575149536}, {'id': '1988', 'value': 2.294262409210205}, {'id': '2016', 'value': 2.3535377979278564}, {'id': '2023', 'value': 2.400923013687134}, {'id': '2028', 'value': 2.5693161487579346}, {'id': '2082', 'value': 2.4714179039001465}, {'id': '2086', 'value': 2.4927735328674316}, {'id': '2105', 'value': 2.5274605751037598}, {'id': '2106', 'value': 2.3819308280944824}, {'id': '2111', 'value': 2.1892170906066895}, {'id': '2127', 'value': 2.178015947341919}, {'id': '2129', 'value': 2.338080406188965}, {'id': '2138', 'value': 2.5474860668182373}, {'id': '2140', 'value': 2.481055498123169}], 'src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric': [{'id': '17', 'value': 36.0}, {'id': '20', 'value': 25.0}, {'id': '28', 'value': 29.0}, {'id': '29', 'value': 44.0}, {'id': '33', 'value': 14.0}, {'id': '41', 'value': 43.0}, {'id': '49', 'value': 46.0}, {'id': '52', 'value': 33.0}, {'id': '61', 'value': 37.0}, {'id': '73', 'value': 39.0}, {'id': '76', 'value': 27.0}, {'id': '77', 'value': 23.0}, {'id': '86', 'value': 28.0}, {'id': '108', 'value': 33.0}, {'id': '112', 'value': 50.0}, {'id': '128', 'value': 49.0}, {'id': '130', 'value': 34.0}, {'id': '141', 'value': 37.0}, {'id': '142', 'value': 33.0}, {'id': '146', 'value': 23.0}, {'id': '152', 'value': 27.0}, {'id': '159', 'value': 46.0}, {'id': '168', 'value': 30.0}, {'id': '180', 'value': 37.0}, {'id': '197', 'value': 30.0}, {'id': '198', 'value': 28.0}, {'id': '206', 'value': 21.0}, {'id': '213', 'value': 9.0}, {'id': '221', 'value': 8.0}, {'id': '275', 'value': 3.0}, {'id': '287', 'value': 0.0}, {'id': '292', 'value': 0.0}, {'id': '299', 'value': 1.0}, {'id': '309', 'value': 7.0}, {'id': '311', 'value': 6.0}, {'id': '313', 'value': 0.0}, {'id': '315', 'value': 2.0}, {'id': '341', 'value': 1.0}, {'id': '345', 'value': 3.0}, {'id': '347', 'value': 0.0}, {'id': '354', 'value': 1.0}, {'id': '376', 'value': 1.0}, {'id': '377', 'value': 0.0}, {'id': '384', 'value': 2.0}, {'id': '386', 'value': 3.0}, {'id': '402', 'value': 2.0}, {'id': '407', 'value': 1.0}, {'id': '408', 'value': 1.0}, {'id': '412', 'value': 0.0}, {'id': '425', 'value': 3.0}, {'id': '428', 'value': 0.0}, {'id': '440', 'value': 3.0}, {'id': '442', 'value': 10.0}, {'id': '443', 'value': 11.0}, {'id': '473', 'value': 0.0}, {'id': '505', 'value': 8.0}, {'id': '509', 'value': 9.0}, {'id': '510', 'value': 8.0}, {'id': '531', 'value': 22.0}, {'id': '572', 'value': 11.0}, {'id': '577', 'value': 10.0}, {'id': '590', 'value': 2.0}, {'id': '599', 'value': 7.0}, {'id': '611', 'value': 0.0}, {'id': '639', 'value': 1.0}, {'id': '640', 'value': 1.0}, {'id': '643', 'value': 1.0}, {'id': '649', 'value': 5.0}, {'id': '651', 'value': 6.0}, {'id': '662', 'value': 10.0}, {'id': '675', 'value': 2.0}, {'id': '682', 'value': 1.0}, {'id': '686', 'value': 9.0}, {'id': '689', 'value': 28.0}, {'id': '690', 'value': 25.0}, {'id': '701', 'value': 28.0}, {'id': '705', 'value': 23.0}, {'id': '760', 'value': 51.0}, {'id': '761', 'value': 49.0}, {'id': '774', 'value': 55.0}, {'id': '778', 'value': 58.0}, {'id': '781', 'value': 47.0}, {'id': '788', 'value': 56.0}, {'id': '805', 'value': 58.0}, {'id': '817', 'value': 46.0}, {'id': '823', 'value': 35.0}, {'id': '833', 'value': 56.0}, {'id': '848', 'value': 39.0}, {'id': '849', 'value': 42.0}, {'id': '878', 'value': 50.0}, {'id': '880', 'value': 63.0}, {'id': '889', 'value': 63.0}, {'id': '905', 'value': 62.0}, {'id': '921', 'value': 40.0}, {'id': '925', 'value': 42.0}, {'id': '935', 'value': 44.0}, {'id': '938', 'value': 32.0}, {'id': '943', 'value': 46.0}, {'id': '961', 'value': 59.0}, {'id': '970', 'value': 41.0}, {'id': '1004', 'value': 14.0}, {'id': '1006', 'value': 7.0}, {'id': '1008', 'value': 47.0}, {'id': '1010', 'value': 57.0}, {'id': '1018', 'value': 39.0}, {'id': '1045', 'value': 56.0}, {'id': '1051', 'value': 39.0}, {'id': '1068', 'value': 61.0}, {'id': '1071', 'value': 59.0}, {'id': '1083', 'value': 58.0}, {'id': '1088', 'value': 41.0}, {'id': '1096', 'value': 58.0}, {'id': '1101', 'value': 64.0}, {'id': '1102', 'value': 59.0}, {'id': '1104', 'value': 59.0}, {'id': '1106', 'value': 49.0}, {'id': '1114', 'value': 61.0}, {'id': '1121', 'value': 59.0}, {'id': '1134', 'value': 36.0}, {'id': '1153', 'value': 33.0}, {'id': '1171', 'value': 61.0}, {'id': '1183', 'value': 71.0}, {'id': '1185', 'value': 58.0}, {'id': '1195', 'value': 43.0}, {'id': '1197', 'value': 42.0}, {'id': '1202', 'value': 44.0}, {'id': '1227', 'value': 38.0}, {'id': '1238', 'value': 39.0}, {'id': '1246', 'value': 39.0}, {'id': '1271', 'value': 22.0}, {'id': '1293', 'value': 28.0}, {'id': '1322', 'value': 53.0}, {'id': '1324', 'value': 41.0}, {'id': '1330', 'value': 46.0}, {'id': '1336', 'value': 40.0}, {'id': '1340', 'value': 39.0}, {'id': '1341', 'value': 56.0}, {'id': '1342', 'value': 42.0}, {'id': '1350', 'value': 58.0}, {'id': '1358', 'value': 54.0}, {'id': '1359', 'value': 59.0}, {'id': '1374', 'value': 42.0}, {'id': '1386', 'value': 55.0}, {'id': '1400', 'value': 63.0}, {'id': '1415', 'value': 10.0}, {'id': '1420', 'value': 11.0}, {'id': '1423', 'value': 18.0}, {'id': '1424', 'value': 18.0}, {'id': '1427', 'value': 14.0}, {'id': '1436', 'value': 1.0}, {'id': '1463', 'value': 6.0}, {'id': '1465', 'value': 3.0}, {'id': '1474', 'value': 5.0}, {'id': '1501', 'value': 12.0}, {'id': '1506', 'value': 6.0}, {'id': '1507', 'value': 6.0}, {'id': '1512', 'value': 7.0}, {'id': '1515', 'value': 11.0}, {'id': '1517', 'value': 12.0}, {'id': '1520', 'value': 12.0}, {'id': '1522', 'value': 12.0}, {'id': '1523', 'value': 12.0}, {'id': '1530', 'value': 14.0}, {'id': '1535', 'value': 13.0}, {'id': '1553', 'value': 2.0}, {'id': '1564', 'value': 0.0}, {'id': '1566', 'value': 2.0}, {'id': '1568', 'value': 2.0}, {'id': '1588', 'value': 6.0}, {'id': '1609', 'value': 1.0}, {'id': '1614', 'value': 1.0}, {'id': '1640', 'value': 1.0}, {'id': '1654', 'value': 2.0}, {'id': '1657', 'value': 0.0}, {'id': '1669', 'value': 3.0}, {'id': '1672', 'value': 1.0}, {'id': '1675', 'value': 1.0}, {'id': '1677', 'value': 0.0}, {'id': '1702', 'value': 6.0}, {'id': '1705', 'value': 12.0}, {'id': '1717', 'value': 25.0}, {'id': '1725', 'value': 19.0}, {'id': '1743', 'value': 5.0}, {'id': '1744', 'value': 7.0}, {'id': '1751', 'value': 12.0}, {'id': '1760', 'value': 7.0}, {'id': '1779', 'value': 11.0}, {'id': '1792', 'value': 0.0}, {'id': '1793', 'value': 0.0}, {'id': '1794', 'value': 0.0}, {'id': '1803', 'value': 2.0}, {'id': '1817', 'value': 2.0}, {'id': '1821', 'value': 0.0}, {'id': '1850', 'value': 8.0}, {'id': '1914', 'value': 4.0}, {'id': '1915', 'value': 3.0}, {'id': '1919', 'value': 2.0}, {'id': '1927', 'value': 2.0}, {'id': '1938', 'value': 2.0}, {'id': '1943', 'value': 10.0}, {'id': '1950', 'value': 4.0}, {'id': '1951', 'value': 3.0}, {'id': '1966', 'value': 4.0}, {'id': '1988', 'value': 14.0}, {'id': '2016', 'value': 70.0}, {'id': '2023', 'value': 26.0}, {'id': '2028', 'value': 60.0}, {'id': '2082', 'value': 32.0}, {'id': '2086', 'value': 29.0}, {'id': '2105', 'value': 21.0}, {'id': '2106', 'value': 29.0}, {'id': '2111', 'value': 39.0}, {'id': '2127', 'value': 39.0}, {'id': '2129', 'value': 32.0}, {'id': '2138', 'value': 26.0}, {'id': '2140', 'value': 32.0}], 'src.evaluation.evaluation_metric_oracle_calls.OracleCallsMetric': [{'id': '17', 'value': 2158}, {'id': '20', 'value': 2158}, {'id': '28', 'value': 2158}, {'id': '29', 'value': 2158}, {'id': '33', 'value': 2158}, {'id': '41', 'value': 2158}, {'id': '49', 'value': 2158}, {'id': '52', 'value': 2158}, {'id': '61', 'value': 2158}, {'id': '73', 'value': 2158}, {'id': '76', 'value': 2158}, {'id': '77', 'value': 2158}, {'id': '86', 'value': 2158}, {'id': '108', 'value': 2158}, {'id': '112', 'value': 2158}, {'id': '128', 'value': 2158}, {'id': '130', 'value': 2158}, {'id': '141', 'value': 2158}, {'id': '142', 'value': 2158}, {'id': '146', 'value': 2158}, {'id': '152', 'value': 2158}, {'id': '159', 'value': 2158}, {'id': '168', 'value': 2158}, {'id': '180', 'value': 2158}, {'id': '197', 'value': 2158}, {'id': '198', 'value': 2158}, {'id': '206', 'value': 2158}, {'id': '213', 'value': 2158}, {'id': '221', 'value': 2158}, {'id': '275', 'value': 2158}, {'id': '287', 'value': 2158}, {'id': '292', 'value': 2158}, {'id': '299', 'value': 2158}, {'id': '309', 'value': 2158}, {'id': '311', 'value': 2158}, {'id': '313', 'value': 2158}, {'id': '315', 'value': 2158}, {'id': '341', 'value': 2158}, {'id': '345', 'value': 2158}, {'id': '347', 'value': 2158}, {'id': '354', 'value': 2158}, {'id': '376', 'value': 2158}, {'id': '377', 'value': 2158}, {'id': '384', 'value': 2158}, {'id': '386', 'value': 2158}, {'id': '402', 'value': 2158}, {'id': '407', 'value': 2158}, {'id': '408', 'value': 2158}, {'id': '412', 'value': 2158}, {'id': '425', 'value': 2158}, {'id': '428', 'value': 2158}, {'id': '440', 'value': 2158}, {'id': '442', 'value': 2158}, {'id': '443', 'value': 2158}, {'id': '473', 'value': 2158}, {'id': '505', 'value': 2158}, {'id': '509', 'value': 2158}, {'id': '510', 'value': 2158}, {'id': '531', 'value': 2158}, {'id': '572', 'value': 2158}, {'id': '577', 'value': 2158}, {'id': '590', 'value': 2158}, {'id': '599', 'value': 2158}, {'id': '611', 'value': 2158}, {'id': '639', 'value': 2158}, {'id': '640', 'value': 2158}, {'id': '643', 'value': 2158}, {'id': '649', 'value': 2158}, {'id': '651', 'value': 2158}, {'id': '662', 'value': 2158}, {'id': '675', 'value': 2158}, {'id': '682', 'value': 2158}, {'id': '686', 'value': 2158}, {'id': '689', 'value': 2158}, {'id': '690', 'value': 2158}, {'id': '701', 'value': 2158}, {'id': '705', 'value': 2158}, {'id': '760', 'value': 2158}, {'id': '761', 'value': 2158}, {'id': '774', 'value': 2158}, {'id': '778', 'value': 2158}, {'id': '781', 'value': 2158}, {'id': '788', 'value': 2158}, {'id': '805', 'value': 2158}, {'id': '817', 'value': 2158}, {'id': '823', 'value': 2158}, {'id': '833', 'value': 2158}, {'id': '848', 'value': 2158}, {'id': '849', 'value': 2158}, {'id': '878', 'value': 2158}, {'id': '880', 'value': 2158}, {'id': '889', 'value': 2158}, {'id': '905', 'value': 2158}, {'id': '921', 'value': 2158}, {'id': '925', 'value': 2158}, {'id': '935', 'value': 2158}, {'id': '938', 'value': 2158}, {'id': '943', 'value': 2158}, {'id': '961', 'value': 2158}, {'id': '970', 'value': 2158}, {'id': '1004', 'value': 2158}, {'id': '1006', 'value': 2158}, {'id': '1008', 'value': 2158}, {'id': '1010', 'value': 2158}, {'id': '1018', 'value': 2158}, {'id': '1045', 'value': 2158}, {'id': '1051', 'value': 2158}, {'id': '1068', 'value': 2158}, {'id': '1071', 'value': 2158}, {'id': '1083', 'value': 2158}, {'id': '1088', 'value': 2158}, {'id': '1096', 'value': 2158}, {'id': '1101', 'value': 2158}, {'id': '1102', 'value': 2158}, {'id': '1104', 'value': 2158}, {'id': '1106', 'value': 2158}, {'id': '1114', 'value': 2158}, {'id': '1121', 'value': 2158}, {'id': '1134', 'value': 2158}, {'id': '1153', 'value': 2158}, {'id': '1171', 'value': 2158}, {'id': '1183', 'value': 2158}, {'id': '1185', 'value': 2158}, {'id': '1195', 'value': 2158}, {'id': '1197', 'value': 2158}, {'id': '1202', 'value': 2158}, {'id': '1227', 'value': 2158}, {'id': '1238', 'value': 2158}, {'id': '1246', 'value': 2158}, {'id': '1271', 'value': 2158}, {'id': '1293', 'value': 2158}, {'id': '1322', 'value': 2158}, {'id': '1324', 'value': 2158}, {'id': '1330', 'value': 2158}, {'id': '1336', 'value': 2158}, {'id': '1340', 'value': 2158}, {'id': '1341', 'value': 2158}, {'id': '1342', 'value': 2158}, {'id': '1350', 'value': 2158}, {'id': '1358', 'value': 2158}, {'id': '1359', 'value': 2158}, {'id': '1374', 'value': 2158}, {'id': '1386', 'value': 2158}, {'id': '1400', 'value': 2158}, {'id': '1415', 'value': 2158}, {'id': '1420', 'value': 2158}, {'id': '1423', 'value': 2158}, {'id': '1424', 'value': 2158}, {'id': '1427', 'value': 2158}, {'id': '1436', 'value': 2158}, {'id': '1463', 'value': 2158}, {'id': '1465', 'value': 2158}, {'id': '1474', 'value': 2158}, {'id': '1501', 'value': 2158}, {'id': '1506', 'value': 2158}, {'id': '1507', 'value': 2158}, {'id': '1512', 'value': 2158}, {'id': '1515', 'value': 2158}, {'id': '1517', 'value': 2158}, {'id': '1520', 'value': 2158}, {'id': '1522', 'value': 2158}, {'id': '1523', 'value': 2158}, {'id': '1530', 'value': 2158}, {'id': '1535', 'value': 2158}, {'id': '1553', 'value': 2158}, {'id': '1564', 'value': 2158}, {'id': '1566', 'value': 2158}, {'id': '1568', 'value': 2158}, {'id': '1588', 'value': 2158}, {'id': '1609', 'value': 2158}, {'id': '1614', 'value': 2158}, {'id': '1640', 'value': 2158}, {'id': '1654', 'value': 2158}, {'id': '1657', 'value': 2158}, {'id': '1669', 'value': 2158}, {'id': '1672', 'value': 2158}, {'id': '1675', 'value': 2158}, {'id': '1677', 'value': 2158}, {'id': '1702', 'value': 2158}, {'id': '1705', 'value': 2158}, {'id': '1717', 'value': 2158}, {'id': '1725', 'value': 2158}, {'id': '1743', 'value': 2158}, {'id': '1744', 'value': 2158}, {'id': '1751', 'value': 2158}, {'id': '1760', 'value': 2158}, {'id': '1779', 'value': 2158}, {'id': '1792', 'value': 2158}, {'id': '1793', 'value': 2158}, {'id': '1794', 'value': 2158}, {'id': '1803', 'value': 2158}, {'id': '1817', 'value': 2158}, {'id': '1821', 'value': 2158}, {'id': '1850', 'value': 2158}, {'id': '1914', 'value': 2158}, {'id': '1915', 'value': 2158}, {'id': '1919', 'value': 2158}, {'id': '1927', 'value': 2158}, {'id': '1938', 'value': 2158}, {'id': '1943', 'value': 2158}, {'id': '1950', 'value': 2158}, {'id': '1951', 'value': 2158}, {'id': '1966', 'value': 2158}, {'id': '1988', 'value': 2158}, {'id': '2016', 'value': 2158}, {'id': '2023', 'value': 2158}, {'id': '2028', 'value': 2158}, {'id': '2082', 'value': 2158}, {'id': '2086', 'value': 2158}, {'id': '2105', 'value': 2158}, {'id': '2106', 'value': 2158}, {'id': '2111', 'value': 2158}, {'id': '2127', 'value': 2158}, {'id': '2129', 'value': 2158}, {'id': '2138', 'value': 2158}, {'id': '2140', 'value': 2158}], 'src.evaluation.evaluation_metric_correctness.CorrectnessMetric': [{'id': '17', 'value': 1}, {'id': '20', 'value': 1}, {'id': '28', 'value': 1}, {'id': '29', 'value': 1}, {'id': '33', 'value': 1}, {'id': '41', 'value': 1}, {'id': '49', 'value': 1}, {'id': '52', 'value': 1}, {'id': '61', 'value': 1}, {'id': '73', 'value': 1}, {'id': '76', 'value': 1}, {'id': '77', 'value': 1}, {'id': '86', 'value': 1}, {'id': '108', 'value': 1}, {'id': '112', 'value': 1}, {'id': '128', 'value': 1}, {'id': '130', 'value': 1}, {'id': '141', 'value': 1}, {'id': '142', 'value': 1}, {'id': '146', 'value': 1}, {'id': '152', 'value': 1}, {'id': '159', 'value': 1}, {'id': '168', 'value': 1}, {'id': '180', 'value': 1}, {'id': '197', 'value': 1}, {'id': '198', 'value': 1}, {'id': '206', 'value': 1}, {'id': '213', 'value': 1}, {'id': '221', 'value': 1}, {'id': '275', 'value': 1}, {'id': '287', 'value': 0}, {'id': '292', 'value': 0}, {'id': '299', 'value': 1}, {'id': '309', 'value': 1}, {'id': '311', 'value': 1}, {'id': '313', 'value': 0}, {'id': '315', 'value': 1}, {'id': '341', 'value': 1}, {'id': '345', 'value': 1}, {'id': '347', 'value': 0}, {'id': '354', 'value': 1}, {'id': '376', 'value': 1}, {'id': '377', 'value': 0}, {'id': '384', 'value': 1}, {'id': '386', 'value': 1}, {'id': '402', 'value': 1}, {'id': '407', 'value': 1}, {'id': '408', 'value': 1}, {'id': '412', 'value': 0}, {'id': '425', 'value': 1}, {'id': '428', 'value': 0}, {'id': '440', 'value': 1}, {'id': '442', 'value': 1}, {'id': '443', 'value': 1}, {'id': '473', 'value': 0}, {'id': '505', 'value': 1}, {'id': '509', 'value': 1}, {'id': '510', 'value': 1}, {'id': '531', 'value': 1}, {'id': '572', 'value': 1}, {'id': '577', 'value': 1}, {'id': '590', 'value': 1}, {'id': '599', 'value': 1}, {'id': '611', 'value': 0}, {'id': '639', 'value': 1}, {'id': '640', 'value': 1}, {'id': '643', 'value': 1}, {'id': '649', 'value': 1}, {'id': '651', 'value': 1}, {'id': '662', 'value': 1}, {'id': '675', 'value': 1}, {'id': '682', 'value': 1}, {'id': '686', 'value': 1}, {'id': '689', 'value': 1}, {'id': '690', 'value': 1}, {'id': '701', 'value': 1}, {'id': '705', 'value': 1}, {'id': '760', 'value': 1}, {'id': '761', 'value': 1}, {'id': '774', 'value': 1}, {'id': '778', 'value': 1}, {'id': '781', 'value': 1}, {'id': '788', 'value': 1}, {'id': '805', 'value': 1}, {'id': '817', 'value': 1}, {'id': '823', 'value': 1}, {'id': '833', 'value': 1}, {'id': '848', 'value': 1}, {'id': '849', 'value': 1}, {'id': '878', 'value': 1}, {'id': '880', 'value': 1}, {'id': '889', 'value': 1}, {'id': '905', 'value': 1}, {'id': '921', 'value': 1}, {'id': '925', 'value': 1}, {'id': '935', 'value': 1}, {'id': '938', 'value': 1}, {'id': '943', 'value': 1}, {'id': '961', 'value': 1}, {'id': '970', 'value': 1}, {'id': '1004', 'value': 1}, {'id': '1006', 'value': 1}, {'id': '1008', 'value': 1}, {'id': '1010', 'value': 1}, {'id': '1018', 'value': 1}, {'id': '1045', 'value': 1}, {'id': '1051', 'value': 1}, {'id': '1068', 'value': 1}, {'id': '1071', 'value': 1}, {'id': '1083', 'value': 1}, {'id': '1088', 'value': 1}, {'id': '1096', 'value': 1}, {'id': '1101', 'value': 1}, {'id': '1102', 'value': 1}, {'id': '1104', 'value': 1}, {'id': '1106', 'value': 1}, {'id': '1114', 'value': 1}, {'id': '1121', 'value': 1}, {'id': '1134', 'value': 1}, {'id': '1153', 'value': 1}, {'id': '1171', 'value': 1}, {'id': '1183', 'value': 1}, {'id': '1185', 'value': 1}, {'id': '1195', 'value': 1}, {'id': '1197', 'value': 1}, {'id': '1202', 'value': 1}, {'id': '1227', 'value': 1}, {'id': '1238', 'value': 1}, {'id': '1246', 'value': 1}, {'id': '1271', 'value': 1}, {'id': '1293', 'value': 1}, {'id': '1322', 'value': 1}, {'id': '1324', 'value': 1}, {'id': '1330', 'value': 1}, {'id': '1336', 'value': 1}, {'id': '1340', 'value': 1}, {'id': '1341', 'value': 1}, {'id': '1342', 'value': 1}, {'id': '1350', 'value': 1}, {'id': '1358', 'value': 1}, {'id': '1359', 'value': 1}, {'id': '1374', 'value': 1}, {'id': '1386', 'value': 1}, {'id': '1400', 'value': 1}, {'id': '1415', 'value': 1}, {'id': '1420', 'value': 1}, {'id': '1423', 'value': 1}, {'id': '1424', 'value': 1}, {'id': '1427', 'value': 1}, {'id': '1436', 'value': 1}, {'id': '1463', 'value': 1}, {'id': '1465', 'value': 1}, {'id': '1474', 'value': 1}, {'id': '1501', 'value': 1}, {'id': '1506', 'value': 1}, {'id': '1507', 'value': 1}, {'id': '1512', 'value': 1}, {'id': '1515', 'value': 1}, {'id': '1517', 'value': 1}, {'id': '1520', 'value': 1}, {'id': '1522', 'value': 1}, {'id': '1523', 'value': 1}, {'id': '1530', 'value': 1}, {'id': '1535', 'value': 1}, {'id': '1553', 'value': 1}, {'id': '1564', 'value': 0}, {'id': '1566', 'value': 1}, {'id': '1568', 'value': 1}, {'id': '1588', 'value': 1}, {'id': '1609', 'value': 1}, {'id': '1614', 'value': 1}, {'id': '1640', 'value': 1}, {'id': '1654', 'value': 1}, {'id': '1657', 'value': 0}, {'id': '1669', 'value': 1}, {'id': '1672', 'value': 1}, {'id': '1675', 'value': 1}, {'id': '1677', 'value': 0}, {'id': '1702', 'value': 1}, {'id': '1705', 'value': 1}, {'id': '1717', 'value': 1}, {'id': '1725', 'value': 1}, {'id': '1743', 'value': 1}, {'id': '1744', 'value': 1}, {'id': '1751', 'value': 1}, {'id': '1760', 'value': 1}, {'id': '1779', 'value': 1}, {'id': '1792', 'value': 0}, {'id': '1793', 'value': 0}, {'id': '1794', 'value': 0}, {'id': '1803', 'value': 1}, {'id': '1817', 'value': 1}, {'id': '1821', 'value': 0}, {'id': '1850', 'value': 1}, {'id': '1914', 'value': 1}, {'id': '1915', 'value': 1}, {'id': '1919', 'value': 1}, {'id': '1927', 'value': 1}, {'id': '1938', 'value': 1}, {'id': '1943', 'value': 1}, {'id': '1950', 'value': 1}, {'id': '1951', 'value': 1}, {'id': '1966', 'value': 1}, {'id': '1988', 'value': 1}, {'id': '2016', 'value': 1}, {'id': '2023', 'value': 1}, {'id': '2028', 'value': 1}, {'id': '2082', 'value': 1}, {'id': '2086', 'value': 1}, {'id': '2105', 'value': 1}, {'id': '2106', 'value': 1}, {'id': '2111', 'value': 1}, {'id': '2127', 'value': 1}, {'id': '2129', 'value': 1}, {'id': '2138', 'value': 1}, {'id': '2140', 'value': 1}], 'src.evaluation.evaluation_metric_sparsity.SparsityMetric': [{'id': '17', 'value': 0.3956043956043956}, {'id': '20', 'value': 0.19230769230769232}, {'id': '28', 'value': 0.2265625}, {'id': '29', 'value': 0.36363636363636365}, {'id': '33', 'value': 0.13592233009708737}, {'id': '41', 'value': 0.39090909090909093}, {'id': '49', 'value': 0.3357664233576642}, {'id': '52', 'value': 0.22}, {'id': '61', 'value': 0.32456140350877194}, {'id': '73', 'value': 0.3305084745762712}, {'id': '76', 'value': 0.20149253731343283}, {'id': '77', 'value': 0.17164179104477612}, {'id': '86', 'value': 0.1958041958041958}, {'id': '108', 'value': 0.2661290322580645}, {'id': '112', 'value': 0.5102040816326531}, {'id': '128', 'value': 0.5}, {'id': '130', 'value': 0.43037974683544306}, {'id': '141', 'value': 0.3162393162393162}, {'id': '142', 'value': 0.2773109243697479}, {'id': '146', 'value': 0.16666666666666666}, {'id': '152', 'value': 0.1875}, {'id': '159', 'value': 0.3865546218487395}, {'id': '168', 'value': 0.2158273381294964}, {'id': '180', 'value': 0.26811594202898553}, {'id': '197', 'value': 0.22900763358778625}, {'id': '198', 'value': 0.19858156028368795}, {'id': '206', 'value': 0.12883435582822086}, {'id': '213', 'value': 0.05454545454545454}, {'id': '221', 'value': 0.05063291139240506}, {'id': '275', 'value': 0.03125}, {'id': '287', 'value': 0.0}, {'id': '292', 'value': 0.0}, {'id': '299', 'value': 0.010752688172043012}, {'id': '309', 'value': 0.07777777777777778}, {'id': '311', 'value': 0.06741573033707865}, {'id': '313', 'value': 0.0}, {'id': '315', 'value': 0.02247191011235955}, {'id': '341', 'value': 0.012345679012345678}, {'id': '345', 'value': 0.036585365853658534}, {'id': '347', 'value': 0.0}, {'id': '354', 'value': 0.011764705882352941}, {'id': '376', 'value': 0.011627906976744186}, {'id': '377', 'value': 0.0}, {'id': '384', 'value': 0.024390243902439025}, {'id': '386', 'value': 0.037037037037037035}, {'id': '402', 'value': 0.024390243902439025}, {'id': '407', 'value': 0.012658227848101266}, {'id': '408', 'value': 0.012658227848101266}, {'id': '412', 'value': 0.0}, {'id': '425', 'value': 0.0375}, {'id': '428', 'value': 0.0}, {'id': '440', 'value': 0.0379746835443038}, {'id': '442', 'value': 0.13157894736842105}, {'id': '443', 'value': 0.14864864864864866}, {'id': '473', 'value': 0.0}, {'id': '505', 'value': 0.09411764705882353}, {'id': '509', 'value': 0.10975609756097561}, {'id': '510', 'value': 0.0963855421686747}, {'id': '531', 'value': 0.27848101265822783}, {'id': '572', 'value': 0.14285714285714285}, {'id': '577', 'value': 0.13157894736842105}, {'id': '590', 'value': 0.02564102564102564}, {'id': '599', 'value': 0.08536585365853659}, {'id': '611', 'value': 0.0}, {'id': '639', 'value': 0.011764705882352941}, {'id': '640', 'value': 0.011627906976744186}, {'id': '643', 'value': 0.011904761904761904}, {'id': '649', 'value': 0.05952380952380952}, {'id': '651', 'value': 0.07228915662650602}, {'id': '662', 'value': 0.125}, {'id': '675', 'value': 0.023809523809523808}, {'id': '682', 'value': 0.011627906976744186}, {'id': '686', 'value': 0.10975609756097561}, {'id': '689', 'value': 0.32558139534883723}, {'id': '690', 'value': 0.30120481927710846}, {'id': '701', 'value': 0.3181818181818182}, {'id': '705', 'value': 0.2839506172839506}, {'id': '760', 'value': 0.46788990825688076}, {'id': '761', 'value': 0.4188034188034188}, {'id': '774', 'value': 0.5045871559633027}, {'id': '778', 'value': 0.5178571428571429}, {'id': '781', 'value': 0.46078431372549017}, {'id': '788', 'value': 0.37583892617449666}, {'id': '805', 'value': 0.4793388429752066}, {'id': '817', 'value': 0.33093525179856115}, {'id': '823', 'value': 0.3723404255319149}, {'id': '833', 'value': 0.35668789808917195}, {'id': '848', 'value': 0.3611111111111111}, {'id': '849', 'value': 0.4421052631578947}, {'id': '878', 'value': 0.5154639175257731}, {'id': '880', 'value': 0.5}, {'id': '889', 'value': 0.5675675675675675}, {'id': '905', 'value': 0.4881889763779528}, {'id': '921', 'value': 0.31007751937984496}, {'id': '925', 'value': 0.2937062937062937}, {'id': '935', 'value': 0.3120567375886525}, {'id': '938', 'value': 0.25196850393700787}, {'id': '943', 'value': 0.3357664233576642}, {'id': '961', 'value': 0.5363636363636364}, {'id': '970', 'value': 0.2971014492753623}, {'id': '1004', 'value': 0.17721518987341772}, {'id': '1006', 'value': 0.09333333333333334}, {'id': '1008', 'value': 0.4392523364485981}, {'id': '1010', 'value': 0.5327102803738317}, {'id': '1018', 'value': 0.42391304347826086}, {'id': '1045', 'value': 0.47058823529411764}, {'id': '1051', 'value': 0.4875}, {'id': '1068', 'value': 0.4357142857142857}, {'id': '1071', 'value': 0.4645669291338583}, {'id': '1083', 'value': 0.4603174603174603}, {'id': '1088', 'value': 0.3082706766917293}, {'id': '1096', 'value': 0.46774193548387094}, {'id': '1101', 'value': 0.3902439024390244}, {'id': '1102', 'value': 0.4041095890410959}, {'id': '1104', 'value': 0.38562091503267976}, {'id': '1106', 'value': 0.3684210526315789}, {'id': '1114', 'value': 0.3652694610778443}, {'id': '1121', 'value': 0.5042735042735043}, {'id': '1134', 'value': 0.27692307692307694}, {'id': '1153', 'value': 0.2558139534883721}, {'id': '1171', 'value': 0.44525547445255476}, {'id': '1183', 'value': 0.4251497005988024}, {'id': '1185', 'value': 0.4393939393939394}, {'id': '1195', 'value': 0.28859060402684567}, {'id': '1197', 'value': 0.28378378378378377}, {'id': '1202', 'value': 0.27848101265822783}, {'id': '1227', 'value': 0.24050632911392406}, {'id': '1238', 'value': 0.28888888888888886}, {'id': '1246', 'value': 0.2805755395683453}, {'id': '1271', 'value': 0.14473684210526316}, {'id': '1293', 'value': 0.1728395061728395}, {'id': '1322', 'value': 0.44166666666666665}, {'id': '1324', 'value': 0.29927007299270075}, {'id': '1330', 'value': 0.3382352941176471}, {'id': '1336', 'value': 0.22988505747126436}, {'id': '1340', 'value': 0.2846715328467153}, {'id': '1341', 'value': 0.45901639344262296}, {'id': '1342', 'value': 0.45652173913043476}, {'id': '1350', 'value': 0.5321100917431193}, {'id': '1358', 'value': 0.4576271186440678}, {'id': '1359', 'value': 0.48760330578512395}, {'id': '1374', 'value': 0.3181818181818182}, {'id': '1386', 'value': 0.5}, {'id': '1400', 'value': 0.5121951219512195}, {'id': '1415', 'value': 0.0684931506849315}, {'id': '1420', 'value': 0.07482993197278912}, {'id': '1423', 'value': 0.11842105263157894}, {'id': '1424', 'value': 0.11688311688311688}, {'id': '1427', 'value': 0.09032258064516129}, {'id': '1436', 'value': 0.006329113924050633}, {'id': '1463', 'value': 0.03636363636363636}, {'id': '1465', 'value': 0.018072289156626505}, {'id': '1474', 'value': 0.02976190476190476}, {'id': '1501', 'value': 0.0851063829787234}, {'id': '1506', 'value': 0.05217391304347826}, {'id': '1507', 'value': 0.05309734513274336}, {'id': '1512', 'value': 0.06481481481481481}, {'id': '1515', 'value': 0.10377358490566038}, {'id': '1517', 'value': 0.11428571428571428}, {'id': '1520', 'value': 0.11428571428571428}, {'id': '1522', 'value': 0.11428571428571428}, {'id': '1523', 'value': 0.11428571428571428}, {'id': '1530', 'value': 0.13333333333333333}, {'id': '1535', 'value': 0.125}, {'id': '1553', 'value': 0.025}, {'id': '1564', 'value': 0.0}, {'id': '1566', 'value': 0.02531645569620253}, {'id': '1568', 'value': 0.02564102564102564}, {'id': '1588', 'value': 0.07692307692307693}, {'id': '1609', 'value': 0.01282051282051282}, {'id': '1614', 'value': 0.012987012987012988}, {'id': '1640', 'value': 0.011494252873563218}, {'id': '1654', 'value': 0.022727272727272728}, {'id': '1657', 'value': 0.0}, {'id': '1669', 'value': 0.0375}, {'id': '1672', 'value': 0.0125}, {'id': '1675', 'value': 0.012345679012345678}, {'id': '1677', 'value': 0.0}, {'id': '1702', 'value': 0.07894736842105263}, {'id': '1705', 'value': 0.15}, {'id': '1717', 'value': 0.3333333333333333}, {'id': '1725', 'value': 0.24050632911392406}, {'id': '1743', 'value': 0.06666666666666667}, {'id': '1744', 'value': 0.09333333333333334}, {'id': '1751', 'value': 0.16216216216216217}, {'id': '1760', 'value': 0.08860759493670886}, {'id': '1779', 'value': 0.13095238095238096}, {'id': '1792', 'value': 0.0}, {'id': '1793', 'value': 0.0}, {'id': '1794', 'value': 0.0}, {'id': '1803', 'value': 0.02247191011235955}, {'id': '1817', 'value': 0.02127659574468085}, {'id': '1821', 'value': 0.0}, {'id': '1850', 'value': 0.08333333333333333}, {'id': '1914', 'value': 0.04878048780487805}, {'id': '1915', 'value': 0.03614457831325301}, {'id': '1919', 'value': 0.025}, {'id': '1927', 'value': 0.025974025974025976}, {'id': '1938', 'value': 0.027777777777777776}, {'id': '1943', 'value': 0.1282051282051282}, {'id': '1950', 'value': 0.05128205128205128}, {'id': '1951', 'value': 0.0379746835443038}, {'id': '1966', 'value': 0.05063291139240506}, {'id': '1988', 'value': 0.16091954022988506}, {'id': '2016', 'value': 0.5185185185185185}, {'id': '2023', 'value': 0.23008849557522124}, {'id': '2028', 'value': 0.5042016806722689}, {'id': '2082', 'value': 0.22377622377622378}, {'id': '2086', 'value': 0.2013888888888889}, {'id': '2105', 'value': 0.13636363636363635}, {'id': '2106', 'value': 0.19594594594594594}, {'id': '2111', 'value': 0.26174496644295303}, {'id': '2127', 'value': 0.26}, {'id': '2129', 'value': 0.22857142857142856}, {'id': '2138', 'value': 0.16352201257861634}, {'id': '2140', 'value': 0.20125786163522014}], 'src.evaluation.evaluation_metric_fidelity.FidelityMetric': [{'id': '17', 'value': 1}, {'id': '20', 'value': 1}, {'id': '28', 'value': 1}, {'id': '29', 'value': 1}, {'id': '33', 'value': -1}, {'id': '41', 'value': 1}, {'id': '49', 'value': 1}, {'id': '52', 'value': 1}, {'id': '61', 'value': 1}, {'id': '73', 'value': 1}, {'id': '76', 'value': 1}, {'id': '77', 'value': 1}, {'id': '86', 'value': 1}, {'id': '108', 'value': 1}, {'id': '112', 'value': 1}, {'id': '128', 'value': 1}, {'id': '130', 'value': 1}, {'id': '141', 'value': 1}, {'id': '142', 'value': 1}, {'id': '146', 'value': 1}, {'id': '152', 'value': 1}, {'id': '159', 'value': 1}, {'id': '168', 'value': 1}, {'id': '180', 'value': 1}, {'id': '197', 'value': 1}, {'id': '198', 'value': 1}, {'id': '206', 'value': -1}, {'id': '213', 'value': -1}, {'id': '221', 'value': -1}, {'id': '275', 'value': 1}, {'id': '287', 'value': 1}, {'id': '292', 'value': 1}, {'id': '299', 'value': 1}, {'id': '309', 'value': 1}, {'id': '311', 'value': 1}, {'id': '313', 'value': -1}, {'id': '315', 'value': 1}, {'id': '341', 'value': -1}, {'id': '345', 'value': 1}, {'id': '347', 'value': -1}, {'id': '354', 'value': 1}, {'id': '376', 'value': -1}, {'id': '377', 'value': 1}, {'id': '384', 'value': 1}, {'id': '386', 'value': 1}, {'id': '402', 'value': 1}, {'id': '407', 'value': 1}, {'id': '408', 'value': 1}, {'id': '412', 'value': 1}, {'id': '425', 'value': 1}, {'id': '428', 'value': -1}, {'id': '440', 'value': 1}, {'id': '442', 'value': 1}, {'id': '443', 'value': 1}, {'id': '473', 'value': 1}, {'id': '505', 'value': 1}, {'id': '509', 'value': 1}, {'id': '510', 'value': 1}, {'id': '531', 'value': 1}, {'id': '572', 'value': 1}, {'id': '577', 'value': 1}, {'id': '590', 'value': 1}, {'id': '599', 'value': 1}, {'id': '611', 'value': 1}, {'id': '639', 'value': -1}, {'id': '640', 'value': 1}, {'id': '643', 'value': 1}, {'id': '649', 'value': 1}, {'id': '651', 'value': 1}, {'id': '662', 'value': 1}, {'id': '675', 'value': 1}, {'id': '682', 'value': 1}, {'id': '686', 'value': 1}, {'id': '689', 'value': 1}, {'id': '690', 'value': 1}, {'id': '701', 'value': 1}, {'id': '705', 'value': 1}, {'id': '760', 'value': 1}, {'id': '761', 'value': 1}, {'id': '774', 'value': 1}, {'id': '778', 'value': 1}, {'id': '781', 'value': 1}, {'id': '788', 'value': 1}, {'id': '805', 'value': 1}, {'id': '817', 'value': 1}, {'id': '823', 'value': 1}, {'id': '833', 'value': 1}, {'id': '848', 'value': 1}, {'id': '849', 'value': 1}, {'id': '878', 'value': 1}, {'id': '880', 'value': 1}, {'id': '889', 'value': 1}, {'id': '905', 'value': 1}, {'id': '921', 'value': 1}, {'id': '925', 'value': 1}, {'id': '935', 'value': 1}, {'id': '938', 'value': 1}, {'id': '943', 'value': 1}, {'id': '961', 'value': 1}, {'id': '970', 'value': 1}, {'id': '1004', 'value': -1}, {'id': '1006', 'value': 1}, {'id': '1008', 'value': 1}, {'id': '1010', 'value': 1}, {'id': '1018', 'value': 1}, {'id': '1045', 'value': 1}, {'id': '1051', 'value': 1}, {'id': '1068', 'value': 1}, {'id': '1071', 'value': 1}, {'id': '1083', 'value': 1}, {'id': '1088', 'value': 1}, {'id': '1096', 'value': 1}, {'id': '1101', 'value': 1}, {'id': '1102', 'value': 1}, {'id': '1104', 'value': 1}, {'id': '1106', 'value': 1}, {'id': '1114', 'value': 1}, {'id': '1121', 'value': 1}, {'id': '1134', 'value': 1}, {'id': '1153', 'value': 1}, {'id': '1171', 'value': 1}, {'id': '1183', 'value': 1}, {'id': '1185', 'value': 1}, {'id': '1195', 'value': 1}, {'id': '1197', 'value': 1}, {'id': '1202', 'value': 1}, {'id': '1227', 'value': 1}, {'id': '1238', 'value': 1}, {'id': '1246', 'value': 1}, {'id': '1271', 'value': 1}, {'id': '1293', 'value': 1}, {'id': '1322', 'value': 1}, {'id': '1324', 'value': 1}, {'id': '1330', 'value': 1}, {'id': '1336', 'value': 1}, {'id': '1340', 'value': 1}, {'id': '1341', 'value': 1}, {'id': '1342', 'value': 1}, {'id': '1350', 'value': 1}, {'id': '1358', 'value': 1}, {'id': '1359', 'value': 1}, {'id': '1374', 'value': 1}, {'id': '1386', 'value': 1}, {'id': '1400', 'value': 1}, {'id': '1415', 'value': -1}, {'id': '1420', 'value': -1}, {'id': '1423', 'value': -1}, {'id': '1424', 'value': -1}, {'id': '1427', 'value': -1}, {'id': '1436', 'value': -1}, {'id': '1463', 'value': -1}, {'id': '1465', 'value': -1}, {'id': '1474', 'value': -1}, {'id': '1501', 'value': -1}, {'id': '1506', 'value': -1}, {'id': '1507', 'value': 1}, {'id': '1512', 'value': -1}, {'id': '1515', 'value': -1}, {'id': '1517', 'value': -1}, {'id': '1520', 'value': -1}, {'id': '1522', 'value': -1}, {'id': '1523', 'value': -1}, {'id': '1530', 'value': -1}, {'id': '1535', 'value': -1}, {'id': '1553', 'value': -1}, {'id': '1564', 'value': -1}, {'id': '1566', 'value': -1}, {'id': '1568', 'value': -1}, {'id': '1588', 'value': 1}, {'id': '1609', 'value': 1}, {'id': '1614', 'value': -1}, {'id': '1640', 'value': 1}, {'id': '1654', 'value': 1}, {'id': '1657', 'value': -1}, {'id': '1669', 'value': 1}, {'id': '1672', 'value': 1}, {'id': '1675', 'value': -1}, {'id': '1677', 'value': 1}, {'id': '1702', 'value': 1}, {'id': '1705', 'value': 1}, {'id': '1717', 'value': 1}, {'id': '1725', 'value': 1}, {'id': '1743', 'value': 1}, {'id': '1744', 'value': 1}, {'id': '1751', 'value': 1}, {'id': '1760', 'value': 1}, {'id': '1779', 'value': 1}, {'id': '1792', 'value': 1}, {'id': '1793', 'value': 1}, {'id': '1794', 'value': 1}, {'id': '1803', 'value': 1}, {'id': '1817', 'value': 1}, {'id': '1821', 'value': -1}, {'id': '1850', 'value': 1}, {'id': '1914', 'value': 1}, {'id': '1915', 'value': 1}, {'id': '1919', 'value': -1}, {'id': '1927', 'value': 1}, {'id': '1938', 'value': 1}, {'id': '1943', 'value': 1}, {'id': '1950', 'value': 1}, {'id': '1951', 'value': 1}, {'id': '1966', 'value': 1}, {'id': '1988', 'value': 1}, {'id': '2016', 'value': 1}, {'id': '2023', 'value': -1}, {'id': '2028', 'value': 1}, {'id': '2082', 'value': 1}, {'id': '2086', 'value': -1}, {'id': '2105', 'value': 1}, {'id': '2106', 'value': 1}, {'id': '2111', 'value': 1}, {'id': '2127', 'value': 1}, {'id': '2129', 'value': 1}, {'id': '2138', 'value': 1}, {'id': '2140', 'value': 1}], 'src.evaluation.evaluation_metric_oracle_accuracy.OracleAccuracyMetric': [{'id': '17', 'value': 1}, {'id': '20', 'value': 1}, {'id': '28', 'value': 1}, {'id': '29', 'value': 1}, {'id': '33', 'value': 0}, {'id': '41', 'value': 1}, {'id': '49', 'value': 1}, {'id': '52', 'value': 1}, {'id': '61', 'value': 1}, {'id': '73', 'value': 1}, {'id': '76', 'value': 1}, {'id': '77', 'value': 1}, {'id': '86', 'value': 1}, {'id': '108', 'value': 1}, {'id': '112', 'value': 1}, {'id': '128', 'value': 1}, {'id': '130', 'value': 1}, {'id': '141', 'value': 1}, {'id': '142', 'value': 1}, {'id': '146', 'value': 1}, {'id': '152', 'value': 1}, {'id': '159', 'value': 1}, {'id': '168', 'value': 1}, {'id': '180', 'value': 1}, {'id': '197', 'value': 1}, {'id': '198', 'value': 1}, {'id': '206', 'value': 0}, {'id': '213', 'value': 0}, {'id': '221', 'value': 0}, {'id': '275', 'value': 1}, {'id': '287', 'value': 1}, {'id': '292', 'value': 1}, {'id': '299', 'value': 1}, {'id': '309', 'value': 1}, {'id': '311', 'value': 1}, {'id': '313', 'value': 0}, {'id': '315', 'value': 1}, {'id': '341', 'value': 0}, {'id': '345', 'value': 1}, {'id': '347', 'value': 0}, {'id': '354', 'value': 1}, {'id': '376', 'value': 0}, {'id': '377', 'value': 1}, {'id': '384', 'value': 1}, {'id': '386', 'value': 1}, {'id': '402', 'value': 1}, {'id': '407', 'value': 1}, {'id': '408', 'value': 1}, {'id': '412', 'value': 1}, {'id': '425', 'value': 1}, {'id': '428', 'value': 0}, {'id': '440', 'value': 1}, {'id': '442', 'value': 1}, {'id': '443', 'value': 1}, {'id': '473', 'value': 1}, {'id': '505', 'value': 1}, {'id': '509', 'value': 1}, {'id': '510', 'value': 1}, {'id': '531', 'value': 1}, {'id': '572', 'value': 1}, {'id': '577', 'value': 1}, {'id': '590', 'value': 1}, {'id': '599', 'value': 1}, {'id': '611', 'value': 1}, {'id': '639', 'value': 0}, {'id': '640', 'value': 1}, {'id': '643', 'value': 1}, {'id': '649', 'value': 1}, {'id': '651', 'value': 1}, {'id': '662', 'value': 1}, {'id': '675', 'value': 1}, {'id': '682', 'value': 1}, {'id': '686', 'value': 1}, {'id': '689', 'value': 1}, {'id': '690', 'value': 1}, {'id': '701', 'value': 1}, {'id': '705', 'value': 1}, {'id': '760', 'value': 1}, {'id': '761', 'value': 1}, {'id': '774', 'value': 1}, {'id': '778', 'value': 1}, {'id': '781', 'value': 1}, {'id': '788', 'value': 1}, {'id': '805', 'value': 1}, {'id': '817', 'value': 1}, {'id': '823', 'value': 1}, {'id': '833', 'value': 1}, {'id': '848', 'value': 1}, {'id': '849', 'value': 1}, {'id': '878', 'value': 1}, {'id': '880', 'value': 1}, {'id': '889', 'value': 1}, {'id': '905', 'value': 1}, {'id': '921', 'value': 1}, {'id': '925', 'value': 1}, {'id': '935', 'value': 1}, {'id': '938', 'value': 1}, {'id': '943', 'value': 1}, {'id': '961', 'value': 1}, {'id': '970', 'value': 1}, {'id': '1004', 'value': 0}, {'id': '1006', 'value': 1}, {'id': '1008', 'value': 1}, {'id': '1010', 'value': 1}, {'id': '1018', 'value': 1}, {'id': '1045', 'value': 1}, {'id': '1051', 'value': 1}, {'id': '1068', 'value': 1}, {'id': '1071', 'value': 1}, {'id': '1083', 'value': 1}, {'id': '1088', 'value': 1}, {'id': '1096', 'value': 1}, {'id': '1101', 'value': 1}, {'id': '1102', 'value': 1}, {'id': '1104', 'value': 1}, {'id': '1106', 'value': 1}, {'id': '1114', 'value': 1}, {'id': '1121', 'value': 1}, {'id': '1134', 'value': 1}, {'id': '1153', 'value': 1}, {'id': '1171', 'value': 1}, {'id': '1183', 'value': 1}, {'id': '1185', 'value': 1}, {'id': '1195', 'value': 1}, {'id': '1197', 'value': 1}, {'id': '1202', 'value': 1}, {'id': '1227', 'value': 1}, {'id': '1238', 'value': 1}, {'id': '1246', 'value': 1}, {'id': '1271', 'value': 1}, {'id': '1293', 'value': 1}, {'id': '1322', 'value': 1}, {'id': '1324', 'value': 1}, {'id': '1330', 'value': 1}, {'id': '1336', 'value': 1}, {'id': '1340', 'value': 1}, {'id': '1341', 'value': 1}, {'id': '1342', 'value': 1}, {'id': '1350', 'value': 1}, {'id': '1358', 'value': 1}, {'id': '1359', 'value': 1}, {'id': '1374', 'value': 1}, {'id': '1386', 'value': 1}, {'id': '1400', 'value': 1}, {'id': '1415', 'value': 0}, {'id': '1420', 'value': 0}, {'id': '1423', 'value': 0}, {'id': '1424', 'value': 0}, {'id': '1427', 'value': 0}, {'id': '1436', 'value': 0}, {'id': '1463', 'value': 0}, {'id': '1465', 'value': 0}, {'id': '1474', 'value': 0}, {'id': '1501', 'value': 0}, {'id': '1506', 'value': 0}, {'id': '1507', 'value': 1}, {'id': '1512', 'value': 0}, {'id': '1515', 'value': 0}, {'id': '1517', 'value': 0}, {'id': '1520', 'value': 0}, {'id': '1522', 'value': 0}, {'id': '1523', 'value': 0}, {'id': '1530', 'value': 0}, {'id': '1535', 'value': 0}, {'id': '1553', 'value': 0}, {'id': '1564', 'value': 0}, {'id': '1566', 'value': 0}, {'id': '1568', 'value': 0}, {'id': '1588', 'value': 1}, {'id': '1609', 'value': 1}, {'id': '1614', 'value': 0}, {'id': '1640', 'value': 1}, {'id': '1654', 'value': 1}, {'id': '1657', 'value': 0}, {'id': '1669', 'value': 1}, {'id': '1672', 'value': 1}, {'id': '1675', 'value': 0}, {'id': '1677', 'value': 1}, {'id': '1702', 'value': 1}, {'id': '1705', 'value': 1}, {'id': '1717', 'value': 1}, {'id': '1725', 'value': 1}, {'id': '1743', 'value': 1}, {'id': '1744', 'value': 1}, {'id': '1751', 'value': 1}, {'id': '1760', 'value': 1}, {'id': '1779', 'value': 1}, {'id': '1792', 'value': 1}, {'id': '1793', 'value': 1}, {'id': '1794', 'value': 1}, {'id': '1803', 'value': 1}, {'id': '1817', 'value': 1}, {'id': '1821', 'value': 0}, {'id': '1850', 'value': 1}, {'id': '1914', 'value': 1}, {'id': '1915', 'value': 1}, {'id': '1919', 'value': 0}, {'id': '1927', 'value': 1}, {'id': '1938', 'value': 1}, {'id': '1943', 'value': 1}, {'id': '1950', 'value': 1}, {'id': '1951', 'value': 1}, {'id': '1966', 'value': 1}, {'id': '1988', 'value': 1}, {'id': '2016', 'value': 1}, {'id': '2023', 'value': 0}, {'id': '2028', 'value': 1}, {'id': '2082', 'value': 1}, {'id': '2086', 'value': 0}, {'id': '2105', 'value': 1}, {'id': '2106', 'value': 1}, {'id': '2111', 'value': 1}, {'id': '2127', 'value': 1}, {'id': '2129', 'value': 1}, {'id': '2138', 'value': 1}, {'id': '2140', 'value': 1}]}

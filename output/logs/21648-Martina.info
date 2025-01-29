@@ -1,0 +1,21 @@
+2025-01-27 10:20:06,-1492148739 | INFO | 21648 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-01-27 10:20:06,-1492148717 | INFO | 21648 - Creating the evaluation manager.......................................................
+2025-01-27 10:20:06,-1492148685 | INFO | 21648 - Creating the PAIRED evaluators...............................................................
+2025-01-27 10:20:06,-1492148586 | INFO | 21648 - Creating: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 10:20:06,-1492148586 | INFO | 21648 - Instantiating: src.dataset.generators.gcs.GCS
+2025-01-27 10:20:09,-1492145373 | INFO | 21648 - Saved: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 10:20:09,-1492145336 | INFO | 21648 - Created: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 10:20:09,-1492145318 | INFO | 21648 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-01-27 10:20:09,-1492145305 | INFO | 21648 - Instantiating: torch.optim.RMSprop
+2025-01-27 10:20:09,-1492145305 | INFO | 21648 - Instantiating: torch.nn.CrossEntropyLoss
+2025-01-27 10:20:09,-1492145269 | INFO | 21648 - Creating: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 10:20:10,-1492144739 | INFO | 21648 - epoch = 0 ---> loss = 0.6924	 accuracy = 0.5317
+2025-01-27 10:20:10,-1492144292 | INFO | 21648 - epoch = 1 ---> loss = 0.6901	 accuracy = 0.7263
+2025-01-27 10:20:10,-1492144006 | INFO | 21648 - epoch = 2 ---> loss = 0.6881	 accuracy = 0.7784
+2025-01-27 10:20:11,-1492143675 | INFO | 21648 - epoch = 3 ---> loss = 0.6861	 accuracy = 0.8149
+2025-01-27 10:20:11,-1492143325 | INFO | 21648 - epoch = 4 ---> loss = 0.6836	 accuracy = 0.7902
+2025-01-27 10:20:11,-1492142924 | INFO | 21648 - epoch = 5 ---> loss = 0.6813	 accuracy = 0.8059
+2025-01-27 10:20:12,-1492142444 | INFO | 21648 - epoch = 6 ---> loss = 0.6785	 accuracy = 0.8504
+2025-01-27 10:20:12,-1492141942 | INFO | 21648 - epoch = 7 ---> loss = 0.6758	 accuracy = 0.8049
+2025-01-27 10:20:13,-1492141491 | INFO | 21648 - epoch = 8 ---> loss = 0.6729	 accuracy = 0.8371
+2025-01-27 10:20:13,-1492141073 | INFO | 21648 - epoch = 9 ---> loss = 0.6696	 accuracy = 0.8343

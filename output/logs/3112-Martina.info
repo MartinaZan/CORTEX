@@ -1,0 +1,10 @@
+2025-01-08 17:25:44,1186757226 | INFO | 3112 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-01-08 17:25:44,1186757316 | INFO | 3112 - Creating the evaluation manager.......................................................
+2025-01-08 17:25:45,1186757569 | INFO | 3112 - Creating the PAIRED evaluators...............................................................
+2025-01-08 17:25:45,1186757926 | INFO | 3112 - Creating: GCS-189d68770f99189694c24d6a27f87039
+2025-01-08 17:25:45,1186757932 | INFO | 3112 - Instantiating: src.dataset.generators.gcs.GCS
+2025-01-08 17:26:17,1186790023 | INFO | 3112 - Saved: GCS-189d68770f99189694c24d6a27f87039
+2025-01-08 17:26:17,1186790146 | INFO | 3112 - Created: GCS-189d68770f99189694c24d6a27f87039
+2025-01-08 17:26:17,1186790184 | INFO | 3112 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-01-08 17:26:17,1186790208 | INFO | 3112 - Instantiating: torch.optim.RMSprop
+2025-01-08 17:26:17,1186790216 | INFO | 3112 - Instantiating: torch.nn.CrossEntropyLoss

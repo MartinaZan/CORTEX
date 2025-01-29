@@ -1,0 +1,84 @@
+2025-01-27 10:37:24,-1491109987 | INFO | 11676 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-01-27 10:37:24,-1491109939 | INFO | 11676 - Creating the evaluation manager.......................................................
+2025-01-27 10:37:25,-1491109876 | INFO | 11676 - Creating the PAIRED evaluators...............................................................
+2025-01-27 10:37:25,-1491109671 | INFO | 11676 - Creating: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 10:37:25,-1491109671 | INFO | 11676 - Instantiating: src.dataset.generators.gcs.GCS
+2025-01-27 10:37:32,-1491102656 | INFO | 11676 - Saved: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 10:37:32,-1491102596 | INFO | 11676 - Created: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 10:37:32,-1491102555 | INFO | 11676 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-01-27 10:37:32,-1491102548 | INFO | 11676 - Instantiating: torch.optim.RMSprop
+2025-01-27 10:37:32,-1491102548 | INFO | 11676 - Instantiating: torch.nn.CrossEntropyLoss
+2025-01-27 10:37:32,-1491102453 | INFO | 11676 - Creating: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 10:37:33,-1491101116 | INFO | 11676 - epoch = 0 ---> loss = 0.6920	 accuracy = 0.5417
+2025-01-27 10:37:34,-1491100031 | INFO | 11676 - epoch = 1 ---> loss = 0.6886	 accuracy = 0.6913
+2025-01-27 10:37:35,-1491099145 | INFO | 11676 - epoch = 2 ---> loss = 0.6858	 accuracy = 0.7618
+2025-01-27 10:37:36,-1491098176 | INFO | 11676 - epoch = 3 ---> loss = 0.6833	 accuracy = 0.7462
+2025-01-27 10:37:37,-1491097105 | INFO | 11676 - epoch = 4 ---> loss = 0.6811	 accuracy = 0.7609
+2025-01-27 10:37:38,-1491095941 | INFO | 11676 - Test accuracy = 0.7723
+2025-01-27 10:37:39,-1491095878 | INFO | 11676 - OracleTorch trained on cpu in: 6.51179313659668 secs
+2025-01-27 10:37:39,-1491095768 | INFO | 11676 - Saved: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 10:37:39,-1491095705 | INFO | 11676 - Created: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 10:37:39,-1491095705 | INFO | 11676 - Instantiating: src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric
+2025-01-27 10:37:39,-1491095632 | INFO | 11676 - Created: DCESExplainer-1bc3bcc16827475dc8d2312ac0f6154d
+2025-01-27 10:37:39,-1491095579 | INFO | 11676 - Evaluating the explainers.............................................................
+2025-01-27 10:37:39,-1491095579 | INFO | 11676 - Evaluating instance with id 9
+2025-01-27 10:37:53,-1491080990 | INFO | 11676 - evaluated instance with id 9
+2025-01-27 10:37:53,-1491080985 | INFO | 11676 - Evaluating instance with id 44
+2025-01-27 10:38:09,-1491065413 | INFO | 11676 - evaluated instance with id 44
+2025-01-27 10:38:09,-1491065413 | INFO | 11676 - Evaluating instance with id 59
+2025-01-27 10:38:25,-1491049363 | INFO | 11676 - evaluated instance with id 59
+2025-01-27 10:38:25,-1491049363 | INFO | 11676 - Evaluating instance with id 60
+2025-01-27 10:38:41,-1491033706 | INFO | 11676 - evaluated instance with id 60
+2025-01-27 10:38:41,-1491033706 | INFO | 11676 - Evaluating instance with id 66
+2025-01-27 10:38:57,-1491017629 | INFO | 11676 - evaluated instance with id 66
+2025-01-27 10:38:57,-1491017629 | INFO | 11676 - Evaluating instance with id 91
+2025-01-27 10:39:13,-1491001530 | INFO | 11676 - evaluated instance with id 91
+2025-01-27 10:39:13,-1491001530 | INFO | 11676 - Evaluating instance with id 92
+2025-01-27 10:39:30,-1490984832 | INFO | 11676 - evaluated instance with id 92
+2025-01-27 10:39:30,-1490984832 | INFO | 11676 - Evaluating instance with id 95
+2025-01-27 10:39:48,-1490966800 | INFO | 11676 - evaluated instance with id 95
+2025-01-27 10:39:48,-1490966800 | INFO | 11676 - Evaluating instance with id 96
+2025-01-27 10:40:05,-1490949284 | INFO | 11676 - evaluated instance with id 96
+2025-01-27 10:40:05,-1490949283 | INFO | 11676 - Evaluating instance with id 111
+2025-01-27 10:40:29,-1490925183 | INFO | 11676 - evaluated instance with id 111
+2025-01-27 10:40:29,-1490925183 | INFO | 11676 - Evaluating instance with id 112
+2025-01-27 10:40:53,-1490901471 | INFO | 11676 - evaluated instance with id 112
+2025-01-27 10:40:53,-1490901456 | INFO | 11676 - Evaluating instance with id 128
+2025-01-27 10:41:17,-1490877347 | INFO | 11676 - evaluated instance with id 128
+2025-01-27 10:41:17,-1490877345 | INFO | 11676 - Evaluating instance with id 139
+2025-01-27 10:41:43,-1490851221 | INFO | 11676 - evaluated instance with id 139
+2025-01-27 10:41:43,-1490851221 | INFO | 11676 - Evaluating instance with id 140
+2025-01-27 10:42:14,-1490820751 | INFO | 11676 - evaluated instance with id 140
+2025-01-27 10:42:14,-1490820751 | INFO | 11676 - Evaluating instance with id 143
+2025-01-27 10:42:37,-1490797119 | INFO | 11676 - evaluated instance with id 143
+2025-01-27 10:42:37,-1490797119 | INFO | 11676 - Evaluating instance with id 171
+2025-01-27 10:43:00,-1490774204 | INFO | 11676 - evaluated instance with id 171
+2025-01-27 10:43:00,-1490774204 | INFO | 11676 - Evaluating instance with id 187
+2025-01-27 10:43:24,-1490750741 | INFO | 11676 - evaluated instance with id 187
+2025-01-27 10:43:24,-1490750726 | INFO | 11676 - Evaluating instance with id 202
+2025-01-27 10:43:49,-1490725511 | INFO | 11676 - evaluated instance with id 202
+2025-01-27 10:43:49,-1490725511 | INFO | 11676 - Evaluating instance with id 204
+2025-01-27 10:44:15,-1490699124 | INFO | 11676 - evaluated instance with id 204
+2025-01-27 10:44:15,-1490699124 | INFO | 11676 - Evaluating instance with id 216
+2025-01-27 10:44:41,-1490673400 | INFO | 11676 - evaluated instance with id 216
+2025-01-27 10:44:41,-1490673400 | INFO | 11676 - Evaluating instance with id 217
+2025-01-27 10:45:08,-1490646783 | INFO | 11676 - evaluated instance with id 217
+2025-01-27 10:45:08,-1490646783 | INFO | 11676 - Evaluating instance with id 235
+2025-01-27 10:45:33,-1490621595 | INFO | 11676 - evaluated instance with id 235
+2025-01-27 10:45:33,-1490621579 | INFO | 11676 - Evaluating instance with id 243
+2025-01-27 10:45:59,-1490595310 | INFO | 11676 - evaluated instance with id 243
+2025-01-27 10:45:59,-1490595310 | INFO | 11676 - Evaluating instance with id 251
+2025-01-27 10:46:27,-1490567536 | INFO | 11676 - evaluated instance with id 251
+2025-01-27 10:46:27,-1490567536 | INFO | 11676 - Evaluating instance with id 252
+2025-01-27 10:57:01,-1489933423 | INFO | 11676 - evaluated instance with id 252
+2025-01-27 10:57:01,-1489933423 | INFO | 11676 - Evaluating instance with id 253
+2025-01-27 10:57:40,-1489894307 | INFO | 11676 - evaluated instance with id 253
+2025-01-27 10:57:40,-1489894291 | INFO | 11676 - Evaluating instance with id 257
+2025-01-27 10:58:17,-1489857176 | INFO | 11676 - evaluated instance with id 257
+2025-01-27 10:58:17,-1489857173 | INFO | 11676 - Evaluating instance with id 261
+2025-01-27 10:59:04,-1489810803 | INFO | 11676 - evaluated instance with id 261
+2025-01-27 10:59:04,-1489810803 | INFO | 11676 - Evaluating instance with id 263
+2025-01-27 10:59:45,-1489769069 | INFO | 11676 - evaluated instance with id 263
+2025-01-27 10:59:45,-1489769053 | INFO | 11676 - Evaluating instance with id 270
+2025-01-27 11:00:17,-1489736940 | INFO | 11676 - evaluated instance with id 270
+2025-01-27 11:00:17,-1489736940 | INFO | 11676 - Evaluating instance with id 274

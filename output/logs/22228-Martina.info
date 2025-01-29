@@ -1,0 +1,25 @@
+2025-01-03 08:43:05,723397529 | INFO | 22228 - Executing: config/GCS-SVM.jsonc Run: -1
+2025-01-03 08:43:05,723397565 | INFO | 22228 - Creating the evaluation manager.......................................................
+2025-01-03 08:43:05,723397599 | INFO | 22228 - Creating the PAIRED evaluators...............................................................
+2025-01-03 08:43:05,723397860 | INFO | 22228 - Creating: GCS-189d68770f99189694c24d6a27f87039
+2025-01-03 08:43:05,723397860 | INFO | 22228 - Instantiating: src.dataset.generators.gcs.GCS
+2025-01-03 08:43:09,723401630 | INFO | 22228 - Saved: GCS-189d68770f99189694c24d6a27f87039
+2025-01-03 08:43:09,723401708 | INFO | 22228 - Created: GCS-189d68770f99189694c24d6a27f87039
+2025-01-03 08:43:10,723403056 | INFO | 22228 - Creating: Graph2VecEmbedder-4d527c0986cd74fc98b1537b427964aa
+2025-01-03 08:43:28,723421196 | INFO | 22228 - Graph2VecEmbedder trained in: 18.11167550086975 secs
+2025-01-03 08:43:28,723421258 | INFO | 22228 - Saved: Graph2VecEmbedder-4d527c0986cd74fc98b1537b427964aa
+2025-01-03 08:43:28,723421297 | INFO | 22228 - Created: Graph2VecEmbedder-4d527c0986cd74fc98b1537b427964aa
+2025-01-03 08:43:28,723421349 | INFO | 22228 - Creating: SVMOracle-6b04d866387a7f41d0e9efcf8e7d7cd6
+2025-01-03 08:43:29,723422011 | INFO | 22228 - SVMOracle trained in: 0.6469511985778809 secs
+2025-01-03 08:43:29,723422065 | INFO | 22228 - Saved: SVMOracle-6b04d866387a7f41d0e9efcf8e7d7cd6
+2025-01-03 08:43:29,723422114 | INFO | 22228 - Created: SVMOracle-6b04d866387a7f41d0e9efcf8e7d7cd6
+2025-01-03 08:43:29,723422153 | INFO | 22228 - Instantiating: src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric
+2025-01-03 08:43:29,723422199 | INFO | 22228 - Created: DCESExplainer-77e85f802653df665ac68b4fa1a90751
+2025-01-03 08:43:29,723422236 | INFO | 22228 - Evaluating the explainers.............................................................
+2025-01-03 08:43:29,723422249 | INFO | 22228 - Evaluating instance with id 6
+2025-01-03 08:44:19,723472289 | INFO | 22228 - evaluated instance with id 6
+2025-01-03 08:44:19,723472289 | INFO | 22228 - Evaluating instance with id 11
+2025-01-03 08:45:11,723523432 | INFO | 22228 - evaluated instance with id 11
+2025-01-03 08:45:11,723523432 | INFO | 22228 - Evaluating instance with id 12
+2025-01-03 08:45:49,723561497 | INFO | 22228 - evaluated instance with id 12
+2025-01-03 08:45:49,723561498 | INFO | 22228 - Evaluating instance with id 23

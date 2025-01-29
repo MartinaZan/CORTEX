@@ -1,0 +1,47 @@
+2025-01-27 11:14:19,-1488895320 | INFO | 12932 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-01-27 11:14:19,-1488895288 | INFO | 12932 - Creating the evaluation manager.......................................................
+2025-01-27 11:14:19,-1488895268 | INFO | 12932 - Creating the PAIRED evaluators...............................................................
+2025-01-27 11:14:19,-1488895172 | INFO | 12932 - Creating: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 11:14:19,-1488895172 | INFO | 12932 - Instantiating: src.dataset.generators.gcs.GCS
+2025-01-27 11:14:23,-1488891740 | INFO | 12932 - Saved: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 11:14:23,-1488891688 | INFO | 12932 - Created: GCS-189d68770f99189694c24d6a27f87039
+2025-01-27 11:14:23,-1488891666 | INFO | 12932 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-01-27 11:14:23,-1488891657 | INFO | 12932 - Instantiating: torch.optim.RMSprop
+2025-01-27 11:14:23,-1488891655 | INFO | 12932 - Instantiating: torch.nn.CrossEntropyLoss
+2025-01-27 11:14:23,-1488891620 | INFO | 12932 - Creating: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 11:14:23,-1488890947 | INFO | 12932 - epoch = 0 ---> loss = 0.6925	 accuracy = 0.5071
+2025-01-27 11:14:24,-1488890407 | INFO | 12932 - epoch = 1 ---> loss = 0.6911	 accuracy = 0.5805
+2025-01-27 11:14:25,-1488889870 | INFO | 12932 - epoch = 2 ---> loss = 0.6897	 accuracy = 0.5838
+2025-01-27 11:14:25,-1488889256 | INFO | 12932 - epoch = 3 ---> loss = 0.6884	 accuracy = 0.6771
+2025-01-27 11:14:26,-1488888570 | INFO | 12932 - epoch = 4 ---> loss = 0.6868	 accuracy = 0.7623
+2025-01-27 11:14:26,-1488888008 | INFO | 12932 - epoch = 5 ---> loss = 0.6851	 accuracy = 0.7902
+2025-01-27 11:14:27,-1488887409 | INFO | 12932 - epoch = 6 ---> loss = 0.6834	 accuracy = 0.8395
+2025-01-27 11:14:28,-1488886826 | INFO | 12932 - epoch = 7 ---> loss = 0.6816	 accuracy = 0.7879
+2025-01-27 11:14:28,-1488886233 | INFO | 12932 - epoch = 8 ---> loss = 0.6796	 accuracy = 0.7964
+2025-01-27 11:14:29,-1488885646 | INFO | 12932 - epoch = 9 ---> loss = 0.6776	 accuracy = 0.8205
+2025-01-27 11:14:29,-1488885041 | INFO | 12932 - epoch = 10 ---> loss = 0.6756	 accuracy = 0.8267
+2025-01-27 11:14:30,-1488884443 | INFO | 12932 - epoch = 11 ---> loss = 0.6735	 accuracy = 0.8187
+2025-01-27 11:14:31,-1488883794 | INFO | 12932 - epoch = 12 ---> loss = 0.6714	 accuracy = 0.8234
+2025-01-27 11:14:31,-1488883277 | INFO | 12932 - epoch = 13 ---> loss = 0.6692	 accuracy = 0.8068
+2025-01-27 11:14:32,-1488882711 | INFO | 12932 - epoch = 14 ---> loss = 0.6671	 accuracy = 0.8295
+2025-01-27 11:14:32,-1488882138 | INFO | 12932 - epoch = 15 ---> loss = 0.6651	 accuracy = 0.8329
+2025-01-27 11:14:33,-1488881509 | INFO | 12932 - epoch = 16 ---> loss = 0.6629	 accuracy = 0.8172
+2025-01-27 11:14:34,-1488880820 | INFO | 12932 - epoch = 17 ---> loss = 0.6608	 accuracy = 0.8281
+2025-01-27 11:14:34,-1488880275 | INFO | 12932 - epoch = 18 ---> loss = 0.6586	 accuracy = 0.8286
+2025-01-27 11:14:35,-1488879747 | INFO | 12932 - epoch = 19 ---> loss = 0.6566	 accuracy = 0.8314
+2025-01-27 11:14:35,-1488879230 | INFO | 12932 - Test accuracy = 0.8348
+2025-01-27 11:14:35,-1488879213 | INFO | 12932 - OracleTorch trained on cpu in: 12.405857563018799 secs
+2025-01-27 11:14:35,-1488879143 | INFO | 12932 - Saved: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 11:14:35,-1488879106 | INFO | 12932 - Created: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-27 11:14:35,-1488879100 | INFO | 12932 - Instantiating: src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric
+2025-01-27 11:14:35,-1488879071 | INFO | 12932 - Created: DCESExplainer-1bc3bcc16827475dc8d2312ac0f6154d
+2025-01-27 11:14:35,-1488879045 | INFO | 12932 - Evaluating the explainers.............................................................
+2025-01-27 11:14:35,-1488879040 | INFO | 12932 - Evaluating instance with id 12
+2025-01-27 11:14:42,-1488872283 | INFO | 12932 - evaluated instance with id 12
+2025-01-27 11:14:42,-1488872283 | INFO | 12932 - Evaluating instance with id 26
+2025-01-27 11:14:49,-1488865150 | INFO | 12932 - evaluated instance with id 26
+2025-01-27 11:14:49,-1488865150 | INFO | 12932 - Evaluating instance with id 34
+2025-01-27 11:14:56,-1488857908 | INFO | 12932 - evaluated instance with id 34
+2025-01-27 11:14:56,-1488857908 | INFO | 12932 - Evaluating instance with id 37
+2025-01-27 11:15:04,-1488850643 | INFO | 12932 - evaluated instance with id 37
+2025-01-27 11:15:04,-1488850643 | INFO | 12932 - Evaluating instance with id 40
