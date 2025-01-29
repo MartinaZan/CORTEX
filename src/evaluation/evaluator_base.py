@@ -8,7 +8,6 @@ from src.core.oracle_base import Oracle
 from src.utils.context import Context, clean_cfg
 from src.utils.logger import GLogger
 
-
 class Evaluator(ABC):
     _logger = GLogger.getLogger()
 
@@ -98,6 +97,33 @@ class Evaluator(ABC):
                              'counterfactual_label': label_cf})
 
         return result
+    
+    ############################################################################################################à
+
+    def get_instance_and_counterfactual_graph_metrics(self):
+        if len(self.explanations) < 1:
+            return None
+        
+        # iterates over the original instances and the explanations
+        ids = [explanation.id for explanation in self.explanations]
+
+        n_ins = len(self.dataset.instances)
+
+        result = []
+        for i in range(0, n_ins):
+            if i in ids:
+                instance = self.dataset.instances[i]
+                counterfactual = self.explanations[ids.index(i)]
+
+                result.append({'instance_id': instance.id,
+                                'density_instance': 2 * instance.num_edges / ( instance.num_nodes * ( instance.num_nodes - 1 ) ),
+                                'density_counterfactual': 2 * counterfactual.num_edges / ( counterfactual.num_nodes * ( counterfactual.num_nodes - 1 ) ),
+                                # ...
+                                })
+        
+        return result
+
+    ############################################################################################################à
 
     def evaluate(self):
         for m in self._evaluation_metrics:

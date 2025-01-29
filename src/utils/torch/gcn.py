@@ -13,7 +13,6 @@ class GCN(nn.Module):
         self.out_channels = int(self.in_channels * conv_booster)
           
         self.pooling =  build_w_params_string(pooling)
- 
         
         if num_conv_layers>1:
             self.num_conv_layers = [(self.in_channels, self.out_channels)] + [(self.out_channels, self.out_channels) * (num_conv_layers - 1)]
@@ -31,7 +30,9 @@ class GCN(nn.Module):
         if isinstance(self.graph_convs[-1],nn.Identity):
             return self.graph_convs[-1](node_features)
 
-        return self.graph_convs[-1](node_features, batch)
+        output = self.graph_convs[-1](node_features, batch)
+
+        return output
     
     def __init__conv_layers(self):
         ############################################

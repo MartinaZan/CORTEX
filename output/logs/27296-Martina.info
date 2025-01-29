@@ -1,0 +1,30 @@
+2025-01-29 14:57:40,-1302694392 | INFO | 27296 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-01-29 14:57:40,-1302694378 | INFO | 27296 - Creating the evaluation manager.......................................................
+2025-01-29 14:57:40,-1302694359 | INFO | 27296 - Creating the PAIRED evaluators...............................................................
+2025-01-29 14:57:40,-1302694293 | INFO | 27296 - Creating: GCS-189d68770f99189694c24d6a27f87039
+2025-01-29 14:57:40,-1302694293 | INFO | 27296 - Instantiating: src.dataset.generators.gcs.GCS
+2025-01-29 14:57:44,-1302690676 | INFO | 27296 - Saved: GCS-189d68770f99189694c24d6a27f87039
+2025-01-29 14:57:44,-1302690631 | INFO | 27296 - Created: GCS-189d68770f99189694c24d6a27f87039
+2025-01-29 14:57:44,-1302690615 | INFO | 27296 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-01-29 14:57:44,-1302690609 | INFO | 27296 - Instantiating: torch.optim.RMSprop
+2025-01-29 14:57:44,-1302690609 | INFO | 27296 - Instantiating: torch.nn.CrossEntropyLoss
+2025-01-29 14:57:44,-1302690564 | INFO | 27296 - Creating: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-29 14:57:44,-1302690097 | INFO | 27296 - epoch = 0 ---> loss = 0.6924	 accuracy = 0.5251
+2025-01-29 14:57:45,-1302689863 | INFO | 27296 - epoch = 1 ---> loss = 0.6898	 accuracy = 0.6989
+2025-01-29 14:57:45,-1302689612 | INFO | 27296 - epoch = 2 ---> loss = 0.6878	 accuracy = 0.7240
+2025-01-29 14:57:45,-1302689365 | INFO | 27296 - epoch = 3 ---> loss = 0.6861	 accuracy = 0.7723
+2025-01-29 14:57:45,-1302689099 | INFO | 27296 - epoch = 4 ---> loss = 0.6844	 accuracy = 0.7689
+2025-01-29 14:57:46,-1302688798 | INFO | 27296 - Test accuracy = 0.7732
+2025-01-29 14:57:46,-1302688763 | INFO | 27296 - OracleTorch trained on cpu in: 1.780794382095337 secs
+2025-01-29 14:57:46,-1302688742 | INFO | 27296 - Saved: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-29 14:57:46,-1302688712 | INFO | 27296 - Created: OracleTorch-1fb2b28bfeb944b6430ae525efb21afb
+2025-01-29 14:57:46,-1302688711 | INFO | 27296 - Instantiating: src.evaluation.embedding_metrics.EmbeddingMetric
+2025-01-29 14:57:46,-1302688690 | INFO | 27296 - Created: DCESExplainer-9845130c99a652d128ec19fdcc4ef684
+2025-01-29 14:57:46,-1302688665 | INFO | 27296 - Evaluating the explainers.............................................................
+2025-01-29 14:57:46,-1302688656 | INFO | 27296 - Evaluating instance with id 38
+2025-01-29 14:57:50,-1302684784 | INFO | 27296 - evaluated instance with id 38
+2025-01-29 14:57:50,-1302684784 | INFO | 27296 - Evaluating instance with id 42
+2025-01-29 14:57:53,-1302681068 | INFO | 27296 - evaluated instance with id 42
+2025-01-29 14:57:53,-1302681068 | INFO | 27296 - Evaluating instance with id 66
+2025-01-29 14:57:57,-1302677055 | INFO | 27296 - evaluated instance with id 66
+2025-01-29 14:57:57,-1302677055 | INFO | 27296 - Evaluating instance with id 73

@@ -53,7 +53,7 @@ class Oracle(Trainable,metaclass=ABCMeta):
     ###################################################################################
 
     @final
-    def prova_marti(self, data_instance):
+    def get_embeddings(self, data_instance):
         # self._call_counter += 1
 
         print("----------------------------------------------------------------")
