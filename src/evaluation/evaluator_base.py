@@ -25,9 +25,6 @@ class Evaluator(ABC):
         self._run_number = run_number
         self._explanations = []
         
-       
-        
-
         # Building the config file to write into disk
         evaluator_config = {'dataset': clean_cfg(data.local_config), 'oracle': clean_cfg(oracle.local_config), 'explainer': clean_cfg(explainer.local_config), 'metrics': []}
         evaluator_config['scope']=self._scope
@@ -37,14 +34,11 @@ class Evaluator(ABC):
         evaluator_config['store_paths']=data.context.conf["store_paths"]
         evaluator_config['orgin_config_paths'] = data.context.config_file
         
-        
         for metric in evaluation_metrics:
             evaluator_config['metrics'].append(metric._config_dict)
         # creatig the results dictionary with the basic info
         self._results = {}
         self._complete = {'config':evaluator_config, "results":self._results}
-
-        
 
     @property
     def name(self):
@@ -70,7 +64,6 @@ class Evaluator(ABC):
     def explanations(self, new_explanations_list):
         self._explanations = new_explanations_list
 
-
     def get_instance_explanation_pairs(self):
         # Check if the explanations were generated already
         if len(self.explanations) < 1:
@@ -84,7 +77,6 @@ class Evaluator(ABC):
             result.append((self.dataset.instances[exp.id], exp))
 
         return result
-
 
     def get_instance_and_counterfactual_classifications(self):
         # Check if the explanations were generated already
@@ -106,7 +98,6 @@ class Evaluator(ABC):
                              'counterfactual_label': label_cf})
 
         return result
-
 
     def evaluate(self):
         for m in self._evaluation_metrics:
@@ -136,7 +127,6 @@ class Evaluator(ABC):
     
         self.write_results(fold_id)
 
-
     def _real_evaluate(self, instance, counterfactual, oracle = None, explainer=None, dataset=None):
         is_alt = False
         if (oracle is None):
@@ -163,7 +153,6 @@ class Evaluator(ABC):
 
                 m_result = metric.evaluate(instance, counterfactual, oracle, explainer,dataset)
                 self._results[Context.get_fullname(metric)].append({"id":str(instance.id),"value":m_result})
-
 
     def write_results(self,fold_id):
         hash_info = {"scope":self._scope,

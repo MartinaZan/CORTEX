@@ -13,7 +13,7 @@ from torch_geometric.loader import DataLoader
 class TorchBase(Trainable):
        
     def init(self):
-        self.epochs = 150 #self.local_config['parameters']['epochs']
+        self.epochs = 100 #self.local_config['parameters']['epochs']
         self.batch_size = self.local_config['parameters']['batch_size']
         
         self.model = get_instance_kvargs(self.local_config['parameters']['model']['class'],

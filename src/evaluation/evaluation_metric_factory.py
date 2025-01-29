@@ -11,6 +11,8 @@ from src.evaluation.evaluation_metric_oracle_accuracy import OracleAccuracyMetri
 from src.evaluation.evaluation_metric_smiles_levenshtein import SmilesLevenshteinMetric
 from src.evaluation.evaluation_metric_dumper import InstancesDumper
 
+from src.evaluation.evaluation_metric_prova_martina import ProvaMartinaMetric
+
 
 
 class EvaluationMetricFactory:
@@ -43,6 +45,9 @@ class EvaluationMetricFactory:
 
         elif metric_name == 'oracle_accuracy':
             return self.get_oracle_accuracy_metric(config_dict=metric_dict)
+
+        elif metric_name == 'prova_martina':
+            return self.get_prova_martina_metric(config_dict=metric_dict)
 
         elif metric_name == 'smiles_levenshtein':
             return self.get_smiles_levenshtein_metric(config_dict=metric_dict)
@@ -101,6 +106,10 @@ class EvaluationMetricFactory:
 
     def get_oracle_accuracy_metric(self, config_dict=None) -> EvaluationMetric:
         result = OracleAccuracyMetric(config_dict)
+        return result
+    
+    def get_prova_martina_metric(self, config_dict=None) -> EvaluationMetric:
+        result = ProvaMartinaMetric(config_dict)
         return result
 
     def get_oracle_accuracy_node_metric(self, config_dict=None) -> EvaluationMetric:

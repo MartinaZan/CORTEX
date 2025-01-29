@@ -52,6 +52,8 @@ class EvaluatorManager:
         # Instantiate the evaluation metrics that will be used for the evaluation;
         for metric_dict in metrics_list:
             self._evaluation_metrics.append(self.context.factories['metrics'].get_evaluation_metric_by_name(metric_dict))
+        
+        self._evaluation_metrics.append(self.context.factories['metrics'].get_evaluation_metric_by_name({'name': 'prova_martina', 'parameters': {}})) #### DA MIGLIORARE
 
         for explainer_snippet in explainers_list:
             for do_pair_snippet in do_pairs_list:
