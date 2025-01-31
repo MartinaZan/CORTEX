@@ -80,19 +80,19 @@ def corr2graph(id, data, weight, series, target, dataset):
 
     X = np.array(series).reshape(n, 1)
 
-    #####################################
-    # Da cancellare:
+    ##########################################################################
+    # Tentativo per avere più node features
     # X = np.hstack((X, np.random.rand(n, 1), np.random.rand(n, 1)))
-    #####################################
+    ##########################################################################
 
     # Scorre tutti gli archi e imposta matrice di adiacenza pesata (W) e binaria (A)
     for p, edge in enumerate(data):
-        if np.abs(weight[p]) > 0.3: # (eventuale condizione per impostare un threshold)
+        if np.abs(weight[p]) > 0 : # 0.3: # (condizione per threshold)
             W[edge[0], edge[1]] = np.abs(weight[p])
             A[edge[0], edge[1]] = 1 if weight[p] != 0 else 0
 
-    #####################################
-    # DA CANCELLARE
+    ##########################################################################
+    # DA CANCELLARE (prova per valutare impatto degli zeri nelle matrici)
     # k = 6
     # if target == 0:
     #     X[0:k] = X[0:k] * 0
@@ -102,13 +102,13 @@ def corr2graph(id, data, weight, series, target, dataset):
     #     X[0:k] = X[0:k] * 0 + 1
     #     W[0:k,0:k] = W[0:k,0:k] * 0 + 1
     #     A[0:k,0:k] = A[0:k,0:k] * 0 + 1
-    #####################################
+    ##########################################################################
 
     # W deve essere un vettore, quindi lo flatteniamo
     W = W[W != 0].flatten()
 
-    """print(X)
-    print(A)
-    print('---')"""
+    # print(X)
+    # print(A)
+    # print('---')
 
     return A,X,W

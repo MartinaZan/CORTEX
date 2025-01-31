@@ -35,7 +35,7 @@ class Oracle(Trainable,metaclass=ABCMeta):
         # print(f"data_instance.label: {data_instance.label}")
         # # print(f"data_instance.num_nodes: {data_instance.num_nodes}")
 
-        # print("\n>> PREVISIONE <<")
+        # print("\n>> PREDICTION <<")
 
         # output = self._real_predict(data_instance)
         # print(f"Prediction: {output}")
@@ -53,19 +53,25 @@ class Oracle(Trainable,metaclass=ABCMeta):
     ###################################################################################
 
     @final
-    def get_embeddings(self, data_instance):
+    def get_gcn_embeddings(self, data_instance):
         # self._call_counter += 1
 
-        print("----------------------------------------------------------------")
-
-        print(f"data_instance.id: {data_instance.id}")
-        print(f"data_instance.label: {data_instance.label}")
-
         output, embeddings = self._real_predict(data_instance,return_embeddings=True)
-        print(f"Prediction: {output}")
-        print(f"node embeddings: {embeddings}")
         
-        return
+        # print("----------------------------------------------------------------")
+        # print(f"data_instance.id: {data_instance.id}")
+        # print(f"data_instance.label: {data_instance.label}")
+        # print(f"Prediction: {output}")
+        # print(f"node embeddings: {embeddings}")
+
+        result = {
+            "data_instance_id": data_instance.id,
+            "data_instance_label": data_instance.label,
+            "prediction": output,
+            "embeddings": embeddings
+        }
+        
+        return result
 
     ###################################################################################
 

@@ -15,8 +15,8 @@ class DCESExplainer(Explainer):
     def check_configuration(self):
         super().check_configuration()
 
-        # dst_metric='src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric'  ### PRIMA
-        dst_metric='src.evaluation.embedding_metrics.EmbeddingMetric'  ### DOPO
+        dst_metric='src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric'  ### PRIMA
+        # dst_metric='src.evaluation.embedding_metrics.EmbeddingMetric'  ### DOPO
 
 
         #Check if the distance metric exist or build with its defaults:
@@ -29,7 +29,7 @@ class DCESExplainer(Explainer):
         self.distance_metric = get_instance_kvargs(self.local_config['parameters']['distance_metric']['class'], 
                                                     self.local_config['parameters']['distance_metric']['parameters'])
 
-    def explain(self, instance):
+    def explain(self, instance): # , return_ctf_id=False):
         input_label = self.oracle.predict(instance)
 
         # if the method does not find a counterfactual example returns the original graph
@@ -38,8 +38,8 @@ class DCESExplainer(Explainer):
         # Iterating over all the instances of the dataset
         min_ctf_dist = sys.float_info.max
         for ctf_candidate in self.dataset.instances:
-            candidate_label, node_embeddings = self.oracle.predict(ctf_candidate, return_embeddings=True) ## Chiama oracle_base.predict
-            # print(f"node embeddings: {node_embeddings}")
+            candidate_label, graph_embeddings = self.oracle.predict(ctf_candidate, return_embeddings=True) ## Chiama oracle_base.predict
+            # print(f"graph embeddings: {graph_embeddings}")
 
             if input_label != candidate_label:
                 ctf_distance = self.distance_metric.evaluate(instance, ctf_candidate, self.oracle)
@@ -50,5 +50,8 @@ class DCESExplainer(Explainer):
 
         result = copy.deepcopy(min_ctf)
         result.id = instance.id
+
+        # if return_ctf_id:
+        #     return result, min_ctf.id
 
         return result

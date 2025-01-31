@@ -123,6 +123,27 @@ class Evaluator(ABC):
         
         return result
 
+    def get_instance_and_counterfactual_ids(self):
+        if len(self.explanations) < 1:
+            return None
+        
+        ids = [explanation.id for explanation in self.explanations]    # id test set
+        n_ins = len(self.dataset.instances)                            # tutti id
+
+        result = []
+
+        for j in ids: # scorre tutti id test set (per cui ha calcolato controfattuali)
+            counterfactual = self.explanations[ids.index(j)]
+
+            for i in range(0, n_ins): # scorre tutti gli id del dataset
+                ctf_candidate = self.dataset.instances[i]
+                if (ctf_candidate.node_features == counterfactual.node_features).all(): # (ctf_candidate.data == counterfactual.data).all():
+                    result.append({'instance_id': j,
+                                'counterfactual_id': ctf_candidate.id
+                    })
+        
+        return result
+
     ############################################################################################################à
 
     def evaluate(self):

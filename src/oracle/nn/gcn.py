@@ -69,8 +69,8 @@ class DownstreamGCN(GCN):
         ###################################################################################
 
         if return_embeddings:
-            node_embeddings = node_features
-            return self.downstream_layers(node_features), node_embeddings
+            graph_embeddings = node_features
+            return self.downstream_layers(node_features), graph_embeddings
 
         return self.downstream_layers(node_features)
     
