@@ -27,7 +27,7 @@ class FilePatient:
 ################################################################################
 
 class Patient:
-    def __init__(self, file_patient: FilePatient):
+    def __init__(self, file_patient: FilePatient, num_points=1500):
         self.file_patient = file_patient
         self.dictionary_unique_pairs = {}
 
@@ -41,9 +41,9 @@ class Patient:
         self.num_seizures = None
         self.df = None
 
-        self.num_points = 1500      # Numero di punti per ogni classe
-        self.lag = int(256*10)      # Numero di lag per calcolo correlazione (10 secondi)
-        self.buffer_time = None     # Buffer per saltare dati troppo vicini a inizio e fine della crisi
+        self.num_points = num_points    # Numero di punti per ogni classe
+        self.lag = int(256*10)          # Numero di lag per calcolo correlazione (10 secondi)
+        self.buffer_time = None         # Buffer per saltare dati troppo vicini a inizio e fine della crisi
         self.skip_0 = None
         self.skip_1 = None
 
@@ -315,6 +315,9 @@ def create_graph(patient):
 def export_data_to_GRETEL(patient):
     node_ids, _, weights, edge_list, node_features, seizure_class = create_graph(patient)
 
+    #
+    ## Saving graph into json file
+    #
     tempi = list(range(len(seizure_class)))
     index_dict = dict(zip(tempi, edge_list))
     weight_dict = dict(zip(tempi, weights))
@@ -323,26 +326,25 @@ def export_data_to_GRETEL(patient):
         "edge_weight": weight_dict
     }
 
-    # Data to be written
     dictionary = {
+        "patient": patient.file_patient.patient_id, # Id del paziente
+        "record": patient.file_patient.record_id,   # Id del record
         "edge_mapping": edge_dict,
         "node_ids": node_ids,
-        "time_periods": tempi, # da modificare se voglio tener traccia del time step
+        "time_periods": tempi,
         "target": seizure_class,
-        "series": node_features # controllare
+        "series": node_features # Da aumentare
     }
 
-    # Serializing json
     json_object = json.dumps(dictionary)
+    file_path = f"EEG_data\dataset_{patient.file_patient.patient_id}_{patient.file_patient.record_id}.json"
 
-    file_path = f"dataset_{patient.file_patient.patient_id}_{patient.file_patient.record_id}.json"
-
-    # Writing to sample.json
     with open(file_path, "w") as outfile:
         outfile.write(json_object)
 
-    ####################################################################
-
+    #
+    ## Saving useful variables into pkl file
+    #
     save_variables = {
         "indici": patient.indices,
         "Start": int(patient.get_times()[0]),
