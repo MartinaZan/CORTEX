@@ -116,6 +116,8 @@ class Evaluator(ABC):
                 counterfactual = self.explanations[ids.index(i)]
 
                 result.append({'instance_id': instance.id,
+                                'instance_time': instance.time,
+                                'instance_record': f"{instance.patient_id}_{instance.record_id}",
                                 'density_instance': 2 * instance.num_edges / ( instance.num_nodes * ( instance.num_nodes - 1 ) ),
                                 'density_counterfactual': 2 * counterfactual.num_edges / ( counterfactual.num_nodes * ( counterfactual.num_nodes - 1 ) ),
                                 # ...
@@ -139,7 +141,8 @@ class Evaluator(ABC):
                 ctf_candidate = self.dataset.instances[i]
                 if (ctf_candidate.node_features == counterfactual.node_features).all(): # (ctf_candidate.data == counterfactual.data).all():
                     result.append({'instance_id': j,
-                                'counterfactual_id': ctf_candidate.id
+                                   # METTERE QUALCOSA QUI
+                                   'counterfactual_id': ctf_candidate.id
                     })
         
         return result
@@ -164,7 +167,7 @@ class Evaluator(ABC):
             for metric in self._evaluation_metrics:
                 if(metric._special):
                     val, counterfactual = metric.evaluate(inst, None, self._oracle,self._explainer,self._data)
-                    self._results[Context.get_fullname(metric)].append({"id":str(inst.id),"value":val})
+                    self._results[Context.get_fullname(metric)].append({"id":str(inst.id),"time":inst.time,"record":f"{inst.patient_id}_{inst.record_id}","value":val})
                     self._explanations.append(counterfactual)
 
             self._real_evaluate(inst, counterfactual,self._oracle,self._explainer,self._data)

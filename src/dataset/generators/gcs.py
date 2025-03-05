@@ -33,6 +33,12 @@ class GCS(Generator):
             self._read(self._data_file_path)
 
     def _read(self, path):
+        idx = 0
+
+        #
+        # >> Qui dovrei ciclare sui vari json <<
+        #
+
         # Apertura del file json con dati dei grafi.
         # Il dizionario comprende le seguenti chiavi:
         #    data.keys() --> dict_keys(['edge_mapping', 'node_ids', 'time_periods', 'target', 'series'])
@@ -45,7 +51,7 @@ class GCS(Generator):
         # self.dataset.edge_features_map =  # change me
 
         # Creazione di un grafo per ogni step temporale
-        for idx, t in enumerate(data['time_periods']):
+        for t in data['time_periods']:
             # Creazione di adjacency e node feature matrix.
             # Alla funzione corr2graph vengono passati:
             #   - l'id del grafo (ossia l'indice temporale): t
@@ -53,16 +59,17 @@ class GCS(Generator):
             #   - le informazioni sui pesi al tempo t: data['edge_mapping']['edge_weight'][str(t)]
             #   - i valori della serie temporale al tempo t: data["series"][t]
             #   - self.dataset (per accedere a self.dataset.node_features_map e self.dataset.edge_features_map)
-            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][idx], data["target"][idx], self.dataset)
+            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], data["target"][t], self.dataset)
             
             # Lettura della true label al tempo t (crisi/no crisi)
-            y = data["target"][idx]
+            y = data["target"][t]
             
             patient_id = data["patient"]
             record_id = data["record"]
 
             g = GraphInstance(
-                id = t,                 # id temporale
+                time = t,               # id temporale
+                id = idx,               # id grafo
                 label = y,              # label crisi/no crisi
                 data = A,               # data: n x n matrix where n is the number of nodes (i.e., it is the binary adjacency matrix)
                 node_features = X,      # node_features: n x d matrix where d is the number of node features (per ora considero d = 1)
@@ -72,6 +79,8 @@ class GCS(Generator):
                 record_id = record_id,
             )
             self.dataset.instances.append(g)
+
+            idx = idx + 1
     
 def corr2graph(id, data, weight, series, target, dataset):
     # n_map = dataset.node_features_map

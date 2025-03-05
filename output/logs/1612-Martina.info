@@ -1,0 +1,12 @@
+2025-03-05 15:56:26,747 | INFO | 1612 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-03-05 15:56:26,756 | INFO | 1612 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\evoluzione_sottografi_14232-Martina.mp4'
+2025-03-05 15:56:34,391 | INFO | 1612 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
+2025-03-05 16:00:17,234 | INFO | 1612 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-03-05 16:00:17,237 | INFO | 1612 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\evoluzione_sottografi_14232-Martina.mp4'
+2025-03-05 16:00:24,427 | INFO | 1612 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
+2025-03-05 16:01:16,151 | INFO | 1612 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-03-05 16:01:16,151 | INFO | 1612 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\evoluzione_sottografi_14232-Martina.mp4'
+2025-03-05 16:01:23,023 | INFO | 1612 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
+2025-03-05 16:08:14,326 | INFO | 1612 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-03-05 16:08:14,328 | INFO | 1612 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\evoluzione_sottografi_14232-Martina.mp4'
+2025-03-05 16:08:21,208 | INFO | 1612 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
