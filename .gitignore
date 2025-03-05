@@ -158,5 +158,10 @@ visualizations/*
 main_test.py
 da_test.py
 
+<<<<<<< HEAD
 # Prove Martina
 prove_varie_martina/
+=======
+# Log files
+*.out
+>>>>>>> NON_TOCCARE/main
