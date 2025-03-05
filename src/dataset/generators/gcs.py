@@ -45,7 +45,7 @@ class GCS(Generator):
         # self.dataset.edge_features_map =  # change me
 
         # Creazione di un grafo per ogni step temporale
-        for t in data['time_periods']:
+        for idx, t in enumerate(data['time_periods']):
             # Creazione di adjacency e node feature matrix.
             # Alla funzione corr2graph vengono passati:
             #   - l'id del grafo (ossia l'indice temporale): t
@@ -53,10 +53,13 @@ class GCS(Generator):
             #   - le informazioni sui pesi al tempo t: data['edge_mapping']['edge_weight'][str(t)]
             #   - i valori della serie temporale al tempo t: data["series"][t]
             #   - self.dataset (per accedere a self.dataset.node_features_map e self.dataset.edge_features_map)
-            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], data["target"][t], self.dataset)
+            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][idx], data["target"][idx], self.dataset)
             
             # Lettura della true label al tempo t (crisi/no crisi)
-            y = data["target"][t]
+            y = data["target"][idx]
+            
+            patient_id = data["patient"]
+            record_id = data["record"]
 
             g = GraphInstance(
                 id = t,                 # id temporale
@@ -64,7 +67,9 @@ class GCS(Generator):
                 data = A,               # data: n x n matrix where n is the number of nodes (i.e., it is the binary adjacency matrix)
                 node_features = X,      # node_features: n x d matrix where d is the number of node features (per ora considero d = 1)
                 edge_weights = W,       # edge_weights: n x n matrix containing the weight of each edge (i.e., it is the weighted adjacency matrix)
-                graph_features = {}     # feature del grafo (per il momento, nessuna)
+                graph_features = {},    # feature del grafo (per il momento, nessuna)
+                patient_id = patient_id,
+                record_id = record_id,
             )
             self.dataset.instances.append(g)
     
