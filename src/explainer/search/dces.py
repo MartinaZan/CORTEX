@@ -18,8 +18,7 @@ class DCESExplainer(Explainer):
         dst_metric='src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric'  ### PRIMA
         # dst_metric='src.evaluation.embedding_metrics.EmbeddingMetric'  ### DOPO
 
-
-        #Check if the distance metric exist or build with its defaults:
+        # Check if the distance metric exist or build with its defaults:
         init_dflts_to_of(self.local_config, 'distance_metric', dst_metric)
 
 
@@ -38,20 +37,18 @@ class DCESExplainer(Explainer):
         # Iterating over all the instances of the dataset
         min_ctf_dist = sys.float_info.max
         for ctf_candidate in self.dataset.instances:
-            candidate_label, graph_embeddings = self.oracle.predict(ctf_candidate, return_embeddings=True) ## Chiama oracle_base.predict
-            # print(f"graph embeddings: {graph_embeddings}")
+            if ctf_candidate.patient_id == instance.patient_id: ## Added (considera solo record dello stesso paziente)
+                candidate_label, graph_embeddings = self.oracle.predict(ctf_candidate, return_embeddings=True) ## Chiama oracle_base.predict
+                # print(f"graph embeddings: {graph_embeddings}")
 
-            if input_label != candidate_label:
-                ctf_distance = self.distance_metric.evaluate(instance, ctf_candidate, self.oracle)
-                
-                if ctf_distance < min_ctf_dist:
-                    min_ctf_dist = ctf_distance
-                    min_ctf = ctf_candidate
+                if input_label != candidate_label:
+                    ctf_distance = self.distance_metric.evaluate(instance, ctf_candidate, self.oracle)
+                    
+                    if ctf_distance < min_ctf_dist:
+                        min_ctf_dist = ctf_distance
+                        min_ctf = ctf_candidate
 
         result = copy.deepcopy(min_ctf)
         result.id = instance.id
-
-        # if return_ctf_id:
-        #     return result, min_ctf.id
 
         return result

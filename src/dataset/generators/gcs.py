@@ -10,7 +10,9 @@ from src.dataset.instances.graph import GraphInstance
 class GCS(Generator):
     def init(self):
         base_path = self.local_config['parameters']['data_dir']
-        self._data_file_path = join(base_path, self.local_config['parameters']['data_file_name'])
+        file_names = self.local_config['parameters']['data_file_name'] ## Added
+
+        self._data_file_path = [join(base_path, file_name) for file_name in file_names] # join(base_path, self.local_config['parameters']['data_file_name'])
         self._data_label_name = self.local_config['parameters']['data_label_name']
 
         self.dataset.node_features_map = None
@@ -28,16 +30,21 @@ class GCS(Generator):
             raise Exception("The name of the label column must be given.")
 
     # Funzione per la generazione del dataset, che chiama la funzione per la lettura dei dati dal json
+    # def generate_dataset(self):
+    #     if not len(self.dataset.instances):
+    #         self._read(self._data_file_path)
+
+    # Funzione per la generazione del dataset, che chiama la funzione per la lettura dei dati dal json
     def generate_dataset(self):
         if not len(self.dataset.instances):
-            self._read(self._data_file_path)
+            for item in self._data_file_path:
+                self._read(item)
 
     def _read(self, path):
-        idx = 0
-
-        #
-        # >> Qui dovrei ciclare sui vari json <<
-        #
+        if not len(self.dataset.instances):
+            idx = 0
+        else:
+            idx = len(self.dataset.instances)
 
         # Apertura del file json con dati dei grafi.
         # Il dizionario comprende le seguenti chiavi:
@@ -68,13 +75,13 @@ class GCS(Generator):
             record_id = data["record"]
 
             g = GraphInstance(
-                time = t,               # id temporale
                 id = idx,               # id grafo
                 label = y,              # label crisi/no crisi
                 data = A,               # data: n x n matrix where n is the number of nodes (i.e., it is the binary adjacency matrix)
                 node_features = X,      # node_features: n x d matrix where d is the number of node features (per ora considero d = 1)
                 edge_weights = W,       # edge_weights: n x n matrix containing the weight of each edge (i.e., it is the weighted adjacency matrix)
                 graph_features = {},    # feature del grafo (per il momento, nessuna)
+                time = t,               # id temporale
                 patient_id = patient_id,
                 record_id = record_id,
             )
