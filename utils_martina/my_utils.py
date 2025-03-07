@@ -1,6 +1,8 @@
 import os
 import re
 import ast
+import json
+import shutil
 
 ################################################################################################################
 
@@ -9,6 +11,31 @@ def get_most_recent_file(folder_path):
     Ricava il nome del file più recente in folder_path
     """
     return max(os.listdir(folder_path), key=lambda f: os.path.getmtime(os.path.join(folder_path, f)))
+
+################################################################################################################
+
+def create_dataset_json(observations):
+    data_file_names = [f"grafo_corr_sliding_{i}.json" for i in range(len(observations))]
+
+    for i in range(len(observations)):
+        shutil.copyfile(f"EEG_data/dataset_{observations[i]}.json", f"data/datasets/gcs/{data_file_names[i]}")
+
+    file_json = {
+        "class": "src.dataset.dataset_base.Dataset",
+        "parameters": {
+            "generator": {
+                "class": "src.dataset.generators.gcs.GCS",
+                "parameters": {
+                    "data_dir": "data/datasets/gcs/",
+                    "data_file_name": data_file_names,
+                    "data_label_name": "y"
+                }
+            }
+        }
+    }
+
+    with open("config\snippets\datasets\GCS.json", "w") as f:
+        json.dump(file_json, f, indent=4)
 
 ################################################################################################################
 
