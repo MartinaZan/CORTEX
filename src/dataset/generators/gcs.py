@@ -15,6 +15,8 @@ class GCS(Generator):
         self._data_file_path = [join(base_path, file_name) for file_name in file_names] # join(base_path, self.local_config['parameters']['data_file_name'])
         self._data_label_name = self.local_config['parameters']['data_label_name']
 
+        self.num_node_features = None
+
         self.dataset.node_features_map = None
         self.dataset.edge_features_map = None # rdk_edge_features_map()
         self.generate_dataset()
@@ -53,8 +55,11 @@ class GCS(Generator):
         # 'series' contiene i valori della serie temporale multivariata, da usare per definire le feature dei nodi
         data = json.load(open(path))
 
-        # Definizione di node e edge geatures map. Sono dei dizionari che contengono tante caratteristiche quante sono le feature.
-        self.dataset.node_features_map = {'attribute_0': 0}
+        self.num_node_features = len(data["series"][0])
+
+        # Definizione di node e edge features map. Sono dei dizionari che contengono tante caratteristiche quante sono le feature.
+        # self.dataset.node_features_map = {'attribute_0': 0}
+        self.dataset.node_features_map = {f'attribute_{i}': i for i in range(self.num_node_features)}
         # self.dataset.edge_features_map =  # change me
 
         # Creazione di un grafo per ogni step temporale
@@ -90,20 +95,27 @@ class GCS(Generator):
             idx = idx + 1
     
 def corr2graph(id, data, weight, series, target, dataset):
-    # n_map = dataset.node_features_map
+    n_map = dataset.node_features_map
     # e_map = dataset.edge_features_map
     
     # Numero di nodi
-    n = len(series) # 24
+    n = len(series[0])
 
     A = np.zeros((n, n))
     W = np.zeros((n, n))
 
-    X = np.array(series).reshape(n, 1)
+    # X = np.array(series).reshape(n, 1)
 
     ##########################################################################
     # Tentativo per avere più node features
+    # X = np.array(series).reshape(n, 1)
     # X = np.hstack((X, np.random.rand(n, 1), np.random.rand(n, 1)))
+
+    if len(n_map) == 1:
+        X = np.array(series).reshape(n, 1)
+    else:
+        X = np.fliplr(np.array(series).T)
+
     ##########################################################################
 
     # Scorre tutti gli archi e imposta matrice di adiacenza pesata (W) e binaria (A)

@@ -1085,3 +1085,8 @@
 2025-03-11 17:59:52,653 | INFO | 18280 - Evaluating instance with id 265
 2025-03-11 18:00:00,943 | INFO | 18280 - evaluated instance with id 265
 2025-03-11 18:00:00,943 | INFO | 18280 - Evaluating instance with id 272
+2025-03-12 10:55:10,506 | INFO | 18280 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-03-12 10:55:10,527 | INFO | 18280 - Creating the evaluation manager.......................................................
+2025-03-12 10:55:10,567 | INFO | 18280 - Creating the PAIRED evaluators...............................................................
+2025-03-12 10:55:10,662 | INFO | 18280 - Creating: GCS-28e49373646e3a1aa4f78d3b3cf52c7d
+2025-03-12 10:55:10,662 | INFO | 18280 - Instantiating: src.dataset.generators.gcs.GCS

@@ -27,7 +27,7 @@ class FilePatient:
 ################################################################################
 
 class Patient:
-    def __init__(self, file_patient: FilePatient, num_points=1500):
+    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1):
         self.file_patient = file_patient
         self.dictionary_unique_pairs = {}
 
@@ -38,11 +38,13 @@ class Patient:
             "seizure_ends": []      # Seizure end times
         }
 
+        self.num_node_features = num_node_features
+
         self.num_seizures = None
         self.df = None
 
         self.num_points = num_points    # Numero di punti per ogni classe
-        self.lag = int(256*10)          # Numero di lag per calcolo correlazione (10 secondi)
+        self.lag_corr = int(256*10)     # Numero di lag per calcolo correlazione (10 secondi)
         self.buffer_time = None         # Buffer per saltare dati troppo vicini a inizio e fine della crisi
         self.skip_0 = None
         self.skip_1 = None
@@ -58,7 +60,7 @@ class Patient:
 
         self.buffer_time = int(min(length_seizures) / 10 * 256) # In questo modo scarto un 20% dei punti della crisi
 
-        self.skip_0 = int(((length_recording - self.lag / 256 - self.buffer_time / 256 * len(length_seizures) * 2) / self.num_points) * 256)
+        self.skip_0 = int(((length_recording - self.lag_corr / 256 - self.buffer_time / 256 * len(length_seizures) * 2) / self.num_points) * 256)
         self.skip_1 = int(((sum(length_seizures) - self.buffer_time / 256 * len(length_seizures) * 2) / self.num_points) * 256)
 
 
@@ -206,7 +208,7 @@ class Patient:
         Start = int(self.get_times()[0])
         End = int(self.get_times()[-1])
         
-        indices = list(range(self.lag, (self.patient_info["seizure_starts"][0] - Start) * 256 - self.buffer_time, self.skip_0))  # Before first seizure
+        indices = list(range(self.lag_corr, (self.patient_info["seizure_starts"][0] - Start) * 256 - self.buffer_time, self.skip_0))  # Before first seizure
 
         for i in range(len(self.patient_info["seizure_starts"])):
             indices += list(range((self.patient_info["seizure_starts"][i] - Start) * 256 + self.buffer_time, (self.patient_info["seizure_ends"][i] - Start) * 256 - self.buffer_time, self.skip_1))
@@ -241,7 +243,7 @@ class Patient:
 def create_graph(patient):
     df = patient.df
     indices = patient.indices
-    lag = patient.lag
+    lag_corr = patient.lag_corr
     seizure_starts = patient.patient_info["seizure_starts"]
     seizure_ends = patient.patient_info["seizure_ends"]
 
@@ -261,6 +263,8 @@ def create_graph(patient):
 
     seizure_class = []  # Label dei nodi (crisi/no crisi)
 
+    num_node_features = patient.num_node_features
+
     # Derivation of edge weights from correlation matrix
     for k in indices:
         t = df.index[k]
@@ -269,7 +273,7 @@ def create_graph(patient):
 
         ##########################################################################
 
-        corr_mat = (df.iloc[(k-lag):k]).corr()
+        corr_mat = (df.iloc[(k-lag_corr):k]).corr()
 
         # Prendo i valori assoluti
         corr_mat = np.abs(corr_mat)
@@ -293,7 +297,7 @@ def create_graph(patient):
         # Crisi nella sliding window
         crisi = False
         for start, end in zip(seizure_starts, seizure_ends):
-            if (start <= t-(lag/256)) & (t-(lag/256) <= end) | ((start <= t) & (t <= end)):
+            if (start <= t-(lag_corr/256)) & (t-(lag_corr/256) <= end) | ((start <= t) & (t <= end)):
                 crisi = True
         
         if crisi:
@@ -306,7 +310,8 @@ def create_graph(patient):
         corr.append(corr_mat)
         weights.append(values_list)
         edge_list.append(new_edges)
-        node_features.append(series[k])
+        # node_features.append(series[k])
+        node_features.append(series[(k-num_node_features+1):(k+1)])
 
     return node_ids, corr, weights, edge_list, node_features, seizure_class
 
