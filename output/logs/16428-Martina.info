@@ -1,0 +1,54 @@
+2025-03-11 18:00:22,781 | INFO | 16428 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-03-11 18:00:22,819 | INFO | 16428 - Creating the evaluation manager.......................................................
+2025-03-11 18:00:22,856 | INFO | 16428 - Creating the PAIRED evaluators...............................................................
+2025-03-11 18:00:22,935 | INFO | 16428 - Creating: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-11 18:00:22,935 | INFO | 16428 - Instantiating: src.dataset.generators.gcs.GCS
+2025-03-11 18:00:32,831 | INFO | 16428 - Saved: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-11 18:00:32,905 | INFO | 16428 - Created: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-11 18:00:32,967 | INFO | 16428 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-03-11 18:00:32,985 | INFO | 16428 - Instantiating: torch.optim.RMSprop
+2025-03-11 18:00:32,985 | INFO | 16428 - Instantiating: torch.nn.CrossEntropyLoss
+2025-03-11 18:00:33,048 | INFO | 16428 - Creating: OracleTorch-f8faf6d84b36aeb263a6f333e329550c
+2025-03-11 18:00:34,900 | INFO | 16428 - epoch = 0 ---> loss = 0.6924	 accuracy = 0.5212
+2025-03-11 18:00:36,213 | INFO | 16428 - epoch = 1 ---> loss = 0.6921	 accuracy = 0.5219
+2025-03-11 18:00:37,579 | INFO | 16428 - epoch = 2 ---> loss = 0.6920	 accuracy = 0.5219
+2025-03-11 18:00:38,912 | INFO | 16428 - epoch = 3 ---> loss = 0.6920	 accuracy = 0.5216
+2025-03-11 18:00:40,261 | INFO | 16428 - epoch = 4 ---> loss = 0.6919	 accuracy = 0.5219
+2025-03-11 18:00:41,460 | INFO | 16428 - epoch = 5 ---> loss = 0.6918	 accuracy = 0.5219
+2025-03-11 18:00:42,959 | INFO | 16428 - epoch = 6 ---> loss = 0.6917	 accuracy = 0.5218
+2025-03-11 18:00:44,222 | INFO | 16428 - epoch = 7 ---> loss = 0.6917	 accuracy = 0.5215
+2025-03-11 18:00:45,270 | INFO | 16428 - epoch = 8 ---> loss = 0.6916	 accuracy = 0.5213
+2025-03-11 18:00:46,535 | INFO | 16428 - epoch = 9 ---> loss = 0.6914	 accuracy = 0.5218
+2025-03-11 18:00:47,724 | INFO | 16428 - epoch = 10 ---> loss = 0.6914	 accuracy = 0.5215
+2025-03-11 18:00:48,859 | INFO | 16428 - epoch = 11 ---> loss = 0.6912	 accuracy = 0.5218
+2025-03-11 18:00:50,006 | INFO | 16428 - epoch = 12 ---> loss = 0.6911	 accuracy = 0.5218
+2025-03-11 18:00:51,205 | INFO | 16428 - epoch = 13 ---> loss = 0.6910	 accuracy = 0.5221
+2025-03-11 18:00:52,388 | INFO | 16428 - epoch = 14 ---> loss = 0.6909	 accuracy = 0.5218
+2025-03-11 18:00:53,687 | INFO | 16428 - epoch = 15 ---> loss = 0.6908	 accuracy = 0.5218
+2025-03-11 18:00:55,095 | INFO | 16428 - epoch = 16 ---> loss = 0.6907	 accuracy = 0.5263
+2025-03-11 18:00:56,453 | INFO | 16428 - epoch = 17 ---> loss = 0.6906	 accuracy = 0.5358
+2025-03-11 18:00:57,719 | INFO | 16428 - epoch = 18 ---> loss = 0.6906	 accuracy = 0.5348
+2025-03-11 18:00:59,002 | INFO | 16428 - epoch = 19 ---> loss = 0.6904	 accuracy = 0.5323
+2025-03-11 18:01:00,284 | INFO | 16428 - epoch = 20 ---> loss = 0.6904	 accuracy = 0.5400
+2025-03-11 18:01:01,533 | INFO | 16428 - epoch = 21 ---> loss = 0.6903	 accuracy = 0.5555
+2025-03-11 18:01:02,730 | INFO | 16428 - epoch = 22 ---> loss = 0.6902	 accuracy = 0.5586
+2025-03-11 18:01:03,838 | INFO | 16428 - epoch = 23 ---> loss = 0.6902	 accuracy = 0.5743
+2025-03-11 18:01:05,132 | INFO | 16428 - epoch = 24 ---> loss = 0.6901	 accuracy = 0.5772
+2025-03-11 18:01:06,249 | INFO | 16428 - epoch = 25 ---> loss = 0.6902	 accuracy = 0.5739
+2025-03-11 18:01:07,460 | INFO | 16428 - epoch = 26 ---> loss = 0.6901	 accuracy = 0.5556
+2025-03-11 18:01:08,713 | INFO | 16428 - epoch = 27 ---> loss = 0.6900	 accuracy = 0.5699
+2025-03-11 18:01:10,029 | INFO | 16428 - epoch = 28 ---> loss = 0.6900	 accuracy = 0.5647
+2025-03-11 18:01:11,362 | INFO | 16428 - epoch = 29 ---> loss = 0.6900	 accuracy = 0.5507
+2025-03-11 18:01:12,517 | INFO | 16428 - epoch = 30 ---> loss = 0.6897	 accuracy = 0.5619
+2025-03-11 18:01:13,744 | INFO | 16428 - epoch = 31 ---> loss = 0.6889	 accuracy = 0.5298
+2025-03-11 18:01:14,921 | INFO | 16428 - epoch = 32 ---> loss = 0.6881	 accuracy = 0.5261
+2025-03-11 18:01:16,107 | INFO | 16428 - epoch = 33 ---> loss = 0.6872	 accuracy = 0.5219
+2025-03-11 18:01:17,299 | INFO | 16428 - epoch = 34 ---> loss = 0.6863	 accuracy = 0.5221
+2025-03-11 18:01:18,408 | INFO | 16428 - epoch = 35 ---> loss = 0.6852	 accuracy = 0.5221
+2025-03-11 18:01:19,675 | INFO | 16428 - epoch = 36 ---> loss = 0.6840	 accuracy = 0.5221
+2025-03-11 18:01:20,907 | INFO | 16428 - epoch = 37 ---> loss = 0.6826	 accuracy = 0.5219
+2025-03-11 18:01:22,166 | INFO | 16428 - epoch = 38 ---> loss = 0.6814	 accuracy = 0.5218
+2025-03-11 18:01:23,437 | INFO | 16428 - epoch = 39 ---> loss = 0.6799	 accuracy = 0.5232
+2025-03-11 18:01:24,755 | INFO | 16428 - epoch = 40 ---> loss = 0.6785	 accuracy = 0.5311
+2025-03-11 18:01:26,036 | INFO | 16428 - epoch = 41 ---> loss = 0.6771	 accuracy = 0.5501
+2025-03-11 18:01:27,188 | INFO | 16428 - epoch = 42 ---> loss = 0.6755	 accuracy = 0.5368

@@ -1,3 +1,0 @@
-2025-03-07 09:06:39,840 | INFO | 2732 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
-2025-03-07 09:06:39,840 | INFO | 2732 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\evoluzione_sottografi_26352-Martina.mp4'
-2025-03-07 09:06:40,163 | INFO | 2732 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>

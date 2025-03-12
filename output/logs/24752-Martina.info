@@ -1,6 +1,0 @@
-2025-03-05 16:09:15,468 | INFO | 24752 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
-2025-03-05 16:09:15,468 | INFO | 24752 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\evoluzione_sottografi_14232-Martina.mp4'
-2025-03-05 16:09:23,821 | INFO | 24752 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
-2025-03-05 16:10:39,556 | INFO | 24752 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
-2025-03-05 16:10:39,562 | INFO | 24752 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\evoluzione_sottografi_14232-Martina.mp4'
-2025-03-05 16:10:46,138 | INFO | 24752 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>

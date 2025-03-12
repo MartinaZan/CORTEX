@@ -1,0 +1,18 @@
+2025-03-11 18:01:40,598 | INFO | 7508 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-03-11 18:01:40,625 | INFO | 7508 - Creating the evaluation manager.......................................................
+2025-03-11 18:01:40,654 | INFO | 7508 - Creating the PAIRED evaluators...............................................................
+2025-03-11 18:01:40,747 | INFO | 7508 - Creating: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-11 18:01:40,747 | INFO | 7508 - Instantiating: src.dataset.generators.gcs.GCS
+2025-03-11 18:01:50,707 | INFO | 7508 - Saved: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-11 18:01:50,742 | INFO | 7508 - Created: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-11 18:01:50,796 | INFO | 7508 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-03-11 18:01:50,808 | INFO | 7508 - Instantiating: torch.optim.RMSprop
+2025-03-11 18:01:50,816 | INFO | 7508 - Instantiating: torch.nn.CrossEntropyLoss
+2025-03-11 18:01:50,859 | INFO | 7508 - Creating: OracleTorch-f8faf6d84b36aeb263a6f333e329550c
+2025-03-11 18:01:52,869 | INFO | 7508 - epoch = 0 ---> loss = 0.6924	 accuracy = 0.5216
+2025-03-11 18:01:53,933 | INFO | 7508 - epoch = 1 ---> loss = 0.6922	 accuracy = 0.5218
+2025-03-11 18:01:55,127 | INFO | 7508 - epoch = 2 ---> loss = 0.6921	 accuracy = 0.5219
+2025-03-11 18:01:56,456 | INFO | 7508 - epoch = 3 ---> loss = 0.6921	 accuracy = 0.5216
+2025-03-11 18:01:57,722 | INFO | 7508 - epoch = 4 ---> loss = 0.6921	 accuracy = 0.5219
+2025-03-11 18:01:58,938 | INFO | 7508 - epoch = 5 ---> loss = 0.6921	 accuracy = 0.5218
+2025-03-11 18:02:00,341 | INFO | 7508 - epoch = 6 ---> loss = 0.6920	 accuracy = 0.5219
