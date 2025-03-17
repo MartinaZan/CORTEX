@@ -14,8 +14,7 @@
     "compose_strs" : "config/snippets/default_store_paths.json",
     "do-pairs":[ {"compose_bbbp_gcn" : "config/snippets/do-pairs/GCS-GCN.json"} ],
     "explainers": [{"class": "src.explainer.search.dces.DCESExplainer"}]
-    // "explainers": [{"class": "src.explainer.heuristic.obs.ObliviousBidirectionalSearchExplainer"}]
     // "explainers": [{"class": "src.explainer.heuristic.ddbs.DataDrivenBidirectionalSearchExplainer"}]
-    // "explainers": [{"class": "src.explainer.generative.cf2.CF2Explainer"}]
-    // ERRORE: "explainers": [{"class": "src.explainer.generative.clear.CLEARExplainer"}]
+    // ERRORE: "explainers": [{"class": "src.explainer.generative.rsgg.RSGG"}]              // expected np.ndarray (got Tensor)
+    // ERRORE: "explainers": [{"class": "src.explainer.generative.clear.CLEARExplainer"}]   // if there is more than a graph feature, it crashes, because the shape is wrong.
 }
