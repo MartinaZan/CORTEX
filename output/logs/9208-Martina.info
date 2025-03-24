@@ -1,9 +1,0 @@
-2025-03-24 12:45:31,310 | INFO | 9208 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
-2025-03-24 12:45:31,312 | INFO | 9208 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\13092_PN00_2.mp4'
-2025-03-24 12:45:39,757 | INFO | 9208 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
-<<<<<<< HEAD
-2025-03-24 12:52:53,947 | INFO | 9208 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
-2025-03-24 12:52:53,951 | INFO | 9208 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\17720_PN00_2.mp4'
-2025-03-24 12:53:17,206 | INFO | 9208 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
-=======
->>>>>>> origin/main
