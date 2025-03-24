@@ -43,9 +43,11 @@ class Patient:
         self.num_seizures = None
         self.df = None
 
-        self.num_points = num_points    # Numero di punti per ogni classe
-        self.lag_corr = int(256*10)     # Numero di lag per calcolo correlazione (10 secondi)
-        self.buffer_time = None         # Buffer per saltare dati troppo vicini a inizio e fine della crisi
+        self.frequency = 256
+
+        self.num_points = num_points            # Numero di punti per ogni classe
+        self.lag_corr = int(self.frequency*10)  # Numero di lag per calcolo correlazione (10 secondi)
+        self.buffer_time = None                 # Buffer per saltare dati troppo vicini a inizio e fine della crisi
         self.skip_0 = None
         self.skip_1 = None
 
@@ -58,10 +60,10 @@ class Patient:
         length_recording = self.get_length_recording()
         length_seizures = self.get_length_seizures()
 
-        self.buffer_time = int(min(length_seizures) / 10 * 256) # In questo modo scarto un 20% dei punti della crisi
+        self.buffer_time = int(min(length_seizures) / 10 * self.frequency) # In questo modo scarto un 20% dei punti della crisi
 
-        self.skip_0 = int(((length_recording - self.lag_corr / 256 - self.buffer_time / 256 * len(length_seizures) * 2) / self.num_points) * 256)
-        self.skip_1 = int(((sum(length_seizures) - self.buffer_time / 256 * len(length_seizures) * 2) / self.num_points) * 256)
+        self.skip_0 = int(((length_recording - self.lag_corr / self.frequency - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
+        self.skip_1 = int(((sum(length_seizures) - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
 
 
     def get_times(self):
@@ -171,8 +173,8 @@ class Patient:
         Start = max([0, min(self.patient_info["seizure_starts"]) - 500])
         End = min([(datetime.strptime(self.patient_info["end_time"], "%H:%M:%S") - datetime.strptime(self.patient_info["start_time"], "%H:%M:%S")).seconds, max(self.patient_info["seizure_starts"]) + 500])
         
-        data = data[:, (Start * 256):(End * 256)]
-        times = times[(Start * 256):(End * 256)]
+        data = data[:, (Start * self.frequency):(End * self.frequency)]
+        times = times[(Start * self.frequency):(End * self.frequency)]
 
         # Create DataFrame
         self.df = pd.DataFrame(data.T, columns=[f'c_{i}' for i in range(data.shape[0])])
@@ -208,16 +210,16 @@ class Patient:
         Start = int(self.get_times()[0])
         End = int(self.get_times()[-1])
         
-        indices = list(range(self.lag_corr, (self.patient_info["seizure_starts"][0] - Start) * 256 - self.buffer_time, self.skip_0))  # Before first seizure
+        indices = list(range(self.lag_corr, (self.patient_info["seizure_starts"][0] - Start) * self.frequency - self.buffer_time, self.skip_0))  # Before first seizure
 
         for i in range(len(self.patient_info["seizure_starts"])):
-            indices += list(range((self.patient_info["seizure_starts"][i] - Start) * 256 + self.buffer_time, (self.patient_info["seizure_ends"][i] - Start) * 256 - self.buffer_time, self.skip_1))
+            indices += list(range((self.patient_info["seizure_starts"][i] - Start) * self.frequency + self.buffer_time, (self.patient_info["seizure_ends"][i] - Start) * self.frequency - self.buffer_time, self.skip_1))
             
             if i < len(self.patient_info["seizure_starts"]) - 1:
-                indices += list(range((self.patient_info["seizure_ends"][i] - Start) * 256 + self.buffer_time, (self.patient_info["seizure_starts"][i + 1] - Start) * 256 - self.buffer_time, self.skip_0))
+                indices += list(range((self.patient_info["seizure_ends"][i] - Start) * self.frequency + self.buffer_time, (self.patient_info["seizure_starts"][i + 1] - Start) * self.frequency - self.buffer_time, self.skip_0))
 
         # After last seizure
-        indices += list(range((self.patient_info["seizure_ends"][-1] - Start) * 256 + self.buffer_time, (End - Start) * 256, self.skip_0))
+        indices += list(range((self.patient_info["seizure_ends"][-1] - Start) * self.frequency + self.buffer_time, (End - Start) * self.frequency, self.skip_0))
 
         self.indices = indices
 
@@ -225,7 +227,7 @@ class Patient:
     def plot_indices(self, xlim = None):
         Start = int(self.get_times()[0])
 
-        xx = [k/256 + Start for k in self.indices]
+        xx = [k/self.frequency + Start for k in self.indices]
 
         plt.figure(figsize=(30,2))
         plt.scatter(xx, np.zeros(len(xx)), s=5)
@@ -297,7 +299,7 @@ def create_graph(patient):
         # Crisi nella sliding window
         crisi = False
         for start, end in zip(seizure_starts, seizure_ends):
-            if (start <= t-(lag_corr/256)) & (t-(lag_corr/256) <= end) | ((start <= t) & (t <= end)):
+            if (start <= t-(lag_corr/patient.frequency)) & (t-(lag_corr/patient.frequency) <= end) | ((start <= t) & (t <= end)):
                 crisi = True
         
         if crisi:
