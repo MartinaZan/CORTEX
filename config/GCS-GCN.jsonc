@@ -15,6 +15,6 @@
     "do-pairs":[ {"compose_bbbp_gcn" : "config/snippets/do-pairs/GCS-GCN.json"} ],
     "explainers": [{"class": "src.explainer.search.dces.DCESExplainer"}]
     // "explainers": [{"class": "src.explainer.heuristic.ddbs.DataDrivenBidirectionalSearchExplainer"}]
-    // ERRORE: "explainers": [{"class": "src.explainer.generative.rsgg.RSGG"}]              // expected np.ndarray (got Tensor)
+    // ERRORE: "explainers": [{"class": "src.explainer.generative.rsgg.RSGG"}]              // mat1 and mat2 shapes cannot be multiplied (1x168 and 42x1)
     // ERRORE: "explainers": [{"class": "src.explainer.generative.clear.CLEARExplainer"}]   // if there is more than a graph feature, it crashes, because the shape is wrong.
 }
