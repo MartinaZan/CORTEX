@@ -45,22 +45,22 @@ class Patient:
 
         self.frequency = 256
 
-        self.num_points = num_points            # Numero di punti per ogni classe
-        self.lag_corr = int(self.frequency*10)  # Numero di lag per calcolo correlazione (10 secondi)
-        self.buffer_time = None                 # Buffer per saltare dati troppo vicini a inizio e fine della crisi
+        self.num_points = num_points            # Number of points for each class
+        self.lag_corr = int(self.frequency*10)  # Number of lag for correlation calculation (10 seconds)
+        self.buffer_time = None                 # Buffer to skip data too close to beginning and end of seizures
         self.skip_0 = None
         self.skip_1 = None
 
         self.indices = None
 
-        self.threshold = 0          # Threshold per pruning
+        self.threshold = 0          # Threshold for pruning
 
 
     def set_skip_values(self):
         length_recording = self.get_length_recording()
         length_seizures = self.get_length_seizures()
 
-        self.buffer_time = int(min(length_seizures) / 10 * self.frequency) # In questo modo scarto un 20% dei punti della crisi
+        self.buffer_time = int(min(length_seizures) / 10 * self.frequency) # In this way I discard 20% of the seizures points
 
         self.skip_0 = int(((length_recording - self.lag_corr / self.frequency - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
         self.skip_1 = int(((sum(length_seizures) - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
@@ -68,6 +68,7 @@ class Patient:
 
     def get_times(self):
         """Function to extract times of the recording"""
+
         # Start = int(self.get_times()[0])
         # End = int(self.get_times()[-1])
 
@@ -258,16 +259,16 @@ def create_graph(patient):
     pairs = np.array([(i, j) for i in range(len(columns)) for j in range(len(columns))]) # if i != j
     edges = pairs.tolist()
 
-    weights = []        # Pesi degli archi
-    edge_list = []      # Lista degli archi
-    corr = []           # Valori della correlazione
-    node_features = []  # Lista con node features
+    weights = []        # Edge weights
+    edge_list = []      # List of edges
+    corr = []           # Correlation values
+    node_features = []  # List of node features
 
-    seizure_class = []  # Label dei nodi (crisi/no crisi)
+    seizure_class = []  # Target (seizure/no seizure)
 
     num_node_features = patient.num_node_features
 
-    # Derivation of edge weights from correlation matrix
+    # Extraction of edge weights from correlation matrix
     for k in indices:
         t = df.index[k]
         values_list = []
@@ -277,13 +278,13 @@ def create_graph(patient):
 
         corr_mat = (df.iloc[(k-lag_corr):k]).corr()
 
-        # Prendo i valori assoluti
+        # Take the absolute values
         corr_mat = np.abs(corr_mat)
         
-        # Tolgo i loop
+        # Remove loops
         np.fill_diagonal(corr_mat.values, 0)
 
-        # Lascio solo il 25% più alto
+        # Keep only highest 25%
         q = corr_mat.melt().value.quantile(0.75)
         corr_mat[corr_mat < q] = 0
 
@@ -296,13 +297,13 @@ def create_graph(patient):
             new_edges.append(edges[i])
             values_list.append(corr_mat.iloc[row_index, col_index])
         
-        # Crisi nella sliding window
-        crisi = False
+        # Seizure in the sliding window
+        seizure = False
         for start, end in zip(seizure_starts, seizure_ends):
             if (start <= t-(lag_corr/patient.frequency)) & (t-(lag_corr/patient.frequency) <= end) | ((start <= t) & (t <= end)):
-                crisi = True
+                seizure = True
         
-        if crisi:
+        if seizure:
             seizure_class.append(1)
         else:
             seizure_class.append(0)
@@ -334,13 +335,13 @@ def export_data_to_GRETEL(patient):
     }
 
     dictionary = {
-        "patient": patient.file_patient.patient_id, # Id del paziente
-        "record": patient.file_patient.record_id,   # Id del record
+        "patient": patient.file_patient.patient_id,
+        "record": patient.file_patient.record_id,
         "edge_mapping": edge_dict,
         "node_ids": node_ids,
         "time_periods": tempi,
         "target": seizure_class,
-        "series": node_features # Da aumentare
+        "series": node_features
     }
 
     json_object = json.dumps(dictionary)
@@ -379,7 +380,7 @@ def export_coordinates(patient):
         'TP7': (130, 455), 'TP8': (550, 455), 'TP9': (75, 475)
     }
 
-    # Lista di coordinate dei punti medi
+    # List of mid points coordinates
     punti_medi = []
 
     img = plt.imread("EEG_utils\\nodi-vuoto.png")
@@ -388,33 +389,33 @@ def export_coordinates(patient):
     ax.imshow(img)
 
     for c, coppia in patient.dictionary_unique_pairs.items():
-        # Coppia di elettrodi
+        # Pair of electrodes
         punto = coppia.split('-')
 
         if len(punto) < 2:
             continue
 
-        # Specifiche grafico
+        # Plot style
         mid_line_width = fig.get_size_inches()[0] / 10
         mid_marker_size = fig.get_size_inches()[0] / 2
         marker_size = fig.get_size_inches()[0] * 2
         font_size = fig.get_size_inches()[0] / 1.5
         marker_edge_width = fig.get_size_inches()[0] / 8
         
-        # Coordinate dei due elettrodi
+        # Coordinates of the two elettrodes
         p1 = electrode_coordinates[punto[0]]
         p2 = electrode_coordinates[punto[1]]
 
-        # Coordinate del punto medio
+        # Coordinates of the mid point
         mid_point = ((p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2)
         punti_medi.append(mid_point)
 
-        # Disegna linea tra i due elettrodi e quadrato nel punto medio
+        # Draw line between the two electrodes and square at the midpoint
         ax.plot([p1[0], p2[0]], [p1[1], p2[1]], 'b-', linewidth=mid_line_width)
         ax.plot(mid_point[0], mid_point[1], 's', markersize=mid_marker_size, color='blue')
         ax.text(mid_point[0], mid_point[1], "c_" + str(c), fontsize=font_size, ha='center', va='center')
 
-        # Disegna i nodi corrispondenti agli elettrodi
+        # Draw the nodes corresponding to the electrodes
         ax.text(p1[0], p1[1], punto[0], fontsize=font_size, ha='center', va='center') #, bbox=dict(facecolor='white', edgecolor='none', boxstyle='round,pad=0.3'))
         ax.plot(p1[0], p1[1], 'wo', markersize=marker_size, markeredgecolor='black', markeredgewidth=marker_edge_width)
         ax.text(p2[0], p2[1], punto[1], fontsize=font_size, ha='center', va='center') #, bbox=dict(facecolor='white', edgecolor='none', boxstyle='round,pad=0.3'))
@@ -423,7 +424,7 @@ def export_coordinates(patient):
     plt.axis('off')
     plt.show()
 
-    # Salva un dizionario con le coordinate dei punti medi (= posizioni nodi grafo)
+    # Save a dictionary with coordinates of midpoints (= graph node positions)
     dizionario_punti_medi = {i: punti_medi[i] for i in range(len(punti_medi))}
 
     with open("..\\..\\explainability\\GRETEL-repo\\EEG_data\\" + f"mid_points_{patient.file_patient.patient_id}_{patient.file_patient.record_id}.pkl", 'wb') as f:

@@ -22,11 +22,11 @@ class FilePatient:
         self.record_id = record_id
 
     def get_record_path(self):
-        # Returns the full path to the record's file
+        # Return the full path to the record's file
         return f"{self.root_folder}{self.patient_id}\\{self.patient_id}-{self.record_id}.edf"
 
     def get_summary_path(self):
-        # Returns the full path to the summary file
+        # Return the full path to the summary file
         return f"{self.root_folder}{self.patient_id}\\Seizures-list-{self.patient_id}.txt"
     
 #################################################################################################
@@ -50,22 +50,22 @@ class Patient:
 
         self.frequency = 512
 
-        self.num_points = num_points            # Numero di punti per ogni classe
-        self.lag_corr = int(self.frequency*10)  # Numero di lag per calcolo correlazione (10 secondi)
-        self.buffer_time = None                 # Buffer per saltare dati troppo vicini a inizio e fine della crisi
+        self.num_points = num_points            # Number of points for each class
+        self.lag_corr = int(self.frequency*10)  # Number of lag for correlation calculation (10 seconds)
+        self.buffer_time = None                 # Buffer to skip data too close to beginning and end of seizures
         self.skip_0 = None
         self.skip_1 = None
 
         self.indices = None
 
-        self.threshold = 0          # Threshold per pruning
+        self.threshold = 0                      # Threshold for pruning
 
 
     def set_skip_values(self):
         length_recording = self.get_length_recording()
         length_seizures = self.get_length_seizures()
 
-        self.buffer_time = int(min(length_seizures) / 10 * self.frequency) # In questo modo scarto un 20% dei punti della crisi
+        self.buffer_time = int(min(length_seizures) / 10 * self.frequency)  # In this way I discard 20% of the seizures points
 
         self.skip_0 = int(((length_recording - self.lag_corr / self.frequency - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
         self.skip_1 = int(((sum(length_seizures) - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
@@ -73,6 +73,7 @@ class Patient:
 
     def get_times(self):
         """Function to extract times of the recording"""
+        
         # Start = int(self.get_times()[0])
         # End = int(self.get_times()[-1])
 
@@ -133,7 +134,7 @@ class Patient:
     def create_unique_channel_dict(self, raw_data):
         """Function to create a dictionary of unique channels"""
         unique_channels = set()    # Using a set to avoid duplicate pairs
-        unique_dict = {}        # Dictionary to store unique pairs
+        unique_dict = {}           # Dictionary to store unique pairs
 
         channels = [item for item in raw_data.ch_names]
 
@@ -257,16 +258,16 @@ def create_graph(patient):
     pairs = np.array([(i, j) for i in range(len(columns)) for j in range(len(columns))]) # if i != j
     edges = pairs.tolist()
 
-    weights = []        # Pesi degli archi
-    edge_list = []      # Lista degli archi
-    corr = []           # Valori della correlazione
-    node_features = []  # Lista con node features
+    weights = []        # Edge weights
+    edge_list = []      # List of edges
+    corr = []           # Correlation values
+    node_features = []  # List of node features
 
-    seizure_class = []  # Label dei nodi (crisi/no crisi)
+    seizure_class = []  # Target (seizure/no seizure)
 
     num_node_features = patient.num_node_features
 
-    # Derivation of edge weights from correlation matrix
+    # Extraction of edge weights from correlation matrix
     for k in indices:
         t = df.index[k]
         values_list = []
@@ -276,14 +277,14 @@ def create_graph(patient):
 
         corr_mat = (df.iloc[(k-lag_corr):k]).corr()
 
-        # Prendo i valori assoluti
+        # Take the absolute values
         corr_mat = np.abs(corr_mat)
         
-        # Tolgo i loop
+        # Remove loops
         np.fill_diagonal(corr_mat.values, 0)
 
-        # Lascio solo il 25% più alto
-        q = corr_mat.melt().value.quantile(0.75)
+        # Keep only highest 30%
+        q = corr_mat.melt().value.quantile(0.7)
         corr_mat[corr_mat < q] = 0
 
         ##########################################################################
@@ -295,13 +296,13 @@ def create_graph(patient):
             new_edges.append(edges[i])
             values_list.append(corr_mat.iloc[row_index, col_index])
         
-        # Crisi nella sliding window
-        crisi = False
+        # Seizure in the sliding window
+        seizure = False
         for start, end in zip(seizure_starts, seizure_ends):
             if (start <= t-(lag_corr/patient.frequency)) & (t-(lag_corr/patient.frequency) <= end) | ((start <= t) & (t <= end)):
-                crisi = True
+                seizure = True
         
-        if crisi:
+        if seizure:
             seizure_class.append(1)
         else:
             seizure_class.append(0)
@@ -333,13 +334,13 @@ def export_data_to_GRETEL(patient):
     }
 
     dictionary = {
-        "patient": patient.file_patient.patient_id, # Id del paziente
-        "record": patient.file_patient.record_id,   # Id del record
+        "patient": patient.file_patient.patient_id,
+        "record": patient.file_patient.record_id,
         "edge_mapping": edge_dict,
         "node_ids": node_ids,
         "time_periods": tempi,
         "target": seizure_class,
-        "series": node_features # Da aumentare
+        "series": node_features
     }
 
     json_object = json.dumps(dictionary)
@@ -367,8 +368,9 @@ def export_data_to_GRETEL(patient):
 
 def export_coordinates(patient):
     """
-    Questa funzione è completamente diversa rispetto a quella del dataset CHB-MIT, perché lì i canali sono associati a coppie di elettrodi, mentre
-    qui sono associati ai singoli elettrodi.
+    This function is completely different from that of the CHB-MIT dataset, because in the
+    CHB-MIT dataset the channels are associated with pairs of electrodes, whereas here they
+    are associated with individual electrodes.
     """
 
     # From wikipedia (https://en.wikipedia.org/wiki/10%E2%80%9320_system_(EEG)):
@@ -376,7 +378,8 @@ def export_coordinates(patient):
     # - T4 is now T8
     # - T5 is now P7
     # - T6 is now P8
-    # (poi forse CP5 e CP7 coincidono...)
+    # (maybe also CP5 and CP7 coincide...)
+
     electrode_coordinates = {
         'A1': (25, 460), 'A2': (645, 455), 'AF3': (260, 185), 'AF4': (420, 185), 'AF7': (205, 175),  'AF8': (475, 175), 'AFZ': (340, 185), 'C1': (285, 380), 'C2': (395, 380),
         'C3': (230, 380), 'C4': (450, 380), 'C5': (175, 380), 'C6': (505, 380), 'CP1': (290, 445), 'CP2': (390, 445), 'CP3': (235, 445), 'CP4': (445, 445), 'CP6': (495, 450),
@@ -389,7 +392,7 @@ def export_coordinates(patient):
         'TP7': (130, 455), 'TP8': (550, 455), 'TP9': (75, 475), 'CP5': (185, 450)
     }
 
-    # Lista di coordinate dei punti medi
+    # List of coordinates
     punti = []
 
     img = plt.imread("EEG_utils\\nodi-vuoto.png")
@@ -399,30 +402,23 @@ def export_coordinates(patient):
 
     for c, punto in patient.dictionary_unique_channels.items():
 
-        # Specifiche grafico
         mid_line_width = fig.get_size_inches()[0] / 10
         mid_marker_size = fig.get_size_inches()[0] / 2
         marker_size = fig.get_size_inches()[0] * 2
         font_size = fig.get_size_inches()[0] / 1.5
         marker_edge_width = fig.get_size_inches()[0] / 8
         
-        # Coordinate dei due elettrodi
         p1 = electrode_coordinates[punto]
-
-        # Coordinate del punto medio
         punti.append(p1)
 
-        # Disegna linea tra i due elettrodi e quadrato nel punto medio
-        ax.plot(p1[0], p1[1], 's', markersize=mid_marker_size, color='blue')
-
-        # Disegna i nodi corrispondenti agli elettrodi
+        # Draw the nodes
         ax.text(p1[0], p1[1], punto, fontsize=font_size, ha='center', va='center') #, bbox=dict(facecolor='white', edgecolor='none', boxstyle='round,pad=0.3'))
         ax.plot(p1[0], p1[1], 'wo', markersize=marker_size, markeredgecolor='black', markeredgewidth=marker_edge_width)
 
     plt.axis('off')
     plt.show()
 
-    # Salva un dizionario con le coordinate dei punti medi (= posizioni nodi grafo)
+    # Save a dictionary with graph node coordinates
     dizionario_punti = {i: punti[i] for i in range(len(punti))}
 
     with open("..\\..\\explainability\\GRETEL-repo\\EEG_data\\" + f"mid_points_{patient.file_patient.patient_id}_{patient.file_patient.record_id}.pkl", 'wb') as f:

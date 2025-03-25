@@ -1,0 +1,124 @@
+2025-03-24 15:35:02,740 | INFO | 5552 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-03-24 15:35:02,760 | INFO | 5552 - Creating the evaluation manager.......................................................
+2025-03-24 15:35:02,793 | INFO | 5552 - Creating the PAIRED evaluators...............................................................
+2025-03-24 15:35:02,890 | INFO | 5552 - Creating: GCS-cc6bf7703feb7a109eb796a73c8a7693
+2025-03-24 15:35:02,890 | INFO | 5552 - Instantiating: src.dataset.generators.gcs.GCS
+2025-03-24 15:35:06,135 | INFO | 5552 - Saved: GCS-cc6bf7703feb7a109eb796a73c8a7693
+2025-03-24 15:35:06,173 | INFO | 5552 - Created: GCS-cc6bf7703feb7a109eb796a73c8a7693
+2025-03-24 15:35:06,190 | INFO | 5552 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-03-24 15:35:06,190 | INFO | 5552 - Instantiating: torch.optim.RMSprop
+2025-03-24 15:35:06,201 | INFO | 5552 - Instantiating: torch.nn.CrossEntropyLoss
+2025-03-24 15:35:06,257 | INFO | 5552 - Creating: OracleTorch-c3fcdaebedc9f228a97edbe9b53ff53e
+2025-03-24 15:35:06,510 | INFO | 5552 - epoch = 0 ---> loss = 0.6926	 accuracy = 0.5208
+2025-03-24 15:35:06,655 | INFO | 5552 - epoch = 1 ---> loss = 0.6924	 accuracy = 0.5226
+2025-03-24 15:35:06,800 | INFO | 5552 - epoch = 2 ---> loss = 0.6924	 accuracy = 0.5234
+2025-03-24 15:35:06,960 | INFO | 5552 - epoch = 3 ---> loss = 0.6922	 accuracy = 0.5234
+2025-03-24 15:35:07,110 | INFO | 5552 - epoch = 4 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:07,255 | INFO | 5552 - epoch = 5 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:07,400 | INFO | 5552 - epoch = 6 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:07,555 | INFO | 5552 - epoch = 7 ---> loss = 0.6923	 accuracy = 0.5226
+2025-03-24 15:35:07,705 | INFO | 5552 - epoch = 8 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:07,855 | INFO | 5552 - epoch = 9 ---> loss = 0.6924	 accuracy = 0.5200
+2025-03-24 15:35:08,001 | INFO | 5552 - epoch = 10 ---> loss = 0.6925	 accuracy = 0.5200
+2025-03-24 15:35:08,148 | INFO | 5552 - epoch = 11 ---> loss = 0.6925	 accuracy = 0.5200
+2025-03-24 15:35:08,290 | INFO | 5552 - epoch = 12 ---> loss = 0.6921	 accuracy = 0.5234
+2025-03-24 15:35:08,433 | INFO | 5552 - epoch = 13 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:08,580 | INFO | 5552 - epoch = 14 ---> loss = 0.6925	 accuracy = 0.5208
+2025-03-24 15:35:08,725 | INFO | 5552 - epoch = 15 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:08,870 | INFO | 5552 - epoch = 16 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:09,014 | INFO | 5552 - epoch = 17 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:09,165 | INFO | 5552 - epoch = 18 ---> loss = 0.6924	 accuracy = 0.5217
+2025-03-24 15:35:09,312 | INFO | 5552 - epoch = 19 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:09,465 | INFO | 5552 - epoch = 20 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:09,616 | INFO | 5552 - epoch = 21 ---> loss = 0.6922	 accuracy = 0.5234
+2025-03-24 15:35:09,762 | INFO | 5552 - epoch = 22 ---> loss = 0.6924	 accuracy = 0.5226
+2025-03-24 15:35:09,905 | INFO | 5552 - epoch = 23 ---> loss = 0.6921	 accuracy = 0.5234
+2025-03-24 15:35:10,050 | INFO | 5552 - epoch = 24 ---> loss = 0.6925	 accuracy = 0.5182
+2025-03-24 15:35:10,198 | INFO | 5552 - epoch = 25 ---> loss = 0.6923	 accuracy = 0.5226
+2025-03-24 15:35:10,346 | INFO | 5552 - epoch = 26 ---> loss = 0.6925	 accuracy = 0.5200
+2025-03-24 15:35:10,490 | INFO | 5552 - epoch = 27 ---> loss = 0.6925	 accuracy = 0.5191
+2025-03-24 15:35:10,638 | INFO | 5552 - epoch = 28 ---> loss = 0.6921	 accuracy = 0.5243
+2025-03-24 15:35:10,781 | INFO | 5552 - epoch = 29 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:10,920 | INFO | 5552 - epoch = 30 ---> loss = 0.6925	 accuracy = 0.5200
+2025-03-24 15:35:11,061 | INFO | 5552 - epoch = 31 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:11,205 | INFO | 5552 - epoch = 32 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:11,397 | INFO | 5552 - epoch = 33 ---> loss = 0.6924	 accuracy = 0.5200
+2025-03-24 15:35:11,567 | INFO | 5552 - epoch = 34 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:11,705 | INFO | 5552 - epoch = 35 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:11,850 | INFO | 5552 - epoch = 36 ---> loss = 0.6925	 accuracy = 0.5200
+2025-03-24 15:35:11,991 | INFO | 5552 - epoch = 37 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:12,141 | INFO | 5552 - epoch = 38 ---> loss = 0.6925	 accuracy = 0.5200
+2025-03-24 15:35:12,282 | INFO | 5552 - epoch = 39 ---> loss = 0.6923	 accuracy = 0.5226
+2025-03-24 15:35:12,430 | INFO | 5552 - epoch = 40 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:12,570 | INFO | 5552 - epoch = 41 ---> loss = 0.6925	 accuracy = 0.5191
+2025-03-24 15:35:12,710 | INFO | 5552 - epoch = 42 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:12,851 | INFO | 5552 - epoch = 43 ---> loss = 0.6926	 accuracy = 0.5191
+2025-03-24 15:35:13,000 | INFO | 5552 - epoch = 44 ---> loss = 0.6922	 accuracy = 0.5234
+2025-03-24 15:35:13,146 | INFO | 5552 - epoch = 45 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:13,285 | INFO | 5552 - epoch = 46 ---> loss = 0.6925	 accuracy = 0.5191
+2025-03-24 15:35:13,431 | INFO | 5552 - epoch = 47 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:13,581 | INFO | 5552 - epoch = 48 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:13,727 | INFO | 5552 - epoch = 49 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:13,897 | INFO | 5552 - epoch = 50 ---> loss = 0.6924	 accuracy = 0.5200
+2025-03-24 15:35:14,055 | INFO | 5552 - epoch = 51 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:14,210 | INFO | 5552 - epoch = 52 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:14,351 | INFO | 5552 - epoch = 53 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:14,494 | INFO | 5552 - epoch = 54 ---> loss = 0.6923	 accuracy = 0.5226
+2025-03-24 15:35:14,648 | INFO | 5552 - epoch = 55 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:14,820 | INFO | 5552 - epoch = 56 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:14,961 | INFO | 5552 - epoch = 57 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:15,100 | INFO | 5552 - epoch = 58 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:15,250 | INFO | 5552 - epoch = 59 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:15,395 | INFO | 5552 - epoch = 60 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:15,540 | INFO | 5552 - epoch = 61 ---> loss = 0.6920	 accuracy = 0.5252
+2025-03-24 15:35:15,685 | INFO | 5552 - epoch = 62 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:15,830 | INFO | 5552 - epoch = 63 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:15,970 | INFO | 5552 - epoch = 64 ---> loss = 0.6922	 accuracy = 0.5217
+2025-03-24 15:35:16,112 | INFO | 5552 - epoch = 65 ---> loss = 0.6921	 accuracy = 0.5234
+2025-03-24 15:35:16,255 | INFO | 5552 - epoch = 66 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:16,412 | INFO | 5552 - epoch = 67 ---> loss = 0.6925	 accuracy = 0.5200
+2025-03-24 15:35:16,550 | INFO | 5552 - epoch = 68 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:16,700 | INFO | 5552 - epoch = 69 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:16,845 | INFO | 5552 - epoch = 70 ---> loss = 0.6921	 accuracy = 0.5226
+2025-03-24 15:35:16,994 | INFO | 5552 - epoch = 71 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:17,132 | INFO | 5552 - epoch = 72 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:17,280 | INFO | 5552 - epoch = 73 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:17,420 | INFO | 5552 - epoch = 74 ---> loss = 0.6924	 accuracy = 0.5200
+2025-03-24 15:35:17,561 | INFO | 5552 - epoch = 75 ---> loss = 0.6924	 accuracy = 0.5226
+2025-03-24 15:35:17,700 | INFO | 5552 - epoch = 76 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:17,844 | INFO | 5552 - epoch = 77 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:17,993 | INFO | 5552 - epoch = 78 ---> loss = 0.6925	 accuracy = 0.5200
+2025-03-24 15:35:18,135 | INFO | 5552 - epoch = 79 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:18,277 | INFO | 5552 - epoch = 80 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:18,420 | INFO | 5552 - epoch = 81 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:18,561 | INFO | 5552 - epoch = 82 ---> loss = 0.6922	 accuracy = 0.5217
+2025-03-24 15:35:18,712 | INFO | 5552 - epoch = 83 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:18,855 | INFO | 5552 - epoch = 84 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:18,997 | INFO | 5552 - epoch = 85 ---> loss = 0.6921	 accuracy = 0.5234
+2025-03-24 15:35:19,166 | INFO | 5552 - epoch = 86 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:19,305 | INFO | 5552 - epoch = 87 ---> loss = 0.6922	 accuracy = 0.5217
+2025-03-24 15:35:19,450 | INFO | 5552 - epoch = 88 ---> loss = 0.6922	 accuracy = 0.5217
+2025-03-24 15:35:19,592 | INFO | 5552 - epoch = 89 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:19,733 | INFO | 5552 - epoch = 90 ---> loss = 0.6922	 accuracy = 0.5217
+2025-03-24 15:35:19,876 | INFO | 5552 - epoch = 91 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:20,061 | INFO | 5552 - epoch = 92 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:35:20,205 | INFO | 5552 - epoch = 93 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:20,343 | INFO | 5552 - epoch = 94 ---> loss = 0.6922	 accuracy = 0.5217
+2025-03-24 15:35:20,484 | INFO | 5552 - epoch = 95 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:20,620 | INFO | 5552 - epoch = 96 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:20,770 | INFO | 5552 - epoch = 97 ---> loss = 0.6925	 accuracy = 0.5200
+2025-03-24 15:35:20,910 | INFO | 5552 - epoch = 98 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:21,050 | INFO | 5552 - epoch = 99 ---> loss = 0.6924	 accuracy = 0.5200
+2025-03-24 15:35:21,191 | INFO | 5552 - epoch = 100 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:21,330 | INFO | 5552 - epoch = 101 ---> loss = 0.6922	 accuracy = 0.5217
+2025-03-24 15:35:21,477 | INFO | 5552 - epoch = 102 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:35:21,628 | INFO | 5552 - epoch = 103 ---> loss = 0.6921	 accuracy = 0.5234
+2025-03-24 15:35:21,780 | INFO | 5552 - epoch = 104 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:21,928 | INFO | 5552 - epoch = 105 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:22,080 | INFO | 5552 - epoch = 106 ---> loss = 0.6921	 accuracy = 0.5226
+2025-03-24 15:35:22,230 | INFO | 5552 - epoch = 107 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:22,377 | INFO | 5552 - epoch = 108 ---> loss = 0.6922	 accuracy = 0.5217
+2025-03-24 15:35:22,526 | INFO | 5552 - epoch = 109 ---> loss = 0.6924	 accuracy = 0.5208
+2025-03-24 15:35:22,676 | INFO | 5552 - epoch = 110 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:22,830 | INFO | 5552 - epoch = 111 ---> loss = 0.6923	 accuracy = 0.5217
+2025-03-24 15:35:22,980 | INFO | 5552 - epoch = 112 ---> loss = 0.6921	 accuracy = 0.5243

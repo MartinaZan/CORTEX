@@ -1,0 +1,40 @@
+2025-03-24 15:34:10,768 | INFO | 9220 - Executing: config/GCS-GCN.jsonc Run: -1
+2025-03-24 15:34:10,797 | INFO | 9220 - Creating the evaluation manager.......................................................
+2025-03-24 15:34:10,828 | INFO | 9220 - Creating the PAIRED evaluators...............................................................
+2025-03-24 15:34:10,914 | INFO | 9220 - Creating: GCS-09b151880f30056f1d465eb504b93396
+2025-03-24 15:34:10,921 | INFO | 9220 - Instantiating: src.dataset.generators.gcs.GCS
+2025-03-24 15:34:15,871 | INFO | 9220 - Saved: GCS-09b151880f30056f1d465eb504b93396
+2025-03-24 15:34:15,909 | INFO | 9220 - Created: GCS-09b151880f30056f1d465eb504b93396
+2025-03-24 15:34:15,921 | INFO | 9220 - Instantiating: src.oracle.nn.gcn.DownstreamGCN
+2025-03-24 15:34:15,930 | INFO | 9220 - Instantiating: torch.optim.RMSprop
+2025-03-24 15:34:15,930 | INFO | 9220 - Instantiating: torch.nn.CrossEntropyLoss
+2025-03-24 15:34:15,981 | INFO | 9220 - Creating: OracleTorch-ff3eabf5fd4293dd57a6b7c6ba39db55
+2025-03-24 15:34:16,310 | INFO | 9220 - epoch = 0 ---> loss = 0.6932	 accuracy = 0.5098
+2025-03-24 15:34:16,522 | INFO | 9220 - epoch = 1 ---> loss = 0.6926	 accuracy = 0.5191
+2025-03-24 15:34:16,754 | INFO | 9220 - epoch = 2 ---> loss = 0.6927	 accuracy = 0.5197
+2025-03-24 15:34:16,956 | INFO | 9220 - epoch = 3 ---> loss = 0.6924	 accuracy = 0.5203
+2025-03-24 15:34:17,170 | INFO | 9220 - epoch = 4 ---> loss = 0.6925	 accuracy = 0.5203
+2025-03-24 15:34:17,381 | INFO | 9220 - epoch = 5 ---> loss = 0.6925	 accuracy = 0.5185
+2025-03-24 15:34:17,590 | INFO | 9220 - epoch = 6 ---> loss = 0.6924	 accuracy = 0.5197
+2025-03-24 15:34:17,800 | INFO | 9220 - epoch = 7 ---> loss = 0.6924	 accuracy = 0.5220
+2025-03-24 15:34:18,000 | INFO | 9220 - epoch = 8 ---> loss = 0.6923	 accuracy = 0.5208
+2025-03-24 15:34:18,210 | INFO | 9220 - epoch = 9 ---> loss = 0.6922	 accuracy = 0.5226
+2025-03-24 15:34:18,410 | INFO | 9220 - epoch = 10 ---> loss = 0.6919	 accuracy = 0.5243
+2025-03-24 15:34:18,621 | INFO | 9220 - epoch = 11 ---> loss = 0.6923	 accuracy = 0.5197
+2025-03-24 15:34:18,830 | INFO | 9220 - epoch = 12 ---> loss = 0.6921	 accuracy = 0.5220
+2025-03-24 15:34:19,040 | INFO | 9220 - epoch = 13 ---> loss = 0.6922	 accuracy = 0.5203
+2025-03-24 15:34:19,263 | INFO | 9220 - epoch = 14 ---> loss = 0.6920	 accuracy = 0.5226
+2025-03-24 15:34:19,473 | INFO | 9220 - epoch = 15 ---> loss = 0.6921	 accuracy = 0.5203
+2025-03-24 15:34:19,680 | INFO | 9220 - epoch = 16 ---> loss = 0.6922	 accuracy = 0.5203
+2025-03-24 15:34:19,890 | INFO | 9220 - epoch = 17 ---> loss = 0.6920	 accuracy = 0.5220
+2025-03-24 15:34:20,105 | INFO | 9220 - epoch = 18 ---> loss = 0.6920	 accuracy = 0.5214
+2025-03-24 15:34:20,310 | INFO | 9220 - epoch = 19 ---> loss = 0.6921	 accuracy = 0.5214
+2025-03-24 15:34:20,521 | INFO | 9220 - epoch = 20 ---> loss = 0.6921	 accuracy = 0.5208
+2025-03-24 15:34:20,742 | INFO | 9220 - epoch = 21 ---> loss = 0.6920	 accuracy = 0.5208
+2025-03-24 15:34:20,960 | INFO | 9220 - epoch = 22 ---> loss = 0.6919	 accuracy = 0.5220
+2025-03-24 15:34:21,185 | INFO | 9220 - epoch = 23 ---> loss = 0.6920	 accuracy = 0.5208
+2025-03-24 15:34:21,440 | INFO | 9220 - epoch = 24 ---> loss = 0.6920	 accuracy = 0.5203
+2025-03-24 15:34:21,640 | INFO | 9220 - epoch = 25 ---> loss = 0.6918	 accuracy = 0.5208
+2025-03-24 15:34:21,849 | INFO | 9220 - epoch = 26 ---> loss = 0.6919	 accuracy = 0.5191
+2025-03-24 15:34:22,110 | INFO | 9220 - epoch = 27 ---> loss = 0.6919	 accuracy = 0.5197
+2025-03-24 15:34:22,330 | INFO | 9220 - epoch = 28 ---> loss = 0.6917	 accuracy = 0.5214
