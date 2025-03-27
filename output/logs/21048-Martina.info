@@ -1,0 +1,3 @@
+2025-03-27 16:14:58,270 | INFO | 21048 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
+2025-03-27 16:14:58,270 | INFO | 21048 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\12844_chb04_28.mp4'
+2025-03-27 16:15:30,451 | INFO | 21048 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>

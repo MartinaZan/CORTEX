@@ -1,0 +1,46 @@
+2025-03-27 10:47:06,194 | INFO | 18544 - Executing: config/GCS-KNN.jsonc Run: -1
+2025-03-27 10:47:06,247 | INFO | 18544 - Creating the evaluation manager.......................................................
+2025-03-27 10:47:06,294 | INFO | 18544 - Creating the PAIRED evaluators...............................................................
+2025-03-27 10:47:06,435 | INFO | 18544 - Creating: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-27 10:47:06,439 | INFO | 18544 - Instantiating: src.dataset.generators.gcs.GCS
+2025-03-27 10:47:17,735 | INFO | 18544 - Saved: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-27 10:47:17,780 | INFO | 18544 - Created: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-27 10:47:21,277 | INFO | 18544 - Creating: Graph2VecEmbedder-4a5c9ea69ae0fd9a4e7cdd209eb2ddd4
+2025-03-27 10:48:02,784 | INFO | 18544 - collecting all words and their counts
+2025-03-27 10:48:02,786 | INFO | 18544 - PROGRESS: at example #0, processed 0 words (0 words/s), 0 word types, 0 tags
+2025-03-27 10:48:03,635 | INFO | 18544 - collected 5327 word types and 6269 unique tags from a corpus of 6269 examples and 4344417 words
+2025-03-27 10:48:03,636 | INFO | 18544 - Creating a fresh vocabulary
+2025-03-27 10:48:03,655 | INFO | 18544 - Doc2Vec lifecycle event {'msg': 'effective_min_count=5 retains 5006 unique words (93.97% of original 5327, drops 321)', 'datetime': '2025-03-27T10:48:03.655854', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'prepare_vocab'}
+2025-03-27 10:48:03,658 | INFO | 18544 - Doc2Vec lifecycle event {'msg': 'effective_min_count=5 leaves 4343840 word corpus (99.99% of original 4344417, drops 577)', 'datetime': '2025-03-27T10:48:03.658477', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'prepare_vocab'}
+2025-03-27 10:48:03,685 | INFO | 18544 - deleting the raw counts dictionary of 5327 items
+2025-03-27 10:48:03,686 | INFO | 18544 - sample=0.0001 downsamples 1548 most-common words
+2025-03-27 10:48:03,687 | INFO | 18544 - Doc2Vec lifecycle event {'msg': 'downsampling leaves estimated 3210916.6743645854 word corpus (73.9%% of prior 4343840)', 'datetime': '2025-03-27T10:48:03.687258', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'prepare_vocab'}
+2025-03-27 10:48:03,724 | INFO | 18544 - estimated required memory for 5006 words and 128 dimensions: 12092672 bytes
+2025-03-27 10:48:03,725 | INFO | 18544 - resetting layer weights
+2025-03-27 10:48:03,739 | INFO | 18544 - Doc2Vec lifecycle event {'msg': 'training model with 4 workers on 5006 vocabulary and 128 features, using sg=1 hs=0 sample=0.0001 negative=5 window=0 shrink_windows=True', 'datetime': '2025-03-27T10:48:03.739143', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'train'}
+2025-03-27 10:48:04,716 | INFO | 18544 - EPOCH 0: training on 4344417 raw words (3216192 effective words) took 1.0s, 3313986 effective words/s
+2025-03-27 10:48:05,601 | INFO | 18544 - EPOCH 1: training on 4344417 raw words (3215822 effective words) took 0.9s, 3639814 effective words/s
+2025-03-27 10:48:06,464 | INFO | 18544 - EPOCH 2: training on 4344417 raw words (3216174 effective words) took 0.9s, 3741089 effective words/s
+2025-03-27 10:48:07,234 | INFO | 18544 - EPOCH 3: training on 4344417 raw words (3216574 effective words) took 0.8s, 4198880 effective words/s
+2025-03-27 10:48:08,032 | INFO | 18544 - EPOCH 4: training on 4344417 raw words (3217037 effective words) took 0.8s, 4035607 effective words/s
+2025-03-27 10:48:08,855 | INFO | 18544 - EPOCH 5: training on 4344417 raw words (3216443 effective words) took 0.8s, 3927680 effective words/s
+2025-03-27 10:48:09,643 | INFO | 18544 - EPOCH 6: training on 4344417 raw words (3216663 effective words) took 0.8s, 4100334 effective words/s
+2025-03-27 10:48:10,462 | INFO | 18544 - EPOCH 7: training on 4344417 raw words (3215890 effective words) took 0.8s, 3936377 effective words/s
+2025-03-27 10:48:11,259 | INFO | 18544 - EPOCH 8: training on 4344417 raw words (3216371 effective words) took 0.8s, 4049244 effective words/s
+2025-03-27 10:48:12,066 | INFO | 18544 - EPOCH 9: training on 4344417 raw words (3218143 effective words) took 0.8s, 4004103 effective words/s
+2025-03-27 10:48:12,067 | INFO | 18544 - Doc2Vec lifecycle event {'msg': 'training on 43444170 raw words (32165309 effective words) took 8.3s, 3862338 effective words/s', 'datetime': '2025-03-27T10:48:12.067709', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'train'}
+2025-03-27 10:48:12,068 | INFO | 18544 - Doc2Vec lifecycle event {'params': 'Doc2Vec<dbow,d128,n5,mc5,s0.0001,t4>', 'datetime': '2025-03-27T10:48:12.068710', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'created'}
+2025-03-27 10:48:12,252 | INFO | 18544 - Graph2VecEmbedder trained in: 50.931325912475586 secs
+2025-03-27 10:48:12,352 | INFO | 18544 - Saved: Graph2VecEmbedder-4a5c9ea69ae0fd9a4e7cdd209eb2ddd4
+2025-03-27 10:48:12,419 | INFO | 18544 - Created: Graph2VecEmbedder-4a5c9ea69ae0fd9a4e7cdd209eb2ddd4
+2025-03-27 10:48:12,495 | INFO | 18544 - Creating: KNNOracle-d34a9388a46397bab85ec7a57ad65414
+2025-03-27 10:48:12,561 | INFO | 18544 - KNNOracle trained in: 0.009485006332397461 secs
+2025-03-27 10:48:12,634 | INFO | 18544 - Saved: KNNOracle-d34a9388a46397bab85ec7a57ad65414
+2025-03-27 10:48:12,690 | INFO | 18544 - Created: KNNOracle-d34a9388a46397bab85ec7a57ad65414
+2025-03-27 10:48:12,808 | INFO | 18544 - Instantiating: src.explainer.generative.gans.graph.model.GAN
+2025-03-27 10:48:12,828 | INFO | 18544 - Instantiating: src.explainer.generative.gans.graph.res_gen.ResGenerator
+2025-03-27 10:48:12,852 | INFO | 18544 - Instantiating: torch.optim.SGD
+2025-03-27 10:48:12,853 | INFO | 18544 - Instantiating: src.explainer.generative.gans.graph.discriminators.SimpleDiscriminator
+2025-03-27 10:48:12,859 | INFO | 18544 - Instantiating: torch.optim.SGD
+2025-03-27 10:48:12,860 | INFO | 18544 - Instantiating: torch.nn.BCELoss
+2025-03-27 10:48:12,937 | INFO | 18544 - Creating: GAN-a4036ff097a61b0d8eb0bb6073a47e9f

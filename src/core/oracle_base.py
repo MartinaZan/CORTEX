@@ -42,36 +42,37 @@ class Oracle(Trainable,metaclass=ABCMeta):
 
         if return_embeddings:
             output, embeddings = self._real_predict(data_instance,return_embeddings=True)
-            # print(f"Prediction: {output}")
             return output, embeddings
         
         output = self._real_predict(data_instance)
-        # print(f"Prediction: {output}")
 
         return output
     
     ###################################################################################
 
+
     @final
-    def get_gcn_embeddings(self, data_instance):
-        # self._call_counter += 1
+    def get_oracle_info(self, data_instance):
+        if self.name[:3] == 'GCN':
+            output, embeddings = self._real_predict(data_instance,return_embeddings=True)
 
-        output, embeddings = self._real_predict(data_instance,return_embeddings=True)
-        
-        # print("----------------------------------------------------------------")
-        # print(f"data_instance.id: {data_instance.id}")
-        # print(f"data_instance.label: {data_instance.label}")
-        # print(f"Prediction: {output}")
-        # print(f"node embeddings: {embeddings}")
+            result = {
+                "data_instance_id": data_instance.id,
+                "data_instance_label": data_instance.label,
+                "prediction": output,
+                "embeddings": embeddings
+            }
+        else:
+            output = self._real_predict(data_instance)
 
-        result = {
-            "data_instance_id": data_instance.id,
-            "data_instance_label": data_instance.label,
-            "prediction": output,
-            "embeddings": embeddings
-        }
+            result = {
+                "data_instance_id": data_instance.id,
+                "data_instance_label": data_instance.label,
+                "prediction": output,
+            }
         
         return result
+        
 
     ###################################################################################
 

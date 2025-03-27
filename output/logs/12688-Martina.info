@@ -1,0 +1,45 @@
+2025-03-27 11:23:17,766 | INFO | 12688 - Executing: config/GCS-KNN.jsonc Run: -1
+2025-03-27 11:23:17,785 | INFO | 12688 - Creating the evaluation manager.......................................................
+2025-03-27 11:23:17,827 | INFO | 12688 - Creating the PAIRED evaluators...............................................................
+2025-03-27 11:23:17,904 | INFO | 12688 - Creating: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-27 11:23:17,917 | INFO | 12688 - Instantiating: src.dataset.generators.gcs.GCS
+2025-03-27 11:23:26,862 | INFO | 12688 - Saved: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-27 11:23:26,877 | INFO | 12688 - Created: GCS-7461d1da0d4c1403016b336840abe8b6
+2025-03-27 11:23:27,645 | INFO | 12688 - Creating: Graph2VecEmbedder-4a5c9ea69ae0fd9a4e7cdd209eb2ddd4
+2025-03-27 11:24:11,019 | INFO | 12688 - collecting all words and their counts
+2025-03-27 11:24:11,034 | INFO | 12688 - PROGRESS: at example #0, processed 0 words (0 words/s), 0 word types, 0 tags
+2025-03-27 11:24:11,870 | INFO | 12688 - collected 5327 word types and 6269 unique tags from a corpus of 6269 examples and 4344417 words
+2025-03-27 11:24:11,886 | INFO | 12688 - Creating a fresh vocabulary
+2025-03-27 11:24:11,902 | INFO | 12688 - Doc2Vec lifecycle event {'msg': 'effective_min_count=5 retains 5006 unique words (93.97% of original 5327, drops 321)', 'datetime': '2025-03-27T11:24:11.902830', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'prepare_vocab'}
+2025-03-27 11:24:11,902 | INFO | 12688 - Doc2Vec lifecycle event {'msg': 'effective_min_count=5 leaves 4343840 word corpus (99.99% of original 4344417, drops 577)', 'datetime': '2025-03-27T11:24:11.902830', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'prepare_vocab'}
+2025-03-27 11:24:11,965 | INFO | 12688 - deleting the raw counts dictionary of 5327 items
+2025-03-27 11:24:11,981 | INFO | 12688 - sample=0.0001 downsamples 1548 most-common words
+2025-03-27 11:24:11,982 | INFO | 12688 - Doc2Vec lifecycle event {'msg': 'downsampling leaves estimated 3210916.6743645854 word corpus (73.9%% of prior 4343840)', 'datetime': '2025-03-27T11:24:11.982341', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'prepare_vocab'}
+2025-03-27 11:24:12,060 | INFO | 12688 - estimated required memory for 5006 words and 128 dimensions: 12092672 bytes
+2025-03-27 11:24:12,060 | INFO | 12688 - resetting layer weights
+2025-03-27 11:24:12,076 | INFO | 12688 - Doc2Vec lifecycle event {'msg': 'training model with 4 workers on 5006 vocabulary and 128 features, using sg=1 hs=0 sample=0.0001 negative=5 window=0 shrink_windows=True', 'datetime': '2025-03-27T11:24:12.076076', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'train'}
+2025-03-27 11:24:13,100 | INFO | 12688 - EPOCH 0 - PROGRESS: at 40.64% examples, 1312229 words/s, in_qsize 7, out_qsize 0
+2025-03-27 11:24:13,735 | INFO | 12688 - EPOCH 0: training on 4344417 raw words (3216459 effective words) took 1.7s, 1946738 effective words/s
+2025-03-27 11:24:14,426 | INFO | 12688 - EPOCH 1: training on 4344417 raw words (3217480 effective words) took 0.7s, 4629001 effective words/s
+2025-03-27 11:24:15,085 | INFO | 12688 - EPOCH 2: training on 4344417 raw words (3216878 effective words) took 0.7s, 4894774 effective words/s
+2025-03-27 11:24:15,752 | INFO | 12688 - EPOCH 3: training on 4344417 raw words (3216622 effective words) took 0.7s, 4905859 effective words/s
+2025-03-27 11:24:16,458 | INFO | 12688 - EPOCH 4: training on 4344417 raw words (3216046 effective words) took 0.7s, 4599927 effective words/s
+2025-03-27 11:24:17,132 | INFO | 12688 - EPOCH 5: training on 4344417 raw words (3216064 effective words) took 0.7s, 4787963 effective words/s
+2025-03-27 11:24:17,793 | INFO | 12688 - EPOCH 6: training on 4344417 raw words (3216969 effective words) took 0.7s, 4821758 effective words/s
+2025-03-27 11:24:18,451 | INFO | 12688 - EPOCH 7: training on 4344417 raw words (3216207 effective words) took 0.6s, 4955477 effective words/s
+2025-03-27 11:24:19,110 | INFO | 12688 - EPOCH 8: training on 4344417 raw words (3216299 effective words) took 0.7s, 4864413 effective words/s
+2025-03-27 11:24:20,148 | INFO | 12688 - EPOCH 9 - PROGRESS: at 59.40% examples, 1877915 words/s, in_qsize 8, out_qsize 5
+2025-03-27 11:24:21,078 | INFO | 12688 - EPOCH 9: training on 4344417 raw words (3218284 effective words) took 2.0s, 1638130 effective words/s
+2025-03-27 11:24:21,078 | INFO | 12688 - Doc2Vec lifecycle event {'msg': 'training on 43444170 raw words (32167308 effective words) took 9.0s, 3572692 effective words/s', 'datetime': '2025-03-27T11:24:21.078984', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'train'}
+2025-03-27 11:24:21,078 | INFO | 12688 - Doc2Vec lifecycle event {'params': 'Doc2Vec<dbow,d128,n5,mc5,s0.0001,t4>', 'datetime': '2025-03-27T11:24:21.078984', 'gensim': '4.3.3', 'python': '3.9.20 (main, Oct  3 2024, 07:38:01) [MSC v.1929 64 bit (AMD64)]', 'platform': 'Windows-10-10.0.22631-SP0', 'event': 'created'}
+2025-03-27 11:24:21,377 | INFO | 12688 - Graph2VecEmbedder trained in: 53.696368932724 secs
+2025-03-27 11:24:21,506 | INFO | 12688 - Saved: Graph2VecEmbedder-4a5c9ea69ae0fd9a4e7cdd209eb2ddd4
+2025-03-27 11:24:21,550 | INFO | 12688 - Created: Graph2VecEmbedder-4a5c9ea69ae0fd9a4e7cdd209eb2ddd4
+2025-03-27 11:24:21,598 | INFO | 12688 - Creating: KNNOracle-d34a9388a46397bab85ec7a57ad65414
+2025-03-27 11:24:21,662 | INFO | 12688 - KNNOracle trained in: 0.015624523162841797 secs
+2025-03-27 11:24:21,724 | INFO | 12688 - Saved: KNNOracle-d34a9388a46397bab85ec7a57ad65414
+2025-03-27 11:24:21,767 | INFO | 12688 - Created: KNNOracle-d34a9388a46397bab85ec7a57ad65414
+2025-03-27 11:24:21,775 | INFO | 12688 - Instantiating: src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric
+2025-03-27 11:24:21,814 | INFO | 12688 - Created: DCESExplainer-5b7c1ec60e8762c4ae44b913d70542d3
+2025-03-27 11:24:21,846 | INFO | 12688 - Evaluating the explainers.............................................................
+2025-03-27 11:24:21,924 | INFO | 12688 - Evaluating instance with id 0

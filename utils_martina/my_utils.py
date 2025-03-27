@@ -47,7 +47,7 @@ def get_embeddings_and_outputs_all(eval_manager):
     expl = eval_manager._evaluators[0]._explainer
     
     for element in expl.dataset.instances:
-        result.append(expl.oracle.get_gcn_embeddings(element))
+        result.append(expl.oracle.get_oracle_info(element))
     
     return result
 
@@ -60,7 +60,7 @@ def get_embeddings_and_outputs_test(eval_manager):
 
     for element in expl.dataset.instances:
         if element.id in ids_list:
-            result.append(expl._explainer.oracle.get_gcn_embeddings(element))
+            result.append(expl._explainer.oracle.get_oracle_info(element))
 
     return result
 

@@ -25,7 +25,7 @@ class TabularOracle(Oracle):#TODO: Made it Abstract class
             y = [self.dataset.get_instance(i).label for i in spt]
         self.model.fit(x, y)
 
-    def _real_predict(self, data_instance):
+    def _real_predict(self, data_instance, return_embeddings = False):
         data_instance = self.embedder.get_embedding(data_instance)
         return self.model.predict(data_instance).squeeze()
         

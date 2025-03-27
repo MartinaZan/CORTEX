@@ -16,7 +16,7 @@ class DCESExplainer(Explainer):
         super().check_configuration()
 
         dst_metric='src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric'  ### PRIMA
-        # dst_metric='src.evaluation.embedding_metrics.EmbeddingMetric'  ### DOPO
+        # dst_metric='src.evaluation.embedding_metrics.EmbeddingMetric'            ### DOPO
 
         # Check if the distance metric exist or build with its defaults:
         init_dflts_to_of(self.local_config, 'distance_metric', dst_metric)
@@ -38,8 +38,10 @@ class DCESExplainer(Explainer):
         min_ctf_dist = sys.float_info.max
         for ctf_candidate in self.dataset.instances:
             if ctf_candidate.patient_id == instance.patient_id: ## Added (considera solo record dello stesso paziente)
-                candidate_label, graph_embeddings = self.oracle.predict(ctf_candidate, return_embeddings=True) ## Chiama oracle_base.predict
+                # candidate_label, graph_embeddings = self.oracle.predict(ctf_candidate, return_embeddings=True) ## Chiama oracle_base.predict
                 # print(f"graph embeddings: {graph_embeddings}")
+
+                candidate_label = self.oracle.predict(ctf_candidate) ## Chiama oracle_base.predict
 
                 if input_label != candidate_label:
                     ctf_distance = self.distance_metric.evaluate(instance, ctf_candidate, self.oracle)

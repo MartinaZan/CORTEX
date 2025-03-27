@@ -4,8 +4,7 @@ from src.core.explainer_base import Explainer
 
 
 class EmbeddingMetric(EvaluationMetric):
-    """Classe di prova per definizione distanza embeddings
-    """
+    """Classe di prova per definizione distanza embeddings"""
 
     def __init__(self, config_dict=None) -> None:
         super().__init__(config_dict)
@@ -15,9 +14,11 @@ class EmbeddingMetric(EvaluationMetric):
         # instance_1 è il grafo originale
         # instance_2 è la spiegazione
 
-        _, embeddings_1 = oracle.predict(instance_1,return_embeddings=True)
-        _, embeddings_2 = oracle.predict(instance_2,return_embeddings=True)
+        if oracle.name[:3] == 'GCN':
+            _, embeddings_1 = oracle.predict(instance_1,return_embeddings=True)
+            _, embeddings_2 = oracle.predict(instance_2,return_embeddings=True)
 
-        result = sum(sum((embeddings_1 - embeddings_2) ** 2)) ** 0.5    # Ossia, torch.norm(embeddings_1 - embeddings_2)
-
-        return result.item()
+            result = sum(sum((embeddings_1 - embeddings_2) ** 2)) ** 0.5    # Ossia, torch.norm(embeddings_1 - embeddings_2)
+            return result.item()
+        else:
+            return 0
