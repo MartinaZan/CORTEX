@@ -1,9 +1,0 @@
-2025-03-25 12:43:39,408 | INFO | 5736 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
-2025-03-25 12:43:39,411 | INFO | 5736 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\8004_PN00_1.mp4'
-2025-03-25 12:44:28,774 | INFO | 5736 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
-2025-03-25 15:08:05,171 | INFO | 5736 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
-2025-03-25 15:08:05,171 | INFO | 5736 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\16560_PN00_1.mp4'
-2025-03-25 15:08:05,268 | INFO | 5736 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
-2025-03-25 15:08:40,698 | INFO | 5736 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
-2025-03-25 15:08:40,712 | INFO | 5736 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\16560_chb01_15.mp4'
-2025-03-25 15:09:50,863 | INFO | 5736 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>

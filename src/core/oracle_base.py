@@ -53,7 +53,7 @@ class Oracle(Trainable,metaclass=ABCMeta):
 
     @final
     def get_oracle_info(self, data_instance):
-        if self.name[:3] == 'GCN':
+        if ('Torch' in self.name) or ('GCN' in self.name):
             output, embeddings = self._real_predict(data_instance,return_embeddings=True)
 
             result = {

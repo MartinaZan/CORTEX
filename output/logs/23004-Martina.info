@@ -1,4 +1,0 @@
-2025-03-24 18:07:46,375 | INFO | 23004 - Animation.save using <class 'matplotlib.animation.FFMpegWriter'>
-2025-03-24 18:07:46,375 | INFO | 23004 - MovieWriter._run: running command: ffmpeg -f rawvideo -vcodec rawvideo -s 1500x500 -pix_fmt rgba -framerate 10 -loglevel error -i pipe: -vcodec h264 -pix_fmt yuv420p -y '..\..\explainability\GRETEL-repo\output\video\5968_PN00_1.mp4'
-2025-03-24 18:09:17,489 | INFO | 23004 - Animation.save using <class 'matplotlib.animation.HTMLWriter'>
-2025-03-24 18:10:38,362 | WARNING | 23004 - Animation size has reached 20989527 bytes, exceeding the limit of 20971520.0. If you're sure you want a larger animation embedded, set the animation.embed_limit rc parameter to a larger value (in MB). This and further frames will be dropped.

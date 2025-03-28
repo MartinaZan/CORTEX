@@ -14,7 +14,7 @@ class EmbeddingMetric(EvaluationMetric):
         # instance_1 è il grafo originale
         # instance_2 è la spiegazione
 
-        if oracle.name[:3] == 'GCN':
+        if ('Torch' in oracle.name) or ('GCN' in oracle.name):
             _, embeddings_1 = oracle.predict(instance_1,return_embeddings=True)
             _, embeddings_2 = oracle.predict(instance_2,return_embeddings=True)
 

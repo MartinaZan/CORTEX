@@ -283,8 +283,9 @@ def create_graph(patient):
         # Remove loops
         np.fill_diagonal(corr_mat.values, 0)
 
-        # Keep only highest 30%
-        q = corr_mat.melt().value.quantile(0.7)
+        # Keep only highest ...%
+        q = corr_mat.melt().value.quantile(0.75)
+        print(q)
         corr_mat[corr_mat < q] = 0
 
         ##########################################################################

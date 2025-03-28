@@ -13,8 +13,8 @@
     "compose_mes" : "config/snippets/default_metrics.json",
     "compose_strs" : "config/snippets/default_store_paths.json",
     "do-pairs":[ {"compose_bbbp_gcn" : "config/snippets/do-pairs/GCS-GCN.json"} ],
-    // "explainers": [{"class": "src.explainer.search.dces.DCESExplainer"}]
+    "explainers": [{"class": "src.explainer.search.dces.DCESExplainer"}]
     // "explainers": [{"class": "src.explainer.heuristic.ddbs.DataDrivenBidirectionalSearchExplainer"}]
-    "explainers": [{"class": "src.explainer.generative.rsgg.RSGG"}]
+    // "explainers": [{"class": "src.explainer.generative.rsgg.RSGG"}]
     // "explainers": [{"class": "src.explainer.generative.clear.CLEARExplainer"}]   // If there is more than a graph feature, it crashes, because the shape is wrong.
 }
