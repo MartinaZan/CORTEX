@@ -4,7 +4,7 @@ This is a fork of the [GRETEL](https://github.com/aiim-research/GRETEL) reposito
 
 ## How to run an experiment
 
-To run an experiment, follow use these notebooks in order 🚀:
+To run an experiment, use these notebooks (in order) 🚀:
 - `0 - EEG data CHB MIT.ipynb` or `0 - EEG data SIENA.ipynb` (depending on the dataset): Choose the record to study and generate the JSON dataset.
 - `1 - run experiment.ipynb`: Run the GRETEL experiment using a set of recordings (`observations`) based on the configuration files.
 - `2 - plot counterfactuals.ipynb`: Visualize counterfactual explanations on the electrode map for a single record.
