@@ -27,7 +27,7 @@ class FilePatient:
 ################################################################################
 
 class Patient:
-    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1):
+    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1, lag_nodes=1):
         self.file_patient = file_patient
         self.dictionary_unique_pairs = {}
 
@@ -47,6 +47,7 @@ class Patient:
 
         self.num_points = num_points            # Number of points for each class
         self.lag_corr = int(self.frequency*10)  # Number of lag for correlation calculation (10 seconds)
+        self.lag_nodes = lag_nodes              # Distance of lags for node features
         self.buffer_time = None                 # Buffer to skip data too close to beginning and end of seizures
         self.skip_0 = None
         self.skip_1 = None
@@ -247,6 +248,7 @@ def create_graph(patient):
     df = patient.df
     indices = patient.indices
     lag_corr = patient.lag_corr
+    lag_nodes = patient.lag_nodes
     seizure_starts = patient.patient_info["seizure_starts"]
     seizure_ends = patient.patient_info["seizure_ends"]
 
@@ -276,7 +278,7 @@ def create_graph(patient):
 
         ##########################################################################
 
-        corr_mat = (df.iloc[(k-lag_corr):k]).corr()
+        corr_mat = (df.iloc[(k-lag_corr+1):(k+1)]).corr()
 
         # Take the absolute values
         corr_mat = np.abs(corr_mat)
@@ -314,7 +316,8 @@ def create_graph(patient):
         weights.append(values_list)
         edge_list.append(new_edges)
         # node_features.append(series[k])
-        node_features.append(series[(k-num_node_features+1):(k+1)])
+        # node_features.append(series[(k-num_node_features+1):(k+1)])
+        node_features.append(series[(k-(num_node_features-1)*lag_nodes):(k+1):lag_nodes])
 
     return node_ids, corr, weights, edge_list, node_features, seizure_class
 

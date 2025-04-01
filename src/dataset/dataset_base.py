@@ -135,6 +135,8 @@ class Dataset(Savable):
         spl = kf.split([g for g in self.instances], [g.label for g in self.instances])
         for train_index, test_index in spl:
             self.splits.append({'train': train_index.tolist(), 'test': test_index.tolist()})
+        
+        # print(self.splits)
             
     def get_torch_loader(self,
                          fold_id: int=-1,
