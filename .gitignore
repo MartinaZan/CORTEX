@@ -158,10 +158,16 @@ visualizations/*
 main_test.py
 da_test.py
 
-<<<<<<< HEAD
-# Prove Martina
-prove_varie_martina/
-=======
 # Log files
 *.out
->>>>>>> NON_TOCCARE/main
+
+# Cose Martina
+prove_varie_martina/
+
+output/embeddings/*
+output/eval_manager/*
+output/logs/*
+output/results/*
+output/video/*
+
+EEG_data/*

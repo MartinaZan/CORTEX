@@ -65,7 +65,7 @@ class Patient:
 
         self.skip_0 = int(((length_recording - self.lag_corr / self.frequency - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
         self.skip_1 = int(((sum(length_seizures) - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
-
+        
 
     def get_times(self):
         """Function to extract times of the recording"""
@@ -310,7 +310,7 @@ def create_graph(patient):
         else:
             seizure_class.append(0)
         
-        print(f"k: {k} ---> t: {t} (seizure class: {seizure_class[-1]})")
+        # print(f"k: {k} ---> t: {t} (seizure class: {seizure_class[-1]})")
 
         corr.append(corr_mat)
         weights.append(values_list)

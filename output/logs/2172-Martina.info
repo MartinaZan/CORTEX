@@ -372,3 +372,75 @@
 2025-04-01 16:12:09,565 | INFO | 2172 - epoch = 133 ---> loss = 0.1113	 accuracy = 0.9590
 2025-04-01 16:12:13,496 | INFO | 2172 - epoch = 134 ---> loss = 0.1073	 accuracy = 0.9612
 2025-04-01 16:12:17,575 | INFO | 2172 - epoch = 135 ---> loss = 0.1102	 accuracy = 0.9597
+2025-04-01 16:12:21,214 | INFO | 2172 - epoch = 136 ---> loss = 0.1124	 accuracy = 0.9581
+2025-04-01 16:12:25,510 | INFO | 2172 - epoch = 137 ---> loss = 0.1089	 accuracy = 0.9597
+2025-04-01 16:12:29,755 | INFO | 2172 - epoch = 138 ---> loss = 0.1097	 accuracy = 0.9627
+2025-04-01 16:12:34,010 | INFO | 2172 - epoch = 139 ---> loss = 0.1066	 accuracy = 0.9623
+2025-04-01 16:12:38,190 | INFO | 2172 - epoch = 140 ---> loss = 0.1066	 accuracy = 0.9594
+2025-04-01 16:12:42,339 | INFO | 2172 - epoch = 141 ---> loss = 0.1072	 accuracy = 0.9601
+2025-04-01 16:12:46,387 | INFO | 2172 - epoch = 142 ---> loss = 0.1080	 accuracy = 0.9614
+2025-04-01 16:12:50,603 | INFO | 2172 - epoch = 143 ---> loss = 0.1081	 accuracy = 0.9612
+2025-04-01 16:12:54,426 | INFO | 2172 - epoch = 144 ---> loss = 0.1025	 accuracy = 0.9642
+2025-04-01 16:12:58,599 | INFO | 2172 - epoch = 145 ---> loss = 0.1051	 accuracy = 0.9643
+2025-04-01 16:13:02,929 | INFO | 2172 - epoch = 146 ---> loss = 0.1071	 accuracy = 0.9618
+2025-04-01 16:13:06,971 | INFO | 2172 - epoch = 147 ---> loss = 0.1043	 accuracy = 0.9625
+2025-04-01 16:13:10,708 | INFO | 2172 - epoch = 148 ---> loss = 0.1037	 accuracy = 0.9610
+2025-04-01 16:13:12,936 | INFO | 2172 - epoch = 149 ---> loss = 0.1033	 accuracy = 0.9642
+2025-04-01 16:13:14,322 | INFO | 2172 - epoch = 150 ---> loss = 0.1039	 accuracy = 0.9640
+2025-04-01 16:13:15,725 | INFO | 2172 - epoch = 151 ---> loss = 0.1036	 accuracy = 0.9629
+2025-04-01 16:13:18,687 | INFO | 2172 - epoch = 152 ---> loss = 0.1066	 accuracy = 0.9603
+2025-04-01 16:13:20,165 | INFO | 2172 - epoch = 153 ---> loss = 0.1027	 accuracy = 0.9625
+2025-04-01 16:13:21,515 | INFO | 2172 - epoch = 154 ---> loss = 0.1024	 accuracy = 0.9621
+2025-04-01 16:13:22,871 | INFO | 2172 - epoch = 155 ---> loss = 0.1034	 accuracy = 0.9612
+2025-04-01 16:13:24,210 | INFO | 2172 - epoch = 156 ---> loss = 0.1034	 accuracy = 0.9640
+2025-04-01 16:13:27,141 | INFO | 2172 - epoch = 157 ---> loss = 0.1020	 accuracy = 0.9614
+2025-04-01 16:13:28,582 | INFO | 2172 - epoch = 158 ---> loss = 0.1002	 accuracy = 0.9632
+2025-04-01 16:13:30,127 | INFO | 2172 - epoch = 159 ---> loss = 0.1004	 accuracy = 0.9629
+2025-04-01 16:13:31,497 | INFO | 2172 - epoch = 160 ---> loss = 0.1000	 accuracy = 0.9653
+2025-04-01 16:13:32,905 | INFO | 2172 - epoch = 161 ---> loss = 0.1000	 accuracy = 0.9653
+2025-04-01 16:13:34,247 | INFO | 2172 - epoch = 162 ---> loss = 0.1006	 accuracy = 0.9625
+2025-04-01 16:13:35,565 | INFO | 2172 - epoch = 163 ---> loss = 0.1025	 accuracy = 0.9629
+2025-04-01 16:13:37,035 | INFO | 2172 - epoch = 164 ---> loss = 0.0979	 accuracy = 0.9647
+2025-04-01 16:13:38,395 | INFO | 2172 - epoch = 165 ---> loss = 0.0983	 accuracy = 0.9662
+2025-04-01 16:13:39,746 | INFO | 2172 - epoch = 166 ---> loss = 0.0981	 accuracy = 0.9653
+2025-04-01 16:13:42,026 | INFO | 2172 - epoch = 167 ---> loss = 0.0986	 accuracy = 0.9614
+2025-04-01 16:13:43,515 | INFO | 2172 - epoch = 168 ---> loss = 0.0990	 accuracy = 0.9629
+2025-04-01 16:13:46,017 | INFO | 2172 - epoch = 169 ---> loss = 0.0985	 accuracy = 0.9631
+2025-04-01 16:13:47,390 | INFO | 2172 - epoch = 170 ---> loss = 0.0970	 accuracy = 0.9649
+2025-04-01 16:13:48,895 | INFO | 2172 - epoch = 171 ---> loss = 0.0976	 accuracy = 0.9656
+2025-04-01 16:13:50,205 | INFO | 2172 - epoch = 172 ---> loss = 0.0979	 accuracy = 0.9627
+2025-04-01 16:13:51,597 | INFO | 2172 - epoch = 173 ---> loss = 0.0947	 accuracy = 0.9673
+2025-04-01 16:13:53,115 | INFO | 2172 - epoch = 174 ---> loss = 0.0957	 accuracy = 0.9649
+2025-04-01 16:13:54,601 | INFO | 2172 - epoch = 175 ---> loss = 0.0955	 accuracy = 0.9656
+2025-04-01 16:13:55,959 | INFO | 2172 - epoch = 176 ---> loss = 0.0950	 accuracy = 0.9654
+2025-04-01 16:13:58,756 | INFO | 2172 - epoch = 177 ---> loss = 0.0979	 accuracy = 0.9636
+2025-04-01 16:14:00,190 | INFO | 2172 - epoch = 178 ---> loss = 0.0954	 accuracy = 0.9660
+2025-04-01 16:14:01,851 | INFO | 2172 - epoch = 179 ---> loss = 0.0940	 accuracy = 0.9649
+2025-04-01 16:14:03,283 | INFO | 2172 - epoch = 180 ---> loss = 0.0948	 accuracy = 0.9667
+2025-04-01 16:14:04,635 | INFO | 2172 - epoch = 181 ---> loss = 0.0958	 accuracy = 0.9653
+2025-04-01 16:14:06,025 | INFO | 2172 - epoch = 182 ---> loss = 0.0906	 accuracy = 0.9684
+2025-04-01 16:14:07,480 | INFO | 2172 - epoch = 183 ---> loss = 0.0948	 accuracy = 0.9645
+2025-04-01 16:14:08,846 | INFO | 2172 - epoch = 184 ---> loss = 0.0919	 accuracy = 0.9671
+2025-04-01 16:14:10,327 | INFO | 2172 - epoch = 185 ---> loss = 0.0931	 accuracy = 0.9664
+2025-04-01 16:14:11,995 | INFO | 2172 - epoch = 186 ---> loss = 0.0921	 accuracy = 0.9676
+2025-04-01 16:14:15,036 | INFO | 2172 - epoch = 187 ---> loss = 0.0948	 accuracy = 0.9651
+2025-04-01 16:14:16,542 | INFO | 2172 - epoch = 188 ---> loss = 0.0890	 accuracy = 0.9691
+2025-04-01 16:14:18,008 | INFO | 2172 - epoch = 189 ---> loss = 0.0922	 accuracy = 0.9682
+2025-04-01 16:14:19,741 | INFO | 2172 - epoch = 190 ---> loss = 0.0943	 accuracy = 0.9656
+2025-04-01 16:14:21,325 | INFO | 2172 - epoch = 191 ---> loss = 0.0890	 accuracy = 0.9671
+2025-04-01 16:14:22,779 | INFO | 2172 - epoch = 192 ---> loss = 0.0897	 accuracy = 0.9686
+2025-04-01 16:14:25,190 | INFO | 2172 - epoch = 193 ---> loss = 0.0900	 accuracy = 0.9660
+2025-04-01 16:14:26,729 | INFO | 2172 - epoch = 194 ---> loss = 0.0900	 accuracy = 0.9684
+2025-04-01 16:14:28,176 | INFO | 2172 - epoch = 195 ---> loss = 0.0894	 accuracy = 0.9686
+2025-04-01 16:14:29,552 | INFO | 2172 - epoch = 196 ---> loss = 0.0879	 accuracy = 0.9704
+2025-04-01 16:14:30,940 | INFO | 2172 - epoch = 197 ---> loss = 0.0907	 accuracy = 0.9676
+2025-04-01 16:14:33,640 | INFO | 2172 - epoch = 198 ---> loss = 0.0893	 accuracy = 0.9669
+2025-04-01 16:14:36,305 | INFO | 2172 - epoch = 199 ---> loss = 0.0883	 accuracy = 0.9664
+2025-04-01 16:14:39,064 | INFO | 2172 - Test accuracy = 0.9711
+2025-04-01 16:14:39,100 | INFO | 2172 - OracleTorch trained on cpu in: 464.73563742637634 secs
+2025-04-01 16:14:39,141 | INFO | 2172 - Saved: OracleTorch-9425d24aa0a07d0c398637e8706f5b13
+2025-04-01 16:14:39,183 | INFO | 2172 - Created: OracleTorch-9425d24aa0a07d0c398637e8706f5b13
+2025-04-01 16:14:39,189 | INFO | 2172 - Instantiating: src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric
+2025-04-01 16:14:39,216 | INFO | 2172 - Created: DCESExplainer-50fd989afa9dcdfe4785ab59048f95d6
+2025-04-01 16:14:39,236 | INFO | 2172 - Evaluating the explainers.............................................................
+2025-04-01 16:14:39,266 | INFO | 2172 - Evaluating instance with id 10
