@@ -151,9 +151,6 @@ data/bardh_cache/*
 old_experiments/
 visualizations/*
 
-# videos
-.mp4
-
 # Testing files
 main_test.py
 da_test.py
