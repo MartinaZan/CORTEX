@@ -315,9 +315,25 @@ def create_graph(patient):
         corr.append(corr_mat)
         weights.append(values_list)
         edge_list.append(new_edges)
-        # node_features.append(series[k])
-        # node_features.append(series[(k-num_node_features+1):(k+1)])
-        node_features.append(series[(k-(num_node_features-1)*lag_nodes):(k+1):lag_nodes])
+        # node_features.append(series[k])                               # Versione 1 (1 node feature)
+        # node_features.append(series[(k-num_node_features+1):(k+1)])   # Versione 2 (n node feature)
+
+        # Versione attuale
+        node_features.append(series[(k-(num_node_features-1)*lag_nodes):(k+1):lag_nodes])   # Versione 3 (n node feature laggate)
+
+        ###########################################
+        # TENTATIVO (stessa node feature):
+        # node_features.append([series[k]] * num_node_features)
+        ###########################################
+
+        ###########################################
+        # TENTATIVO (node feature che decadono nel tempo):
+        # prova = series[(k-(num_node_features-1)*lag_nodes):(k+1):lag_nodes]
+        # pesi = (np.linspace(0, 1, num_node_features)) # np.linspace(1/(num_node_features/4),1, num_node_features)
+        # for i in range(len(prova)):
+        #     prova[i] = list(np.array(prova[i]) * pesi[i])
+        # node_features.append(prova)
+        ###########################################
 
     return node_ids, corr, weights, edge_list, node_features, seizure_class
 

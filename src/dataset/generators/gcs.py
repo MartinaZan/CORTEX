@@ -104,12 +104,7 @@ def corr2graph(id, data, weight, series, target, dataset):
     A = np.zeros((n, n))
     W = np.zeros((n, n))
 
-    # X = np.array(series).reshape(n, 1)
-
     ##########################################################################
-    # Tentativo per avere più node features
-    # X = np.array(series).reshape(n, 1)
-    # X = np.hstack((X, np.random.rand(n, 1), np.random.rand(n, 1)))
 
     if len(n_map) == 1:
         X = np.array(series).reshape(n, 1)

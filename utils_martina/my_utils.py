@@ -40,23 +40,23 @@ def create_dataset_json(observations):
 
 ################################################################################################################
 
-def get_embeddings_and_outputs_all(eval_manager):
+def get_embeddings_and_outputs_all(eval_manager,index_evaluator=0):
     # Get embeddings of all elements
 
     result = []
-    expl = eval_manager._evaluators[0]._explainer
+    expl = eval_manager._evaluators[index_evaluator]._explainer
     
     for element in expl.dataset.instances:
         result.append(expl.oracle.get_oracle_info(element))
     
     return result
 
-def get_embeddings_and_outputs_test(eval_manager):
+def get_embeddings_and_outputs_test(eval_manager,index_evaluator=0):
     # Get embeddings for the test set
 
     result = []
-    expl = eval_manager._evaluators[0]
-    ids_list = [explanation.id for explanation in eval_manager._evaluators[0].explanations]
+    expl = eval_manager._evaluators[index_evaluator]
+    ids_list = [explanation.id for explanation in eval_manager._evaluators[index_evaluator].explanations]
 
     for element in expl.dataset.instances:
         if element.id in ids_list:
@@ -66,37 +66,58 @@ def get_embeddings_and_outputs_test(eval_manager):
 
 ################################################################################################################
 
-def extract_dictionary_from_runtime_metric(content,metric):
-    # Search for info on the chosen metric
-    pattern = metric + "': (\[\{.*?\}\])"
-    match = re.search(pattern, content)
+# Funzione per estrarre l'elemento desiderato in base all'indice
+def extract_dictionary_from_runtime_metric(content,metric,i=0):
 
-    if match:
-        # Extract metric information
-        data = match.group(1)
+    # Trova tutte le occorrenze del dizionario
+    occurrences = content.split(metric)[1:]
 
-        # Convert the string to a list of dictionaries
-        list = ast.literal_eval(data)
-
-        # Create a dictionary with 'id' as the key and 'value' as the value
-        dict = {item['id']: item['value'] for item in list}
-
-        return dict
+    # Converti ogni occorrenza in una lista di dizionari
+    records = []
+    for occ in occurrences:
+        # Cerca la parte che inizia con '[{' (lista di dizionari) e termina con '}]'
+        start_idx = occ.find("[{")
+        end_idx = occ.find("}]") + 2  # Include la parentesi di chiusura ']}'
+        
+        if start_idx != -1 and end_idx != -1:
+            dict_part = occ[start_idx:end_idx]
+            # Usa ast.literal_eval per trasformare il testo in un oggetto Python (lista di dizionari)
+            records.append(ast.literal_eval(dict_part))
     
-def extract_time_and_record(content):
-    # Search for info on the chosen metric
-    pattern = "RuntimeMetric" + "': (\[\{.*?\}\])"
-    match = re.search(pattern, content)
+    # Estrai l'elemento corrispondente all'indice i
+    if i < len(records) and i >= 0:
+        list = records[i]
+        dict = {item['id']: item['value'] for item in list}
+        return dict
+    else:
+        return None  # Se l'indice è fuori dai limiti
 
-    if match:
-        # Extract metric information
-        data = match.group(1)
+# Funzione per estrarre l'elemento desiderato in base all'indice
+def extract_time_and_record(content,i=0):
 
-        # Convert the string to a list of dictionaries
-        list = ast.literal_eval(data)
+    # Trova tutte le occorrenze del dizionario
+    occurrences = content.split("RuntimeMetric")[1:]
 
+    # Converti ogni occorrenza in una lista di dizionari
+    records = []
+    for occ in occurrences:
+        # Cerca la parte che inizia con '[{' (lista di dizionari) e termina con '}]'
+        start_idx = occ.find("[{")
+        end_idx = occ.find("}]") + 2  # Include la parentesi di chiusura ']}'
+        
+        if start_idx != -1 and end_idx != -1:
+            dict_part = occ[start_idx:end_idx]
+            # Usa ast.literal_eval per trasformare il testo in un oggetto Python (lista di dizionari)
+            records.append(ast.literal_eval(dict_part))
+    
+    # Estrai l'elemento corrispondente all'indice i
+    if i < len(records) and i >= 0:
+        list = records[i]
+        
         # Create a dictionary
         dict_time = {item['id']: item['time'] for item in list}
         dict_record = {item['id']: item['record'] for item in list}
 
         return dict_time, dict_record
+    else:
+        return None  # Se l'indice è fuori dai limiti

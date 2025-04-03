@@ -61,7 +61,7 @@ class EvaluatorManager:
                 dataset = self.context.factories['datasets'].get_dataset(do_pair_snippet['dataset'])
                 
                 # The get_oracle method returns a fitted oracle on the dataset;
-                oracle = self.context.factories['oracles'].get_oracle(do_pair_snippet['oracle'], dataset)                    
+                oracle = self.context.factories['oracles'].get_oracle(do_pair_snippet['oracle'], dataset)             
 
                 # The get_explainer method returns an (fitted in case is trainable) explainer for the dataset and the oracle;                
                 explainer = self.context.factories['explainers'].get_explainer(explainer_snippet, dataset, oracle)                
