@@ -32,7 +32,7 @@ class FilePatient:
 #################################################################################################
 
 class Patient:
-    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1, lag_nodes=1):
+    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1, lag_nodes=1, quantile_edges=0.25):
         self.file_patient = file_patient
         self.dictionary_unique_channels = {}
 
@@ -59,7 +59,7 @@ class Patient:
 
         self.indices = None
 
-        self.threshold = 0                      # Threshold for pruning
+        self.quantile_edges = quantile_edges    # Quantile for edge selection
 
 
     def set_skip_values(self):
@@ -249,6 +249,7 @@ def create_graph(patient):
     lag_nodes = patient.lag_nodes
     seizure_starts = patient.patient_info["seizure_starts"]
     seizure_ends = patient.patient_info["seizure_ends"]
+    quantile_edges = patient.quantile_edges
 
     # Creation of series from the dataframe
     columns = [df.iloc[:, i].to_numpy() for i in range(0,len(df.columns))]
@@ -284,9 +285,8 @@ def create_graph(patient):
         # Remove loops
         np.fill_diagonal(corr_mat.values, 0)
 
-        # Keep only highest 25%
-        q = corr_mat.melt().value.quantile(0.75)
-        print(q)
+        # Keep only highest quantile_edges%
+        q = corr_mat.melt().value.quantile(1 - quantile_edges)
         corr_mat[corr_mat < q] = 0
 
         ##########################################################################

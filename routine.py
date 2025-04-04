@@ -46,7 +46,7 @@ def copia_file(cartella_origine, cartella_destinazione):
             shutil.copy(percorso_elemento, cartella_destinazione)
             print(f"      File {elemento} copiato in {cartella_destinazione}")
 
-def routine(patient,lag_nodes,num_node_features,observations):
+def routine(patient,quantile_edges,lag_nodes,num_node_features,observations):
     torch.manual_seed(0)
     random.seed(0)
     np.random.seed(0)
@@ -54,7 +54,7 @@ def routine(patient,lag_nodes,num_node_features,observations):
     remove_cache_dataset()
     remove_cache_oracle()
 
-    cartella_origine = f"EEG_data\{patient}\Distanza {lag_nodes}\{num_node_features} node feature"
+    cartella_origine = f"EEG_data\{patient}\{quantile_edges} edges\Distanza {lag_nodes}\{num_node_features} node feature"
     cartella_destinazione = "EEG_data"
     
     torch.manual_seed(0)
