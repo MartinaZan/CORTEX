@@ -166,5 +166,6 @@ output/eval_manager/*
 output/logs/*
 output/results/*
 output/video/*
+output/plot correlation/*
 
 EEG_data/*

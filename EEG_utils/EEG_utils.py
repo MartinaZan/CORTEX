@@ -27,7 +27,7 @@ class FilePatient:
 ################################################################################
 
 class Patient:
-    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1, lag_nodes=1, quantile_edges=0.25):
+    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1, lag_nodes=1, quantile_edges=0.25, corr_sec=10):
         self.file_patient = file_patient
         self.dictionary_unique_pairs = {}
 
@@ -45,10 +45,10 @@ class Patient:
 
         self.frequency = 256
 
-        self.num_points = num_points            # Number of points for each class
-        self.lag_corr = int(self.frequency*10)  # Number of lag for correlation calculation (10 seconds)
-        self.lag_nodes = lag_nodes              # Distance of lags for node features
-        self.buffer_time = None                 # Buffer to skip data too close to beginning and end of seizures
+        self.num_points = num_points                    # Number of points for each class
+        self.lag_corr = int(self.frequency*corr_sec)    # Number of lag for correlation calculation (corr_sec seconds)
+        self.lag_nodes = lag_nodes                      # Distance of lags for node features
+        self.buffer_time = None                         # Buffer to skip data too close to beginning and end of seizures
         self.skip_0 = None
         self.skip_1 = None
 
