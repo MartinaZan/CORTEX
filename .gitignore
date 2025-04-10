@@ -164,8 +164,9 @@ prove_varie_martina/
 output/embeddings/*
 output/eval_manager/*
 output/logs/*
+output/metrics/*
+output/plot correlation/*
 output/results/*
 output/video/*
-output/plot correlation/*
 
 EEG_data/*
