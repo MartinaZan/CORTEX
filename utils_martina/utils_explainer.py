@@ -43,10 +43,12 @@ def create_explainer_json(epochs=1000, lr=0.001, discriminator='SimpleDiscrimina
                             "batch_size": 1,
                             "loss_fn": {"class": "torch.nn.BCELoss", "parameters": {"reduction": "mean"}},
                             "generator": {
-                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator"
+                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator",
+                                "parameters": {}
                             },
                             "discriminator": {
-                                "class": f"src.explainer.generative.gans.graph.discriminators.{discriminator}"
+                                "class": f"src.explainer.generative.gans.graph.discriminators.{discriminator}",
+                                "parameters": {}
                             },
                             "gen_optimizer": {
                                 "class": "torch.optim.SGD",
@@ -84,10 +86,12 @@ def create_explainer_json(epochs=1000, lr=0.001, discriminator='SimpleDiscrimina
                             "batch_size": 1,
                             "loss_fn": {"class": "torch.nn.BCELoss", "parameters": {"reduction": "mean"}},
                             "generator": {
-                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator"
+                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator",
+                                "parameters": {}
                             },
                             "discriminator": {
-                                "class": f"src.explainer.generative.gans.graph.discriminators.{discriminator}"
+                                "class": f"src.explainer.generative.gans.graph.discriminators.{discriminator}",
+                                "parameters": {}
                             },
                             "gen_optimizer": {
                                 "class": "torch.optim.SGD",
@@ -121,5 +125,5 @@ def create_explainer_json(epochs=1000, lr=0.001, discriminator='SimpleDiscrimina
         ]
     }
 
-    with open("config\GCS-GCN_prova.jsonc", "w") as f:
+    with open("config\GCS-GCN.jsonc", "w") as f:
         json.dump(file_json, f, indent=4)

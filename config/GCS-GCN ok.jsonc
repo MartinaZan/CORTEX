@@ -45,7 +45,7 @@
             "parameters": {
                 "fold_id": 0,
                 "retrain": true,
-                "epochs": 400,
+                "epochs": 1000,
                 "sampler": {
                     "class": "src.utils.samplers.partial_order_samplers.PositiveAndNegativeEdgeSampler",
                     "parameters": {
@@ -59,7 +59,7 @@
                             "model_label": 0,
                             "fold_id": 0,
                             "retrain": true,
-                            "epochs": 400,
+                            "epochs": 1000,
                             "batch_size": 1,
                             "loss_fn": {
                                 "class": "torch.nn.BCELoss",
@@ -68,15 +68,17 @@
                                 }
                             },
                             "generator": {
-                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator"
+                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator",
+                                "parameters": {}
                             },
                             "discriminator": {
-                                "class": "src.explainer.generative.gans.graph.discriminators.TopKPoolingDiscriminator"
+                                "class": "src.explainer.generative.gans.graph.discriminators.SimpleDiscriminator",
+                                "parameters": {}
                             },
                             "gen_optimizer": {
                                 "class": "torch.optim.SGD",
                                 "parameters": {
-                                    "lr": 1,
+                                    "lr": 1e-05,
                                     "momentum": 0,
                                     "dampening": 0,
                                     "weight_decay": 0,
@@ -88,7 +90,7 @@
                             "disc_optimizer": {
                                 "class": "torch.optim.SGD",
                                 "parameters": {
-                                    "lr": 1,
+                                    "lr": 1e-05,
                                     "momentum": 0,
                                     "dampening": 0,
                                     "weight_decay": 0,
@@ -105,7 +107,7 @@
                             "model_label": 1,
                             "fold_id": 0,
                             "retrain": true,
-                            "epochs": 400,
+                            "epochs": 1000,
                             "batch_size": 1,
                             "loss_fn": {
                                 "class": "torch.nn.BCELoss",
@@ -114,15 +116,17 @@
                                 }
                             },
                             "generator": {
-                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator"
+                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator",
+                                "parameters": {}
                             },
                             "discriminator": {
-                                "class": "src.explainer.generative.gans.graph.discriminators.TopKPoolingDiscriminator"
+                                "class": "src.explainer.generative.gans.graph.discriminators.SimpleDiscriminator",
+                                "parameters": {}
                             },
                             "gen_optimizer": {
                                 "class": "torch.optim.SGD",
                                 "parameters": {
-                                    "lr": 1,
+                                    "lr": 1e-05,
                                     "momentum": 0,
                                     "dampening": 0,
                                     "weight_decay": 0,
@@ -134,7 +138,7 @@
                             "disc_optimizer": {
                                 "class": "torch.optim.SGD",
                                 "parameters": {
-                                    "lr": 1,
+                                    "lr": 1e-05,
                                     "momentum": 0,
                                     "dampening": 0,
                                     "weight_decay": 0,

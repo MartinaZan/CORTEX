@@ -8,7 +8,7 @@ from src.utils.torch.graph_pooling import TopKPooling
 
 class TopKPoolingDiscriminator(nn.Module):
     
-    def __init__(self, num_nodes, node_features, dim=2):
+    def __init__(self, num_nodes, node_features, dim=3):
         super(TopKPoolingDiscriminator, self).__init__()
         self.training = False
         
@@ -65,7 +65,7 @@ class TopKPoolingDiscriminator(nn.Module):
         return x + noise
         
     @default_cfg
-    def grtl_default(kls, num_nodes, node_features, dim=2):
+    def grtl_default(kls, num_nodes, node_features, dim=3):
         return {"class": kls,
                         "parameters": {
                             "node_features": node_features,
@@ -76,7 +76,7 @@ class TopKPoolingDiscriminator(nn.Module):
         
 class SimpleDiscriminator(nn.Module):
     
-    def __init__(self, num_nodes, node_features, dim=2):
+    def __init__(self, num_nodes, node_features, dim=3):
         """This class provides a GCN to discriminate between real and generated graph instances"""
         super(SimpleDiscriminator, self).__init__()
 
@@ -135,7 +135,7 @@ class SimpleDiscriminator(nn.Module):
         return x + noise
         
     @default_cfg
-    def grtl_default(kls, num_nodes, node_features, dim=2):
+    def grtl_default(kls, num_nodes, node_features, dim=3):
         return {"class": kls,
                         "parameters": {
                             "num_nodes": num_nodes,

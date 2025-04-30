@@ -45,13 +45,13 @@ def remove_cache_explainer():
 
 def routine():
 
-    remove_cache_dataset()
-    remove_cache_oracle()
+    # remove_cache_dataset()
+    # remove_cache_oracle()
     remove_cache_explainer()
 
-    torch.manual_seed(0)
-    random.seed(0)
-    np.random.seed(0)
+    # torch.manual_seed(0)
+    # random.seed(0)
+    # np.random.seed(0)
 
     context = Context.get_context('config/GCS-GCN.jsonc')
     context.run_number = -1
