@@ -45,10 +45,6 @@ def remove_cache_explainer():
 
 def routine():
 
-    torch.manual_seed(0)
-    random.seed(0)
-    np.random.seed(0)
-
     remove_cache_dataset()
     remove_cache_oracle()
     remove_cache_explainer()

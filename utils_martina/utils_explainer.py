@@ -2,7 +2,7 @@ import json
 
 ################################################################################################################
 
-def create_explainer_json(params):
+def create_explainer_json(epochs=1000, lr=0.001, discriminator='SimpleDiscriminator'):
 
     # Set explainer json file
 
@@ -27,7 +27,7 @@ def create_explainer_json(params):
                 "parameters": {
                     "fold_id": 0,
                     "retrain": True,
-                    "epochs": 1000,
+                    "epochs": epochs,
                     "sampler": {
                         "class": "src.utils.samplers.partial_order_samplers.PositiveAndNegativeEdgeSampler",
                         "parameters": {"sampling_iterations": 500}
@@ -39,26 +39,19 @@ def create_explainer_json(params):
                             "model_label": 0,
                             "fold_id": 0,
                             "retrain": True,
-                            "epochs": 1000,
+                            "epochs": epochs,
                             "batch_size": 1,
                             "loss_fn": {"class": "torch.nn.BCELoss", "parameters": {"reduction": "mean"}},
                             "generator": {
-                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator",
-                                "parameters": {
-                                    "node_features": 7
-                                }
+                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator"
                             },
                             "discriminator": {
-                                "class": "src.explainer.generative.gans.graph.smpl_disc.SimpleDiscriminator",
-                                "parameters": {
-                                    "num_nodes": 28,
-                                    "node_features": 7
-                                }
+                                "class": f"src.explainer.generative.gans.graph.discriminators.{discriminator}"
                             },
                             "gen_optimizer": {
                                 "class": "torch.optim.SGD",
                                 "parameters": {
-                                    "lr": 0.001,
+                                    "lr": lr,
                                     "momentum": 0,
                                     "dampening": 0,
                                     "weight_decay": 0,
@@ -70,7 +63,7 @@ def create_explainer_json(params):
                             "disc_optimizer": {
                                 "class": "torch.optim.SGD",
                                 "parameters": {
-                                    "lr": 0.001,
+                                    "lr": lr,
                                     "momentum": 0,
                                     "dampening": 0,
                                     "weight_decay": 0,
@@ -87,26 +80,19 @@ def create_explainer_json(params):
                             "model_label": 1,
                             "fold_id": 0,
                             "retrain": True,
-                            "epochs": 1000,
+                            "epochs": epochs,
                             "batch_size": 1,
                             "loss_fn": {"class": "torch.nn.BCELoss", "parameters": {"reduction": "mean"}},
                             "generator": {
-                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator",
-                                "parameters": {
-                                    "node_features": 7
-                                }
+                                "class": "src.explainer.generative.gans.graph.res_gen.ResGenerator"
                             },
                             "discriminator": {
-                                "class": "src.explainer.generative.gans.graph.smpl_disc.SimpleDiscriminator",
-                                "parameters": {
-                                    "num_nodes": 28,
-                                    "node_features": 7
-                                }
+                                "class": f"src.explainer.generative.gans.graph.discriminators.{discriminator}"
                             },
                             "gen_optimizer": {
                                 "class": "torch.optim.SGD",
                                 "parameters": {
-                                    "lr": 0.001,
+                                    "lr": lr,
                                     "momentum": 0,
                                     "dampening": 0,
                                     "weight_decay": 0,
@@ -118,7 +104,7 @@ def create_explainer_json(params):
                             "disc_optimizer": {
                                 "class": "torch.optim.SGD",
                                 "parameters": {
-                                    "lr": 0.001,
+                                    "lr": lr,
                                     "momentum": 0,
                                     "dampening": 0,
                                     "weight_decay": 0,

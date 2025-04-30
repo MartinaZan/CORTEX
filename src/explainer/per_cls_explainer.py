@@ -75,10 +75,6 @@ class PerClassExplainer(Trainable, Explainer):
                     if 'model_label' in usr_model['parameters'] and usr_model['parameters']['model_label'] == i:
                         # We sobstitute the copied prototype
                         model = usr_model
-                
-                # In any case we need to inject oracle and the dataset to the model
-                inject_dataset(model, self.dataset)
-                inject_oracle(model, self.oracle)
 
                 # Check if the fold_id is present is inherited otherwise
                 model['parameters']['fold_id'] = model['parameters'].get('fold_id',self.fold_id)
@@ -95,4 +91,7 @@ class PerClassExplainer(Trainable, Explainer):
 
             # We replace models with the checked ones
             self.local_config['parameters']['models']=models
-    
+            
+        for model in self.local_config['parameters']['models']:
+            inject_dataset(model, self.dataset)
+            inject_oracle(model, self.oracle)
