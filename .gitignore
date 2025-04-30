@@ -170,3 +170,4 @@ output/results/*
 output/video/*
 
 EEG_data/*
+# EEG_data/log */

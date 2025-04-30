@@ -361,7 +361,12 @@ def export_data_to_GRETEL(patient):
         "End": int(patient.get_times()[-1]),
         "seizure_starts": patient.patient_info["seizure_starts"],
         "seizure_ends": patient.patient_info["seizure_ends"],
-        "seizure_class": seizure_class
+        "seizure_class": seizure_class,
+        "frequency": patient.frequency,
+        "num_points": patient.num_points,
+        "corr_sec": patient.corr_sec,
+        "lag_nodes": patient.lag_nodes,
+        "quantile_edges": patient.quantile_edges
     }
 
     with open("..\\..\\explainability\\GRETEL-repo\\EEG_data\\" + f"EEG_data_params_{patient.file_patient.patient_id}_{patient.file_patient.record_id}.pkl", 'wb') as f:
