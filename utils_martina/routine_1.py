@@ -1,8 +1,8 @@
 import pickle
 
-from src.evaluation.evaluator_manager import EvaluatorManager
-from src.evaluation.evaluator_manager_do import EvaluatorManager as PairedEvaluatorManager
-from src.evaluation.evaluator_manager_triplets import EvaluatorManager as TripletsEvaluatorManager
+# from src.evaluation.evaluator_manager import EvaluatorManager
+from src.evaluation.evaluator_manager_do_CICLO_DATASET import EvaluatorManager as PairedEvaluatorManager
+# from src.evaluation.evaluator_manager_triplets import EvaluatorManager as TripletsEvaluatorManager
 
 from src.utils.context import Context
 
