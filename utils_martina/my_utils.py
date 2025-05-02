@@ -121,3 +121,42 @@ def extract_time_and_record(content,i=0):
         return dict_time, dict_record
     else:
         return None  # Se l'indice è fuori dai limiti
+    
+# Funzione per estrarre l'elemento desiderato in base all'indice
+def get_other_info(content,metric,i=0):
+
+    # Trova tutte le occorrenze del dizionario
+    occurrences = content.split(metric)[1:]
+
+    # Converti ogni occorrenza in una lista di dizionari
+    records = []
+    for occ in occurrences:
+        # Cerca la parte che inizia con '[{' (lista di dizionari) e termina con '}]'
+        start_idx = occ.find("[{")
+        end_idx = occ.find("}]") + 2  # Include la parentesi di chiusura ']}'
+        
+        if start_idx != -1 and end_idx != -1:
+            dict_part = occ[start_idx:end_idx]
+            # Usa ast.literal_eval per trasformare il testo in un oggetto Python (lista di dizionari)
+            records.append(ast.literal_eval(dict_part))
+    
+    # Estrai l'elemento corrispondente all'indice i
+    if i < len(records) and i >= 0:
+        list = records[i]
+        return list
+    else:
+        return None  # Se l'indice è fuori dai limiti
+    
+def get_oracle_and_explainer_names(eval_manager,index_evaluator):
+    string = eval_manager.evaluators[index_evaluator].name
+
+    oracle_name = re.search(r'using_(.*?)Oracle', string).group(1)
+    if oracle_name == '': # It should be ok...
+        oracle_name = 'GCN'
+    explainer_name = re.search(r'for_(.*?)Explainer', string)
+    if explainer_name == None:
+        explainer_name = 'RSGG'
+    else:
+        explainer_name = explainer_name.group(1)
+
+    return f"{oracle_name} oracle - {explainer_name} explainer"

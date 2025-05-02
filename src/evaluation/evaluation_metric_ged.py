@@ -104,8 +104,6 @@ class GraphEditDistanceMetric(EvaluationMetric):
         if self.undirected:
             edges_diff_count /= 2
 
-        # a = 3/0 # Da togliere!!!
-
         return nodes_diff_count + edges_diff_count
     
     

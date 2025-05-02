@@ -115,13 +115,6 @@ class Evaluator(ABC):
                 instance = self.dataset.instances[i]
                 counterfactual = self.explanations[ids.index(i)]
 
-                ##############################
-                # # DA CANCELLARE:
-                # print(f"{instance.patient_id}_{instance.record_id}")
-                # print(f"{counterfactual.patient_id}_{counterfactual.record_id}")
-                # print('-----')
-                ##############################
-
                 result.append({'instance_id': instance.id,
                                 'instance_time': instance.time,
                                 'instance_record': f"{instance.patient_id}_{instance.record_id}",
