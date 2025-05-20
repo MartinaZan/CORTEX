@@ -16,7 +16,7 @@
     "do-pairs":[ {"compose_bbbp_gcn" : "config/snippets/do-pairs/GCS-perfect.json"} ],
 
     "explainers": [
-        {"class": "src.explainer.search.dces.DCESExplainer",
-        "parameters": {"lookback": 10} }
+        {"class": "src.explainer.search.my_dces.DCESExplainer",
+        "parameters": {"lookback": 50, "threshold": 0.9} }
     ]
 }
