@@ -244,6 +244,20 @@ class Patient:
 
 ################################################################################
 
+def filter_quantile(corr_mat,quantile):
+    filtered = corr_mat.copy()
+    q = filtered.melt().value.quantile(1 - quantile)
+    filtered[filtered < q] = 0
+
+    return filtered
+
+def filter_top_k_edges(corr_mat,k):
+    filtered = corr_mat.copy()
+    filtered = corr_mat.apply(lambda row: row.where(row >= row.nlargest(k).min(), 0), axis=1)
+    filtered = np.maximum(filtered, filtered.T)
+
+    return filtered
+
 def create_graph(patient):
     df = patient.df
     indices = patient.indices
@@ -287,9 +301,15 @@ def create_graph(patient):
         # Remove loops
         np.fill_diagonal(corr_mat.values, 0)
 
-        # Keep only highest quantile_edges%
-        q = corr_mat.melt().value.quantile(1 - quantile_edges)
-        corr_mat[corr_mat < q] = 0
+        # # Keep only highest quantile_edges%
+        # q = corr_mat.melt().value.quantile(1 - quantile_edges)
+        # corr_mat[corr_mat < q] = 0
+
+        # Filter matrix based on quantile
+        # corr_mat = filter_quantile(corr_mat, quantile_edges)
+
+        # Filter matrix based on top edges
+        corr_mat = filter_top_k_edges(corr_mat, k=4)   # Change k
 
         ##########################################################################
 
@@ -382,7 +402,7 @@ def export_data_to_GRETEL(patient):
         "seizure_class": seizure_class,
         "frequency": patient.frequency,
         "num_points": patient.num_points,
-        "corr_sec": patient.corr_sec,
+        # "corr_sec": patient.corr_sec,
         "lag_nodes": patient.lag_nodes,
         "quantile_edges": patient.quantile_edges
     }

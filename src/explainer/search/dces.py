@@ -27,8 +27,11 @@ class DCESExplainer(Explainer):
 
         self.distance_metric = get_instance_kvargs(self.local_config['parameters']['distance_metric']['class'], 
                                                     self.local_config['parameters']['distance_metric']['parameters'])
+        
+        # Parametro opzionale di lookback per explainer
+        # self.lookback = self.local_config['parameters'].get('lookback', None)
 
-    def explain(self, instance): # , return_ctf_id=False):
+    def explain(self, instance):
         input_label = self.oracle.predict(instance)
 
         # if the method does not find a counterfactual example returns the original graph
@@ -37,9 +40,10 @@ class DCESExplainer(Explainer):
         # Iterating over all the instances of the dataset
         min_ctf_dist = sys.float_info.max
         for ctf_candidate in self.dataset.instances:
-            if ctf_candidate.patient_id == instance.patient_id: ## Added (considera solo record dello stesso paziente)
+            # Considera solo stesso paziente, stesso record e tempo precedente (in caso cambia <= con <)
+            if ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id and ctf_candidate.time <= instance.time:
+
                 # candidate_label, graph_embeddings = self.oracle.predict(ctf_candidate, return_embeddings=True) ## Chiama oracle_base.predict
-                # print(f"graph embeddings: {graph_embeddings}")
 
                 candidate_label = self.oracle.predict(ctf_candidate) ## Chiama oracle_base.predict
 
@@ -54,3 +58,4 @@ class DCESExplainer(Explainer):
         result.id = instance.id
 
         return result
+    
