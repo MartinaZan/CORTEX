@@ -15,8 +15,8 @@ class DCESExplainer(Explainer):
     def check_configuration(self):
         super().check_configuration()
 
-        dst_metric='src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric'  ### PRIMA
-        # dst_metric='src.evaluation.embedding_metrics.EmbeddingMetric'            ### DOPO
+        dst_metric='src.evaluation.evaluation_metric_ged.GraphEditDistanceMetric'  ### ATTUALE (metrica GED)
+        # dst_metric='src.evaluation.embedding_metrics.EmbeddingMetric'            ### PROVA (metrica embeddings)
 
         # Check if the distance metric exist or build with its defaults:
         init_dflts_to_of(self.local_config, 'distance_metric', dst_metric)
@@ -28,14 +28,20 @@ class DCESExplainer(Explainer):
         self.distance_metric = get_instance_kvargs(self.local_config['parameters']['distance_metric']['class'], 
                                                     self.local_config['parameters']['distance_metric']['parameters'])
         
-        # Parametro opzionale di lookback per explainer
+        # Parametri opzionali lookback explainer
         self.lookback = self.local_config['parameters'].get('lookback', 50)
         self.threshold = self.local_config['parameters'].get('threshold', 0.9)
+
+        # Parametro opzionale penalty explainer (0 per non considerare penalità)
+        self.max_penalty = self.local_config['parameters'].get('max_penalty', 10)
 
     def explain(self, instance):
         intervals = self.lookback_oracolo(lookback=self.lookback, threshold=self.threshold)
 
         input_label = self.oracle.predict(instance)
+
+        # Bounds of the interval within which the counterfactual search can take place
+        a, b = intervals[instance.id]
 
         # if the method does not find a counterfactual example returns the original graph
         min_ctf = instance
@@ -46,18 +52,23 @@ class DCESExplainer(Explainer):
             # Considera solo stesso paziente, stesso record e tempo precedente (in caso cambia <= con <)
             # if ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id and ctf_candidate.time <= instance.time:
             if ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id and \
-                ctf_candidate.time <= instance.time and (intervals[instance.id][0] <= ctf_candidate.id <= intervals[instance.id][1]):
+                ctf_candidate.time <= instance.time and (a <= ctf_candidate.id <= b):
 
                 candidate_label = self.oracle.predict(ctf_candidate) ## Chiama oracle_base.predict
 
                 if input_label != candidate_label:
                     ctf_distance = self.distance_metric.evaluate(instance, ctf_candidate, self.oracle)
+
+                    penalization = self.max_penalty * ((ctf_candidate.id - b) / (b - a))**2
+                    ctf_distance = ctf_distance + penalization
                     
                     if ctf_distance < min_ctf_dist:
                         min_ctf_dist = ctf_distance
                         min_ctf = ctf_candidate
         
-        print(f"{min_ctf.id} in ({intervals[instance.id][0]},{intervals[instance.id][1]})")
+        if b != a:
+            print(f"{min_ctf.id} in ({a},{b})")
+            print(self.max_penalty * ((min_ctf.id - b) / (b - a))**2)
 
         result = copy.deepcopy(min_ctf)
         result.id = instance.id
