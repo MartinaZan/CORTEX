@@ -43,36 +43,35 @@ class DownstreamGCN(GCN):
         # Controllo delle dimensioni dei parametri
         # for p in self.parameters():
         #     print(p.size())
-        
-    def forward(self, node_features, edge_index, edge_weight, batch, return_embeddings=False):
+    
+    # # OLD FORWARD
+    # def forward(self, node_features, edge_index, edge_weight, batch, return_embeddings=False):
+    #     # The input is given to the GCN
+    #     node_features = super().forward(node_features, edge_index, edge_weight, batch)
 
-        ###################################################################################
-        # print(f"    - Inizio")
-        # print(f"      node_features.shape (pre-forward): {node_features.shape}")
-        # print(f"      node_features (pre-forward):       {node_features}")        # Questi coincidono esattamente con gli input
-        # print("")
-        ###################################################################################
+    #     if return_embeddings:
+    #         graph_embeddings = node_features
+    #         return self.downstream_layers(node_features), graph_embeddings
 
-        # Gli input vengono dati in pasto alla GCN
+    #     return self.downstream_layers(node_features)
+
+    # # TEST NEW FORWARD
+    def forward(self, node_features, edge_index, edge_weight, batch, 
+            return_embeddings=False):
+
         node_features = super().forward(node_features, edge_index, edge_weight, batch)
 
-        ###################################################################################
-        # print(f"    - super().forward (GCN)")
-        # print(f"      node_features.shape (post-forward): {node_features.shape}") # Corrisponde a ( return self.graph_convs[-1](node_features, batch) ) in src/utils/torch/gcn.py
-        # print(f"      node_features (post-forward):       {node_features}")
-        # print("")
-
-        # print(f"    - self.downstream_layers (layer lineari finali)")             # Finisce con downstream_layers.append(nn.Linear(in_linear, self.n_classes))
-        # print(f"      self.downstream_layers(node_features).shape: {self.downstream_layers(node_features).shape}")
-        # print(f"      self.downstream_layers(node_features):       {self.downstream_layers(node_features)}")
-        # print("")
-        ###################################################################################
+        graph_embeddings = None
+        x = node_features
+        for i, layer in enumerate(self.downstream_layers):
+            x = layer(x)
+            if return_embeddings and i == self.embedding_index:
+                graph_embeddings = x
 
         if return_embeddings:
-            graph_embeddings = node_features
-            return self.downstream_layers(node_features), graph_embeddings
+            return x, graph_embeddings
 
-        return self.downstream_layers(node_features)
+        return x
     
     def __init__downstream_layers(self):
         
@@ -84,6 +83,13 @@ class DownstreamGCN(GCN):
             downstream_layers.append(nn.Linear(in_linear, int(in_linear // self.linear_decay)))
             downstream_layers.append(nn.ReLU())
             in_linear = int(in_linear // self.linear_decay)
+
+        ###  --- Start test 3d embeddings ---
+        downstream_layers.append(nn.Linear(in_linear, 3))
+        downstream_layers.append(nn.ReLU())
+        self.embedding_index = len(downstream_layers) - 2  # salva indice del Linear(…, 3)
+        in_linear = 3
+        ###  --- End test 3d embeddings ---
 
         # add the output layer
         downstream_layers.append(nn.Linear(in_linear, self.n_classes))
