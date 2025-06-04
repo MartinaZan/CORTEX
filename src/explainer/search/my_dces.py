@@ -51,8 +51,8 @@ class DCESExplainer(Explainer):
         for ctf_candidate in self.dataset.instances:
             # Considera solo stesso paziente, stesso record e tempo precedente (in caso cambia <= con <)
             # if ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id and ctf_candidate.time <= instance.time:
-            if ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id and \
-                ctf_candidate.time <= instance.time and (a <= ctf_candidate.id <= b):
+            if  ctf_candidate.time <= instance.time and (a <= ctf_candidate.id <= b) and \
+                ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id:
 
                 candidate_label = self.oracle.predict(ctf_candidate) ## Chiama oracle_base.predict
 
@@ -66,9 +66,9 @@ class DCESExplainer(Explainer):
                         min_ctf_dist = ctf_distance
                         min_ctf = ctf_candidate
         
-        if b != a:
-            print(f"{min_ctf.id} in ({a},{b})")
-            print(self.max_penalty * ((min_ctf.id - b) / (b - a))**2)
+        # if b != a:
+        #     print(f"{min_ctf.id} in ({a},{b})")
+        #     print(self.max_penalty * ((min_ctf.id - b) / (b - a))**2)
 
         result = copy.deepcopy(min_ctf)
         result.id = instance.id
