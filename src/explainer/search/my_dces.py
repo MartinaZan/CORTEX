@@ -62,7 +62,7 @@ class DCESExplainer(Explainer):
                 # candidate_label = self.oracle.predict(ctf_candidate) ## Chiama oracle_base.predict
 
                 # OPPURE
-                logits = self.oracle.predict_proba(instance)
+                logits = self.oracle.predict_proba(ctf_candidate)
                 softmax = torch.softmax(logits, dim=0)[1].item()
                 # candidate_label = 1 if softmax > 0.5 else 0
                 candidate_label = self.oracle.predict(ctf_candidate)

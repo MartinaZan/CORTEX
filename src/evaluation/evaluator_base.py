@@ -191,22 +191,6 @@ class Evaluator(ABC):
 
         for metric in self._evaluation_metrics:
             if(not metric._special):
-                # print('ISTANZA')
-                # print(instance.id)
-                # print(instance.data)
-                # print(instance.node_features)
-                # print(instance.edge_weights)
-                # print("CONTROFATTUALE")
-                # print(counterfactual.id)
-                # print(counterfactual.data)
-                # print(counterfactual.node_features)
-                # print(counterfactual.edge_weights)
-
-                # print('DIFFERENZA ISTANZA/CONTROFATTUALE')
-                # print(instance.data - counterfactual.data)
-                # print(instance.node_features - counterfactual.node_features)
-                # print(instance.edge_weights - counterfactual.edge_weights)
-
                 m_result = metric.evaluate(instance, counterfactual, oracle, explainer,dataset)
                 self._results[Context.get_fullname(metric)].append({"id":str(instance.id),"value":m_result})
 

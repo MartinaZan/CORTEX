@@ -171,3 +171,4 @@ output/video/*
 
 EEG_data/*
 # EEG_data/log */
+/*.pkl
