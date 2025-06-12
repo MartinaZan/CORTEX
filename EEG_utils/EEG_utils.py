@@ -63,11 +63,15 @@ class Patient:
 
         # OLD
         # self.buffer_time = int(min(length_seizures) / 10 * self.frequency) # In this way I discard 20% of the seizures points
+        
         # NEW
         self.buffer_time = int(min(length_seizures) / 40 * self.frequency) # In this way I discard 5% of the seizures points
 
         self.skip_0 = int(((length_recording - self.lag_corr / self.frequency - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
         self.skip_1 = int(((sum(length_seizures) - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
+
+        print(f"skip 0: {self.skip_0}")
+        print(f"skip 1: {self.skip_1}")
         
 
     def get_times(self):

@@ -3,6 +3,7 @@ import sys
 
 from src.core.explainer_base import Explainer
 import numpy as np
+import torch
 
 from src.core.factory_base import get_instance_kvargs
 from src.utils.cfg_utils import  init_dflts_to_of 
@@ -29,19 +30,22 @@ class DCESExplainer(Explainer):
                                                     self.local_config['parameters']['distance_metric']['parameters'])
         
         # Parametri opzionali lookback explainer
-        self.lookback = self.local_config['parameters'].get('lookback', 50)
+        self.lookback = self.local_config['parameters'].get('lookback', 75)
         self.threshold = self.local_config['parameters'].get('threshold', 0.9)
 
         # Parametro opzionale penalty explainer (0 per non considerare penalità)
-        self.max_penalty = self.local_config['parameters'].get('max_penalty', 10)
+        self.max_time_penalty = self.local_config['parameters'].get('max_time_penalty', 10)
+        self.max_softmax_penalty = self.local_config['parameters'].get('max_softmax_penalty', 20)
+
+        # Get intervals for lookback oracle
+        self.intervals = self.lookback_oracle(lookback=self.lookback, threshold=self.threshold)
 
     def explain(self, instance):
-        intervals = self.lookback_oracolo(lookback=self.lookback, threshold=self.threshold)
-
+        # Get label of the current instance
         input_label = self.oracle.predict(instance)
 
         # Bounds of the interval within which the counterfactual search can take place
-        a, b = intervals[instance.id]
+        a, b = self.intervals[instance.id]
 
         # if the method does not find a counterfactual example returns the original graph
         min_ctf = instance
@@ -51,43 +55,66 @@ class DCESExplainer(Explainer):
         for ctf_candidate in self.dataset.instances:
             # Considera solo stesso paziente, stesso record e tempo precedente (in caso cambia <= con <)
             # if ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id and ctf_candidate.time <= instance.time:
-            if  ctf_candidate.time <= instance.time and (a <= ctf_candidate.id <= b) and \
+            if ctf_candidate.time <= instance.time and (a <= ctf_candidate.id <= b) and \
                 ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id:
 
-                candidate_label = self.oracle.predict(ctf_candidate) ## Chiama oracle_base.predict
+                # OLD
+                # candidate_label = self.oracle.predict(ctf_candidate) ## Chiama oracle_base.predict
+
+                # OPPURE
+                logits = self.oracle.predict_proba(instance)
+                softmax = torch.softmax(logits, dim=0)[1].item()
+                # candidate_label = 1 if softmax > 0.5 else 0
+                candidate_label = self.oracle.predict(ctf_candidate)
 
                 if input_label != candidate_label:
-                    ctf_distance = self.distance_metric.evaluate(instance, ctf_candidate, self.oracle)
+                    metric = self.distance_metric.evaluate(instance, ctf_candidate, self.oracle)
 
-                    penalization = self.max_penalty * ((ctf_candidate.id - b) / (b - a))**2
-                    ctf_distance = ctf_distance + penalization
+                    time_penalty = self.max_time_penalty * ((ctf_candidate.id - b) / (b - a))**2
+                    softmax_penalty = self.max_softmax_penalty * (softmax) # ** 0.5)
+
+                    ctf_distance = metric + time_penalty + softmax_penalty
                     
                     if ctf_distance < min_ctf_dist:
                         min_ctf_dist = ctf_distance
                         min_ctf = ctf_candidate
-        
-        # if b != a:
-        #     print(f"{min_ctf.id} in ({a},{b})")
-        #     print(self.max_penalty * ((min_ctf.id - b) / (b - a))**2)
+
+                        # print(metric)
+                        # print(time_penalty)
+                        # print(softmax_penalty)
+                        # print('---')
 
         result = copy.deepcopy(min_ctf)
         result.id = instance.id
 
         return result
     
-    def get_eligible_times_and_outputs(self):
-        times = []
+    def get_ids_and_oracle_outputs(self):
+        ids = []
         outputs = []
 
         for instance in self.dataset.instances:
-            times.append(instance.id)
+            ids.append(instance.id)
             outputs.append(self.oracle.predict(instance))
         
-        return times, outputs
+        return ids, outputs
+    
+    # def get_ids_and_softmax(self):
+    #     ids = []
+    #     softmax = []
+
+    #     for instance in self.dataset.instances:
+    #         ids.append(instance.id)
+
+    #         logits = self.oracle.predict_proba(instance)
+    #         prob = torch.softmax(logits, dim=0)[1].item()
+    #         softmax.append(prob)
+        
+    #     return ids, softmax
 
 
-    def lookback_oracolo(self, lookback, threshold):
-        times, outputs = self.get_eligible_times_and_outputs()
+    def lookback_oracle(self, lookback, threshold):
+        times, outputs = self.get_ids_and_oracle_outputs()
 
         result = {} # Dictionary to store detected intervals
         i = 0       # Index to iterate through the outputs list

@@ -17,6 +17,10 @@
 
     "explainers": [
         {"class": "src.explainer.search.my_dces.DCESExplainer",
-        "parameters": {"lookback": 50, "threshold": 0.9, "max_penalty": 10} }
+        "parameters": {
+            "lookback": 100,
+            "threshold": 0.95,
+            "max_time_penalty": 10,
+            "max_softmax_penalty": 90} }
     ]
 }
