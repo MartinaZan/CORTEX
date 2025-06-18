@@ -39,40 +39,19 @@ class DownstreamGCN(GCN):
                 nn.init.normal_(m.weight, 0, 0.01)
                 if m.bias is not None:
                     nn.init.constant_(m.bias, 0)
-        
-        # Controllo delle dimensioni dei parametri
-        # for p in self.parameters():
-        #     print(p.size())
     
-    # # OLD FORWARD
-    # def forward(self, node_features, edge_index, edge_weight, batch, return_embeddings=False):
-    #     # The input is given to the GCN
-    #     node_features = super().forward(node_features, edge_index, edge_weight, batch)
 
-    #     if return_embeddings:
-    #         graph_embeddings = node_features
-    #         return self.downstream_layers(node_features), graph_embeddings
-
-    #     return self.downstream_layers(node_features)
-
-    # # TEST NEW FORWARD
-    def forward(self, node_features, edge_index, edge_weight, batch, 
-            return_embeddings=False):
-
+    def forward(self, node_features, edge_index, edge_weight, batch, return_embeddings=False):
+        # The input is given to the GCN
         node_features = super().forward(node_features, edge_index, edge_weight, batch)
 
-        graph_embeddings = None
-        x = node_features
-        for i, layer in enumerate(self.downstream_layers):
-            x = layer(x)
-            if return_embeddings and i == self.embedding_index:
-                graph_embeddings = x
-
         if return_embeddings:
-            return x, graph_embeddings
+            graph_embeddings = node_features
+            return self.downstream_layers(node_features), graph_embeddings
 
-        return x
-    
+        return self.downstream_layers(node_features)
+
+
     def __init__downstream_layers(self):
         
         # initialize the linear layers interleaved with activation functions
@@ -83,13 +62,6 @@ class DownstreamGCN(GCN):
             downstream_layers.append(nn.Linear(in_linear, int(in_linear // self.linear_decay)))
             downstream_layers.append(nn.ReLU())
             in_linear = int(in_linear // self.linear_decay)
-
-        ###  --- Start test 3d embeddings ---
-        downstream_layers.append(nn.Linear(in_linear, 3))
-        downstream_layers.append(nn.ReLU())
-        self.embedding_index = len(downstream_layers) - 2  # salva indice del Linear(…, 3)
-        in_linear = 3
-        ###  --- End test 3d embeddings ---
 
         # add the output layer
         downstream_layers.append(nn.Linear(in_linear, self.n_classes))
