@@ -1,0 +1,17 @@
+{  
+    "experiment" : {
+        "scope": "examples_configs",
+        "parameters" : {
+            "lock_release_tout":120,
+            "propagate":[
+                {"in_sections" : ["explainers"],"params" : {"fold_id": 0}},
+                {"in_sections" : ["do-pairs/oracle"],"params" : {"fold_id": -1,"retrain":true}},
+                {"in_sections": ["do-pairs/dataset"],"params": { "compose_man" : "config/snippets/datasets/GCS_archi.json" }}
+            ]
+        }
+    },
+    "compose_mes" : "config/snippets/default_metrics.json",
+    "compose_strs" : "config/snippets/default_store_paths.json",
+    "do-pairs":[ {"compose_gcn" : "config/snippets/do-pairs/GCS-KNN-archi.json"} ],
+    "explainers": [{"class": "src.explainer.heuristic.obs.ObliviousBidirectionalSearchExplainer"}]
+}

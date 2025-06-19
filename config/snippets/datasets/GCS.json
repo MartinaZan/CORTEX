@@ -7,12 +7,7 @@
                 "data_dir": "data/datasets/gcs/",
                 "data_file_name": [
                     "grafo_corr_sliding_0.json",
-                    "grafo_corr_sliding_1.json",
-                    "grafo_corr_sliding_2.json",
-                    "grafo_corr_sliding_3.json",
-                    "grafo_corr_sliding_4.json",
-                    "grafo_corr_sliding_5.json",
-                    "grafo_corr_sliding_6.json"
+                    "grafo_corr_sliding_1.json"
                 ],
                 "data_label_name": "y"
             }

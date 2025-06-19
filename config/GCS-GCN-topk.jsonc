@@ -18,14 +18,38 @@
     "explainers": [
         {"class": "src.explainer.search.my_top_k_dces.DCESExplainer",
         "parameters": {
-            "top_k": 5,
-            "lookback": 100,
-            "threshold": 0.975,
+            "top_k": 10,
+            "metric_coefficient": 10,
+            "max_time_penalty": 9,
+            "stability_penalty": 2.5
+        }},
+        {"class": "src.explainer.search.my_top_k_dces.DCESExplainer",
+        "parameters": {
+            "top_k": 10,
+            "metric_coefficient": 10,
             "max_time_penalty": 10,
-            "max_softmax_penalty": 80,
-            "max_variation_penalty": 50,
-            "steps_variation_penalty": 5
-        }
-    }
+            "stability_penalty": 1
+        }},
+        {"class": "src.explainer.search.my_top_k_dces.DCESExplainer",
+        "parameters": {
+            "top_k": 10,
+            "metric_coefficient": 20,
+            "max_time_penalty": 9,
+            "stability_penalty": 2.5
+        }},
+        {"class": "src.explainer.search.my_top_k_dces.DCESExplainer",
+        "parameters": {
+            "top_k": 10,
+            "metric_coefficient": 10,
+            "max_time_penalty": 15,
+            "stability_penalty": 5
+        }},
+        {"class": "src.explainer.search.my_top_k_dces.DCESExplainer",
+        "parameters": {
+            "top_k": 10,
+            "metric_coefficient": 12,
+            "max_time_penalty": 12,
+            "stability_penalty": 0.5
+        }},
     ]
 }

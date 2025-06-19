@@ -47,19 +47,6 @@ class GraphEditDistanceMetric(EvaluationMetric):
         A_g1 = instance_1.data
         A_g2 = instance_2.data
 
-        # print("Instance 1:")
-        # print(instance_1.id)
-        # print(instance_1.data)
-        # print(instance_1.node_features)
-        # print(instance_1.edge_weights)
-        # print("Instance 2:")
-        # print(instance_2.id)
-        # print(instance_2.data)
-        # print(instance_2.node_features)
-        # print(instance_2.edge_weights)
-        # print('---')
-        # print(A_g1 - A_g2)
-
         # Bardh idea ----------------------------------------------------------
 
         # result = float(np.sum(np.absolute(A_g1 - A_g2)))
