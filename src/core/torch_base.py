@@ -13,7 +13,7 @@ from torch_geometric.loader import DataLoader
 class TorchBase(Trainable):
        
     def init(self):
-        self.epochs = self.local_config['parameters']['epochs']
+        self.epochs = 100 # self.local_config['parameters']['epochs']
         self.batch_size = self.local_config['parameters']['batch_size']
         
         self.model = get_instance_kvargs(self.local_config['parameters']['model']['class'],
@@ -73,20 +73,11 @@ class TorchBase(Trainable):
                 edge_index = batch.edge_index.to(self.device)
                 edge_weights = batch.edge_attr.to(self.device)
 
-                # print(node_features)
-                # print(edge_index)
-                # print(edge_weights)
-                # print('---')
-
                 labels = batch.y.to(self.device).long()
-                
-                # print(labels)
 
                 self.optimizer.zero_grad()
                 
                 pred = self.model(node_features, edge_index, edge_weights, batch.batch)
-
-                # print(pred)
 
                 loss = self.loss_fn(pred, labels)
                 losses.append(loss.to('cpu').detach().numpy())
@@ -148,11 +139,6 @@ class TorchBase(Trainable):
         init_dflts_to_of(local_config, 'loss_fn', 'torch.nn.BCELoss')
         
     def accuracy(self, testy, probs):
-        #print("Probs:")
-        #print(probs)
-        #print("Test y:")
-        #print(testy)
-        #print('---')
         acc = accuracy_score(testy, np.argmax(probs, axis=1)) # f1_score(testy, np.argmax(probs, axis=1))
         return acc
 

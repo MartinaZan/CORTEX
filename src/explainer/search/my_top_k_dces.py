@@ -10,7 +10,7 @@ import torch
 
 from src.core.factory_base import get_instance_kvargs
 from src.utils.cfg_utils import  init_dflts_to_of 
-from utils_martina.phase_space_analyzer import PhaseSpaceAnalyzer
+from utils_martina.phase_trajectory_analyzer import PhaseTrajectoryAnalyzer
 
 class DCESExplainer(Explainer):
     """The Distribution Compliant Explanation Search Explainer performs a search of 
@@ -27,7 +27,8 @@ class DCESExplainer(Explainer):
         super().check_configuration()
 
         # Dissimilarity metric to use for the distance between instances
-        dst_metric = 'src.evaluation.evaluation_metric_embeddings.EmbeddingMetric'
+        # dst_metric = 'src.evaluation.evaluation_metric_embeddings.EmbeddingMetric'
+        dst_metric = 'src.evaluation.evaluation_metric_laplacian.LaplacianMetric'
 
         # Check if the distance metric exist or build with its defaults:
         init_dflts_to_of(self.local_config, 'distance_metric', dst_metric)
@@ -42,98 +43,82 @@ class DCESExplainer(Explainer):
         # Optional parameter for number of top_k counterfactuals to be selected
         self.top_k = self.local_config['parameters'].get('top_k', 10)
 
-        self.metric_coefficient = self.local_config['parameters'].get('metric_coefficient', 10)
+        self.dissimilarity_weight = self.local_config['parameters'].get('metric_coefficient', 8)
 
         # Optional parameters for magnitude penalties (0 to ignore penalties)
-        self.max_time_penalty = self.local_config['parameters'].get('max_time_penalty', 9)
+        self.time_weight = self.local_config['parameters'].get('max_time_penalty', 1.5)
 
         # Optional parameters for magnitude penalties (0 to ignore penalties)
-        self.stability_penalty = self.local_config['parameters'].get('stability_penalty', 2.5)
+        self.stability_weight = self.local_config['parameters'].get('stability_penalty', 0.5)
 
 
     def explain(self, instance, return_list=False):
         # Get label of the current instance
         input_label = self.oracle.predict(instance)
 
-        if input_label == 1:
-            # Bounds of the interval within which the counterfactual search can take place
-            candidates_idx, candidates_stability = self.get_candidates_and_stability(instance.patient_id, instance.record_id)
-            values_stability = ( 1 - (candidates_stability - min(candidates_stability)) / (max(candidates_stability) - min(candidates_stability)) )
-
-            # print(f"Paziente: {instance.record_id}")
-            # print(f"Tempo: {instance.time}")
-            # print(f"Set: {set(candidates_idx)}")
-
-            top_k_heap = []
-
-            values = None
-
-            # Iterating over all the instances of the dataset
-            for ctf_candidate in self.dataset.instances:
-                # Considera solo stesso paziente, stesso record e tempo precedente (in caso cambia <= con <)
-                if ctf_candidate.time <= instance.time and ctf_candidate.time in set(candidates_idx) and \
-                    ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id:
-
-                    candidate_label = self.oracle.predict(ctf_candidate)
-
-                    if input_label != candidate_label:
-                        # GED metric (or other distance metric)
-                        metric = metric_coefficient * self.distance_metric.evaluate(instance, ctf_candidate, self.oracle).cpu().numpy()
-
-                        # Time penalty
-                        time_penalty = self.max_time_penalty * ((instance.time - ctf_candidate.time) / instance.time) ** 2
-
-                        # Stability penalty
-                        stability_penalty = self.stability_penalty * values_stability[np.where(candidates_idx == ctf_candidate.time)[0][0]]
-                        
-                        # Add all penalties to the metric
-                        ctf_distance = metric + time_penalty + stability_penalty
-
-                        # print(time_penalty)
-                        # print(stability_penalty)
-
-                        candidate_copy = copy.deepcopy(ctf_candidate)
-                        
-                        if len(top_k_heap) < self.top_k:
-                            heapq.heappush(top_k_heap, (-ctf_distance, candidate_copy))
-                        else:
-                            if ctf_distance < -top_k_heap[0][0]:
-                                heapq.heappushpop(top_k_heap, (-ctf_distance, candidate_copy))
-                                
-                                values = {'metric': metric,
-                                          'time_penalty': time_penalty,
-                                          'stability_penalty': stability_penalty,
-                                          'ctf_distance': ctf_distance,
-                                          'candidate_time': ctf_candidate.time,
-                                          'candidate_id': ctf_candidate.patient_id,
-                                          'candidate_record': ctf_candidate.record_id
-                                          }
-            
-            if not top_k_heap:
-                # No counterfactual found: return original instance
-                return copy.deepcopy(instance)
-
-            # print(values)
-            # print('---')
-
-            # Sort from best to worst
-            top_k_sorted = sorted([(-dist, ctf) for dist, ctf in top_k_heap], key=lambda x: x[0])
-
-            # If return_list is True, return the top_k sorted list
-            # Otherwise, return only the best counterfactual
-            if return_list:
-                return top_k_sorted
-            else:
-                return top_k_sorted[0][1]
-        else:
+        if input_label != 1:
             return copy.deepcopy(instance)
+    
+        # Bounds of the interval within which the counterfactual search can take place
+        candidates_idx, candidates_stability = self.get_candidates_and_stability(instance.patient_id, instance.record_id)
+        values_stability = ( 1 - (candidates_stability - min(candidates_stability)) / (max(candidates_stability) - min(candidates_stability)) )
+
+        ids = []
+        dissimilarity_terms = []
+        time_terms = []
+        stability_terms = []
+
+        # Iterating over all the instances of the dataset
+        for ctf_candidate in self.dataset.instances:
+            # Consider only same patient, same record and previous time
+            if ctf_candidate.time <= instance.time and ctf_candidate.time in set(candidates_idx) and \
+                ctf_candidate.patient_id == instance.patient_id and ctf_candidate.record_id == instance.record_id:
+
+                candidate_label = self.oracle.predict(ctf_candidate)
+
+                if input_label != candidate_label:
+                    # Compute terms
+                    ids.append(ctf_candidate.time)
+                    # dissimilarity_terms.append(self.distance_metric.evaluate(instance, ctf_candidate, self.oracle).cpu().numpy())
+                    dissimilarity_terms.append(self.distance_metric.evaluate(instance, ctf_candidate, self.oracle))
+                    time_terms.append(instance.time - ctf_candidate.time)
+                    stability_terms.append(values_stability[np.where(candidates_idx == ctf_candidate.time)[0][0]])
+
+        if not ids:
+            return copy.deepcopy(instance)
+        
+        dissimilarity_terms = self.normalize(dissimilarity_terms)
+        time_terms = self.normalize(time_terms)
+        stability_terms = self.normalize(stability_terms)
+
+        total_scores = self.dissimilarity_weight * dissimilarity_terms + self.time_weight * time_terms + self.stability_weight * stability_terms
+
+        # Sort candidates by ascending score (lower is better) and select top k
+        sorted_indices = np.argsort(total_scores)
+        top_k_indices = sorted_indices[:self.top_k]
+            
+        # Retrieve the corresponding instances
+        top_k_candidates = []
+        for i in top_k_indices:
+            t = ids[i]
+            candidate_instance = next((c for c in self.dataset.instances if c.patient_id == instance.patient_id and c.record_id == instance.record_id and c.time == t), None)
+            if candidate_instance:
+                top_k_candidates.append( (total_scores[i], candidate_instance) )
+
+        if not top_k_candidates:
+            return copy.deepcopy(instance)
+
+        if return_list:
+            return top_k_candidates
+        else:
+            return top_k_candidates[0][1]
     
 
     def get_candidates_and_stability(self, patient_id, record_id):
 
         time, series = self.get_time_and_softmax(patient_id, record_id)
 
-        analyzer = PhaseSpaceAnalyzer(time, series, L=10, percentile=0.25)
+        analyzer = PhaseTrajectoryAnalyzer(time, series, L=10, percentile=0.25)
         candidates_idx, candidates_stability = analyzer.get_idx_candidates_and_permanence()
 
         return candidates_idx, candidates_stability
@@ -159,3 +144,15 @@ class DCESExplainer(Explainer):
         softmax = np.array(softmax)[:,1]
 
         return time, softmax
+    
+    
+    @staticmethod
+    def normalize(arr):
+        arr = np.array(arr)
+        min_val = arr.min()
+        max_val = arr.max()
+
+        if max_val - min_val == 0:
+            return np.zeros_like(arr)
+        
+        return (arr - min_val) / (max_val - min_val)

@@ -119,24 +119,7 @@ def corr2graph(id, data, weight, series, target, dataset):
             W[edge[0], edge[1]] = np.abs(weight[p])
             A[edge[0], edge[1]] = 1 if weight[p] != 0 else 0
 
-    ##########################################################################
-    # DA CANCELLARE (prova per valutare impatto degli zeri nelle matrici)
-    # k = 6
-    # if target == 0:
-    #     X[0:k] = X[0:k] * 0
-    #     W[0:k,0:k] = W[0:k,0:k] * 0
-    #     A[0:k,0:k] = A[0:k,0:k] * 0
-    # else:
-    #     X[0:k] = X[0:k] * 0 + 1
-    #     W[0:k,0:k] = W[0:k,0:k] * 0 + 1
-    #     A[0:k,0:k] = A[0:k,0:k] * 0 + 1
-    ##########################################################################
-
     # W deve essere un vettore, quindi lo flatteniamo
     W = W[W != 0].flatten()
-
-    # print(X)
-    # print(A)
-    # print('---')
 
     return A,X,W

@@ -134,22 +134,8 @@ dmypy.json
 # data/*
 data/cache*
 data/working*
-lab/data/cache*
-lab/results_legacy*
-lab/output_legacy/
-lab/stats_legacy*
-lab/pickles*
+
 # output/
-stats/
-AAAI/
-config/_papers
-.DS_Store
-experiments/
-config/Gretel1_AAAI/
-evaluated/*
-data/bardh_cache/*
-old_experiments/
-visualizations/*
 
 # Testing files
 main_test.py
@@ -159,8 +145,6 @@ da_test.py
 *.out
 
 # Cose Martina
-prove_varie_martina/
-
 output/embeddings/*
 output/eval_manager/*
 output/logs/*

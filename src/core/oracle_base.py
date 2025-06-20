@@ -25,21 +25,6 @@ class Oracle(Trainable,metaclass=ABCMeta):
 
         ###################################################################################
 
-        # print("----------------------------------------------------------------")
-
-        # print("\n>> DATA INSTANCE <<")
-        # print(f"data_instance.id: {data_instance.id}")
-        # # print(f"data_instance.edge_features: {data_instance.edge_features}")
-        # # print(f"data_instance.edge_weights: {data_instance.edge_weights}")
-        # print(f"data_instance.node_features: {data_instance.node_features}")    # Queste sono le node features del grafo in input
-        # print(f"data_instance.label: {data_instance.label}")
-        # # print(f"data_instance.num_nodes: {data_instance.num_nodes}")
-
-        # print("\n>> PREDICTION <<")
-
-        # output = self._real_predict(data_instance)
-        # print(f"Prediction: {output}")
-
         if return_embeddings:
             output, embeddings = self._real_predict(data_instance,return_embeddings=True)
             return output, embeddings
