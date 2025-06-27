@@ -4,8 +4,9 @@ from src.core.explainer_base import Explainer
 import numpy as np
 import networkx as nx
 
+# TO DO: Da rinominare !!!
 class LaplacianMetric(EvaluationMetric):
-    """Classe di prova per definizione distanza embeddings"""
+    """Classe di prova per metrica dissimilarity"""
 
     def __init__(self, config_dict=None) -> None:
         super().__init__(config_dict)
@@ -15,10 +16,16 @@ class LaplacianMetric(EvaluationMetric):
         # instance_1 è il grafo originale
         # instance_2 è la spiegazione
 
+        X1 = instance_1.node_features
+        X2 = instance_2.node_features
+
         L1 = nx.normalized_laplacian_matrix(instance_1.get_nx()).toarray()
         L2 = nx.normalized_laplacian_matrix(instance_2.get_nx()).toarray()
+
+        G1 = L1 @ X1
+        G2 = L2 @ X2
         
-        diff = L1 - L2
+        diff = G1 - G2
         
         result = np.linalg.norm(diff, ord='fro')
 

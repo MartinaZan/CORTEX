@@ -62,6 +62,13 @@ class DCESExplainer(Explainer):
         # Bounds of the interval within which the counterfactual search can take place
         a, b = self.intervals[instance.id]
 
+        print(instance.id)
+        print(instance.record_id)
+        print(instance.time)
+        print(a)
+        print(b)
+        print('---')
+
         top_k_heap = []
 
         # Iterating over all the instances of the dataset
