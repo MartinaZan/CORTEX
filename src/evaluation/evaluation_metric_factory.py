@@ -11,7 +11,7 @@ from src.evaluation.evaluation_metric_oracle_accuracy import OracleAccuracyMetri
 from src.evaluation.evaluation_metric_smiles_levenshtein import SmilesLevenshteinMetric
 from src.evaluation.evaluation_metric_dumper import InstancesDumper
 from src.evaluation.evaluation_metric_embedding import EmbeddingMetric
-from src.evaluation.evaluation_metric_laplacian import LaplacianMetric
+from src.evaluation.M_dissim_metric import M_dissim_metric
 
 class EvaluationMetricFactory:
 
@@ -47,8 +47,8 @@ class EvaluationMetricFactory:
         elif metric_name == 'embedding_metric':
             return self.get_embedding_metric(config_dict=metric_dict)
 
-        elif metric_name == 'laplacian_metric':
-            return self.get_laplacian_metric(config_dict=metric_dict)
+        elif metric_name == 'M_dissim_metric':
+            return self.get_M_dissim_metric(config_dict=metric_dict)
 
         elif metric_name == 'smiles_levenshtein':
             return self.get_smiles_levenshtein_metric(config_dict=metric_dict)
@@ -113,8 +113,8 @@ class EvaluationMetricFactory:
         result = EmbeddingMetric(config_dict)
         return result
     
-    def get_laplacian_metric(self, config_dict=None) -> EvaluationMetric:
-        result = LaplacianMetric(config_dict)
+    def get_M_dissim_metric(self, config_dict=None) -> EvaluationMetric:
+        result = M_dissim_metric(config_dict)
         return result
 
     def get_oracle_accuracy_node_metric(self, config_dict=None) -> EvaluationMetric:

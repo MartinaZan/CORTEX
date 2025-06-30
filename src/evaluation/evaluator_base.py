@@ -63,109 +63,111 @@ class Evaluator(ABC):
     def explanations(self, new_explanations_list):
         self._explanations = new_explanations_list
 
-    def get_instance_explanation_pairs(self):
-        # Check if the explanations were generated already
-        if len(self.explanations) < 1:
-            return None
+    # def get_instance_explanation_pairs(self):
+    #     # Check if the explanations were generated already
+    #     if len(self.explanations) < 1:
+    #         return None
 
-        # iterates over the explanations (because we can be explaining just a fold)
-        n_exp = len(self.explanations)
-        result = []
-        for i in range(0, n_exp):
-            exp = self.explanations[i]
-            result.append((self.dataset.instances[exp.id], exp))
+    #     # iterates over the explanations (because we can be explaining just a fold)
+    #     n_exp = len(self.explanations)
+    #     result = []
+    #     for i in range(0, n_exp):
+    #         exp = self.explanations[i]
+    #         result.append((self.dataset.instances[exp.id], exp))
 
-        return result
+    #     return result
 
-    def get_instance_and_counterfactual_classifications(self):
-        # Check if the explanations were generated already
-        if len(self.explanations) < 1:
-            return None
+    # def get_instance_and_counterfactual_classifications(self):
+    #     # Check if the explanations were generated already
+    #     if len(self.explanations) < 1:
+    #         return None
 
-        # iterates over the original instances and the explanations
-        n_ins = len(self.dataset.instances)
-        result = []
-        for i in range(0, n_ins):
-            label_inst = self._oracle.predict(self.dataset.instances[i])
-            label_cf = self._oracle.predict(self.explanations[i])
-            self._oracle._call_counter -= 2 
+    #     # iterates over the original instances and the explanations
+    #     n_ins = len(self.dataset.instances)
+    #     result = []
+    #     for i in range(0, n_ins):
+    #         label_inst = self._oracle.predict(self.dataset.instances[i])
+    #         label_cf = self._oracle.predict(self.explanations[i])
+    #         self._oracle._call_counter -= 2 
 
-            result.append({'instance_id': self.dataset.instances[i].id,
-                             #'ground_truth_label': self.dataset.instances[i].graph_label,
-                             'ground_truth_label': self.dataset.instances[i].label,
-                             'instance_label': label_inst,
-                             'counterfactual_label': label_cf})
+    #         result.append({'instance_id': self.dataset.instances[i].id,
+    #                          #'ground_truth_label': self.dataset.instances[i].graph_label,
+    #                          'ground_truth_label': self.dataset.instances[i].label,
+    #                          'instance_label': label_inst,
+    #                          'counterfactual_label': label_cf})
             
-            print({'instance_id': self.dataset.instances[i].id,
-                             #'ground_truth_label': self.dataset.instances[i].graph_label,
-                             'ground_truth_label': self.dataset.instances[i].label,
-                             'instance_label': label_inst,
-                             'counterfactual_label': label_cf})
+    #         print({'instance_id': self.dataset.instances[i].id,
+    #                          #'ground_truth_label': self.dataset.instances[i].graph_label,
+    #                          'ground_truth_label': self.dataset.instances[i].label,
+    #                          'instance_label': label_inst,
+    #                          'counterfactual_label': label_cf})
 
-        return result
+    #     return result
     
     ############################################################################################################à
 
-    def get_instance_and_counterfactual_graph_metrics(self):
-        if len(self.explanations) < 1:
-            return None
+    # def get_instance_and_counterfactual_graph_metrics(self):
+    #     if len(self.explanations) < 1:
+    #         return None
         
-        # iterates over the original instances and the explanations
-        ids = [explanation.id for explanation in self.explanations]
+    #     # iterates over the original instances and the explanations
+    #     ids = [explanation.id for explanation in self.explanations]
 
-        n_ins = len(self.dataset.instances)
+    #     n_ins = len(self.dataset.instances)
 
-        result = []
-        for i in range(0, n_ins):
-            if i in ids:
-                instance = self.dataset.instances[i]
-                counterfactual = self.explanations[ids.index(i)]
+    #     result = []
+    #     for i in range(0, n_ins):
+    #         if i in ids:
+    #             instance = self.dataset.instances[i]
+    #             counterfactual = self.explanations[ids.index(i)]
 
-                result.append({'instance_id': instance.id,
-                                'instance_time': instance.time,
-                                'instance_record': f"{instance.patient_id}_{instance.record_id}",
-                                'density_instance': 2 * instance.num_edges / ( instance.num_nodes * ( instance.num_nodes - 1 ) ),
-                                'density_counterfactual': 2 * counterfactual.num_edges / ( counterfactual.num_nodes * ( counterfactual.num_nodes - 1 ) ),
-                                # ...
-                                })
+    #             result.append({'instance_id': instance.id,
+    #                             'instance_time': instance.time,
+    #                             'instance_record': f"{instance.patient_id}_{instance.record_id}",
+    #                             'density_instance': 2 * instance.num_edges / ( instance.num_nodes * ( instance.num_nodes - 1 ) ),
+    #                             'density_counterfactual': 2 * counterfactual.num_edges / ( counterfactual.num_nodes * ( counterfactual.num_nodes - 1 ) ),
+    #                             # ...
+    #                             })
         
-        return result
+    #     return result
 
-    def get_instance_and_counterfactual_ids(self):
-        if len(self.explanations) < 1:
-            return None
+    # def get_instance_and_counterfactual_ids(self):
+    #     if len(self.explanations) < 1:
+    #         return None
         
-        ids = [explanation.id for explanation in self.explanations]    # id test set
-        n_ins = len(self.dataset.instances)                            # tutti id
+    #     ids = [explanation.id for explanation in self.explanations]    # id test set
+    #     n_ins = len(self.dataset.instances)                            # tutti id
 
-        result = []
+    #     result = []
 
-        for j in ids: # scorre tutti id test set (per cui ha calcolato controfattuali)
-            counterfactual = self.explanations[ids.index(j)]
+    #     for j in ids: # scorre tutti id test set (per cui ha calcolato controfattuali)
+    #         counterfactual = self.explanations[ids.index(j)]
 
-            for i in range(0, n_ins): # scorre tutti gli id del dataset
-                ctf_candidate = self.dataset.instances[i]
-                if (ctf_candidate.node_features == counterfactual.node_features).all(): # (ctf_candidate.data == counterfactual.data).all():
-                    result.append({'instance_id': j,
-                                   # METTERE QUALCOSA QUI
-                                   'counterfactual_id': ctf_candidate.id
-                    })
+    #         for i in range(0, n_ins): # scorre tutti gli id del dataset
+    #             ctf_candidate = self.dataset.instances[i]
+    #             if (ctf_candidate.node_features == counterfactual.node_features).all(): # (ctf_candidate.data == counterfactual.data).all():
+    #                 result.append({'instance_id': j,
+    #                                # METTERE QUALCOSA QUI
+    #                                'counterfactual_id': ctf_candidate.id
+    #                 })
         
-        return result
+    #     return result
 
     ############################################################################################################à
 
     def evaluate(self):
+        print(self._evaluation_metrics)
+
         for m in self._evaluation_metrics:
             self._results[Context.get_fullname(m)] = []
 
         # If the explainer was trained then evaluate only on the test set, else evaluate on the entire dataset
         fold_id = self._explainer.fold_id
         if fold_id > -1 :
-            test_indices = self.dataset.splits[fold_id]['test']          
+            test_indices = self.dataset.splits[fold_id]['test']
             test_set = [i for i in self.dataset.instances if i.id in test_indices]
         else:
-            test_set = self.dataset.instances 
+            test_set = self.dataset.instances
 
         for inst in test_set:
             self._logger.info("Evaluating instance with id %s", str(inst.id))

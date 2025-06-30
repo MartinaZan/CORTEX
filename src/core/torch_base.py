@@ -5,7 +5,7 @@ import torch
 from src.core.trainable_base import Trainable
 from src.utils.cfg_utils import init_dflts_to_of
 from src.core.factory_base import get_instance_kvargs
-from sklearn.metrics import accuracy_score # f1_score
+from sklearn.metrics import accuracy_score
 import torch.optim.lr_scheduler as lr_scheduler
 from torch.utils.data import Subset
 from torch_geometric.loader import DataLoader

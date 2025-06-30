@@ -153,6 +153,9 @@ output/plot correlation/*
 output/results/*
 output/video/*
 output/top_k_counterfactuals/*
+output/cf_dict/*
+
+da_cancellare/*
 
 EEG_data/*
 # EEG_data/log */

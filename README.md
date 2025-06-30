@@ -1,6 +1,6 @@
 # GRETEL-repo
 
-This is a fork of the [GRETEL](https://github.com/aiim-research/GRETEL) repository, specifically developed for **seizure detection** using EEG signals. The main feature is the possibility to visualize counterfactual explanations on a map of electrode locations based on the International 10-20 system for EEG recordings. 🧠
+This is a fork of the [GRETEL](https://github.com/aiim-research/GRETEL) repository, specifically developed for **temporal graph counterfactual explanation** and including a case study based on seizure classification from EEG signals. 🧠
 
 ## How to run an experiment
 

@@ -4,6 +4,7 @@ import torch
 from src.core.oracle_base import Oracle
 from src.core.torch_base import TorchBase
 from src.dataset.utils.dataset_torch import TorchGeometricDataset
+from sklearn.metrics import accuracy_score, f1_score, precision_score, recall_score
 
 class OracleTorch(TorchBase, Oracle):
                                 
@@ -13,7 +14,7 @@ class OracleTorch(TorchBase, Oracle):
         self.evaluate(self.dataset, fold_id=self.fold_id)
             
     @torch.no_grad()
-    def evaluate(self, dataset, fold_id=0):            
+    def evaluate(self, dataset, fold_id=0):
         loader = dataset.get_torch_loader(fold_id=fold_id, batch_size=self.batch_size, usage='test')
         
         losses = []
@@ -34,8 +35,17 @@ class OracleTorch(TorchBase, Oracle):
             preds += list(pred.squeeze().detach().to('cpu').numpy())
             
         accuracy = self.accuracy(labels_list, preds)
-        self.context.logger.info(f'Test accuracy = {np.mean(accuracy):.4f}')
+        self.context.logger.info(f'Test Accuracy = {np.mean(accuracy):.4f}')
 
+        # Other metrics
+        pred_classes = [np.argmax(p) if isinstance(p, (list, np.ndarray)) else p for p in preds]
+        f1 = f1_score(labels_list, pred_classes, average='macro')
+        precision = precision_score(labels_list, pred_classes, average='macro')
+        recall = recall_score(labels_list, pred_classes, average='macro')
+        self.context.logger.info(f'Test F1 Score = {f1:.4f}')
+        self.context.logger.info(f'Test Precision = {precision:.4f}')
+        self.context.logger.info(f'Test Recall = {recall:.4f}')
+        
 
     def _real_predict(self, data_instance, return_embeddings=False):
 
