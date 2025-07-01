@@ -22,6 +22,20 @@
             "dissimilarity_weight": 8,
             "time_weight": 1.5,
             "stability_weight": 0.5
+        }},
+        {"class": "src.explainer.search.temporal_dces_topk.TemporalDCESExplainer",
+        "parameters": {
+            "top_k": 5,
+            "dissimilarity_weight": 6,
+            "time_weight": 3,
+            "stability_weight": 1
+        }},
+        {"class": "src.explainer.search.temporal_dces_topk.TemporalDCESExplainer",
+        "parameters": {
+            "top_k": 5,
+            "dissimilarity_weight": 4.5,
+            "time_weight": 4,
+            "stability_weight": 1.5
         }}
     ]
 }

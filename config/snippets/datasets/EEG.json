@@ -6,8 +6,7 @@
             "parameters": {
                 "data_dir": "data/datasets/eeg-corr/",
                 "data_file_name": [
-                    "eeg_corr_graph_0.json",
-                    "eeg_corr_graph_1.json"
+                    "eeg_corr_graph_0.json"
                 ],
                 "data_label_name": "y"
             }
