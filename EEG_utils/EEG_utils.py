@@ -321,7 +321,7 @@ def create_graph(patient):
         # corr_mat = filter_quantile(corr_mat, quantile_edges)
 
         # Filter matrix based on top edges
-        corr_mat = filter_top_k_edges(corr_mat, k=4)   # Change k
+        corr_mat = filter_top_k_edges(corr_mat, k=top_k_edges)
 
         ##########################################################################
 
@@ -342,31 +342,12 @@ def create_graph(patient):
             seizure_class.append(1)
         else:
             seizure_class.append(0)
-        
-        # print(f"k: {k} ---> t: {t} (seizure class: {seizure_class[-1]})")
 
         corr.append(corr_mat)
         weights.append(values_list)
         edge_list.append(new_edges)
-        # node_features.append(series[k])                               # Versione 1 (1 node feature)
-        # node_features.append(series[(k-num_node_features+1):(k+1)])   # Versione 2 (n node feature)
 
-        # Versione attuale
-        node_features.append(series[(k-(num_node_features-1)*lag_nodes):(k+1):lag_nodes])   # Versione 3 (n node feature laggate)
-
-        ###########################################
-        # TENTATIVO (stessa node feature):
-        # node_features.append([series[k]] * num_node_features)
-        ###########################################
-
-        ###########################################
-        # TENTATIVO (node feature che decadono nel tempo):
-        # prova = series[(k-(num_node_features-1)*lag_nodes):(k+1):lag_nodes]
-        # pesi = (np.linspace(0, 1, num_node_features)) # np.linspace(1/(num_node_features/4),1, num_node_features)
-        # for i in range(len(prova)):
-        #     prova[i] = list(np.array(prova[i]) * pesi[i])
-        # node_features.append(prova)
-        ###########################################
+        node_features.append(series[(k-(num_node_features-1)*lag_nodes):(k+1):lag_nodes])   # (n lagged node features)
 
     return node_ids, corr, weights, edge_list, node_features, seizure_class
 
@@ -392,6 +373,7 @@ def export_data_to_GRETEL(patient):
         "edge_mapping": edge_dict,
         "node_ids": node_ids,
         "time_periods": tempi,
+        "real_time_stamp": patient.get_times().tolist(),
         "target": seizure_class,
         "series": node_features
     }
@@ -407,6 +389,7 @@ def export_data_to_GRETEL(patient):
     #
     save_variables = {
         "indici": patient.indices,
+        "real_time_stamps": patient.get_times(),
         "Start": int(patient.get_times()[0]),
         "End": int(patient.get_times()[-1]),
         "seizure_starts": patient.patient_info["seizure_starts"],
@@ -414,9 +397,9 @@ def export_data_to_GRETEL(patient):
         "seizure_class": seizure_class,
         "frequency": patient.frequency,
         "num_points": patient.num_points,
-        # "corr_sec": patient.corr_sec,
         "lag_nodes": patient.lag_nodes,
-        "quantile_edges": patient.quantile_edges
+        "top_k_edges": patient.top_k_edges
+        # "quantile_edges": patient.quantile_edges
     }
 
     with open("..\\..\\explainability\\GRETEL-repo\\EEG_data\\" + f"EEG_data_params_{patient.file_patient.patient_id}_{patient.file_patient.record_id}.pkl", 'wb') as f:

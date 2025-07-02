@@ -9,7 +9,7 @@ from src.dataset.instances.base import DataInstance
 
 class GraphInstance(DataInstance):
 
-    def __init__(self, id, label, data, node_features=None, edge_features=None, edge_weights=None, graph_features=None, dataset=None, directed=False, time=None, patient_id=None, record_id=None):
+    def __init__(self, id, label, data, node_features=None, edge_features=None, edge_weights=None, graph_features=None, dataset=None, directed=False, time=None, real_time_stamp=None, patient_id=None, record_id=None):
         super().__init__(id, label, data, dataset=dataset)
         self.node_features = self.__init_node_features(node_features).astype(np.float32)
         self.edge_features = self.__init_edge_features(edge_features).astype(np.float32)
@@ -18,9 +18,10 @@ class GraphInstance(DataInstance):
         self._nx_repr = None
         self.directed = directed
         
-        self.time = time             ## Added
-        self.patient_id = patient_id ## Added
-        self.record_id = record_id   ## Added
+        self.time = time                        ## Added
+        self.real_time_stamp = real_time_stamp  ## Added
+        self.patient_id = patient_id            ## Added
+        self.record_id = record_id              ## Added
 
         num_nodes = self.data.shape[0]
         num_edges = np.count_nonzero(self.data)
@@ -49,9 +50,10 @@ class GraphInstance(DataInstance):
         _graph_features = deepcopy(self.graph_features, memo)
         _directed = deepcopy(self.directed, memo)
 
-        _time = deepcopy(self.time, memo)             # Added
-        _patient_id = deepcopy(self.patient_id, memo) # Added
-        _record_id = deepcopy(self.record_id, memo)   # Added
+        _time = deepcopy(self.time, memo)                       # Added
+        _real_time_stamp = deepcopy(self.real_time_stamp, memo) # Added
+        _patient_id = deepcopy(self.patient_id, memo)           # Added
+        _record_id = deepcopy(self.record_id, memo)             # Added
 
         return GraphInstance(id=_new_id, 
                              label=_new_label, 
@@ -62,9 +64,10 @@ class GraphInstance(DataInstance):
                              graph_features=_graph_features, 
                              directed=_directed,
                              dataset=_dataset,
-                             time=_time,             # Added
-                             patient_id=_patient_id, # Added
-                             record_id=_record_id)   # Added
+                             time=_time,                        # Added
+                             real_time_stamp=_real_time_stamp,  # Added
+                             patient_id=_patient_id,            # Added
+                             record_id=_record_id)              # Added
 
     def get_nx(self):
         if not self._nx_repr:

@@ -11,7 +11,7 @@ from torch.utils.data import Subset
 from torch_geometric.loader import DataLoader
 
 class TorchBase(Trainable):
-       
+    
     def init(self):
         self.epochs = self.local_config['parameters']['epochs']
         self.batch_size = self.local_config['parameters']['batch_size']

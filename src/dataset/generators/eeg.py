@@ -10,15 +10,15 @@ from src.dataset.instances.graph import GraphInstance
 class EEG_CORR(Generator):
     def init(self):
         base_path = self.local_config['parameters']['data_dir']
-        file_names = self.local_config['parameters']['data_file_name'] ## Added
+        file_names = self.local_config['parameters']['data_file_name']
 
-        self._data_file_path = [join(base_path, file_name) for file_name in file_names] # join(base_path, self.local_config['parameters']['data_file_name'])
+        self._data_file_path = [join(base_path, file_name) for file_name in file_names]
         self._data_label_name = self.local_config['parameters']['data_label_name']
 
         self.num_node_features = None
 
         self.dataset.node_features_map = None
-        self.dataset.edge_features_map = None # rdk_edge_features_map()
+        self.dataset.edge_features_map = None
         self.generate_dataset()
 
     def check_configuration(self):
@@ -30,11 +30,6 @@ class EEG_CORR(Generator):
        
         if 'data_label_name' not in local_config['parameters']:
             raise Exception("The name of the label column must be given.")
-
-    # Funzione per la generazione del dataset, che chiama la funzione per la lettura dei dati dal json
-    # def generate_dataset(self):
-    #     if not len(self.dataset.instances):
-    #         self._read(self._data_file_path)
 
     # Funzione per la generazione del dataset, che chiama la funzione per la lettura dei dati dal json
     def generate_dataset(self):
@@ -76,17 +71,19 @@ class EEG_CORR(Generator):
             # Lettura della true label al tempo t (crisi/no crisi)
             y = data["target"][t]
             
+            real_time_stamp = data["real_time_stamp"][t]
             patient_id = data["patient"]
             record_id = data["record"]
 
             g = GraphInstance(
-                id = idx,               # id grafo
+                id = idx,               # id grafo (sarebbe id totale)
                 label = y,              # label crisi/no crisi
                 data = A,               # data: n x n matrix where n is the number of nodes (i.e., it is the binary adjacency matrix)
                 node_features = X,      # node_features: n x d matrix where d is the number of node features (per ora considero d = 1)
                 edge_weights = W,       # edge_weights: n x n matrix containing the weight of each edge (i.e., it is the weighted adjacency matrix)
                 graph_features = {},    # feature del grafo (per il momento, nessuna)
-                time = t,               # id temporale
+                time = t,               # id temporale (sarebbe id singolo paziente)
+                real_time_stamp = real_time_stamp, # Vero tempo
                 patient_id = patient_id,
                 record_id = record_id,
             )
