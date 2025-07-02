@@ -53,6 +53,7 @@ class Patient:
         self.skip_1 = None
 
         self.indices = None
+        self.time_stamps = None
 
         self.top_k_edges = top_k_edges
 
@@ -236,6 +237,7 @@ class Patient:
         indices += list(range((self.patient_info["seizure_ends"][-1] - Start) * self.frequency + self.buffer_time, (End - Start) * self.frequency, self.skip_0))
 
         self.indices = indices
+        self.time_stamps = self.get_times()[indices].tolist()
 
 
     def plot_indices(self, xlim = None):
@@ -373,7 +375,7 @@ def export_data_to_GRETEL(patient):
         "edge_mapping": edge_dict,
         "node_ids": node_ids,
         "time_periods": tempi,
-        "real_time_stamp": patient.get_times().tolist(),
+        "time_stamps": patient.time_stamps,
         "target": seizure_class,
         "series": node_features
     }
@@ -389,7 +391,6 @@ def export_data_to_GRETEL(patient):
     #
     save_variables = {
         "indici": patient.indices,
-        "real_time_stamps": patient.get_times(),
         "Start": int(patient.get_times()[0]),
         "End": int(patient.get_times()[-1]),
         "seizure_starts": patient.patient_info["seizure_starts"],
@@ -399,7 +400,6 @@ def export_data_to_GRETEL(patient):
         "num_points": patient.num_points,
         "lag_nodes": patient.lag_nodes,
         "top_k_edges": patient.top_k_edges
-        # "quantile_edges": patient.quantile_edges
     }
 
     with open("..\\..\\explainability\\GRETEL-repo\\EEG_data\\" + f"EEG_data_params_{patient.file_patient.patient_id}_{patient.file_patient.record_id}.pkl", 'wb') as f:

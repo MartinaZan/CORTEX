@@ -151,7 +151,7 @@ class TemporalDCESExplainer(Explainer):
                 stability_scores = dict(zip(candidates_idx, normalized))
 
         M_dissim = self.distance_metric.evaluate(instance, candidate, self.oracle)
-        M_time = instance.real_time_stamp - candidate.real_time_stamp
+        M_time = instance.time_stamp - candidate.time_stamp
         M_instab = stability_scores.get(candidate.time, np.nan)
 
         return M_dissim, M_time, M_instab
@@ -169,12 +169,6 @@ class TemporalDCESExplainer(Explainer):
         if key in self.softmax_cache:
             return self.softmax_cache[key]
 
-        with open(f"EEG_data\\EEG_data_params_{patient_id}_{record_id}.pkl", "rb") as f:
-            loaded_variables = pickle.load(f)
-
-        indices = loaded_variables["indici"]
-        Start = loaded_variables["Start"]
-
         softmax = []
         time = []
 
@@ -183,7 +177,7 @@ class TemporalDCESExplainer(Explainer):
                 logits = self.oracle.predict_proba(g1)
                 softmax_val = torch.softmax(logits, dim=0)[1].item()
                 softmax.append(softmax_val)
-                time.append(g1.real_time_stamp)
+                time.append(g1.time_stamp)
 
         time = np.array(time)
         softmax = np.array(softmax)

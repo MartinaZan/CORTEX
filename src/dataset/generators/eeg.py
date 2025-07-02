@@ -71,7 +71,7 @@ class EEG_CORR(Generator):
             # Lettura della true label al tempo t (crisi/no crisi)
             y = data["target"][t]
             
-            real_time_stamp = data["real_time_stamp"][t]
+            time_stamp = data["time_stamps"][t]
             patient_id = data["patient"]
             record_id = data["record"]
 
@@ -83,7 +83,7 @@ class EEG_CORR(Generator):
                 edge_weights = W,       # edge_weights: n x n matrix containing the weight of each edge (i.e., it is the weighted adjacency matrix)
                 graph_features = {},    # feature del grafo (per il momento, nessuna)
                 time = t,               # id temporale (sarebbe id singolo paziente)
-                real_time_stamp = real_time_stamp, # Vero tempo
+                time_stamp = time_stamp,# Vero tempo
                 patient_id = patient_id,
                 record_id = record_id,
             )
