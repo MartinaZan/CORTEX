@@ -151,7 +151,7 @@ class TemporalDCESExplainer(Explainer):
                 stability_scores = dict(zip(candidates_idx, normalized))
 
         M_dissim = self.distance_metric.evaluate(instance, candidate, self.oracle)
-        M_time = instance.time_stamp - candidate.time_stamp
+        M_time = (instance.time_stamp - candidate.time_stamp) ** 2
         M_instab = stability_scores.get(candidate.time_id, np.nan)
 
         return M_dissim, M_time, M_instab
