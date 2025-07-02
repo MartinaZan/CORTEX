@@ -156,8 +156,6 @@ class Evaluator(ABC):
     ############################################################################################################à
 
     def evaluate(self):
-        print(self._evaluation_metrics)
-
         for m in self._evaluation_metrics:
             self._results[Context.get_fullname(m)] = []
 
@@ -175,7 +173,7 @@ class Evaluator(ABC):
             for metric in self._evaluation_metrics:
                 if(metric._special):
                     val, counterfactual = metric.evaluate(inst, None, self._oracle,self._explainer,self._data)
-                    self._results[Context.get_fullname(metric)].append({"id":str(inst.id),"time":inst.time,"record":f"{inst.patient_id}_{inst.record_id}","value":val})
+                    self._results[Context.get_fullname(metric)].append({"id":str(inst.id),"time":inst.time_id,"record":f"{inst.patient_id}_{inst.record_id}","value":val})
                     self._explanations.append(counterfactual)
 
             self._real_evaluate(inst, counterfactual,self._oracle,self._explainer,self._data)

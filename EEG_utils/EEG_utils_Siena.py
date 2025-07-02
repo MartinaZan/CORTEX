@@ -32,7 +32,7 @@ class FilePatient:
 #################################################################################################
 
 class Patient:
-    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1, lag_nodes=1, quantile_edges=0.25, corr_sec=10):
+    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=10, lag_nodes=5, top_k_edges=4, corr_sec=5):
         self.file_patient = file_patient
         self.dictionary_unique_channels = {}
 
@@ -58,26 +58,26 @@ class Patient:
         self.skip_1 = None
 
         self.indices = None
+        self.time_stamps = None
 
-        self.quantile_edges = quantile_edges    # Quantile for edge selection
+        self.top_k_edges = top_k_edges
 
 
     def set_skip_values(self):
         length_recording = self.get_length_recording()
         length_seizures = self.get_length_seizures()
 
-        self.buffer_time = int(min(length_seizures) / 10 * self.frequency)  # In this way I discard 20% of the seizures points
+        self.buffer_time = int(min(length_seizures) / 40 * self.frequency) # In this way I discard 5% of the seizures points
 
         self.skip_0 = int(((length_recording - self.lag_corr / self.frequency - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
         self.skip_1 = int(((sum(length_seizures) - self.buffer_time / self.frequency * len(length_seizures) * 2) / self.num_points) * self.frequency)
 
+        print(f"skip 0: {self.skip_0}")
+        print(f"skip 1: {self.skip_1}")
+
 
     def get_times(self):
         """Function to extract times of the recording"""
-        
-        # Start = int(self.get_times()[0])
-        # End = int(self.get_times()[-1])
-
         return np.array(self.df.index)
     
     
@@ -117,11 +117,6 @@ class Patient:
                 
                 seizure_start = re.search(r"Seizure start time:\s*([\d.]+)", block).group(1)
                 seizure_end = re.search(r"Seizure end time:\s*([\d.]+)", block).group(1)
-                
-                # print(start_time)
-                # print(end_time)
-                # print(seizure_start)
-                # print(seizure_end)
 
                 self.patient_info["start_time"] = 0
                 self.patient_info["end_time"] = diff_times(start_time,end_time)
@@ -136,8 +131,6 @@ class Patient:
         """Function to create a dictionary of unique channels"""
         unique_channels = set()    # Using a set to avoid duplicate pairs
         unique_dict = {}           # Dictionary to store unique pairs
-
-        channels = [item for item in raw_data.ch_names]
 
         for idx, item in enumerate(raw_data.ch_names):
             if ' ' in item:
@@ -171,8 +164,8 @@ class Patient:
         data = 2 * (data - np.min(data)) / (np.max(data) - np.min(data)) - 1
 
         # Set start and end point of the record
-        Start = max([0, min(self.patient_info["seizure_starts"]) - 500])
-        End = min([self.patient_info["end_time"] - self.patient_info["start_time"], max(self.patient_info["seizure_starts"]) + 500])
+        Start = max([0, min(self.patient_info["seizure_starts"]) - 850])
+        End = min([self.patient_info["end_time"] - self.patient_info["start_time"], max(self.patient_info["seizure_starts"]) + 150])
         
         data = data[:, (Start * self.frequency):(End * self.frequency)]
         times = times[(Start * self.frequency):(End * self.frequency)]
@@ -198,6 +191,7 @@ class Patient:
         for start, end in zip(self.patient_info["seizure_starts"], self.patient_info["seizure_ends"]):
             plt.axvspan(start, end, color='yellow', alpha=0.5)
 
+        plt.title(f"Number of seizures: {self.num_seizures}")
         plt.xlabel("Time (seconds)")
         plt.ylabel("Channels")
         plt.yticks([i * offset for i in range(len(data))], [f'c_{i}' for i in range(len(data))])
@@ -242,6 +236,20 @@ class Patient:
 
 ################################################################################
 
+def filter_quantile(corr_mat,quantile):
+    filtered = corr_mat.copy()
+    q = filtered.melt().value.quantile(1 - quantile)
+    filtered[filtered < q] = 0
+
+    return filtered
+
+def filter_top_k_edges(corr_mat,k):
+    filtered = corr_mat.copy()
+    filtered = corr_mat.apply(lambda row: row.where(row >= row.nlargest(k).min(), 0), axis=1)
+    filtered = np.maximum(filtered, filtered.T)
+
+    return filtered
+
 def create_graph(patient):
     df = patient.df
     indices = patient.indices
@@ -249,7 +257,7 @@ def create_graph(patient):
     lag_nodes = patient.lag_nodes
     seizure_starts = patient.patient_info["seizure_starts"]
     seizure_ends = patient.patient_info["seizure_ends"]
-    quantile_edges = patient.quantile_edges
+    top_k_edges = patient.top_k_edges
 
     # Creation of series from the dataframe
     columns = [df.iloc[:, i].to_numpy() for i in range(0,len(df.columns))]
@@ -285,9 +293,15 @@ def create_graph(patient):
         # Remove loops
         np.fill_diagonal(corr_mat.values, 0)
 
-        # Keep only highest quantile_edges%
-        q = corr_mat.melt().value.quantile(1 - quantile_edges)
-        corr_mat[corr_mat < q] = 0
+        # # Keep only highest quantile_edges%
+        # q = corr_mat.melt().value.quantile(1 - quantile_edges)
+        # corr_mat[corr_mat < q] = 0
+
+        # Filter matrix based on quantile
+        # corr_mat = filter_quantile(corr_mat, quantile_edges)
+
+        # Filter matrix based on top k edges
+        corr_mat = filter_top_k_edges(corr_mat, k=top_k_edges)
 
         ##########################################################################
 
@@ -308,14 +322,10 @@ def create_graph(patient):
             seizure_class.append(1)
         else:
             seizure_class.append(0)
-        
-        print(f"k: {k} ---> t: {t} (seizure class: {seizure_class[-1]})")
 
         corr.append(corr_mat)
         weights.append(values_list)
         edge_list.append(new_edges)
-        # node_features.append(series[k])
-        # node_features.append(series[(k-num_node_features+1):(k+1)])
         node_features.append(series[(k-(num_node_features-1)*lag_nodes):(k+1):lag_nodes])
 
     return node_ids, corr, weights, edge_list, node_features, seizure_class
@@ -337,11 +347,12 @@ def export_data_to_GRETEL(patient):
     }
 
     dictionary = {
-        "patient": patient.file_patient.patient_id,
-        "record": patient.file_patient.record_id,
         "edge_mapping": edge_dict,
         "node_ids": node_ids,
-        "time_periods": tempi,
+        "patient_id": patient.file_patient.patient_id,
+        "record_id": patient.file_patient.record_id,
+        "record_time_ids": tempi,
+        "record_time_stamps": patient.time_stamps,
         "target": seizure_class,
         "series": node_features
     }
@@ -364,9 +375,8 @@ def export_data_to_GRETEL(patient):
         "seizure_class": seizure_class,
         "frequency": patient.frequency,
         "num_points": patient.num_points,
-        "corr_sec": patient.corr_sec,
         "lag_nodes": patient.lag_nodes,
-        "quantile_edges": patient.quantile_edges
+        "top_k_edges": patient.top_k_edges
     }
 
     with open("..\\..\\explainability\\GRETEL-repo\\EEG_data\\" + f"EEG_data_params_{patient.file_patient.patient_id}_{patient.file_patient.record_id}.pkl", 'wb') as f:

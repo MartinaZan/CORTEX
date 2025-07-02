@@ -27,7 +27,7 @@ class FilePatient:
 ################################################################################
 
 class Patient:
-    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1, lag_nodes=1, top_k_edges=4, corr_sec=10):
+    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=10, lag_nodes=5, top_k_edges=4, corr_sec=5):
         self.file_patient = file_patient
         self.dictionary_unique_pairs = {}
 
@@ -77,10 +77,6 @@ class Patient:
 
     def get_times(self):
         """Function to extract times of the recording"""
-
-        # Start = int(self.get_times()[0])
-        # End = int(self.get_times()[-1])
-
         return np.array(self.df.index)
     
     
@@ -180,11 +176,6 @@ class Patient:
         data = 2 * (data - np.min(data)) / (np.max(data) - np.min(data)) - 1
 
         # Set start and end point of the record
-        # OLD
-        # Start = max([0, min(self.patient_info["seizure_starts"]) - 500])
-        # End = min([(datetime.strptime(self.patient_info["end_time"], "%H:%M:%S") - datetime.strptime(self.patient_info["start_time"], "%H:%M:%S")).seconds, max(self.patient_info["seizure_starts"]) + 500])
-
-        # NEW
         Start = max([0, min(self.patient_info["seizure_starts"]) - 850])
         End = min([(datetime.strptime(self.patient_info["end_time"], "%H:%M:%S") - datetime.strptime(self.patient_info["start_time"], "%H:%M:%S")).seconds, max(self.patient_info["seizure_starts"]) + 150])
 
@@ -322,7 +313,7 @@ def create_graph(patient):
         # Filter matrix based on quantile
         # corr_mat = filter_quantile(corr_mat, quantile_edges)
 
-        # Filter matrix based on top edges
+        # Filter matrix based on top k edges
         corr_mat = filter_top_k_edges(corr_mat, k=top_k_edges)
 
         ##########################################################################
@@ -370,12 +361,12 @@ def export_data_to_GRETEL(patient):
     }
 
     dictionary = {
-        "patient": patient.file_patient.patient_id,
-        "record": patient.file_patient.record_id,
         "edge_mapping": edge_dict,
         "node_ids": node_ids,
-        "time_periods": tempi,
-        "time_stamps": patient.time_stamps,
+        "patient_id": patient.file_patient.patient_id,
+        "record_id": patient.file_patient.record_id,
+        "record_time_ids": tempi,
+        "record_time_stamps": patient.time_stamps,
         "target": seizure_class,
         "series": node_features
     }

@@ -9,7 +9,7 @@ from src.dataset.instances.base import DataInstance
 
 class GraphInstance(DataInstance):
 
-    def __init__(self, id, label, data, node_features=None, edge_features=None, edge_weights=None, graph_features=None, dataset=None, directed=False, time=None, time_stamp=None, patient_id=None, record_id=None):
+    def __init__(self, id, label, data, node_features=None, edge_features=None, edge_weights=None, graph_features=None, dataset=None, directed=False, time_id=None, time_stamp=None, patient_id=None, record_id=None):
         super().__init__(id, label, data, dataset=dataset)
         self.node_features = self.__init_node_features(node_features).astype(np.float32)
         self.edge_features = self.__init_edge_features(edge_features).astype(np.float32)
@@ -18,7 +18,7 @@ class GraphInstance(DataInstance):
         self._nx_repr = None
         self.directed = directed
         
-        self.time = time                        ## Added
+        self.time_id = time_id                  ## Added
         self.time_stamp = time_stamp            ## Added
         self.patient_id = patient_id            ## Added
         self.record_id = record_id              ## Added
@@ -50,7 +50,7 @@ class GraphInstance(DataInstance):
         _graph_features = deepcopy(self.graph_features, memo)
         _directed = deepcopy(self.directed, memo)
 
-        _time = deepcopy(self.time, memo)                       # Added
+        _time_id = deepcopy(self.time_id, memo)                    # Added
         _time_stamp = deepcopy(self.time_stamp, memo)           # Added
         _patient_id = deepcopy(self.patient_id, memo)           # Added
         _record_id = deepcopy(self.record_id, memo)             # Added
@@ -64,7 +64,7 @@ class GraphInstance(DataInstance):
                              graph_features=_graph_features, 
                              directed=_directed,
                              dataset=_dataset,
-                             time=_time,                        # Added
+                             time_id=_time_id,                  # Added
                              time_stamp=_time_stamp,            # Added
                              patient_id=_patient_id,            # Added
                              record_id=_record_id)              # Added

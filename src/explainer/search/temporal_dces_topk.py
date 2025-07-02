@@ -100,12 +100,12 @@ class TemporalDCESExplainer(Explainer):
 
             # If the candidate is valid, compute the terms in the metric
             if input_label != candidate_label:
-                ids.append(candidate.time)
+                ids.append(candidate.time_id)
                 dissim, time_dist, instab = self.compute_metric_components(instance, candidate, stability_scores)
                 M_dissim.append(dissim)
                 M_time.append(time_dist)
                 M_instab.append(instab)
-                candidates_map[candidate.time] = candidate
+                candidates_map[candidate.time_id] = candidate
 
         # If there is no counterfactual, return current instance
         if not ids:
@@ -152,7 +152,7 @@ class TemporalDCESExplainer(Explainer):
 
         M_dissim = self.distance_metric.evaluate(instance, candidate, self.oracle)
         M_time = instance.time_stamp - candidate.time_stamp
-        M_instab = stability_scores.get(candidate.time, np.nan)
+        M_instab = stability_scores.get(candidate.time_id, np.nan)
 
         return M_dissim, M_time, M_instab
 
@@ -191,8 +191,8 @@ class TemporalDCESExplainer(Explainer):
             inst for inst in self.dataset.instances
             if inst.patient_id == instance.patient_id
             and inst.record_id == instance.record_id
-            and inst.time <= instance.time
-            and inst.time in candidates_idx
+            and inst.time_id <= instance.time_id
+            and inst.time_id in candidates_idx
         ]
 
     # Compute normalized stability score

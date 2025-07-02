@@ -19,6 +19,7 @@ class EEG_CORR(Generator):
 
         self.dataset.node_features_map = None
         self.dataset.edge_features_map = None
+
         self.generate_dataset()
 
     def check_configuration(self):
@@ -31,7 +32,7 @@ class EEG_CORR(Generator):
         if 'data_label_name' not in local_config['parameters']:
             raise Exception("The name of the label column must be given.")
 
-    # Funzione per la generazione del dataset, che chiama la funzione per la lettura dei dati dal json
+    # Function for generating the dataset, which calls the function to read data from the JSON file
     def generate_dataset(self):
         if not len(self.dataset.instances):
             for item in self._data_file_path:
@@ -43,55 +44,45 @@ class EEG_CORR(Generator):
         else:
             idx = len(self.dataset.instances)
 
-        # Apertura del file json con dati dei grafi.
-        # Il dizionario comprende le seguenti chiavi:
-        #    data.keys() --> dict_keys(['edge_mapping', 'node_ids', 'time_periods', 'target', 'series'])
-        # 'target' contiene le true label per la classificazione
-        # 'series' contiene i valori della serie temporale multivariata, da usare per definire le feature dei nodi
+        # Opening the JSON file containing graph data.
+        # 'target' contains the true labels for classification
+        # 'series' contains the multivariate time series values, used to define node features
         data = json.load(open(path))
 
         self.num_node_features = len(data["series"][0])
 
-        # Definizione di node e edge features map. Sono dei dizionari che contengono tante caratteristiche quante sono le feature.
-        # self.dataset.node_features_map = {'attribute_0': 0}
+        # Definition of node and edge feature maps. These are dictionaries containing as many entries as features.
         self.dataset.node_features_map = {f'attribute_{i}': i for i in range(self.num_node_features)}
-        # self.dataset.edge_features_map =  # change me
+        # self.dataset.edge_features_map = ...
 
-        # Creazione di un grafo per ogni step temporale
-        for t in data['time_periods']:
-            # Creazione di adjacency e node feature matrix.
-            # Alla funzione corr2graph vengono passati:
-            #   - l'id del grafo (ossia l'indice temporale): t
-            #   - le informazioni sugli archi al tempo t: data['edge_mapping']['edge_index'][str(t)]
-            #   - le informazioni sui pesi al tempo t: data['edge_mapping']['edge_weight'][str(t)]
-            #   - i valori della serie temporale al tempo t: data["series"][t]
-            #   - self.dataset (per accedere a self.dataset.node_features_map e self.dataset.edge_features_map)
-            A,X,W = corr2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], data["target"][t], self.dataset)
+        # Create a graph for each time step
+        for t in data['record_time_ids']:
+            A,X,W = data2graph(t, data['edge_mapping']['edge_index'][str(t)], data['edge_mapping']['edge_weight'][str(t)], data["series"][t], data["target"][t], self.dataset)
             
-            # Lettura della true label al tempo t (crisi/no crisi)
+            # Read the true label at time (seizure / no seizure)
             y = data["target"][t]
             
-            time_stamp = data["time_stamps"][t]
-            patient_id = data["patient"]
-            record_id = data["record"]
+            time_stamp = data["record_time_stamps"][t]
+            patient_id = data["patient_id"]
+            record_id = data["record_id"]
 
             g = GraphInstance(
-                id = idx,               # id grafo (sarebbe id totale)
-                label = y,              # label crisi/no crisi
-                data = A,               # data: n x n matrix where n is the number of nodes (i.e., it is the binary adjacency matrix)
-                node_features = X,      # node_features: n x d matrix where d is the number of node features (per ora considero d = 1)
-                edge_weights = W,       # edge_weights: n x n matrix containing the weight of each edge (i.e., it is the weighted adjacency matrix)
-                graph_features = {},    # feature del grafo (per il momento, nessuna)
-                time = t,               # id temporale (sarebbe id singolo paziente)
-                time_stamp = time_stamp,# Vero tempo
-                patient_id = patient_id,
-                record_id = record_id,
+                id = idx,                   # global graph id
+                label = y,                  # label seizure / no seizure
+                data = A,                   # data: n x n binary adjacency matrix
+                node_features = X,          # node_features: n x d node feature matrix
+                edge_weights = W,           # edge_weights: n x n weighted adjacency matrix
+                graph_features = {},        # graph-level features (currently none)
+                time_id = t,                # id temporale (sarebbe id singolo paziente)
+                time_stamp = time_stamp,    # Vero tempo
+                patient_id = patient_id,    # patient_id
+                record_id = record_id,      # record_id
             )
             self.dataset.instances.append(g)
 
             idx = idx + 1
     
-def corr2graph(id, data, weight, series, target, dataset):
+def data2graph(id, data, weight, series, target, dataset):
     n_map = dataset.node_features_map
     # e_map = dataset.edge_features_map
     
