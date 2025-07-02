@@ -159,5 +159,5 @@ da_cancellare/*
 
 EEG_data/*
 # EEG_data/log */
-/*.pkl
+*.pkl
 *.mp4
