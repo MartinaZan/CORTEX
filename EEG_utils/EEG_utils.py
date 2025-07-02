@@ -27,7 +27,7 @@ class FilePatient:
 ################################################################################
 
 class Patient:
-    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1, lag_nodes=1, quantile_edges=0.25, corr_sec=10):
+    def __init__(self, file_patient: FilePatient, num_points=1500, num_node_features=1, lag_nodes=1, top_k_edges=4, corr_sec=10):
         self.file_patient = file_patient
         self.dictionary_unique_pairs = {}
 
@@ -54,7 +54,7 @@ class Patient:
 
         self.indices = None
 
-        self.quantile_edges = quantile_edges    # Quantile for edge selection
+        self.top_k_edges = top_k_edges
 
 
     def set_skip_values(self):
@@ -277,7 +277,7 @@ def create_graph(patient):
     lag_nodes = patient.lag_nodes
     seizure_starts = patient.patient_info["seizure_starts"]
     seizure_ends = patient.patient_info["seizure_ends"]
-    quantile_edges = patient.quantile_edges
+    top_k_edges = patient.top_k_edges
 
     # Creation of series from the dataframe
     columns = [df.iloc[:, i].to_numpy() for i in range(0,len(df.columns))]
