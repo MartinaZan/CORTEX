@@ -8,7 +8,6 @@ from src.core.factory_base import get_instance_kvargs
 from src.utils.cfg_utils import init_dflts_to_of
 from src.dataset.instances.graph import GraphInstance
 
-
 class ObliviousBidirectionalSearchExplainer(Explainer):
     """
     An implementation of the Counterfactual Explainer proposed in the paper "Abrate, Carlo, and Francesco Bonchi. 
@@ -24,8 +23,6 @@ class ObliviousBidirectionalSearchExplainer(Explainer):
         # Check if the distance metric exist or build with its defaults:
         init_dflts_to_of(self.local_config, 'distance_metric', dst_metric)
         
-
-
     def init(self):
         super().init()
 
@@ -33,9 +30,13 @@ class ObliviousBidirectionalSearchExplainer(Explainer):
                                                     self.local_config['parameters']['distance_metric']['parameters'])
         
     def explain(self, instance):
-
-        # Get the label of the original instance
+        # Get the predicted label of the original instance
         l_inst = self.oracle.predict(instance)
+
+        # Added to get explanation only for class 1 (remove it if not needed) --> speed
+        if instance.label != 1:
+            return copy.deepcopy(instance)
+
         # Get the label of the counterfactual (just for binary classification problems)
         l_counterfactual = 1 - l_inst
 
@@ -131,7 +132,7 @@ class ObliviousBidirectionalSearchExplainer(Explainer):
         return 0, g_o, l
 
 
-    def oblivious_backward_search(self, instance, g ,gc1 ,y_bar ,k=5 , l_max=2000):
+    def oblivious_backward_search(self, instance, g, gc1, y_bar, k=5, l_max=2000):
         '''
         '''
         info = []

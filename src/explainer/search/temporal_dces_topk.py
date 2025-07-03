@@ -74,8 +74,8 @@ class TemporalDCESExplainer(Explainer):
         # Get label of the current instance
         input_label = self.oracle.predict(instance)
 
-        # We only want explanations for class 1
-        if input_label != 1:
+        # Added to get explanation only for class 1 (remove it if not needed) --> speed
+        if instance.label != 1:
             return copy.deepcopy(instance)
 
         # Get ids of candidates in set C and their permanence time

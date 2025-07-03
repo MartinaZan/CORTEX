@@ -5,6 +5,7 @@ import networkx as nx
 import torch
 from operator import itemgetter
 import numpy as np
+import copy
 from typing import List, Tuple, Dict, Any
 
 
@@ -46,8 +47,13 @@ class GNNMOExp(Explainer):
         G = nx.from_numpy_array(instance.data)
         
         # Get original prediction probabilities
-        y_i = self.softmax(self.oracle.predict_proba(instance))
-        log_y_i = self.log_softmax(self.oracle.predict_proba(instance))
+        p = self.oracle.predict_proba(instance)
+        y_i = self.softmax(p)
+        log_y_i = self.log_softmax(p)
+
+        # Added to get explanation only for class 1 (remove it if not needed) --> speed
+        if instance.label != 1:
+            return copy.deepcopy(instance)
         
         # Find node with maximum degree centrality
         degree_dict = nx.degree_centrality(G)

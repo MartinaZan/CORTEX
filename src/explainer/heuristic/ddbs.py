@@ -3,7 +3,6 @@ import itertools
 import numpy as np
 import copy
 
-
 from src.dataset.instances.graph import GraphInstance
 from src.dataset.dataset_base import Dataset
 from src.core.explainer_base import Explainer
@@ -12,7 +11,6 @@ from src.core.trainable_base import Trainable
 
 from src.core.factory_base import get_instance_kvargs
 from src.utils.cfg_utils import get_dflts_to_of, init_dflts_to_of, inject_dataset, inject_oracle, retake_oracle, retake_dataset
-
 
 class DataDrivenBidirectionalSearchExplainer(Explainer):
     """
@@ -27,7 +25,6 @@ class DataDrivenBidirectionalSearchExplainer(Explainer):
         self.distance_metric = get_instance_kvargs(self.local_config['parameters']['distance_metric']['class'], 
                                                     self.local_config['parameters']['distance_metric']['parameters'])
         
-
     def check_configuration(self):
         super().check_configuration()
 
@@ -35,17 +32,21 @@ class DataDrivenBidirectionalSearchExplainer(Explainer):
 
         #Check if the distance metric exist or build with its defaults:
         init_dflts_to_of(self.local_config, 'distance_metric', dst_metric)
-       
-
+    
     def explain(self, instance):
         """
         Uses a combination of Data-driven Forward Search with Data-driven Backward Search as described in "Abrate, Carlo, and Francesco Bonchi. 
         "Counterfactual Graphs for Explainable Classification of Brain Networks." Proceedings of the 27th ACM SIGKDD Conference on Knowledge
         Discovery & Data Mining. 2021."
         """
-        edges_prob = self.get_edge_probabilities(self.dataset, self.oracle)
+        edges_prob = self.get_edge_probabilities(self.dataset, self.oracle, instance)
 
         instance_label = self.oracle.predict(instance)
+
+        # Added to get explanation only for class 1 (remove it if not needed) --> speed
+        if instance.label != 1:
+            return copy.deepcopy(instance)
+
         counterfactual_label = 1 - instance_label  # this is only true for binary classification problems
         original_graph = instance.data
 
@@ -60,28 +61,30 @@ class DataDrivenBidirectionalSearchExplainer(Explainer):
 
         return result
     
-
     # Ancillary functions/////////////////////////////////////////////////////////////////////////////
 
-    def get_edge_probabilities(self, dataset, oracle):
+    def get_edge_probabilities(self, dataset, oracle, instance=None):
         """
         This method is meant to be used with DFS
         """
         # Nodes frequency
-        #create the two matices as the count of the frequency of each edge to be in a graph of the dataset
+        # Create the two matices as the count of the frequency of each edge to be in a graph of the dataset
         dim_g = len(dataset.instances[0].data)
 
         g_0 = np.zeros((dim_g,dim_g))
         g_1 = np.zeros((dim_g,dim_g))
 
         for inst in dataset.instances:
-            g = np.copy(inst.data)
-
-            y_hat = oracle.predict(inst)
-            if y_hat==0:
-                g_0 = np.add(g_0,g)
-            else:
-                g_1 = np.add(g_1,g)
+            # Check probabilities only for feasible candidates
+            if instance is not None and instance.time_id is not None:
+                if inst.time_id <= instance.time_id and inst.patient_id == instance.patient_id and inst.record_id == instance.record_id:
+                    g = np.copy(inst.data)
+                    
+                    y_hat = oracle.predict(inst)
+                    if y_hat==0:
+                        g_0 = np.add(g_0,g)
+                    else:
+                        g_1 = np.add(g_1,g)
 
         g_01 = g_0-g_1
         g_10 = g_1-g_0
