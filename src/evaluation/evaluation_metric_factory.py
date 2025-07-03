@@ -10,8 +10,8 @@ from src.evaluation.evaluation_metric_oracle_calls import OracleCallsMetric
 from src.evaluation.evaluation_metric_oracle_accuracy import OracleAccuracyMetric
 from src.evaluation.evaluation_metric_smiles_levenshtein import SmilesLevenshteinMetric
 from src.evaluation.evaluation_metric_dumper import InstancesDumper
-from src.evaluation.evaluation_metric_embedding import EmbeddingMetric
-from src.evaluation.M_dissim_metric import M_dissim_metric
+from src.evaluation.evaluation_metric_dissimilarity import M_dissim_metric
+from src.evaluation.evaluation_metric_implausibility import ImplausibilityMetric
 
 class EvaluationMetricFactory:
 
@@ -43,18 +43,18 @@ class EvaluationMetricFactory:
 
         elif metric_name == 'oracle_accuracy':
             return self.get_oracle_accuracy_metric(config_dict=metric_dict)
-
-        elif metric_name == 'embedding_metric':
-            return self.get_embedding_metric(config_dict=metric_dict)
-
-        elif metric_name == 'M_dissim_metric':
-            return self.get_M_dissim_metric(config_dict=metric_dict)
-
-        elif metric_name == 'smiles_levenshtein':
-            return self.get_smiles_levenshtein_metric(config_dict=metric_dict)
         
         elif metric_name == 'oracle_accuracy_node':
             return self.get_oracle_accuracy_node_metric(config_dict=metric_dict)
+
+        elif metric_name == 'M_dissim_metric':
+            return self.get_M_dissim_metric(config_dict=metric_dict)
+        
+        elif metric_name == 'implausibility':
+            return self.get_implausibility_metric(config_dict=metric_dict)
+
+        elif metric_name == 'smiles_levenshtein':
+            return self.get_smiles_levenshtein_metric(config_dict=metric_dict)
         
         elif metric_name == 'dumper':
             return self.get_dumper_metric(config_dict=metric_dict)
@@ -90,37 +90,34 @@ class EvaluationMetricFactory:
 
         return result
 
-
     def get_sparsity_metric(self, config_dict=None) -> EvaluationMetric:
         result = SparsityMetric(config_dict)
         return result
-
 
     def get_fidelity_metric(self, config_dict=None) -> EvaluationMetric:
         result = FidelityMetric(config_dict)
         return result
 
-    
     def get_fidelity_node_metric(self, config_dict=None) -> EvaluationMetric:
         result = FidelityNodeMetric(config_dict)
-        return result
-
-    def get_oracle_accuracy_metric(self, config_dict=None) -> EvaluationMetric:
-        result = OracleAccuracyMetric(config_dict)
-        return result
-    
-    def get_embedding_metric(self, config_dict=None) -> EvaluationMetric:
-        result = EmbeddingMetric(config_dict)
         return result
     
     def get_M_dissim_metric(self, config_dict=None) -> EvaluationMetric:
         result = M_dissim_metric(config_dict)
         return result
 
+    def get_oracle_accuracy_metric(self, config_dict=None) -> EvaluationMetric:
+        result = OracleAccuracyMetric(config_dict)
+        return result
+
     def get_oracle_accuracy_node_metric(self, config_dict=None) -> EvaluationMetric:
         result = OracleAccuracyNodeMetric(config_dict)
         return result
     
+    def get_implausibility_metric(self, config_dict=None) -> EvaluationMetric:
+        result = ImplausibilityMetric(config_dict)
+        return result
+
     def get_smiles_levenshtein_metric(self, config_dict=None) -> EvaluationMetric:
         result = SmilesLevenshteinMetric(config_dict)
         return result

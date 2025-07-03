@@ -21,7 +21,7 @@ class ObliviousBidirectionalSearchExplainer(Explainer):
 
         dst_metric='src.explainer.heuristic.obs_dist.ObliviousBidirectionalDistance'  
 
-        #Check if the distance metric exist or build with its defaults:
+        # Check if the distance metric exist or build with its defaults:
         init_dflts_to_of(self.local_config, 'distance_metric', dst_metric)
         
 

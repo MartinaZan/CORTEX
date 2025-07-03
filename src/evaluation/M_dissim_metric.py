@@ -5,11 +5,12 @@ import numpy as np
 import networkx as nx
 
 class M_dissim_metric(EvaluationMetric):
-    """Function for the calculation of M_dissim"""
+    """Metric to compute M_dissim: a dissimilarity measure of attributed graphs based on
+    normalized Laplacian and node features."""
 
     def __init__(self, config_dict=None) -> None:
         super().__init__(config_dict)
-        self._name = 'M_dissim'
+        self._name = 'M_dissim_metric'
 
     def evaluate(self, instance_1 , instance_2 , oracle : Oracle=None, explainer : Explainer=None, dataset = None):
         X1 = instance_1.node_features

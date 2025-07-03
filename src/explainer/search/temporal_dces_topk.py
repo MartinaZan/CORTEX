@@ -27,7 +27,7 @@ class TemporalDCESExplainer(Explainer):
     def check_configuration(self):
         super().check_configuration()
         # Dissimilarity metric
-        dst_metric = 'src.evaluation.M_dissim_metric.M_dissim_metric'
+        dst_metric = 'src.evaluation.evaluation_metric_dissimilarity.M_dissim_metric'
 
         # Check if the dissimilarity metric exists or build with its defaults:
         init_dflts_to_of(self.local_config, 'distance_metric', dst_metric)
