@@ -59,24 +59,42 @@ class PhaseTrajectoryAnalyzer:
         
         return np.array(permanence)
 
-    def plot_phase_trajectory_final(self):
-        fig = plt.figure(figsize=(4, 4))
-        ax_phase = fig.add_subplot(1, 1, 1)
-        ax_phase.set_xlabel('x(t)')
-        ax_phase.set_ylabel(f'v(t) with lag {self.L}')
-        ax_phase.set_title('Phase trajectory')
-        ax_phase.set_xlim(-0.05, 0.55)
-        ax_phase.set_ylim(-0.05, 0.55)
-        ax_phase.scatter(self.x[self.colors == 'green'], self.v[self.colors == 'green'],
-                         color='green', s=10, alpha=0.6, zorder=5)
-        ax_phase.scatter(self.x[self.colors == 'red'], self.v[self.colors == 'red'],
-                         color='red', s=10, alpha=0.6, zorder=5)
-        ax_phase.scatter(self.x[self.colors == 'orange'], self.v[self.colors == 'orange'],
-                         color='orange', s=10, alpha=0.6, zorder=5)
-        ax_phase.plot(self.x, self.v, color='black', alpha=0.4,
+    def plot_phase_trajectory_final(self,highlight=False,col=None,axs=None):
+        if col is None:
+            col = ["green", "red", "orange", "blue", "black"]
+
+        created_fig = False
+        if axs is None:
+            fig = plt.figure(figsize=(4, 4))
+            axs = fig.add_subplot(1, 1, 1)
+            created_fig = True
+        
+        axs.set_xlabel(r'$\sigma_{{\,i}}$')
+        axs.set_ylabel(rf'$v_{{\,i}}$ with L={self.L}')
+        axs.set_title('Phase trajectory')
+        # axs.set_xlim(-0.05, 0.55)
+        # axs.set_ylim(-0.05, 0.55)
+        axs.scatter(self.x[self.colors == 'green'], self.v[self.colors == 'green'],
+                         color=col[0], s=10, alpha=0.6, zorder=5)
+        axs.scatter(self.x[self.colors == 'red'], self.v[self.colors == 'red'],
+                         color=col[1], s=10, alpha=0.6, zorder=5)
+        axs.scatter(self.x[self.colors == 'orange'], self.v[self.colors == 'orange'],
+                         color=col[2], s=10, alpha=0.6, zorder=5)
+        axs.plot(self.x, self.v, color=col[4], alpha=0.2,
                       linestyle='dashed', linewidth=1, zorder=1)
+        
+        if highlight == True:
+            axs.scatter(
+                self.x[self.idx_candidates], self.v[self.idx_candidates],
+                facecolors=col[3], edgecolors='none', s=10, zorder=1000
+            )
+
         plt.tight_layout()
         plt.show()
+
+        if created_fig:
+            plt.tight_layout()
+            plt.show()
 
     # def plot_low_distance_percentile(self):
     #     print(f"Number of points below the {self.percentile*100}% percentile: {len(self.times_candidates)}")
@@ -100,20 +118,37 @@ class PhaseTrajectoryAnalyzer:
     #     plt.title("Histogram of consecutive permanence")
     #     plt.show()
 
-    def plot_time_series_with_permanence(self):
+    def plot_time_series_with_permanence(self, axs=None):
         idx_candidates = self.idx_candidates
         permanence = self.permanence
 
-        fig, ax1 = plt.subplots(figsize=(12, 5))
-        ax2 = ax1.twinx()
+        created_fig = False
+        if axs is None:
+            fig, ax1 = plt.subplots(figsize=(12, 5))
+            created_fig = True
+        else:
+            ax1 = axs
+
+        # Assicuriamoci che ax1 sia l'asse principale, poi creiamo ax2 twin solo se non esiste
+        if not hasattr(ax1, 'twinx_axis'):
+            ax2 = ax1.twinx()
+            ax1.twinx_axis = ax2  # memorizziamo ax2 per usi futuri
+        else:
+            ax2 = ax1.twinx_axis
+
         dt = np.median(np.diff(self.time[idx_candidates])) if len(idx_candidates) > 1 else 1
         ax2.bar(self.time[idx_candidates], permanence, width=dt, color='seagreen', alpha=0.2)
         ax2.set_ylabel(r"Permanence time $\tau$", color='seagreen')
         ax2.set_ylim(-1, permanence.max() * 1.1)
         ax2.tick_params(axis='y', labelcolor='seagreen')
-        ax1.plot(self.time, self.series, alpha=0.7, label='x(t)')
+
+        ax1.plot(self.time, self.series, alpha=0.7)
         ax1.plot(self.time[idx_candidates], self.series[idx_candidates], '.', color='green', markersize=4)
-        ax1.set_xlabel("Time")
-        ax1.set_ylabel("x(t)", color='black')
+        ax1.set_title("Softmax values")
+        ax1.set_xlabel(r"$t_{{\,i}}$")
+        ax1.set_ylabel(r"$\sigma_{{\,i}}$", color='black')
         ax1.tick_params(axis='y', labelcolor='black')
-        plt.show()
+
+        if created_fig:
+            plt.tight_layout()
+            plt.show()

@@ -216,6 +216,7 @@ class Patient:
         indices += list(range((self.patient_info["seizure_ends"][-1] - Start) * self.frequency + self.buffer_time, (End - Start) * self.frequency, self.skip_0))
 
         self.indices = indices
+        self.time_stamps = self.get_times()[indices].tolist()
 
 
     def plot_indices(self, xlim = None):
