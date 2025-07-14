@@ -137,10 +137,11 @@ data/working*
 # Log files
 *.out
 
+**/legacy/
+
 # Output files
-output/*
+output/
 *.pkl
 *.mp4
 
 # EEG_data/*
-**/legacy/
