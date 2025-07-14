@@ -138,7 +138,7 @@ data/working*
 *.out
 
 # Output files
-output/
+output/*
 *.pkl
 *.mp4
 
