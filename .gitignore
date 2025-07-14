@@ -134,6 +134,10 @@ dmypy.json
 data/cache*
 data/working*
 
+# Testing files
+main_test.py
+da_test.py
+
 # Log files
 *.out
 
