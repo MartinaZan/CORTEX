@@ -131,31 +131,16 @@ dmypy.json
 .pyre/
 
 # data folders
-# data/*
 data/cache*
 data/working*
-
-# output/
-
-# Testing files
-main_test.py
-da_test.py
 
 # Log files
 *.out
 
-# Cose Martina
-output/embeddings/*
-output/eval_manager/*
-output/logs/*
-output/metrics/*
-output/plot correlation/*
-output/results/*
-output/video/*
-output/top_k_counterfactuals/*
-output/cf_dict/*
-
-EEG_data/*
-**/legacy/
+# Output files
+output/
 *.pkl
 *.mp4
+
+# EEG_data/*
+**/legacy/
