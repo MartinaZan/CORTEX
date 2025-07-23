@@ -145,3 +145,7 @@ output/
 *.mp4
 
 # EEG_data/*
+
+lab/ablation_study.ipynb
+lab/average_results.ipynb
+lab/plot_oracle_accuracy.ipynb
