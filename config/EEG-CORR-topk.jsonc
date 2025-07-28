@@ -16,7 +16,7 @@
     "do-pairs":[ {"compose_bbbp_gcn" : "config/snippets/do-pairs/EEG-CORR.json"} ],
 
     "explainers": [
-        {"class": "src.explainer.search.temporal_dces_topk.TemporalDCESExplainer",
+        {"class": "src.explainer.search.cortex.CORTEX",
         "parameters": {
             "top_k": 5,
             "dissimilarity_weight": 0.7,
@@ -24,9 +24,9 @@
             "stability_weight": 0.1
         }},
         {"class": "src.explainer.heuristic.obs.ObliviousBidirectionalSearchExplainer"},
-        {"class": "src.explainer.heuristic.ddbs.DataDrivenBidirectionalSearchExplainer"},
+        {"class": "src.explainer.heuristic.temporal_ddbs.TemporalDataDrivenBidirectionalSearchExplainer"},
         {"class": "src.explainer.search.moexp.GNNMOExp", "parameters": {}},
-        {"class": "src.explainer.search.temporal_dces_no_stability.TemporalDCESExplainerNoStability",
+        {"class": "src.explainer.search.temporal_dces.TemporalDCESExplainer",
         "parameters": {
             "top_k": 5,
             "dissimilarity_weight": 1,

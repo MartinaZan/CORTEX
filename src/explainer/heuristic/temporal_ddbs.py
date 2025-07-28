@@ -12,10 +12,10 @@ from src.core.trainable_base import Trainable
 from src.core.factory_base import get_instance_kvargs
 from src.utils.cfg_utils import get_dflts_to_of, init_dflts_to_of, inject_dataset, inject_oracle, retake_oracle, retake_dataset
 
-class DataDrivenBidirectionalSearchExplainer(Explainer):
+class TemporalDataDrivenBidirectionalSearchExplainer(Explainer):
     """
-    An implementation of the Counterfactual Explainer proposed in the paper "Abrate, Carlo, and Francesco Bonchi. 
-    "Counterfactual Graphs for Explainable Classification of Brain Networks." 
+    Temporal adaptation of the Counterfactual Explainer proposed in the paper "Abrate, Carlo, and
+    Francesco Bonchi. "Counterfactual Graphs for Explainable Classification of Brain Networks." 
     Proceedings of the 27th ACM SIGKDD Conference on Knowledge Discovery & Data Mining. 2021."
     """
 

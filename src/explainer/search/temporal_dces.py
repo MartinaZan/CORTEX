@@ -10,20 +10,6 @@ from utils.phase_trajectory_analyzer import PhaseTrajectoryAnalyzer
 
 
 class TemporalDCESExplainer(Explainer):
-    """The Temporal Distribution Compliant Explanation Search Explainer identifies
-    the top-k counterfactual instances by searching within the subset of stable
-    instances in the dataset.
-    The selection is based on minimizing a metric that includes:
-    1. A measure of dissimilarity between the counterfactual and the original
-       instance, computed as the Frobenius norm of the difference between their graph
-       Laplacians multiplied by the node features;
-    2. A measure of temporal distance between the instance and the counterfactual;
-    3. A measure of instability of the counterfactual (linked to permanence time
-       in the stability region).
-    This approach ensures that selected counterfactuals are not only structurally and
-    temporally meaningful, but also lie within regions of stable behavior.
-    """
-
     def check_configuration(self):
         super().check_configuration()
         # Dissimilarity metric
@@ -43,12 +29,11 @@ class TemporalDCESExplainer(Explainer):
         )
 
         # Optional parameter for number the number of counterfactuals to select
-        self.top_k = self.local_config['parameters'].get('top_k', 10)
+        self.top_k = self.local_config['parameters'].get('top_k', 1)
 
         # Optional parameters for \alpha, \beta and \gamma to weight the terms
-        self.alpha = self.local_config['parameters'].get('dissimilarity_weight', 8)
-        self.beta = self.local_config['parameters'].get('time_weight', 1.5)
-        self.gamma = self.local_config['parameters'].get('stability_weight', 0.5)
+        self.alpha = self.local_config['parameters'].get('dissimilarity_weight', 1)
+        self.beta = self.local_config['parameters'].get('time_weight', 0)
 
         # Cache to store candidates and permanence keyed by (patient_id, record_id)
         self.candidates_cache = {}
@@ -101,10 +86,9 @@ class TemporalDCESExplainer(Explainer):
             # If the candidate is valid, compute the terms in the metric
             if input_label != candidate_label:
                 ids.append(candidate.time_id)
-                dissim, time_dist, instab = self.compute_metric_components(instance, candidate, stability_scores)
+                dissim, time_dist, _ = self.compute_metric_components(instance, candidate, stability_scores)
                 M_dissim.append(dissim)
                 M_time.append(time_dist)
-                M_instab.append(instab)
                 candidates_map[candidate.time_id] = candidate
 
         # If there is no counterfactual, return current instance
@@ -114,10 +98,9 @@ class TemporalDCESExplainer(Explainer):
         # Normalize values to control their contribution
         M_dissim = self.normalize(M_dissim)
         M_time = self.normalize(M_time)
-        M_instab = self.normalize(M_instab)
 
         # Compute M
-        M_values = self.alpha * M_dissim + self.beta * M_time + self.gamma * M_instab
+        M_values = self.alpha * M_dissim + self.beta * M_time
 
         # Sort candidates by ascending M (lower is better) and select top k
         sorted_indices = np.argsort(M_values)
@@ -191,8 +174,7 @@ class TemporalDCESExplainer(Explainer):
             inst for inst in self.dataset.instances
             if inst.patient_id == instance.patient_id
             and inst.record_id == instance.record_id
-            and inst.time_id <= instance.time_id
-            and inst.time_id in candidates_idx
+            and inst.time_id < instance.time_id
         ]
 
     # Compute normalized stability score
