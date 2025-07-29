@@ -24,7 +24,7 @@
             "stability_weight": 0.1
         }},
         {"class": "src.explainer.heuristic.obs.ObliviousBidirectionalSearchExplainer"},
-        {"class": "src.explainer.heuristic.temporal_ddbs.TemporalDataDrivenBidirectionalSearchExplainer"},
+        {"class": "src.explainer.heuristic.temporal_ddbs.DataDrivenBidirectionalSearchExplainer"},
         {"class": "src.explainer.search.moexp.GNNMOExp", "parameters": {}},
         {"class": "src.explainer.search.temporal_dces.TemporalDCESExplainer",
         "parameters": {
